@@ -1,34 +1,53 @@
 # Go2 HIMLoco：稳定爬楼与平地策略切换归档
 
-本仓库保存 **2026-11-02 最新一轮600次PPO更新**的代码、模型、训练记录与独立仿真评估。目标平台为 **Isaac Sim 5.1 / Isaac Lab 2.3.2 / Python 3.11**。楼梯由本项目训练的HIMLoco策略控制，平地使用原仓库未修改的 `walk.pt`；通过独立地形扫描器提前1.1 m识别台阶，并以0.3 s过渡切换控制器。
+本仓库当前推荐 **2026-11-02 续训中选定的 `model_1100.pt`**，并完整保留上一轮600次PPO更新的代码、模型、训练记录与独立仿真评估。目标平台为 **Isaac Sim 5.1 / Isaac Lab 2.3.2 / Python 3.11**。楼梯由本项目训练的HIMLoco策略控制，平地使用原仓库未修改的 `walk.pt`；通过独立地形扫描器提前1.1 m识别台阶，并以0.3 s过渡切换控制器。
 
 这是独立的私有归档仓库：[`venom049/go2-himloco-stable-fast`](https://github.com/venom049/go2-himloco-stable-fast)。归档中的模型可以回放或作为后续训练起点；没有加载上游楼梯策略，也没有进行实机部署。
 
-## 本次训练与结果
+## 当前选定模型：累计1100次更新
+
+推荐模型为 [`artifacts/20261102_195635_stairs_stable_fast_continue/model_1100.pt`](artifacts/20261102_195635_stairs_stable_fast_continue/model_1100.pt)。它从原600检查点恢复训练，在新增500次PPO更新时保存，累计编号为1100。整个续训任务新增1000次更新并运行到1600，评估后选择1100作为当前模型；它不是本次任务最后保存的检查点。“累计”指当前稳定爬楼训练链的更新编号，不包含更早warm-start之前的历史训练。
+
+相同组合控制和评估条件下，固定18 cm阶高、32 cm踏面、8级楼梯，指令0.6 m/s，种子42/43各64个首回合，关闭观测噪声与域随机化、保留初始姿态采样，回合限时25 s：
+
+| 指标 | 原600 | 选定1100 | 最终1600 |
+| --- | ---: | ---: | ---: |
+| 成功数 | 128/128 | **128/128** | 127/128 |
+| 实测水平上楼速度 | 0.429 m/s | **0.464 m/s** | 0.491 m/s |
+| 楼梯段左右侧倾RMS | 3.445° | **2.287°** | 3.999° |
+| 楼梯段平均髋外展正分量 | 10.482° | **8.589°** | 8.491° |
+| 支撑足滑移RMS | 0.133 m/s | **0.129 m/s** | 0.127 m/s |
+| 足端内侧越界采样比例 | 2.55% | **11.60%** | 2.75% |
+
+1100在保持这组测试128/128通过的同时，改善了相对600的速度、侧倾与平均外展。1600更快，但出现一次失败且侧倾更大，因此未选为当前模型。**1100的内侧足位仍有不足**：足端位于每侧0.12 m内侧边界以内的采样比例升至11.6%，主要来自左后足（该足45.93%）；足端跨过身体中线的采样比例为0。这不是11.6%的回合失败，也不能据此宣称交叉步或所有步态指标都已改善。
+
+**0.6 m/s仍是命令值，1100实测水平上楼速度约0.464 m/s。** 质量指标统计成功首回合，通过率单独报告；这些是开发场景检查，不是未见地形或实机验证。模型选择、更新计数、文件校验与限制见 [`model_selection.json`](validation/stable_fast_continue/model_selection.json)，完整对照见 [`comparison.json`](validation/stable_fast_continue/comparison.json)。原600的长进场、纯平地及114项代码测试记录保留在下方历史章节，不作为1100重新完成这些检查的证据。
+
+## 上一轮600次更新：原始训练与结果
 
 | 项目 | 记录 |
 | --- | --- |
 | 训练目录 | `20261102_183927_stairs_stable_fast` |
-| 本轮更新数 | 600次PPO更新，不是600个回合 |
+| 该轮更新数 | 600次PPO更新，不是600个回合 |
 | 并行环境 / 每次采样长度 | 1024 / 24个控制步 |
 | 环境转移样本 | 14,745,600 |
 | 初始化 | 本项目上一轮 `20261102_175509_stairs_lateral_refinement/model_400.pt`，warm-start |
-| 最终模型 | [`artifacts/20261102_183927_stairs_stable_fast/model_600.pt`](artifacts/20261102_183927_stairs_stable_fast/model_600.pt) |
-| 最终模型SHA-256 | `45133df9bbc5439d67656607988403229d2558656ef848c6ca4f93b02e484124` |
+| 该轮最终模型 | [`artifacts/20261102_183927_stairs_stable_fast/model_600.pt`](artifacts/20261102_183927_stairs_stable_fast/model_600.pt) |
+| 该轮模型SHA-256 | `45133df9bbc5439d67656607988403229d2558656ef848c6ca4f93b02e484124` |
 | 主要调整 | 横滚姿态/角速度、侧向速度、髋外展、足端横向位置与滑移惩罚；逐步提高速度命令 |
 | 训练速度课程 | 前300次更新由0.35–0.50 m/s逐步提高到0.45–0.65 m/s |
 | 代码检查 | 114项测试通过，见 [`tests_final.txt`](validation/stable_fast/tests_final.txt) |
 
 以下结果来自固定18 cm阶高、32 cm踏面、8级楼梯、0.6 m/s速度指令的独立首回合评估；每个随机种子64个环境，关闭观测噪声与域随机化，保留初始姿态采样，回合限时25 s。
 
-| 指标 | 上一轮楼梯策略 | 本次组合控制，前视1.1 m |
+| 指标 | 更早的楼梯策略 | 原600组合控制，前视1.1 m |
 | --- | ---: | ---: |
 | 成功数，种子42/43 | 121/128 | **128/128** |
 | 实测水平上楼速度 | 0.316 m/s | **0.429 m/s** |
 | 楼梯段身体左右侧倾RMS | 6.72° | **3.44°** |
 | 楼梯段四腿平均髋外展正分量 | 13.08° | **10.48°** |
 
-长距离平地进场复核（种子44，起点向后移0.3 m）为 **64/64**；纯平地复核为 **64/64**，全程由原行走策略控制，实测测试段速度约 **0.281 m/s**。
+原600模型的长距离平地进场复核（种子44，起点向后移0.3 m）为 **64/64**；该轮纯平地复核为 **64/64**，全程由原行走策略控制，实测测试段速度约 **0.281 m/s**。
 
 **0.6 m/s是命令值，不是达到的实测速度。** 姿态与速度质量指标统计成功首回合，通过率另行报告。髋外展约束是软惩罚，前腿仍可能短时超过阈值。这些是开发过程中的固定场景检查，不是未见地形的泛化测试或实机性能保证。原始结果、0.7/0.8 m前视距离的失败对照与选择过程保存在 [`validation/stable_fast/`](validation/stable_fast/)；完整汇总见 [`comparison.json`](validation/stable_fast/comparison.json)，定义与限制见 [`implementation_provenance.json`](validation/stable_fast/implementation_provenance.json)。
 
@@ -41,9 +60,11 @@
 | `upstream/SOURCES.json` | 上游固定提交与补丁清单 |
 | `assets/go2/` | Go2 URDF、原始MJCF、16个OBJ、转换记录与许可证 |
 | `assets/policies/upstream_walk/` | 原行走策略、接口来源记录、校验值与许可证 |
-| `artifacts/20261102_183927_stairs_stable_fast/` | 本轮6个检查点、实际配置、训练日志/TensorBoard事件、环境/算法/运行检查记录与训练时源码快照 |
-| `artifacts/20261102_175509_stairs_lateral_refinement/` | 本轮warm-start起点模型及配置、来源记录 |
-| `validation/stable_fast/` | 本轮评估、汇总、测试结果和仿真截图 |
+| `artifacts/20261102_195635_stairs_stable_fast_continue/` | 当前选定1100检查点及其实际配置、来源记录 |
+| `artifacts/20261102_183927_stairs_stable_fast/` | 原600轮的6个检查点、实际配置、训练日志/TensorBoard事件、环境/算法/运行检查记录与训练时源码快照 |
+| `artifacts/20261102_175509_stairs_lateral_refinement/` | 原600轮warm-start起点模型及配置、来源记录 |
+| `validation/stable_fast_continue/` | 600/1100/1600对照、当前模型选择记录与仿真截图 |
+| `validation/stable_fast/` | 原600轮评估、汇总、测试结果和仿真截图 |
 | `validation/flat_policy/adapter_validation.json` | 原行走策略适配一致性检查 |
 | `validation/server_environment.json` | 实际验证环境的软件版本与GPU信息 |
 | `docs/PROJECT_GUIDE.md` | 原工作区完整说明与历史调参记录 |
@@ -91,7 +112,7 @@ bash scripts/run_lab.sh -m unittest discover -s tests -v
 
 ```bash
 bash scripts/run_lab.sh scripts/play_lab.py \
-  --checkpoint artifacts/20261102_183927_stairs_stable_fast/model_600.pt \
+  --checkpoint artifacts/20261102_195635_stairs_stable_fast_continue/model_1100.pt \
   --controller hybrid --gate-lookahead 1.1 \
   --walk-checkpoint assets/policies/upstream_walk/walk.pt \
   --num-envs 1 --interactive --view front \
@@ -109,7 +130,7 @@ bash scripts/run_lab.sh scripts/play_lab.py \
 
 ```bash
 "$GO2_PYTHON" scripts/evaluate_stability.py \
-  --checkpoint artifacts/20261102_183927_stairs_stable_fast/model_600.pt \
+  --checkpoint artifacts/20261102_195635_stairs_stable_fast_continue/model_1100.pt \
   --label archive_recheck --controller hybrid \
   --gate-lookahead 1.1 --speeds 0.6 --seeds 42 43 \
   --height 0.18 --num-envs 64 \
@@ -121,9 +142,9 @@ bash scripts/run_lab.sh scripts/play_lab.py \
 
 若要复核长距离进场，在评估命令中改为 `--seeds 44 --spawn-x-offset -0.3` 并换标签；纯平地检查改为 `--height 0 --seeds 44` 并换标签。独立通过率与训练日志里的课程采样成功率含义不同。
 
-## 重跑本轮600次更新
+## 重跑原600次更新实验
 
-该命令从归档的上一轮模型重新微调，使用本轮实际保存的完整配置；新结果写入 `logs/<新时间戳>_stairs_stable_fast_reproduce/`。GPU仿真与优化不保证逐位重现原模型。
+该命令从归档的早期lateral模型重新微调，使用原600轮实际保存的完整配置；新结果写入 `logs/<新时间戳>_stairs_stable_fast_reproduce/`。它重跑的是原600轮实验，不是从1100继续训练。GPU仿真与优化不保证逐位重现原模型。
 
 ```bash
 bash scripts/run_lab.sh scripts/train_lab.py \
@@ -138,13 +159,13 @@ bash scripts/run_lab.sh scripts/train_lab.py \
 
 ## 从最新模型继续训练
 
-下面例子恢复网络、优化器和已完成更新计数，再追加100次更新；保存编号预计继续为700。示例关闭升速课程，以保持本轮最终0.45–0.65 m/s命令采样范围。
+下面例子从当前选定的1100检查点恢复网络、优化器和已完成更新计数，再追加100次更新；保存编号预计继续为1200。示例关闭升速课程，以保持保存配置中的最终0.45–0.65 m/s命令采样范围。
 
 ```bash
 bash scripts/run_lab.sh scripts/train_lab.py \
   --headless \
-  --config artifacts/20261102_183927_stairs_stable_fast/settings.yaml \
-  --resume artifacts/20261102_183927_stairs_stable_fast/model_600.pt \
+  --config artifacts/20261102_195635_stairs_stable_fast_continue/settings.yaml \
+  --resume artifacts/20261102_195635_stairs_stable_fast_continue/model_1100.pt \
   --set commands.speed_ramp_updates=0 \
   --num-envs 1024 --max-iterations 100 \
   --run-name stairs_stable_fast_continue

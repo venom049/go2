@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "selected_at_utc": "2026-11-02T12:43:13.035767+00:00",
+  "selection_scope": "Current preferred checkpoint for the tested fixed 18 cm hybrid stair scenario; selected for success and speed/stability balance, not best on every metric.",
+  "checkpoint": "artifacts/20261102_195635_stairs_stable_fast_continue/model_1100.pt",
+  "checkpoint_sha256": "877ff67ce7619516fa0e9350eccdd6537e7170640e5ef0a8b095a3624b2c27f5",
+  "checkpoint_bytes": 6566473,
+  "settings": "artifacts/20261102_195635_stairs_stable_fast_continue/settings.yaml",
+  "manifest": "artifacts/20261102_195635_stairs_stable_fast_continue/manifest.json",
+  "start_checkpoint": "artifacts/20261102_183927_stairs_stable_fast/model_600.pt",
+  "start_checkpoint_sha256": "45133df9bbc5439d67656607988403229d2558656ef848c6ca4f93b02e484124",
+  "initialization": "resume",
+  "start_update": 600,
+  "selected_update": 1100,
+  "additional_updates_at_selection": 500,
+  "continuation_final_update": 1600,
+  "continuation_total_additional_updates": 1000,
+  "counter_scope": "Stable-fast training chain; does not include prior warm-start source training updates.",
+  "num_envs": 1024,
+  "rollout_steps_per_env": 24,
+  "additional_transitions_at_selected_checkpoint": 12288000,
+  "training_configuration_change_from_600": {
+    "commands.speed_ramp_updates": 0
+  },
+  "source_consistency": {
+    "snapshot": "artifacts/20261102_195635_stairs_stable_fast_continue/training_source_snapshot.tar.gz",
+    "original_snapshot_sha256": "e5928e8c81df5ae760aba17896fb877ade6511102bef853bf9d72407ae9cff5a",
+    "published_snapshot_sha256": "c45312904b74d83409aa4f4ebaa41bb75e32447fa117fb6363e5a8f91e6d1665",
+    "archived_source_files_compared": 84,
+    "source_file_differences": [],
+    "excluded_monitor_scripts": [
+      "scripts/check_training.py",
+      "scripts/monitor_remote.py"
+    ],
+    "archive_note": "The published tar preserves each of the 84 remaining source files byte-for-byte; two server monitoring scripts with connection configuration were excluded. The original snapshot is retained locally."
+  },
+  "checkpoint_validation": {
+    "loader": "torch.load(map_location=cpu, weights_only=True)",
+    "checkpoint_iter": 1100,
+    "tensor_count_including_optimizer_states": 120,
+    "all_tensors_finite": true,
+    "graphical_playback_verified": true
+  },
+  "evaluation": {
+    "summary": "validation/stable_fast_continue/comparison.json",
+    "controller": "hybrid",
+    "gate_lookahead_m": 1.1,
+    "stair_height_m": 0.18,
+    "tread_depth_m": 0.32,
+    "steps": 8,
+    "command_speed_m_s": 0.6,
+    "seeds": [
+      42,
+      43
+    ],
+    "first_episodes_per_seed": 64,
+    "gait_quality_subset": "Successful first episodes, stair flight horizontal projection only; approach and upper platform excluded.",
+    "results": [
+      {
+        "label": "reference600",
+        "successes": 128,
+        "episodes": 128,
+        "failures": 0,
+        "timeouts": 0,
+        "stairs_horizontal_speed_m_s": 0.42922776450288913,
+        "stairs_roll_rms_deg": 3.4449617747594625,
+        "stairs_hip_outward_component_mean_deg": 10.482395593037932,
+        "stairs_stance_foot_slip_rms_m_s": 0.13265714064869635,
+        "stairs_foot_lateral_inner_fraction": 0.02554663388606999,
+        "stairs_foot_cross_body_center_fraction": 0.0
+      },
+      {
+        "label": "continued1100",
+        "successes": 128,
+        "episodes": 128,
+        "failures": 0,
+        "timeouts": 0,
+        "stairs_horizontal_speed_m_s": 0.4643713564085436,
+        "stairs_roll_rms_deg": 2.2869349924209463,
+        "stairs_hip_outward_component_mean_deg": 8.589355133820762,
+        "stairs_stance_foot_slip_rms_m_s": 0.12919704483467573,
+        "stairs_foot_lateral_inner_fraction": 0.11597391205930621,
+        "stairs_foot_cross_body_center_fraction": 0.0
+      },
+      {
+        "label": "continued1600",
+        "successes": 127,
+        "episodes": 128,
+        "failures": 1,
+        "timeouts": 0,
+        "stairs_horizontal_speed_m_s": 0.4913681440818619,
+        "stairs_roll_rms_deg": 3.9991229161595903,
+        "stairs_hip_outward_component_mean_deg": 8.490656655896526,
+        "stairs_stance_foot_slip_rms_m_s": 0.1268724477741352,
+        "stairs_foot_lateral_inner_fraction": 0.027462206593935022,
+        "stairs_foot_cross_body_center_fraction": 0.0
+      }
+    ]
+  },
+  "selection_reason": "1100 retained 128/128 successes, increased measured stair speed and reduced roll RMS and mean outward hip component relative to 600. 1600 was faster but had 127/128 successes and higher roll RMS than 600.",
+  "limitations": [
+    "0.6 m/s is a command; selected checkpoint measured stair traversal speed is approximately 0.464 m/s.",
+    "1100 inside-minimum foot-position sampling fraction increased to 11.60% from 2.55%; mostly left rear foot (45.93%). This means per-foot signed body-frame lateral position below 0.12 m, not inter-foot separation or failed episodes; stair cross-body-center sampling fraction is zero.",
+    "Development evaluation on seeds 42/43, not held-out terrain, perturbation, real-robot validation, or a population success guarantee.",
+    "Long-approach and pure-flat 64/64 records and the original 114-test run belong to the earlier 600 model; not repeated for 1100.",
+    "completed.json and TensorBoard/training logs describe the entire continuation through 1600; only model_1100.pt is newly archived as the selected checkpoint.",
+    "Resume restores networks and optimizer states but recreates simulation, curriculum and random-number state."
+  ],
+  "walk_checkpoint": "assets/policies/upstream_walk/walk.pt",
+  "walk_checkpoint_sha256": "65367faebe875faddd8513e12fc3211b9185857e59b3e5cabbef454d46976dfc",
+  "superseded_baseline_retained": true
+}
