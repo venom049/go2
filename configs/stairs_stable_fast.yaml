@@ -1,0 +1,51 @@
+# Warm-start our own lateral400 checkpoint; do not change its action interface.
+# Stability / hip posture refinement with a gradual speed increase. These are
+# engineering starting values, to be selected by independent fixed-stair tests.
+max_iterations: 600
+terrain:
+  initial_level: 1
+commands:
+  start_forward_min: 0.35
+  start_forward_max: 0.50
+  forward_min: 0.45
+  forward_max: 0.65
+  speed_ramp_updates: 300
+rewards:
+  tracking_lin_vel: 2.0
+  forward_progress: 0.8
+  action_rate: -0.02
+  action_smoothness: -0.01
+  roll_orientation: -3.0
+  roll_rate: -0.25
+  lateral_velocity: -0.4
+  orientation: -0.05
+  ang_vel_xy: -0.10
+  joint_deviation: -0.03
+  hip_deviation: -0.10
+  hip_abduction: -3.0
+  feet_lateral: -40.0
+  joint_vel: -0.0005
+  joint_limits: -2.0
+  joint_power: -0.00003
+  undesired_contacts: -1.0
+  foot_slip: -0.6
+  foot_clearance: -0.5
+  feet_air_time: 0.2
+  feet_stumble: -0.5
+targets:
+  foot_clearance: 0.10
+  air_time: 0.12
+  max_air_time: 0.40
+  hip_abduction_max: 0.22
+  feet_lateral_min: 0.12
+  feet_lateral_max: 0.205
+  feet_lateral_inner_weight: 2.0
+training:
+  learning_rate: 0.0003
+  min_learning_rate: 0.00001
+  max_learning_rate: 0.001
+  entropy_coef: 0.001
+  init_noise_std: 0.45
+  min_noise_std: 0.10
+  max_noise_std: 0.80
+  action_mean_penalty_coef: 0.01

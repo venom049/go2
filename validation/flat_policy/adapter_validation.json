@@ -1,0 +1,39 @@
+{
+  "adapter": "go2_him/flat_policy.py",
+  "checkpoint": "assets/policies/upstream_walk/walk.pt",
+  "sha256": "65367faebe875faddd8513e12fc3211b9185857e59b3e5cabbef454d46976dfc",
+  "device": "cpu",
+  "actor_parameters": 191888,
+  "weights_only_load": true,
+  "actor_weights_finite": true,
+  "stand_pose_command_m_s": 0.4,
+  "single_inference_output_finite": true,
+  "output_shape": [
+    1,
+    16
+  ],
+  "target_shape": [
+    1,
+    12
+  ],
+  "kp_min": 20.0,
+  "kp_max": 20.927291870117188,
+  "unit_tests": {
+    "count": 8,
+    "passed": 8,
+    "seconds": 0.049
+  },
+  "interface_parity": {
+    "samples": 32,
+    "observation_exact_match": true,
+    "max_absolute_error": {
+      "target": 0.0,
+      "stiffness": 0.0,
+      "damping": 1.1920928955078125e-07,
+      "raw": 0.0
+    }
+  },
+  "simulation_validated": false,
+  "note": "These checks establish interface and checkpoint validity only; Isaac Lab flat-ground and transition behavior require separate simulation trials.",
+  "checkpoint_iteration": 29000
+}

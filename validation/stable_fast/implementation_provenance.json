@@ -1,0 +1,134 @@
+{
+  "recorded_at": "2026-11-02T11:33:33.962643+00:00",
+  "training": {
+    "run": "20261102_183927_stairs_stable_fast",
+    "backend": "Isaac Sim 5.1 / Isaac Lab 2.3.2",
+    "algorithm": "HIMLoco",
+    "initialization": "own lateral refinement model_400.pt warm start",
+    "iterations_this_run": 600,
+    "num_envs": 1024,
+    "steps_per_env_per_update": 24,
+    "environment_transitions": 14745600,
+    "elapsed_training_seconds": 944,
+    "config": "configs/stairs_stable_fast.yaml",
+    "selected_checkpoint": "/root/go2-himloco/logs/20261102_183927_stairs_stable_fast/model_600.pt",
+    "checkpoint_sha256": "45133df9bbc5439d67656607988403229d2558656ef848c6ca4f93b02e484124",
+    "all_model_tensors_finite": true,
+    "local_checkpoint_backup_verified": true,
+    "training_source_snapshot_remote": "/root/go2-himloco/logs/20261102_183927_stairs_stable_fast/training_source_snapshot.tar.gz"
+  },
+  "walk_policy": {
+    "source_url": "https://github.com/wxz-521/go2-stairs-sim2real/blob/530a10fee4232317aef4343f2b85b6bad9cf7905/example/go2/low_level/final/walk.pt",
+    "sha256": "65367faebe875faddd8513e12fc3211b9185857e59b3e5cabbef454d46976dfc",
+    "modified_weights": false,
+    "license": "BSD-3-Clause",
+    "adapter": "go2_him/flat_policy.py",
+    "observation_dim": 49,
+    "action_dim": 16,
+    "control_hz": 50,
+    "upstream_stairs_policy_used": false
+  },
+  "selected_controller": {
+    "mode": "hybrid",
+    "gate_lookahead_m": 1.1,
+    "independent_transition_scanner_size_m": [
+      2.4,
+      1.0
+    ],
+    "original_him_height_scan_unchanged": true,
+    "blend_seconds_each_direction": 0.3,
+    "flat_dwell_seconds": 0.4,
+    "enter_height_span_m": 0.05,
+    "exit_height_span_m": 0.025,
+    "command_speed_m_s": 0.6,
+    "cli_note": "Pass --controller hybrid explicitly; library constructor defaults remain 0.7 m, so pass gate_lookahead_m=1.1 for programmatic use."
+  },
+  "validation": {
+    "protocol": "64 first episodes per seed, fixed 0.18 m riser / 0.32 m tread / 8 steps, 25 s limit, observation noise and domain randomization disabled; initial pose sampling retained",
+    "baseline": "own lateral model_400.pt at same 0.6 m/s command, seeds 42 and 43",
+    "selection": "600 selected after candidate400 comparison; 1.1 m lookahead selected with seed42 and rechecked on seed43 and seed44 longer approach; these are development checks, not a held-out generalization benchmark",
+    "results": [
+      {
+        "label": "flat_gate11",
+        "controller": "hybrid",
+        "height_m": 0.0,
+        "command_speed_m_s": 0.6,
+        "successes": 64,
+        "episodes": 64,
+        "success_rate": 1.0
+      },
+      {
+        "label": "gate11",
+        "controller": "hybrid",
+        "height_m": 0.18,
+        "command_speed_m_s": 0.6,
+        "successes": 128,
+        "episodes": 128,
+        "success_rate": 1.0
+      },
+      {
+        "label": "gate11_longapproach",
+        "controller": "hybrid",
+        "height_m": 0.18,
+        "command_speed_m_s": 0.6,
+        "successes": 64,
+        "episodes": 64,
+        "success_rate": 1.0
+      }
+    ],
+    "comparison": "comparison.json",
+    "tests_passed": 114,
+    "tests_log": "tests_final.txt",
+    "earlier_settings_retained": {
+      "gate_0_7m": "116/128 successful first episodes; mostly first-riser timeouts",
+      "gate_0_8m": "61/64 on seed42",
+      "gate_1_1m": "128/128 seeds42/43; 64/64 seed44 approach 0.3 m longer"
+    },
+    "flat_policy_routing": "flat seed44: 52742 pure-walk samples, zero blending/stairs samples",
+    "return_to_walk": "all terminal pre-step states from the selected stair evaluations have stairs_weight=0; complete walk-stairs-walk sequences 124/128 standard start and 64/64 longer approach; four standard starts entered the detection region before accumulating a pure-walk frame"
+  },
+  "limitations": [
+    "Command 0.6 m/s is not achieved measured horizontal stair speed: selected hybrid measures 0.429 m/s.",
+    "Unmodified upstream walking policy in Isaac Lab measures about 0.281 m/s over the flat test segment at command 0.6 m/s.",
+    "Reported quality metrics are successful first episodes; success and failure counts are reported separately.",
+    "Hip penalty is soft and does not enforce a hard joint-angle bound; front-leg abduction persists and can exceed 0.22 rad.",
+    "No fixed-speed guarantee, new terrain/perturbation generalization claim, hardware deployment, or real-robot validation.",
+    "Simulated height rays provide gate perception; not a real-robot stair detector."
+  ],
+  "code_sha256": {
+    "go2_him/__init__.py": "270cfdb196cab0e37e5be02a1f35946569d9a4a7dd9ed50ec59c54f32fd02b6a",
+    "go2_him/flat_policy.py": "b38d52d299483e19447871f2008dfcb38755485ab6daf0cb02428b5fedd77a3d",
+    "go2_him/gait_metrics.py": "dc8d1a16014decb44f6f85de4a93a271e63e7bfda1eb0ba6aadae9a03006432d",
+    "go2_him/lab_config.py": "9398fc69ae77921fa07c90f0eed2dc08ab82fce7e8c5353cb467698e8b061006",
+    "go2_him/lab_terrain.py": "a9dc4887ba9de43ef3386bd7848fd8584838485a2d4346c1cb30ff79e76fe4e3",
+    "go2_him/lateral_geometry.py": "1e9cce4c416e4fa488f4f1cdb73a7f11112fea2aae956b021de9894d956f90b0",
+    "go2_him/mdp.py": "e7093505a4e6abf312ee3de2f71bdcd1d790a174f72d4939737d7e993a40810e",
+    "go2_him/policy_switch.py": "4f15a5ea178fc28a188e2b954dc63f23f055930619b4e5d4781a4f1ecaffbe04",
+    "go2_him/settings.py": "a184b6eeb02ee6982be9d2253ec11ecf4a531183f8e66cc7aa665b56719a51c2",
+    "go2_him/terrain.py": "f70033681a3c728b938a0bb87a23e43bc5875e3ad3245219f3d71562d346ec31",
+    "go2_him/validation.py": "fa3e0ae782c86df59f5d53f60a4f8529d64d4a5ef001af5eea7a49e5f2a96133",
+    "scripts/_bootstrap.py": "010c470d61de2096ec05b0af5573a0ecfdbf9563813e580b3bddb15bf82c53d8",
+    "scripts/check_training.py": "9662f8e6a9d24f5085cc96d3b02734250485010f83caacb47fa9149290d48fe2",
+    "scripts/doctor_lab.py": "e0380c8a805df0ea46117a270bf285e2190b43e77432268122c4fe79ad12e62b",
+    "scripts/evaluate_stability.py": "3d266a72f11ade6511dd7a6f8f201c78e15ce254591eb7f594e83663d834f5df",
+    "scripts/monitor_remote.py": "1e9e1cf59779d7a984624c6eb82c446cced4b1868550eba6b98045815500f1ab",
+    "scripts/play_lab.py": "366d143620f117e2a8679d2345702c151f8618ee53bec12411bb4ad8f45a71df",
+    "scripts/prepare_go2_asset.py": "f61e37475f7df89c06525ba303b5c31460e0669782147caf46421ed7a3aa5c45",
+    "scripts/summarize_stability.py": "96b3faeb0de5ab79e70cdc6c1c58f4640f32a2ac5ebea68a1b4a9fbf9b83520e",
+    "scripts/train_lab.py": "ebb37be29a0666342e3eadcfcda6c30d071b7335bbcaa7be8e4c640d2f53a07c",
+    "tests/test_assets.py": "b2c1f44c95ac1e1953632848c637cdec762f84905ad1c49b1916f915a822fe4d",
+    "tests/test_flat_policy.py": "be4f1f03fd6261598c4f86322e99be3e41e3f39a688fc786093357c8e9b9b4ea",
+    "tests/test_gait_metrics.py": "a9ad9483e9481dc432b2186b9a90f1df12179e74a24d36d8e1dfd8fc403fdf0b",
+    "tests/test_him.py": "4d23d67563b92d68c698767b0459a035d2df4b4b96b8b27856d4f7581763caaf",
+    "tests/test_lateral_geometry.py": "fc0c810f9be2f8faca51993eedf7af5436d4c2fc68990667bc702552acd062d5",
+    "tests/test_mdp.py": "fa4009fc354dc8615b6be957290b651a701a906a36621e094e742202d594e0d6",
+    "tests/test_policy_switch.py": "17f9cfca523cf778c36435fc024ff41eceb6ef74fd1241947933d614ed3ab3a3",
+    "tests/test_settings.py": "6b0e18f255326da165f018440e70f102f14cdd2bead680168cd490e38e93ad34",
+    "tests/test_summarize_stability.py": "aaa19d78d30791706f7536ed407e4839a170580de75e583115049e5007a4e0cb",
+    "tests/test_terrain.py": "5388db83aa3c8eaaecca16145fe5398af4377b5f6209bf687f8e820a8d91981e",
+    "configs/stairs.yaml": "9a83a1ed0bafd9b61203502f10ebb5c37f30ec8cff12075ce4a5f646ea10768b",
+    "configs/stairs_lateral.yaml": "814d2a692598bd0572be09aa1c3dd7de4c1e7a441cd50831f76916c6596d20ea",
+    "configs/stairs_natural.yaml": "a612b1df54bca5628a866f9a462790282d8d8b557591da9d344c1c89b0367567",
+    "configs/stairs_stable_fast.yaml": "89dc8f672af249740d8ef6bdfa3b7370a1e0e7944635c32c80be7518cc87f0eb"
+  }
+}

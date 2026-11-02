@@ -1,0 +1,25 @@
+{
+  "HIMLoco": {
+    "url": "https://github.com/InternRobotics/HIMLoco",
+    "commit": "ef289acaa62795009363b7b819c9186690630441",
+    "role": "Original Isaac Gym algorithm reference; not used by Lab launch scripts"
+  },
+  "himloco_lab": {
+    "url": "https://github.com/IsaacZH/himloco_lab",
+    "commit": "c3fbd0173f2a53a86e472c099f8e2e9744cf7639",
+    "archive_sha256": "853ddc0093d48818b929c8e50266fe4945ffc1fb52b95e4fb9968fd9e4a7b2ca",
+    "local_patches": [
+      "Lazy package initialization avoids loading unrelated tasks or robot assets",
+      "Reset and done observations initialize history without cross-episode leakage",
+      "Estimator target uses policy observation prefix; velocity target stays at columns 45:48",
+      "Timeout bootstrap evaluates terminal next observation",
+      "Minibatches preserve remainder samples and singleton advantage normalization is finite",
+      "Checkpoint iteration and map_location handling for correct resume",
+      "Isaac Lab 2.3.2 recorder and reset-render API compatibility",
+      "Raw action clipping before joint-position scaling and offset",
+      "Optional bounded exploration std with legacy checkpoint parameter compatibility",
+      "Optional action-mean overflow penalty, preserving unclipped Gaussian PPO samples and likelihoods",
+      "Configurable adaptive learning-rate bounds and diagnostics for raw action clipping"
+    ]
+  }
+}

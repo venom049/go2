@@ -1,0 +1,59 @@
+{
+  "repository": "https://github.com/wxz-521/go2-stairs-sim2real",
+  "commit": "530a10fee4232317aef4343f2b85b6bad9cf7905",
+  "path": "example/go2/low_level/final/walk.pt",
+  "git_blob_sha1": "34c8836653e5391642f8d2f5e2c5afdc7b940a1f",
+  "sha256": "65367faebe875faddd8513e12fc3211b9185857e59b3e5cabbef454d46976dfc",
+  "bytes": 4941375,
+  "checkpoint_modified": false,
+  "purpose": "original upstream flat-ground walking policy; not used for stair training",
+  "interface_reference": "mujoco_sim/go2_policy_mujoco.py",
+  "interface_notes": "MuJoCo walk default resolves final/walk.pt. final/go2_policy_walk.py has stale model_29000.pt filename; adapter matches both observation/action formulas.",
+  "policy_hz": 50,
+  "upstream_physics_hz": 500,
+  "observations": 49,
+  "actions": 16,
+  "action_components": [
+    12,
+    4
+  ],
+  "joint_order": [
+    "FR",
+    "FL",
+    "RR",
+    "RL"
+  ],
+  "architecture": [
+    49,
+    512,
+    256,
+    128,
+    16
+  ],
+  "activation": "ELU",
+  "action_scale": 0.25,
+  "action_clip": 100.0,
+  "target_max_step_rad": 0.1,
+  "kp_range": [
+    20.0,
+    60.0
+  ],
+  "kd_formula": "0.2 * sqrt(kp)",
+  "torque_limits_nm_per_leg": [
+    23.7,
+    23.7,
+    45.0
+  ],
+  "license": "BSD-3-Clause; LICENSE retained",
+  "numeric_parity": {
+    "samples": 32,
+    "observation_exact_match": true,
+    "max_abs_error": {
+      "target": 0.0,
+      "stiffness": 0.0,
+      "damping": 1.1920928955078125e-07,
+      "raw": 0.0
+    }
+  },
+  "checkpoint_iteration": 29000
+}

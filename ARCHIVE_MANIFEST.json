@@ -1,0 +1,36 @@
+{
+  "archive_name": "go2-himloco-stable-fast",
+  "date": "2026-11-02",
+  "repository": "https://github.com/venom049/go2-himloco-stable-fast",
+  "visibility": "private",
+  "selected_training_run": "20261102_183927_stairs_stable_fast",
+  "selected_checkpoint": "artifacts/20261102_183927_stairs_stable_fast/model_600.pt",
+  "starting_checkpoint": "artifacts/20261102_175509_stairs_lateral_refinement/model_400.pt",
+  "updates": 600,
+  "num_envs": 1024,
+  "environment_transitions": 14745600,
+  "checkpoint_iterations": [
+    100,
+    200,
+    300,
+    400,
+    500,
+    600
+  ],
+  "training_data": "TensorBoard scalar event log and training stdout; rollout trajectories are not stored by the trainer.",
+  "archive_layout": "Source and weights are stored directly in Git; no Git LFS or external model download required. Isaac Sim/Lab runtime must be installed separately.",
+  "excluded": [
+    "SSH credentials, sockets and monitor state",
+    "NVIDIA EULA acceptance marker",
+    "Virtual environments and simulation caches",
+    "PowerPoint source/extracted private report media",
+    "Unneeded upstream Gym examples and C++/ONNX deployment binaries"
+  ],
+  "verification": {
+    "training_archive_sha256": "37a3f7534a6bfd28e754fd9d23d46ba2a6da75d028de0b0f9124697120f899d9",
+    "final_checkpoint_sha256": "45133df9bbc5439d67656607988403229d2558656ef848c6ca4f93b02e484124",
+    "upstream_walk_sha256": "65367faebe875faddd8513e12fc3211b9185857e59b3e5cabbef454d46976dfc",
+    "secret_pattern_scan": "No matching credentials found in included text files and decompressed training source snapshot.",
+    "code_validation": "114 server tests passed before archive; archived training config dry run passed."
+  }
+}

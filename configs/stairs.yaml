@@ -1,0 +1,82 @@
+# Main experiment knobs. All distances in m, times in s, joint angles in rad.
+seed: 42
+num_envs: 1024
+max_iterations: 3000
+episode_length_s: 25.0
+terrain:
+  rows: 10
+  cols: 4
+  initial_level: 1
+  height_min: 0.0
+  height_max: 0.18
+  tread: 0.32
+  num_steps: 8
+  curriculum: true
+commands:
+  forward_min: 0.3
+  forward_max: 0.6
+  start_forward_min: 0.3
+  start_forward_max: 0.6
+  speed_ramp_updates: 0  # disabled; evaluation always uses forward_min/max
+control:
+  stiffness: 40.0
+  damping: 1.0
+  action_scale: 0.25
+  action_clip: 4.0
+randomization:
+  enabled: true
+  friction_min: 0.6
+  friction_max: 1.2
+  payload_min: -0.5
+  payload_max: 1.0
+rewards:
+  tracking_lin_vel: 1.5
+  tracking_ang_vel: 0.5
+  forward_progress: 0.3
+  success: 5.0
+  failure: -2.0
+  lin_vel_z: -0.2
+  ang_vel_xy: -0.05
+  orientation: -0.15
+  base_height: -1.0
+  joint_acc: -0.00000025
+  joint_power: -0.00002
+  action_rate: -0.01
+  joint_limits: -1.0
+  undesired_contacts: -0.5
+  foot_slip: -0.1
+  lateral_drift: -0.3
+  foot_clearance: -0.1
+  action_smoothness: 0.0
+  roll_orientation: 0.0
+  roll_rate: 0.0
+  lateral_velocity: 0.0
+  feet_air_time: 0.0
+  feet_stumble: 0.0
+  joint_deviation: 0.0
+  hip_deviation: 0.0
+  hip_abduction: 0.0
+  feet_lateral: 0.0
+  joint_vel: 0.0
+targets:
+  base_height: 0.30
+  foot_clearance: 0.08
+  air_time: 0.12
+  max_air_time: 0.40
+  hip_abduction_max: 0.30  # actual outward hip angle, rad; not an actuator clamp
+  feet_lateral_min: 0.10  # signed outward body-frame foot y, m
+  feet_lateral_max: 0.22
+  feet_lateral_inner_weight: 1.0
+training:
+  num_steps_per_env: 24
+  save_interval: 100
+  learning_rate: 0.001
+  entropy_coef: 0.01
+  init_noise_std: 0.7
+  min_noise_std: 0.0001
+  max_noise_std: 0.0  # 0 preserves the original unbounded exploration for old runs.
+  min_learning_rate: 0.00001
+  max_learning_rate: 0.01
+  action_mean_penalty_coef: 0.0
+  num_learning_epochs: 5
+  num_mini_batches: 4
