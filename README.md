@@ -23,34 +23,6 @@
 
 **0.6 m/s仍是命令值，1100实测水平上楼速度约0.464 m/s。** 质量指标统计成功首回合，通过率单独报告；这些是开发场景检查，不是未见地形或实机验证。模型选择、更新计数、文件校验与限制见 [`model_selection.json`](validation/stable_fast_continue/model_selection.json)，完整对照见 [`comparison.json`](validation/stable_fast_continue/comparison.json)。原600的长进场、纯平地及114项代码测试记录保留在下方历史章节，不作为1100重新完成这些检查的证据。
 
-## 上一轮600次更新：原始训练与结果
-
-| 项目 | 记录 |
-| --- | --- |
-| 训练目录 | `20261102_183927_stairs_stable_fast` |
-| 该轮更新数 | 600次PPO更新，不是600个回合 |
-| 并行环境 / 每次采样长度 | 1024 / 24个控制步 |
-| 环境转移样本 | 14,745,600 |
-| 初始化 | 本项目上一轮 `20261102_175509_stairs_lateral_refinement/model_400.pt`，warm-start |
-| 该轮最终模型 | [`artifacts/20261102_183927_stairs_stable_fast/model_600.pt`](artifacts/20261102_183927_stairs_stable_fast/model_600.pt) |
-| 该轮模型SHA-256 | `45133df9bbc5439d67656607988403229d2558656ef848c6ca4f93b02e484124` |
-| 主要调整 | 横滚姿态/角速度、侧向速度、髋外展、足端横向位置与滑移惩罚；逐步提高速度命令 |
-| 训练速度课程 | 前300次更新由0.35–0.50 m/s逐步提高到0.45–0.65 m/s |
-| 代码检查 | 114项测试通过，见 [`tests_final.txt`](validation/stable_fast/tests_final.txt) |
-
-以下结果来自固定18 cm阶高、32 cm踏面、8级楼梯、0.6 m/s速度指令的独立首回合评估；每个随机种子64个环境，关闭观测噪声与域随机化，保留初始姿态采样，回合限时25 s。
-
-| 指标 | 更早的楼梯策略 | 原600组合控制，前视1.1 m |
-| --- | ---: | ---: |
-| 成功数，种子42/43 | 121/128 | **128/128** |
-| 实测水平上楼速度 | 0.316 m/s | **0.429 m/s** |
-| 楼梯段身体左右侧倾RMS | 6.72° | **3.44°** |
-| 楼梯段四腿平均髋外展正分量 | 13.08° | **10.48°** |
-
-原600模型的长距离平地进场复核（种子44，起点向后移0.3 m）为 **64/64**；该轮纯平地复核为 **64/64**，全程由原行走策略控制，实测测试段速度约 **0.281 m/s**。
-
-**0.6 m/s是命令值，不是达到的实测速度。** 姿态与速度质量指标统计成功首回合，通过率另行报告。髋外展约束是软惩罚，前腿仍可能短时超过阈值。这些是开发过程中的固定场景检查，不是未见地形的泛化测试或实机性能保证。原始结果、0.7/0.8 m前视距离的失败对照与选择过程保存在 [`validation/stable_fast/`](validation/stable_fast/)；完整汇总见 [`comparison.json`](validation/stable_fast/comparison.json)，定义与限制见 [`implementation_provenance.json`](validation/stable_fast/implementation_provenance.json)。
-
 ## 归档内容
 
 | 路径 | 内容 |
@@ -84,7 +56,6 @@
 | PyTorch / CUDA运行时 | 2.7.0+cu128 / 12.8 |
 | NumPy / trimesh | 1.26.0 / 4.5.1 |
 | Gymnasium / TensorBoard / PyYAML | 1.2.0 / 2.20.0 / 6.0.2 |
-| 验证GPU | NVIDIA GeForce RTX 4090，24 GB级显存 |
 
 激活上述环境后，明确指定它的Python；所有后续命令沿用此环境变量。`run_lab.sh`和`_bootstrap.py`负责加载Isaac Lab及本仓库的HIMLoco源码路径，无需另装另一个版本的HIMLoco。
 
