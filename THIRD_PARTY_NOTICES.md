@@ -33,3 +33,7 @@
 Isaac Sim、Isaac Lab、PyTorch、CUDA相关运行库和其他Python依赖由运行环境提供，没有作为完整运行时分发到本仓库。具体已验证版本见 [`validation/server_environment.json`](validation/server_environment.json)。下载或使用这些组件时适用各自的许可与安装要求；本归档不授予它们的新许可，也不携带服务器上的NVIDIA许可接受标记。
 
 本项目训练生成的checkpoint及新增环境/适配代码，与上述第三方文件分目录保留；本文件没有为新增内容设定统一的开源许可证。后续改变仓库可见性或再分发时，应继续保留这些来源、原文件声明和附带许可证。
+
+## RoboGauge / MoE-CTS moe1000
+
+新增材料、固定上游提交、微调来源及原许可证见 [moe1000 说明](artifacts/moe1000/README.md) 和 [上游许可证](artifacts/moe1000/UPSTREAM_LICENSE)。该模型与历史 HIMLoco 训练链相互独立。

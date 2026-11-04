@@ -1,0 +1,64 @@
+{
+  "model": "MoE-CTS moe1000",
+  "checkpoint_sha256": "3bad0efcc2e751e834bea1e85a5914c410a2a1ff1a1b80193426805f69e4881f",
+  "cumulative_update": 1000,
+  "onnx_sha256": "f0bfb5ac6758b72fbeae96f1b82462950127440b5210807016d5fa5466529d56",
+  "input_shape": [
+    1,
+    225
+  ],
+  "output_actions_shape": [
+    1,
+    12
+  ],
+  "observation_order": [
+    "base_ang_vel",
+    "projected_gravity",
+    "velocity_commands",
+    "joint_pos_rel",
+    "joint_vel_rel",
+    "last_action"
+  ],
+  "history": "term-major, 5 frames oldest to newest; repeat measured first observation on initialization",
+  "policy_joint_order": "FL,FR,RL,RR; each hip,thigh,calf",
+  "sdk_joint_map": [
+    3,
+    4,
+    5,
+    0,
+    1,
+    2,
+    9,
+    10,
+    11,
+    6,
+    7,
+    8
+  ],
+  "step_dt_s": 0.02,
+  "kp": 20.0,
+  "kd": 0.5,
+  "parity_passed": true,
+  "parity_cases": 199,
+  "moe_encoder_unchanged": true,
+  "hardware_guard_acceptance": "not passed; observed calf speed violations in independent evaluation",
+  "platform_stop": "simulator-geometry-triggered external zero command; no real wall-stop implementation",
+  "artifact_kind": "model archive, not an executable robot controller",
+  "checkpoint_file": "model_1000.pt",
+  "onnx_file": "exported/policy.onnx",
+  "training": {
+    "algorithm": "PPO policy-head fine-tuning",
+    "updates": 1000,
+    "num_envs": 128,
+    "workers": 32,
+    "simulator": "MuJoCo",
+    "moe_encoder_frozen": true,
+    "critic_and_optimizer_initialized_for_this_run": true
+  },
+  "upstream": {
+    "repository": "https://github.com/robogauge/code",
+    "revision": "f116b00a934262348f41cbfd0d07cc4cb6fbf8d8",
+    "policy_path": "unitree_cpp_deploy/logs/rsl_rl/go2_moe_cts_expert_goal_137000_0.6745/exported/policy.onnx",
+    "original_onnx_sha256": "bc08253fd68f661bf6be5ce5ca70cec555c3fde2c397d23fbe9814a998e056f5"
+  }
+}

@@ -1,5 +1,7 @@
 # Go2 HIMLoco：稳定爬楼与平地策略切换归档
 
+> 2026-11-04 新增：[MoE-CTS moe1000 模型与完整检查点](artifacts/moe1000/README.md)。该模型独立于下述历史 HIMLoco 归档；两级台阶仿真成功 129/129，但小腿速度等保护验收未通过。
+
 本仓库当前推荐 **2026-11-02 续训中选定的 `model_1100.pt`**，并完整保留上一轮600次PPO更新的代码、模型、训练记录与独立仿真评估。目标平台为 **Isaac Sim 5.1 / Isaac Lab 2.3.2 / Python 3.11**。楼梯由本项目训练的HIMLoco策略控制，平地使用原仓库未修改的 `walk.pt`；通过独立地形扫描器提前1.1 m识别台阶，并以0.3 s过渡切换控制器。
 
 这是独立的私有归档仓库：[`venom049/go2-himloco-stable-fast`](https://github.com/venom049/go2-himloco-stable-fast)。归档中的模型可以回放或作为后续训练起点；没有加载上游楼梯策略，也没有进行实机部署。
