@@ -42,7 +42,9 @@ def load_settings(path=None, overrides=()):
 
 
 def validate(s):
-    boolean_settings = {"terrain.curriculum", "randomization.enabled"}
+    boolean_settings = {"terrain.curriculum", "randomization.enabled", "torque.enabled",
+                        "joint_constraints.enabled", "joint_constraints.terminate_on_violation",
+                        "guard_balance.enabled"}
 
     def finite_tree(obj, path=""):
         for key, value in obj.items():
@@ -110,9 +112,56 @@ def validate(s):
         raise ValueError("Require 0 < targets.feet_lateral_min < targets.feet_lateral_max")
     if s["targets"]["feet_lateral_inner_weight"] <= 0:
         raise ValueError("targets.feet_lateral_inner_weight must be positive")
-    for name in ("hip_abduction", "feet_lateral", "roll_rate", "lateral_velocity"):
+    torque = s["torque"]
+    if not 0 < torque["soft_ratio"] < 1:
+        raise ValueError("torque.soft_ratio must be in (0, 1)")
+    if not 0 < torque["startup_seconds"] <= s["episode_length_s"]:
+        raise ValueError("torque.startup_seconds must be positive and within episode duration")
+    if torque["startup_multiplier"] < 1:
+        raise ValueError("torque.startup_multiplier must be >= 1")
+    if not torque["enabled"] and any(s["rewards"][k] != 0 for k in ("torque_margin", "torque_excess")):
+        raise ValueError("Torque penalties require torque.enabled=true")
+    joint = s["joint_constraints"]
+    # Keep experiment overrides at or below the existing real-controller guards.
+    if not 0 < joint["velocity_limit"] <= 13.0:
+        raise ValueError("joint_constraints.velocity_limit must be in (0, 13] rad/s")
+    if not 0 < joint["tracking_error_limit"] <= 0.9:
+        raise ValueError("joint_constraints.tracking_error_limit must be in (0, 0.9] rad")
+    for key in ("velocity_soft_ratio", "position_soft_ratio", "tracking_soft_ratio"):
+        if not 0 < joint[key] < 1:
+            raise ValueError("joint_constraints." + key + " must be in (0, 1)")
+    if not 0 < joint["startup_seconds"] <= s["episode_length_s"] or joint["startup_multiplier"] < 1:
+        raise ValueError("Invalid joint_constraints startup duration/multiplier")
+    joint_penalties = ("velocity_margin", "velocity_excess", "position_margin", "position_excess",
+                       "target_position_excess", "tracking_error")
+    if not joint["enabled"] and any(s["rewards"][k] != 0 for k in joint_penalties):
+        raise ValueError("Joint constraint penalties require joint_constraints.enabled=true")
+    for name in ("torque_margin", "torque_excess", "hip_abduction", "feet_lateral", "roll_rate", "lateral_velocity", *joint_penalties):
         if s["rewards"][name] > 0:
             raise ValueError("rewards." + name + " is a penalty and must be nonpositive")
+    guard = s["guard_balance"]
+    if type(guard["ramp_updates"]) is not int or guard["ramp_updates"] < 0:
+        raise ValueError("guard_balance.ramp_updates must be a nonnegative integer")
+    if not 0 < guard["initial_scale"] <= 1:
+        raise ValueError("guard_balance.initial_scale must be in (0, 1]")
+    for kind in ("velocity", "torque", "tracking"):
+        if not 0 < guard[kind + "_soft_ratio"] < 1:
+            raise ValueError("guard_balance soft ratios must be in (0, 1)")
+    for key in ("position_overshoot_scale_rad", "target_position_overshoot_scale_rad"):
+        if guard[key] <= 0:
+            raise ValueError("guard_balance position scales must be positive")
+    budgets = [guard["budget_" + kind] for kind in ("velocity", "torque", "tracking", "target_position", "position")]
+    if any(budget <= 0 for budget in budgets) or sum(budgets) > 3.0 + 1e-9:
+        raise ValueError("Guard budgets must be positive and total at most 3.0 per second")
+    guard_weight = s["rewards"]["guard_balance"]
+    if guard_weight not in (0.0, -1.0) or guard["enabled"] != (guard_weight == -1.0):
+        raise ValueError("guard_balance.enabled requires rewards.guard_balance=-1; disabled requires 0")
+    if guard["enabled"]:
+        if not torque["enabled"] or not joint["enabled"] or joint["terminate_on_violation"]:
+            raise ValueError("Balanced guard reward requires both audits and no joint-violation termination")
+        duplicate = ("torque_margin", "torque_excess", "joint_limits", "joint_vel", *joint_penalties)
+        if any(s["rewards"][key] != 0 for key in duplicate):
+            raise ValueError("Balanced guard reward cannot be stacked with duplicate limit penalties")
     for key in ("num_steps_per_env", "save_interval", "num_learning_epochs", "num_mini_batches"):
         if type(s["training"][key]) is not int or s["training"][key] < 1:
             raise ValueError("training." + key + " must be positive integer")

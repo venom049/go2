@@ -1,0 +1,40 @@
+/**:
+  ros__parameters:
+    feature_extract_enable: false
+    point_filter_num: 1
+    max_iteration: 3
+    filter_size_surf: 0.06
+    filter_size_map: 0.06
+    cube_side_length: 30.0
+    runtime_pos_log_enable: false
+    common:
+      lid_topic: /utlidar/cloud
+      imu_topic: /moe_lio/body_imu
+      time_sync_en: false
+      time_offset_lidar_to_imu: 0.0
+    preprocess:
+      lidar_type: 2
+      scan_line: 2
+      scan_rate: 15
+      timestamp_unit: 0
+      blind: 0.12
+    mapping:
+      acc_cov: 0.1
+      gyr_cov: 0.01
+      b_acc_cov: 0.0001
+      b_gyr_cov: 0.00001
+      fov_degree: 360.0
+      det_range: 12.0
+      extrinsic_est_en: false
+      extrinsic_T: [0.3077299612633387, 3.269330287973086e-08, -0.04232001589457195]
+      extrinsic_R: [0.5261139789481135, -0.8101357650256523, 0.2586196500300898, -0.8386681207258552, -0.5446428033818826, 1.5769432774419279e-06, 0.14085405366388132, -0.2168968855254159, -0.9659792319795638]
+    publish:
+      path_en: false
+      map_en: false
+      effect_map_en: false
+      scan_publish_en: true
+      dense_publish_en: true
+      scan_bodyframe_pub_en: false
+    pcd_save:
+      pcd_save_en: false
+      interval: -1

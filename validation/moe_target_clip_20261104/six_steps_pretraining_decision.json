@@ -1,0 +1,159 @@
+{
+  "created_unix": 1793799405.801208,
+  "stair_steps": 6,
+  "environment_contract": {
+    "steps": 6,
+    "height": 0.15,
+    "tread": 0.3,
+    "width": 0.9,
+    "platform": 0.9,
+    "start_distance": 0.5,
+    "platform_start": 1.5,
+    "platform_end": 2.4,
+    "top_height": 0.8999999999999999,
+    "wall_front": 2.4,
+    "wall_thickness": 0.1,
+    "wall_width": 3.0,
+    "wall_height": 2.0,
+    "height_curriculum": {
+      "evaluation_height": 0.15,
+      "training_frontier_min": 0.1,
+      "training_frontier_max": 0.15,
+      "multipliers": [
+        1.0,
+        0.83,
+        0.67
+      ],
+      "probabilities": [
+        0.6,
+        0.2,
+        0.2
+      ],
+      "rule": "Existing frontier schedule and per-reset height sampling; every riser has the same sampled height."
+    },
+    "physics_dt": 0.002,
+    "control_dt": 0.02,
+    "settle_seconds": 2.0,
+    "evaluation_vx": 0.6,
+    "training_vx_range": [
+      0.5,
+      0.6
+    ],
+    "episode_timeout_seconds": 15.0,
+    "stable_stop_seconds": 2.0,
+    "platform_success": "All feet inside the upper landing with 3 mm edge margin; foot surface clearance [-.025,.20] m; at least two supporting feet in .1 s; base clearance [.18,.60] m and tilt <45 deg.",
+    "stable_stop": "Platform success plus horizontal speed <.05 m/s, absolute vertical speed <.05 m/s, every world angular speed <.1 rad/s and tilt <15 deg for 2 s."
+  },
+  "preflight": "validation/moe_target_clip_20261104/six_steps_preflight/comparison.json",
+  "preflight_rows": [
+    {
+      "mode": "audit",
+      "arm": "A_original",
+      "successes": 0,
+      "episodes": 17,
+      "statuses": {
+        "trunk_contact": 15,
+        "side_exit": 2
+      },
+      "raw_fraction": 0.07265516990467874,
+      "raw_max_rad": 1.0276391506195068,
+      "sent_excess": 3994
+    },
+    {
+      "mode": "audit",
+      "arm": "B_clip_raw_history",
+      "successes": 11,
+      "episodes": 17,
+      "statuses": {
+        "trunk_contact": 4,
+        "success": 11,
+        "timeout": 1,
+        "side_exit": 1
+      },
+      "raw_fraction": 0.06890289265240034,
+      "raw_max_rad": 1.5010759830474854,
+      "sent_excess": 0
+    },
+    {
+      "mode": "audit",
+      "arm": "C_clip_sent_history",
+      "successes": 15,
+      "episodes": 17,
+      "statuses": {
+        "success": 15,
+        "trunk_contact": 2
+      },
+      "raw_fraction": 0.07102636534839925,
+      "raw_max_rad": 0.7745589017868042,
+      "sent_excess": 0
+    },
+    {
+      "mode": "strict",
+      "arm": "A_original",
+      "successes": 0,
+      "episodes": 17,
+      "statuses": {
+        "joint_guard_stop": 17
+      },
+      "raw_fraction": 0.0,
+      "raw_max_rad": 0.0,
+      "sent_excess": 0
+    },
+    {
+      "mode": "strict",
+      "arm": "B_clip_raw_history",
+      "successes": 0,
+      "episodes": 17,
+      "statuses": {
+        "joint_guard_stop": 17
+      },
+      "raw_fraction": 0.0,
+      "raw_max_rad": 0.0,
+      "sent_excess": 0
+    },
+    {
+      "mode": "strict",
+      "arm": "C_clip_sent_history",
+      "successes": 0,
+      "episodes": 17,
+      "statuses": {
+        "joint_guard_stop": 17
+      },
+      "raw_fraction": 0.0,
+      "raw_max_rad": 0.0,
+      "sent_excess": 0
+    }
+  ],
+  "source_checkpoint": "/home/venom/\u6587\u6863/ChatGPT/\u673a\u5668\u72d7/validation/moe_finetune_20261104/formal_run/training/model_1000.pt",
+  "source_update": 1000,
+  "additional_updates": 1000,
+  "cumulative_final_update": 2000,
+  "device": "cpu",
+  "num_envs": 128,
+  "workers": 8,
+  "training_flags_unchanged_except_stair_steps": true,
+  "training_flags": {
+    "--guard-objective": "target_clipped",
+    "--updates": "1000",
+    "--num-envs": "128",
+    "--workers": "8",
+    "--steps": "24",
+    "--critic-warmup": "20",
+    "--guard-ramp-start": ".25",
+    "--guard-ramp-updates": "200",
+    "--anchor-coef": ".2",
+    "--device": "cpu"
+  },
+  "unit_tests_passed": 76,
+  "test_log": "validation/moe_target_clip_20261104/six_steps_tests.log",
+  "smoke_updates": 25,
+  "smoke_actor_update_count": 5,
+  "smoke_all_losses_finite": true,
+  "smoke_sent_excess_count": 0,
+  "smoke_nominal_status": "trunk_contact",
+  "smoke_is_pipeline_check_not_gait_acceptance": true,
+  "formal_initialization_uses_smoke": false,
+  "formal_initialization_uses_partial_two_step_run": false,
+  "formal_training_started": false,
+  "user_requested_pre_start_notification": true
+}

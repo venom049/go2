@@ -1,0 +1,19 @@
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/aarch64-linux-gnu/libthread_db.so.1".
+[New Thread 0xfffff7b271c0 (LWP 3099)]
+
+Thread 2 "test" received signal SIGSEGV, Segmentation fault.
+[Switching to Thread 0xfffff7b271c0 (LWP 3099)]
+0x0000aaaaaaafb580 in ?? ()
+
+Thread 2 (Thread 0xfffff7b271c0 (LWP 3099)):
+#0  0x0000aaaaaaafb580 in ?? ()
+#1  0x0000aaaaaaafb5b0 in ?? ()
+#2  0xaaaaff7400000000 in ?? ()
+Backtrace stopped: previous frame identical to this frame (corrupt stack?)
+
+Thread 1 (Thread 0xfffff7ff6dc0 (LWP 3096)):
+#0  0x0000fffff7c715cc in __GI___clock_nanosleep (clock_id=<optimized out>, clock_id@entry=0, flags=flags@entry=0, req=<optimized out>, rem=0xfffffffff908) at ../sysdeps/unix/sysv/linux/clock_nanosleep.c:78
+#1  0x0000fffff7c76f54 in __GI___nanosleep (requested_time=<optimized out>, remaining=<optimized out>) at nanosleep.c:27
+#2  0x0000aaaaaaaaa200 in std::this_thread::sleep_for<long, std::ratio<1l, 1000l> > (__rtime=...) at /usr/include/c++/9/thread:378
+#3  0x0000aaaaaaaa720c in main () at test_sdk_thread_shutdown.cpp:14

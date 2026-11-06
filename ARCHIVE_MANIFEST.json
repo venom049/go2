@@ -1,61 +1,52 @@
 {
-  "archive_name": "go2-himloco-stable-fast",
-  "date": "2026-11-02",
-  "repository": "https://github.com/venom049/go2-himloco-stable-fast",
-  "visibility": "private",
-  "selected_training_run": "20261102_195635_stairs_stable_fast_continue",
-  "selected_checkpoint": "artifacts/20261102_195635_stairs_stable_fast_continue/model_1100.pt",
-  "selected_checkpoint_sha256": "877ff67ce7619516fa0e9350eccdd6537e7170640e5ef0a8b095a3624b2c27f5",
-  "starting_checkpoint": "artifacts/20261102_183927_stairs_stable_fast/model_600.pt",
-  "updates": 1100,
-  "updates_definition": "Selected stable-fast checkpoint counter: original 600 plus 500 resumed updates; excludes warm-start source history.",
-  "num_envs": 1024,
-  "environment_transitions": 27033600,
-  "environment_transitions_definition": "Transitions from the 600-update stable-fast run plus 500 resumed updates up to the selected checkpoint.",
-  "checkpoint_iterations": [
-    1100
-  ],
-  "continuation_final_update": 1600,
-  "continuation_additional_updates": 1000,
-  "model_selection_record": "validation/stable_fast_continue/model_selection.json",
-  "training_data": "TensorBoard scalar event log and training stdout; rollout trajectories are not stored by the trainer. Continuation events and training stdout extend to 1600; the selected model is the intermediate 1100 checkpoint.",
-  "archive_layout": "Source and weights are stored directly in Git; no Git LFS or external model download required. Isaac Sim/Lab runtime must be installed separately.",
-  "excluded": [
-    "SSH credentials, sockets and monitor state",
-    "NVIDIA EULA acceptance marker",
-    "Virtual environments and simulation caches",
-    "PowerPoint source/extracted private report media",
-    "Unneeded upstream Gym examples and C++/ONNX deployment binaries"
-  ],
-  "verification": {
-    "selected_checkpoint_sha256": "877ff67ce7619516fa0e9350eccdd6537e7170640e5ef0a8b095a3624b2c27f5",
-    "upstream_walk_sha256": "65367faebe875faddd8513e12fc3211b9185857e59b3e5cabbef454d46976dfc",
-    "selected_checkpoint_iter": 1100,
-    "selected_checkpoint_all_tensors_finite": true,
-    "original_training_source_files_compared": 84,
-    "runtime_source_differences": [],
-    "code_validation": "No executable source changes in this update; original 114-test record retained. New checkpoint loaded with weights_only=True on CPU and GUI playback verified. File hashes and relative artifact links validated for this update."
+  "archive_name": "go2",
+  "date": "2026-11-06",
+  "repository": "https://github.com/venom049/go2",
+  "parent_remote_commit": "662bcad13ff3de7cc4cb11c9f4bc60f456857a88",
+  "status": "Real robot powered off by user; work paused; autonomous stair acceptance NOT passed",
+  "current_test_baseline": {
+    "description": "Original RoboGauge / MoE-CTS actor plus target hard clipping in controller",
+    "onnx_path": "deploy/lidar_moe_20261106/model/exported/policy.onnx",
+    "onnx_sha256": "bc08253fd68f661bf6be5ce5ca70cec555c3fde2c397d23fbe9814a998e056f5",
+    "actor_observations": 225,
+    "joint_actions": 12,
+    "lidar_motion_entry_enabled": false
   },
-  "retained_initial_archive": {
+  "additional_model_artifacts": [
+    "artifacts/moe1000_sdk_target_20261105",
+    "artifacts/moe1000_go2edu_sim2real_20261105"
+  ],
+  "results_index": "docs/RESULTS_20261106.md",
+  "upload_manifest": "docs/UPLOAD_MANIFEST_20261106.json",
+  "verification": {
+    "lidar_python_tests": 55,
+    "controller_boundary_test": "PASS, 240000 bounded joint targets; local socket protocol and guard tests; no robot communication",
+    "lidar_deployment_source_files_sha256_verified": 96,
+    "additional_artifact_sha256_checks": "both passed",
+    "credential_scan": "No high-confidence credentials in current files and decompressed archives",
+    "real_robot_operations_during_upload": false
+  },
+  "historical_archive": {
     "archive_name": "go2-himloco-stable-fast",
     "date": "2026-11-02",
     "repository": "https://github.com/venom049/go2-himloco-stable-fast",
     "visibility": "private",
-    "selected_training_run": "20261102_183927_stairs_stable_fast",
-    "selected_checkpoint": "artifacts/20261102_183927_stairs_stable_fast/model_600.pt",
-    "starting_checkpoint": "artifacts/20261102_175509_stairs_lateral_refinement/model_400.pt",
-    "updates": 600,
+    "selected_training_run": "20261102_195635_stairs_stable_fast_continue",
+    "selected_checkpoint": "artifacts/20261102_195635_stairs_stable_fast_continue/model_1100.pt",
+    "selected_checkpoint_sha256": "877ff67ce7619516fa0e9350eccdd6537e7170640e5ef0a8b095a3624b2c27f5",
+    "starting_checkpoint": "artifacts/20261102_183927_stairs_stable_fast/model_600.pt",
+    "updates": 1100,
+    "updates_definition": "Selected stable-fast checkpoint counter: original 600 plus 500 resumed updates; excludes warm-start source history.",
     "num_envs": 1024,
-    "environment_transitions": 14745600,
+    "environment_transitions": 27033600,
+    "environment_transitions_definition": "Transitions from the 600-update stable-fast run plus 500 resumed updates up to the selected checkpoint.",
     "checkpoint_iterations": [
-      100,
-      200,
-      300,
-      400,
-      500,
-      600
+      1100
     ],
-    "training_data": "TensorBoard scalar event log and training stdout; rollout trajectories are not stored by the trainer.",
+    "continuation_final_update": 1600,
+    "continuation_additional_updates": 1000,
+    "model_selection_record": "validation/stable_fast_continue/model_selection.json",
+    "training_data": "TensorBoard scalar event log and training stdout; rollout trajectories are not stored by the trainer. Continuation events and training stdout extend to 1600; the selected model is the intermediate 1100 checkpoint.",
     "archive_layout": "Source and weights are stored directly in Git; no Git LFS or external model download required. Isaac Sim/Lab runtime must be installed separately.",
     "excluded": [
       "SSH credentials, sockets and monitor state",
@@ -65,11 +56,50 @@
       "Unneeded upstream Gym examples and C++/ONNX deployment binaries"
     ],
     "verification": {
-      "training_archive_sha256": "37a3f7534a6bfd28e754fd9d23d46ba2a6da75d028de0b0f9124697120f899d9",
-      "final_checkpoint_sha256": "45133df9bbc5439d67656607988403229d2558656ef848c6ca4f93b02e484124",
+      "selected_checkpoint_sha256": "877ff67ce7619516fa0e9350eccdd6537e7170640e5ef0a8b095a3624b2c27f5",
       "upstream_walk_sha256": "65367faebe875faddd8513e12fc3211b9185857e59b3e5cabbef454d46976dfc",
-      "secret_pattern_scan": "No matching credentials found in included text files and decompressed training source snapshot.",
-      "code_validation": "114 server tests passed before archive; archived training config dry run passed."
+      "selected_checkpoint_iter": 1100,
+      "selected_checkpoint_all_tensors_finite": true,
+      "original_training_source_files_compared": 84,
+      "runtime_source_differences": [],
+      "code_validation": "No executable source changes in this update; original 114-test record retained. New checkpoint loaded with weights_only=True on CPU and GUI playback verified. File hashes and relative artifact links validated for this update."
+    },
+    "retained_initial_archive": {
+      "archive_name": "go2-himloco-stable-fast",
+      "date": "2026-11-02",
+      "repository": "https://github.com/venom049/go2-himloco-stable-fast",
+      "visibility": "private",
+      "selected_training_run": "20261102_183927_stairs_stable_fast",
+      "selected_checkpoint": "artifacts/20261102_183927_stairs_stable_fast/model_600.pt",
+      "starting_checkpoint": "artifacts/20261102_175509_stairs_lateral_refinement/model_400.pt",
+      "updates": 600,
+      "num_envs": 1024,
+      "environment_transitions": 14745600,
+      "checkpoint_iterations": [
+        100,
+        200,
+        300,
+        400,
+        500,
+        600
+      ],
+      "training_data": "TensorBoard scalar event log and training stdout; rollout trajectories are not stored by the trainer.",
+      "archive_layout": "Source and weights are stored directly in Git; no Git LFS or external model download required. Isaac Sim/Lab runtime must be installed separately.",
+      "excluded": [
+        "SSH credentials, sockets and monitor state",
+        "NVIDIA EULA acceptance marker",
+        "Virtual environments and simulation caches",
+        "PowerPoint source/extracted private report media",
+        "Unneeded upstream Gym examples and C++/ONNX deployment binaries"
+      ],
+      "verification": {
+        "training_archive_sha256": "37a3f7534a6bfd28e754fd9d23d46ba2a6da75d028de0b0f9124697120f899d9",
+        "final_checkpoint_sha256": "45133df9bbc5439d67656607988403229d2558656ef848c6ca4f93b02e484124",
+        "upstream_walk_sha256": "65367faebe875faddd8513e12fc3211b9185857e59b3e5cabbef454d46976dfc",
+        "secret_pattern_scan": "No matching credentials found in included text files and decompressed training source snapshot.",
+        "code_validation": "114 server tests passed before archive; archived training config dry run passed."
+      }
     }
-  }
+  },
+  "historical_checksum_note": "docs/ARCHIVE_SHA256SUMS_20261104.txt is retained historical content; ARCHIVE_SHA256SUMS at root is regenerated for this current commit."
 }

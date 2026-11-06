@@ -1,0 +1,348 @@
+{
+  "upstream": "RoboGauge f116b00a934262348f41cbfd0d07cc4cb6fbf8d8",
+  "model_sha256": "f0bfb5ac6758b72fbeae96f1b82462950127440b5210807016d5fa5466529d56",
+  "deploy_yaml_sha256": "7d04bfd00a60cf858572597667d9f33e78b94f71dca2b101104162caef0aca00",
+  "robot_xml_sha256": "a5f61c8ae7bd783e94ddb096f591e2854806f7f1ede76594c1ee92a8653e74b9",
+  "runner_sha256": "f1dc4029562271d1eb045733ff0b1b524b00c2f3408ad88e92f7722325efa82e",
+  "shared_runner_sha256": "d93c378307c946a7f0d2f5f9b86606d03b11aab43b342ac51dabbf58e5528893",
+  "source_files": {
+    "policy": "/home/venom/\u6587\u6863/ChatGPT/\u673a\u5668\u72d7/_exports/go2-moe1000-20261104/exported/policy.onnx",
+    "config": "/home/venom/\u6587\u6863/ChatGPT/\u673a\u5668\u72d7/_exports/go2-moe1000-20261104/params/deploy.yaml",
+    "robot_xml": "/home/venom/\u6587\u6863/ChatGPT/\u673a\u5668\u72d7/upstream/robogauge/RoboGauge/resources/robots/go2/go2.xml"
+  },
+  "geometry": {
+    "width_m": 0.9,
+    "risers": 2,
+    "rise_m": 0.15,
+    "first_tread": {
+      "x_min_m": 0.0,
+      "x_max_m": 0.3,
+      "top_z_m": 0.15
+    },
+    "second_tread_and_upper_platform": {
+      "x_min_m": 0.3,
+      "x_max_m": 1.2,
+      "depth_m": 0.9,
+      "top_z_m": 0.3
+    },
+    "wall": {
+      "inner_face_x_m": 1.2,
+      "thickness_m": 0.1,
+      "width_m": 3.0,
+      "height_m": 2.0
+    },
+    "start_front_foot_sphere_leading_edge_distance_m": 0.5
+  },
+  "geometry_assumptions": "Uppermost depth 90 cm includes the second tread; wall dimensions (3 m wide, 2 m tall, 10 cm thick) are simulation assumptions. No side railings.",
+  "command_mode": "stop_on_platform",
+  "initial_command_m_s": 0.6,
+  "stop_command_definition": "stop_on_platform alone latches zero vx at first supported full-four-foot upper-platform entry using simulation ground truth. Original ONNX/history/PD unchanged. Not autonomous wall recognition.",
+  "success_definition": "Full four foot spheres within upper platform with 3 mm edge margin, feet surface clearance [-.025,.20] m, at least two different supporting feet over last .10 s, base .18-.60 m above platform; world planar base speed <.05 m/s, absolute vertical speed <.05 m/s, absolute angular velocity about EACH world x/y/z axis <.1 rad/s, and tilt <15 degrees continuously 2 seconds; no wall contact ever. Platform-entry/stop-command trigger retains tilt <45 degrees and does not require these stopped-state limits.",
+  "stop_success_thresholds": {
+    "horizontal_speed_m_s": 0.05,
+    "absolute_vertical_speed_m_s": 0.05,
+    "absolute_each_world_angular_velocity_rad_s": 0.1,
+    "tilt_rad": 0.2617993877991494,
+    "continuous_duration_s": 2.0
+  },
+  "wall_failure_definition": "Any effective robot collision geom touching wall with contact-force vector norm >1 N or negative signed contact distance; fails immediately after the audited terminal substep.",
+  "wall_clearance_definition": "Signed x gap to wall inner plane from frontmost effective robot sphere/box/capsule/cylinder exact world-x extent, including head and legs. This infinite-plane envelope diagnostic is not itself the wall-contact criterion.",
+  "other_failures": "Inherited trunk/terrain contact 50 ms, >60 degree tilt or base below .12 m 100 ms, or lateral exit 100 ms; timeout; numerical failure.",
+  "physics_dt": 0.002,
+  "control_dt": 0.02,
+  "kp": [
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0
+  ],
+  "kd": [
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5
+  ],
+  "torque_limit_mode": "physical",
+  "author_actuator_limits": {
+    "ctrllimited": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "ctrlrange": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ]
+    ],
+    "forcelimited": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "forcerange": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ]
+    ],
+    "gear": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ]
+  },
+  "physical_mode_effort_limit_nm": [
+    23.7,
+    23.7,
+    45.43,
+    23.7,
+    23.7,
+    45.43,
+    23.7,
+    23.7,
+    45.43,
+    23.7,
+    23.7,
+    45.43
+  ],
+  "torque_note": "author preserves original unlimited motors; physical explicitly clips PD requested torque and is a separate comparison, not an alteration of original weights.",
+  "observation_contract": "Shared audited adapter: term-major 5-frame history, 225 floats, raw-term clipping then scaling, raw last action.",
+  "action_contract": "Shared audited adapter: FL/FR/RL/RR joint mapping, upstream target scale/offset then target clipping, 50 Hz inference and 500 Hz PD.",
+  "samples": [
+    {
+      "kind": "deterministic",
+      "seed": null,
+      "episode": 0,
+      "y_m": 0.0,
+      "yaw_rad": 0.0
+    }
+  ],
+  "randomization": "y +/-2 cm and yaw +/-2 degrees only; no dynamics randomization or noise",
+  "maximum_episode_duration_s": 25.0,
+  "real_robot_driven": false,
+  "network_interfaces_used": false,
+  "render_camera": {
+    "type": "tracking",
+    "body": "base_link",
+    "distance_m": 2.7,
+    "azimuth_deg": 315.0,
+    "elevation_deg": -30.0,
+    "affects_physics_policy_or_acceptance": false
+  }
+}

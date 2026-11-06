@@ -1,0 +1,40 @@
+{
+  "timestamp_utc": "2026-11-03T04:31:41.951750+00:00",
+  "status": "passed",
+  "scope": "synthetic reference parity and CPU ONNX timing; no real-robot or controller execution",
+  "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+  "machine": "x86_64",
+  "numpy_version": "1.26.4",
+  "onnxruntime_version": "1.19.2",
+  "provider": "CPUExecutionProvider",
+  "checked_files": [
+    "README.md",
+    "exported/policy.onnx",
+    "params/deploy.yaml",
+    "provenance.json",
+    "reference.npz",
+    "verify.py"
+  ],
+  "fixture_samples": 160,
+  "trajectories": 4,
+  "numerical_errors": {
+    "output_legacy_max_abs": 1.9073486328125e-06,
+    "target_sdk_max_abs": 4.76837158203125e-07,
+    "kp_max_abs": 0.0,
+    "kd_max_abs": 0.0
+  },
+  "atol": 5e-06,
+  "rtol": 2e-05,
+  "benchmark": {
+    "warmup_iterations": 20,
+    "timed_iterations": 100,
+    "p50_ms": 0.049273,
+    "p95_ms": 0.055803,
+    "maximum_ms": 0.13654,
+    "budget_ms": 20.0,
+    "p95_within_budget": true,
+    "samples_over_budget": 0
+  },
+  "robot_commands_sent": false,
+  "robot_validation": false
+}

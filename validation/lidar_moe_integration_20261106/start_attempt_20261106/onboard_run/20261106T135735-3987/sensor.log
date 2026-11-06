@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/usr/lib/python3.8/runpy.py", line 194, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.8/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/home/unitree/go2-lidar-moe-20261106/lidar_moe/ros_bridge.py", line 172, in <module>
+    if __name__=='__main__':raise SystemExit(main())
+  File "/home/unitree/go2-lidar-moe-20261106/lidar_moe/ros_bridge.py", line 122, in main
+    active_code=feedback(packet,now);active_ack_at=now
+  File "/home/unitree/go2-lidar-moe-20261106/lidar_moe/transport.py", line 13, in feedback
+    if magic!=b'G2F1' or version!=1 or active not in (0,1,2) or not 0<=now-stamp*1e-9<.4:raise ValueError('invalid feedback')
+ValueError: invalid feedback

@@ -1,0 +1,282 @@
+{
+  "model": "moe1000",
+  "model_sha256": "f0bfb5ac6758b72fbeae96f1b82462950127440b5210807016d5fa5466529d56",
+  "robot_connected": false,
+  "weights_or_controller_modified": false,
+  "scope": "Local source snapshot, offline fixtures and one nominal simulated first episode; no live firmware or installed-binary verification",
+  "action_mapping": {
+    "native_python_max_abs_error_rad": 0.0,
+    "zero_returns_default": true,
+    "all_12_positive_and_negative_axes_pass": true,
+    "nonfinite_cases_rejected": 3,
+    "zero_pose_inside_profile": true,
+    "legal_raw_action_intervals": {
+      "FL_hip": [
+        -3.7510323524475098,
+        2.9510321617126465
+      ],
+      "FL_thigh": [
+        -9.483200073242188,
+        10.762800216674805
+      ],
+      "FL_calf": [
+        -4.890800476074219,
+        2.6489601135253906
+      ],
+      "FR_hip": [
+        -2.9510321617126465,
+        3.7510323524475098
+      ],
+      "FR_thigh": [
+        -9.483200073242188,
+        10.762800216674805
+      ],
+      "FR_calf": [
+        -4.890800476074219,
+        2.6489601135253906
+      ],
+      "RL_hip": [
+        -3.7510323524475098,
+        2.9510321617126465
+      ],
+      "RL_thigh": [
+        -6.094399929046631,
+        14.151599884033203
+      ],
+      "RL_calf": [
+        -4.890800476074219,
+        2.6489601135253906
+      ],
+      "RR_hip": [
+        -2.9510321617126465,
+        3.7510323524475098
+      ],
+      "RR_thigh": [
+        -6.094399929046631,
+        14.151599884033203
+      ],
+      "RR_calf": [
+        -4.890800476074219,
+        2.6489601135253906
+      ]
+    }
+  },
+  "observation_contract": {
+    "cases": 8,
+    "native_python_max_abs_error": 0.0,
+    "passed": true,
+    "history": "5 frames, term-major, oldest to newest; q-default; raw clip then scale"
+  },
+  "saved_export_fixtures": {
+    "cases": 199,
+    "all_finite": true,
+    "max_absolute_error": 0.005859375,
+    "within_atol_rtol_2e_4": true,
+    "note": "Includes artificial stress observations; not a task success or violation-rate benchmark."
+  },
+  "training_export_config_equal": true,
+  "consistency_findings": {
+    "target_formula": "q_des = 0.25 * raw_action + default; absolute default-relative, not cumulative",
+    "target_position_clip_rad": [
+      -100,
+      100
+    ],
+    "physical_target_limiter_present": false,
+    "target_slew_limiter_present": false,
+    "dq_command_zero_is_not_target_finite_difference": true,
+    "training_policy_period_s": 0.02,
+    "training_physics_period_s": 0.002,
+    "deployment_source_policy_period_s": 0.02,
+    "deployment_source_publication_period_s": 0.001,
+    "pd_kp": [
+      20.0,
+      20.0,
+      20.0,
+      20.0,
+      20.0,
+      20.0,
+      20.0,
+      20.0,
+      20.0,
+      20.0,
+      20.0,
+      20.0
+    ],
+    "pd_kd": [
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5
+    ],
+    "training_calf_speed_limit_rad_s": 15.7,
+    "deployment_source_calf_speed_limit_rad_s": 30.0,
+    "failure_behavior": "Training audit continues through joint violations with effort clipping; deployment source rejects entire proposal and latches damping.",
+    "last_action": "Training retains raw network action; deployment inverse-maps last submitted target. Equivalent only while target clip is inactive and a policy command was submitted; initial handoff differs.",
+    "initial_state": "Training starts from settled simulated pose and zero last_action; real deployment uses measured held pose and inverse of last submitted hold.",
+    "mjcf_vs_application_position_bounds": {
+      "FL_hip": {
+        "mjcf": [
+          -1.0472,
+          1.0472
+        ],
+        "application": [
+          -0.8377580642700195,
+          0.8377580642700195
+        ]
+      },
+      "FL_thigh": {
+        "mjcf": [
+          -1.5708,
+          1.5708
+        ],
+        "application": [
+          -1.5707999467849731,
+          3.4907000064849854
+        ]
+      },
+      "FR_hip": {
+        "mjcf": [
+          -1.0472,
+          1.0472
+        ],
+        "application": [
+          -0.8377580642700195,
+          0.8377580642700195
+        ]
+      },
+      "FR_thigh": {
+        "mjcf": [
+          -1.5708,
+          1.5708
+        ],
+        "application": [
+          -1.5707999467849731,
+          3.4907000064849854
+        ]
+      },
+      "RL_hip": {
+        "mjcf": [
+          -1.0472,
+          1.0472
+        ],
+        "application": [
+          -0.8377580642700195,
+          0.8377580642700195
+        ]
+      },
+      "RL_thigh": {
+        "mjcf": [
+          -0.5236,
+          1.5708
+        ],
+        "application": [
+          -0.5235999822616577,
+          4.537899971008301
+        ]
+      },
+      "RR_hip": {
+        "mjcf": [
+          -1.0472,
+          1.0472
+        ],
+        "application": [
+          -0.8377580642700195,
+          0.8377580642700195
+        ]
+      },
+      "RR_thigh": {
+        "mjcf": [
+          -0.5236,
+          1.5708
+        ],
+        "application": [
+          -0.5235999822616577,
+          4.537899971008301
+        ]
+      }
+    },
+    "limits_are_application_profile_not_firmware_readback": true
+  },
+  "historical_real_target_events": [
+    {
+      "joint": "RL_calf",
+      "actual_rad": -1.5846188068389893,
+      "proposed_target_rad": -0.765205442905426,
+      "upper_rad": -0.8377599716186523,
+      "excess_rad": 0.07255452871322632,
+      "raw_action_reconstructed_not_logged": 2.939178228378296,
+      "raw_action_was_logged": false,
+      "target_was_rejected": true
+    },
+    {
+      "joint": "RL_calf",
+      "actual_rad": -1.5837814807891846,
+      "proposed_target_rad": -0.7929051518440247,
+      "upper_rad": -0.8377599716186523,
+      "excess_rad": 0.044854819774627686,
+      "raw_action_reconstructed_not_logged": 2.8283793926239014,
+      "raw_action_was_logged": false,
+      "target_was_rejected": true
+    }
+  ]
+}
+{
+  "status": "success",
+  "control_steps": 286,
+  "control_dt": 0.02,
+  "physics_dt": 0.002,
+  "target_joint_sample_excess_count": 116,
+  "target_joint_sample_count": 3432,
+  "target_joint_sample_excess_fraction": 0.0337995337995338,
+  "control_steps_with_any_target_excess": 89,
+  "control_step_target_excess_fraction": 0.3111888111888112,
+  "max_hypothetical_clip_rad": 0.6987864971160889,
+  "first_target_excess": {
+    "seconds": 0.04000000000000002,
+    "joint": "RR_calf",
+    "policy_index": 11,
+    "sdk_index": 8,
+    "raw_action": 3.4965813159942627,
+    "offset": -1.5,
+    "scale": 0.25,
+    "mapped_target_rad": -0.6258546710014343,
+    "actual_rad": -1.7654762434521207,
+    "actual_velocity_rad_s": 1.2894121588084158,
+    "lower_rad": -2.7227001190185547,
+    "upper_rad": -0.8377599716186523,
+    "excess_rad": 0.21190530061721802,
+    "hypothetical_clipped_target_rad": -0.8377599716186523,
+    "pd_requested_nm": 22.147725369609518,
+    "hypothetical_clipped_pd_nm": 17.909619357265157,
+    "real_final_send": "Not sent; no robot I/O. Publication guard would reject this proposed target."
+  },
+  "worst_target_excess": {
+    "seconds": 1.7800000000000014,
+    "joint": "RR_calf",
+    "policy_index": 11,
+    "sdk_index": 8,
+    "raw_action": 5.444106101989746,
+    "offset": -1.5,
+    "scale": 0.25,
+    "mapped_target_rad": -0.13897347450256348,
+    "actual_rad": -1.1191028868036874,
+    "actual_velocity_rad_s": 2.234982601274731,
+    "lower_rad": -2.7227001190185547,
+    "upper_rad": -0.8377599716186523,
+    "excess_rad": 0.6987864971160889,
+    "hypothetical_clipped_target_rad": -0.8377599716186523,
+    "pd_requested_nm": 18.485096945385113,
+    "hypothetical_clipped_pd_nm": 4.5093670030633355,
+    "real_final_send": "Not sent; no robot I/O. Publication guard would reject this proposed target."
+  },
+  "clipping_was_applied_to_simulation": false,
+  "note": "Hypothetical clip statistics on original trajectory only; no claim about clipped-policy gait or success. Platform stop uses external geometry."
+}

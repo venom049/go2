@@ -1,0 +1,119 @@
+{
+  "status": "completed",
+  "verified_at_utc": "2026-11-04T05:33:55.100193+00:00",
+  "model": "guard1000",
+  "checkpoint_sha256": "b8e2e3c12474e3166c5ebd84187ea7364d3a3ba28ccba0131854f8de8964c31f",
+  "geometry": {
+    "height_m": 0.15,
+    "tread_m": 0.3,
+    "steps": 2,
+    "width_m": 0.9
+  },
+  "start_scope": "Body origin 1.2 +/- 0.1 m before first riser; lateral +/- 0.1 m; yaw +/- 0.05 rad; initial body z 0.4 m. Not a measured front-foot offset.",
+  "upper_landing_scope": "Assumed long upper landing, width 0.9 m; actual site dimensions unknown.",
+  "conditions": 4,
+  "episodes": 256,
+  "successes": 7,
+  "results": [
+    {
+      "command_m_s": 0.45,
+      "successes": 4,
+      "episodes": 128,
+      "success_rate": 0.03125,
+      "failures": 121,
+      "timeouts": 3,
+      "measured_successful_stairs_speed_m_s": 0.3367751031245598,
+      "successful_stairs_roll_rms_rad": 0.09711555869855623,
+      "successful_stairs_hip_outward_mean_rad": 0.13051983254217822,
+      "successful_stairs_foot_slip_rms_m_s": 0.1649144510552587,
+      "joint_velocity_peak_rad_s": 15.675745964050293,
+      "joint_velocity_excess_fraction": 0.0008425009731014279,
+      "requested_torque_excess_fraction": 0.013309722819740643,
+      "applied_torque_excess_fraction": 0.0,
+      "requested_torque_peak_limit_ratio": 3.011467752208219,
+      "tracking_error_peak_rad": 1.7375519275665283,
+      "actual_position_peak_overshoot_rad": 0.009765267372131348,
+      "target_position_peak_overshoot_rad": 0.33775997161865234,
+      "joint_acceptance_passed": false,
+      "torque_acceptance_passed": false,
+      "width060_baseline_successes": 0,
+      "width060_baseline_episodes": 128
+    },
+    {
+      "command_m_s": 0.6,
+      "successes": 3,
+      "episodes": 128,
+      "success_rate": 0.0234375,
+      "failures": 124,
+      "timeouts": 1,
+      "measured_successful_stairs_speed_m_s": 0.4899506669034081,
+      "successful_stairs_roll_rms_rad": 0.10532316500387762,
+      "successful_stairs_hip_outward_mean_rad": 0.09213752724377637,
+      "successful_stairs_foot_slip_rms_m_s": 0.16847736667564145,
+      "joint_velocity_peak_rad_s": 15.375353813171387,
+      "joint_velocity_excess_fraction": 0.0009241296140939597,
+      "requested_torque_excess_fraction": 0.015983291387024607,
+      "applied_torque_excess_fraction": 0.0,
+      "requested_torque_peak_limit_ratio": 2.923567150661061,
+      "tracking_error_peak_rad": 1.6758618354797363,
+      "actual_position_peak_overshoot_rad": 0.008174419403076172,
+      "target_position_peak_overshoot_rad": 0.33775997161865234,
+      "joint_acceptance_passed": false,
+      "torque_acceptance_passed": false,
+      "width060_baseline_successes": 0,
+      "width060_baseline_episodes": 128
+    }
+  ],
+  "comparability_checks": [
+    {
+      "condition": "guard1000_width0.9_speed0.45_seed42",
+      "complete_episode_quota": true,
+      "input_settings_equal": true,
+      "geometry_equal_except_width_fields": true,
+      "calibration_equal_and_readback_unchanged": true
+    },
+    {
+      "condition": "guard1000_width0.9_speed0.45_seed43",
+      "complete_episode_quota": true,
+      "input_settings_equal": true,
+      "geometry_equal_except_width_fields": true,
+      "calibration_equal_and_readback_unchanged": true
+    },
+    {
+      "condition": "guard1000_width0.9_speed0.6_seed42",
+      "complete_episode_quota": true,
+      "input_settings_equal": true,
+      "geometry_equal_except_width_fields": true,
+      "calibration_equal_and_readback_unchanged": true
+    },
+    {
+      "condition": "guard1000_width0.9_speed0.6_seed43",
+      "complete_episode_quota": true,
+      "input_settings_equal": true,
+      "geometry_equal_except_width_fields": true,
+      "calibration_equal_and_readback_unchanged": true
+    }
+  ],
+  "physical_motion_authorized_by_report": false,
+  "motor_commands_sent": false,
+  "training_started": false,
+  "limitations": [
+    "Two-step assumption follows the described physical stairs; this is not the old eight-step case.",
+    "Spawn is the same randomized body-origin distribution as the 0.6 m comparison, not a measured 50 cm front-foot offset.",
+    "Upper landing is assumed; successful completion does not certify stable stopping.",
+    "Velocity caps come from onboard URDF specifications, not proprietary drive firmware.",
+    "Command speeds are not measured climbing speeds. Gait statistics include successful first episodes only.",
+    "Joint/torque audits include failures and terminal physics substeps; no model is automatically activated or deployed."
+  ],
+  "comparison_path": "/home/venom/\u6587\u6863/ChatGPT/\u673a\u5668\u72d7/validation/width09_15x30_20261104/evaluation/comparison.json",
+  "evidence_sha256": {
+    "baseline_060.json": "1d0d75c06695424361ef24ce76bad6050271520dc4e6949bd29d6f0e14b51da6",
+    "comparison.json": "2e4dc0a956c94b8bdd9c0681c124a39f444e13ddd51853a9d42291660049e725",
+    "guard1000_width0.9_speed0.45_seed42.json": "36c7752e19ebbc0e06f9b7f2b0aaace863080b20de4fcb71e3d05251c0e9855f",
+    "guard1000_width0.9_speed0.45_seed43.json": "814017cf131d3aacec3898fc097225a66c36ac4a4f1323d1570c6dc5a26eb947",
+    "guard1000_width0.9_speed0.6_seed42.json": "4a52f98401ba2f88c9e521e1fc8ea17591fb36419b2387323cb7d3459fa89795",
+    "guard1000_width0.9_speed0.6_seed43.json": "9e0db3a68ff3f477514b137b6f6dd594aec92a84bda90903b9dc731ba9c35d67",
+    "job.json": "8a1a9286b7d402dac501af7a944ddfa15475ddeb22da8c01991b33bfc6b70060",
+    "partial_comparison.json": "eaea49cda089d69c194f514afe0d7b634fcc04f0c8f0617c70ca24fbfa3b657c"
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "created_utc": "2026-11-04T03:07:32.886961+00:00",
+  "source": "torque1000",
+  "source_sha256": "508f5435b1a9de3ffe3bbf24ea3bd700c241e97dcb8671d5dba2b6c7ed3f325f",
+  "initialization": "warm_start_with_fresh_optimizers",
+  "updates": 1000,
+  "num_envs": 1024,
+  "protection_evidence_sha256": {
+    "validation/onboard_joint_limits_20261104/protection_audit.json": "427ca4d77d2d93173e152ca7dfaacbce47d17f5fa2063b3a1d9fedc3d75a6ac0",
+    "validation/onboard_joint_limits_20261104/joint_limits.json": "185d1082f317e9d260fa7fd13c1d2e557159cfa3c67369a7f1be2aeba09b405f",
+    "validation/onboard_joint_limits_20261104/sdk_evidence.json": "6d6cd379ffa538006a55784ec93730ed89eb80b1ac0d619c5d44f90071521bf5",
+    "validation/onboard_joint_limits_20261104/protection_incidents.json": "c0ca96854099150ec9f69021065fdc8903f357c5547986c9211debc8c3e6733e",
+    "validation/onboard_joint_limits_20261104/sources.json": "35fa29f2e357d1b05b998ab716aaee1af0f30e3e22d7a0d32a1a8efd3aca378b"
+  },
+  "guard_scope": "Existing deployed application joint and requested-PD guards; no firmware thresholds inferred",
+  "velocity_bound_rad_s": 13,
+  "tracking_bound_rad": 0.9,
+  "position_bounds_rad": {
+    "all_hip": [
+      -1.0472,
+      1.0472
+    ],
+    "front_thigh": [
+      -1.5708,
+      3.4907
+    ],
+    "rear_thigh": [
+      -0.5236,
+      4.5379
+    ],
+    "all_calf": [
+      -2.7227,
+      -0.83776
+    ]
+  },
+  "requested_torque_bounds_nm": {
+    "hip": 23.7,
+    "thigh": 23.7,
+    "calf": 45.43
+  },
+  "training_design": {
+    "inputs": "Worst joint and worst physics substep, requested PD before actuator clipping",
+    "position_cost": "Only outside actual asymmetric bounds; no standing-pose or middle-of-range preference",
+    "penalty_budget_per_second": {
+      "velocity": 1.25,
+      "torque": 1.0,
+      "tracking": 0.35,
+      "target_position": 0.25,
+      "position": 0.15
+    },
+    "initial_multiplier": 0.2,
+    "ramp_updates": 300,
+    "hard_violation_training_termination": false,
+    "all_raw_audits_preserved": true,
+    "task_stability_feet_rewards_preserved": true
+  },
+  "evaluation": "reference_torque1000/guard500/guard1000; 15cm-30cm stairs and 18cm-32cm hybrid lookahead1.1; commanded0.6m/s; seeds42/43 each64 first episodes; 12 conditions",
+  "previous_independent_results": [
+    {
+      "label": "reference_torque1000",
+      "controller": "stairs",
+      "successes": 128,
+      "episodes": 128,
+      "measured_velocity_peak_rad_s": 25.527753829956055
+    },
+    {
+      "label": "reference_torque1000",
+      "controller": "hybrid",
+      "successes": 128,
+      "episodes": 128,
+      "measured_velocity_peak_rad_s": 27.836894989013672
+    },
+    {
+      "label": "velocity500",
+      "controller": "stairs",
+      "successes": 128,
+      "episodes": 128,
+      "measured_velocity_peak_rad_s": 25.965911865234375
+    },
+    {
+      "label": "velocity500",
+      "controller": "hybrid",
+      "successes": 127,
+      "episodes": 128,
+      "measured_velocity_peak_rad_s": 23.38579750061035
+    },
+    {
+      "label": "velocity1000",
+      "controller": "stairs",
+      "successes": 124,
+      "episodes": 128,
+      "measured_velocity_peak_rad_s": 26.880817413330078
+    },
+    {
+      "label": "velocity1000",
+      "controller": "hybrid",
+      "successes": 125,
+      "episodes": 128,
+      "measured_velocity_peak_rad_s": 26.18352699279785
+    }
+  ],
+  "no_real_robot_commands": true,
+  "no_deployment_or_automatic_model_replacement": true,
+  "limitations": "Bounded training penalties do not enforce hard dynamics or guarantee constraint satisfaction; acceptance must independently examine every active physical substep, including terminal failures. Other real-robot protections remain unchanged."
+}

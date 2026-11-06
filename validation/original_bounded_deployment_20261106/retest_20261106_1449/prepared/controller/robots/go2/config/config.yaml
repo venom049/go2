@@ -1,0 +1,56 @@
+FSM:
+  _: # enabled fsms
+    Passive:
+      id: 1
+    FixStand:
+      id: 2
+      type: StairsReady
+    Stairs:
+      id: 3
+      type: RLBase
+    LieDown:
+      id: 4
+  Passive:
+    transitions: 
+      FixStand: LT + up.on_pressed
+    keyboard_transitions:
+      FixStand: f
+    mode: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    kd: [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
+  FixStand:
+    transitions: 
+      LieDown: LT + B.on_pressed
+    keyboard_transitions:
+      LieDown: x
+    kp: [60, 80, 80, 60, 80, 80, 60, 80, 80, 60, 80, 80]
+    kd: [5, 4, 4, 5, 4, 4, 5, 4, 4, 5, 4, 4]
+    ts: [0, 1, 2]
+    qs: [
+      [],
+      [0.0, 1.36, -2.65, 0.0, 1.36, -2.65, 0.0, 1.36, -2.65, 0.0, 1.36, -2.65],
+      [0., 0.8, -1.5, 0., 0.8, -1.5, 0., 1.0, -1.5, 0., 1.0, -1.5],
+    ]
+  Stairs:
+    transitions: 
+      LieDown: LT + B.on_pressed
+    keyboard_transitions:
+      LieDown: x
+    policy_dir: config/policy/stairs
+    bad_orientation_limit: 0.7853981634
+    safety_enabled: true
+    safety_q_error_limit: 2.0
+    # Published limits are compiled from the pinned official profile.
+    safety_joint_limit_profile: unitree_go2_2ded279_hip48
+    safety_raw_action_limit: 5.0
+    safety_kp_saturation_limit: 69.5
+    safety_kp_saturation_frames: 3
+    auto_zero_seconds: 0.0
+  LieDown:
+    kp: [60, 80, 80, 60, 80, 80, 60, 80, 80, 60, 80, 80]
+    kd: [5, 4, 4, 5, 4, 4, 5, 4, 4, 5, 4, 4]
+    ts: [0, 0.8, 2.5]
+    qs: [
+      [],
+      [0.0, 0.8, -1.5, 0.0, 0.8, -1.5, 0.0, 1.0, -1.5, 0.0, 1.0, -1.5],
+      [0.0, 1.36, -2.65, 0.0, 1.36, -2.65, 0.0, 1.36, -2.65, 0.0, 1.36, -2.65],
+    ]

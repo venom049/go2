@@ -1,0 +1,131 @@
+{
+  "timestamp_utc": "2026-11-03T05:42:14.731014+00:00",
+  "status": "first_takeover_attempt_rejected_before_publisher_factory_mode_restored",
+  "operator_authorized_first_protected_test": true,
+  "operator_confirmed_stable_or_supported_before_restore": true,
+  "factory_mode_before": "mcf",
+  "factory_mode_temporarily_released": true,
+  "release_result": {
+    "operation": "user_authorized_first_test_release_factory_mode_once",
+    "motor_command_publisher_created": false,
+    "before": [
+      0,
+      {
+        "form": "0",
+        "name": "mcf"
+      }
+    ],
+    "release": [
+      0,
+      null
+    ],
+    "after": [
+      0,
+      {
+        "form": "0",
+        "name": ""
+      }
+    ],
+    "lowcmd_count_after_release_1p3s": 0
+  },
+  "protected_entry_attempted": true,
+  "protected_entry_exit_code": 3,
+  "observed_entry_log": "FIRST_TEST_PREFLIGHT_REJECTED reason=target_position_outside_urdf_range (no publisher)",
+  "reason_context": "Preflight sets hypothetical target=q_measured for a range probe; this rejection was caused by the current pose, not a model-generated stair action.",
+  "custom_lowcmd_publisher_created": false,
+  "custom_motor_commands_sent": false,
+  "fixstand_entered": false,
+  "stairs_policy_entered": false,
+  "stairs_policy_motor_steps": 0,
+  "first_test_keys_sent": [],
+  "measured_calf_positions_after_release": {
+    "FR_calf_joint": -2.8094210624694824,
+    "FL_calf_joint": -2.7475759983062744,
+    "RR_calf_joint": -2.8143813610076904,
+    "RL_calf_joint": -2.8337485790252686
+  },
+  "training_urdf_calf_min_rad": -2.7227,
+  "factory_restore_request": {
+    "operation": "restore_previous_factory_mcf_after_rejected_first_test",
+    "operator_confirmed_stable_or_supported": true,
+    "custom_motor_publisher_created": false,
+    "before": [
+      0,
+      {
+        "form": "0",
+        "name": ""
+      }
+    ],
+    "select_previous_mode": [
+      3104,
+      null
+    ],
+    "after": [
+      3104,
+      null
+    ],
+    "lowcmd_1p3s": {
+      "count": 648,
+      "last": {
+        "kp": [
+          40.0,
+          40.0,
+          40.0,
+          40.0,
+          40.0,
+          40.0,
+          40.0,
+          40.0,
+          40.0,
+          40.0,
+          40.0,
+          40.0
+        ],
+        "kd": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ]
+      }
+    }
+  },
+  "factory_restore_note": "SelectMode response and immediate query timed out (3104); LowCmd resumed. No repeated SelectMode. A fresh read-only query returned success and mcf.",
+  "factory_restore_verified": true,
+  "factory_restore_recheck": {
+    "read_only": true,
+    "mode_changed": false,
+    "checks": [
+      [
+        0,
+        {
+          "form": "0",
+          "name": "mcf"
+        }
+      ]
+    ]
+  },
+  "real_robot_stair_success_validated": false,
+  "original_files_preservation": {
+    "files_checked": 2242,
+    "changed": [],
+    "missing": [],
+    "added_in_original_scope": [],
+    "all_existing_hashes_unchanged": true
+  },
+  "next_required_work": "Resolve supported stand retention and bounded exclusive-control handoff before a new physical attempt. Preserve guard limits; do not rerun or bypass preflight automatically.",
+  "post_attempt_original_files_and_process_check": {
+    "files_checked": 2242,
+    "changed": [],
+    "added": [],
+    "first_test_processes": []
+  }
+}

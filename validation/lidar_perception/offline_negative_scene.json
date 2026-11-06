@@ -1,0 +1,86 @@
+{
+  "state": "obstacle",
+  "geometry": null,
+  "score": 0.0,
+  "score_definition": "Heuristic geometric support in [0,1], not a calibrated probability or safety confidence",
+  "control_authorized": false,
+  "coverage": {
+    "input_points": 10553,
+    "nonfinite_points_removed": 0,
+    "roi_points": 373,
+    "unique_roi_points": 373,
+    "roi_m": {
+      "x": [
+        0.15,
+        2.5
+      ],
+      "y": [
+        -0.55,
+        0.55
+      ],
+      "z": [
+        -0.8,
+        1.8
+      ]
+    },
+    "lanes": [
+      {
+        "centre_y_m": -0.3,
+        "unique_points": 106,
+        "valid_bins": 0,
+        "total_bins": 59,
+        "valid_fraction": 0.0,
+        "lateral_span_m": 0.19751093359765362,
+        "vertical_or_mixed_bins": 7,
+        "tall_vertical_bins": 1,
+        "horizontal_plateaus": 0,
+        "observed_x_min_m": null,
+        "observed_x_max_m": null
+      },
+      {
+        "centre_y_m": 0.0,
+        "unique_points": 149,
+        "valid_bins": 5,
+        "total_bins": 59,
+        "valid_fraction": 0.0847457627118644,
+        "lateral_span_m": 0.19282178355106155,
+        "vertical_or_mixed_bins": 0,
+        "tall_vertical_bins": 0,
+        "horizontal_plateaus": 0,
+        "observed_x_min_m": 0.41000000000000003,
+        "observed_x_max_m": 0.65
+      },
+      {
+        "centre_y_m": 0.3,
+        "unique_points": 11,
+        "valid_bins": 0,
+        "total_bins": 59,
+        "valid_fraction": 0.0,
+        "lateral_span_m": 0.1814099955599985,
+        "vertical_or_mixed_bins": 0,
+        "tall_vertical_bins": 0,
+        "horizontal_plateaus": 0,
+        "observed_x_min_m": null,
+        "observed_x_max_m": null
+      }
+    ],
+    "required_lanes": 3,
+    "rear_footprint_observed": false
+  },
+  "reason": "Vertical/mixed returns interrupt the footprint; stairs not established",
+  "assumptions": [
+    "Metres; x forward, y left, z up; already gravity aligned",
+    "Calibrated sensor-to-body transform and synchronized pose supplied by caller",
+    "Straight stair flight approximately aligned with forward direction"
+  ],
+  "limits": [
+    "Prototype geometry only; no collision clearance, load capacity or traversability guarantee",
+    "Required lanes must cover the full forward ROI; sparse or occluded scans can miss real stairs",
+    "No rear-foot or landing-clearance proof; flat means the visible forward footprint only",
+    "No freshness check here; caller must reject stale data and invalid transforms",
+    "The existing 1100 policy has not been validated for real stairs or descending stairs"
+  ],
+  "validation_type": "single captured negative scene; not accuracy evaluation",
+  "user_scene": "flat ground or indoor clutter",
+  "source_metadata_file": "raw_probe.json"
+}

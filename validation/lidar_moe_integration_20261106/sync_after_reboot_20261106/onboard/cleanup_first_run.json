@@ -1,0 +1,43 @@
+{
+  "reason": "sensor-only ProcessPoolExecutor Python 3.8 shutdown(wait=False) handle-closed hang",
+  "roots": [
+    3139
+  ],
+  "processes": {
+    "3208": {
+      "ppid": 3139,
+      "args": [
+        "/usr/bin/python3",
+        "-c",
+        "from multiprocessing.spawn import spawn_main; spawn_main(tracker_fd=14, pipe_handle=22)",
+        "--multiprocessing-fork"
+      ],
+      "wchan": "pipe_read"
+    },
+    "3139": {
+      "ppid": 3132,
+      "args": [
+        "/usr/bin/python3",
+        "-m",
+        "lidar_moe.ros_bridge",
+        "--root",
+        "/home/unitree/go2-lidar-moe-20261106",
+        "--seconds",
+        "3600",
+        "--output",
+        "/home/unitree/go2-lidar-moe-20261106/logs/20261106T132711-3132/supervisor.jsonl",
+        "--send-local"
+      ],
+      "wchan": "do_wait"
+    },
+    "3207": {
+      "ppid": 3139,
+      "args": [
+        "/usr/bin/python3",
+        "-c",
+        "from multiprocessing.resource_tracker import main;main(13)"
+      ],
+      "wchan": "pipe_read"
+    }
+  }
+}

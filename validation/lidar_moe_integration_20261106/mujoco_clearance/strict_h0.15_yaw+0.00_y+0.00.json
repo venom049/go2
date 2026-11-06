@@ -1,0 +1,861 @@
+{
+  "source_sha256": {
+    "deploy/lidar_moe_20261106/model/exported/policy.onnx": "bc08253fd68f661bf6be5ce5ca70cec555c3fde2c397d23fbe9814a998e056f5",
+    "deploy/lidar_moe_20261106/config/go2_calibrated.urdf": "0ba25b92b9d6da5b4fcfb45d51c41cd34454138f5d5cf4b66eede38af229867d",
+    "deploy/lidar_moe_20261106/config/supervisor.json": "674b6c19ab1f846e691a82598cc4e99d1af9aa5cffaa221f89a878cad36a43a6",
+    "deploy/lidar_moe_20261106/lidar_moe/geometry.py": "b5e27d5a5fe7af5c9ebd1c9312e11ef38b1680083cc508877bac6d9dcc3b6aa8",
+    "deploy/lidar_moe_20261106/lidar_moe/supervisor.py": "3903aa104e5928cb74ff3057ac962346e9b6ddc37b79c08f453b0a7983c41f6b",
+    "scripts/check_lidar_moe_sim.py": "e5e90d76f38e1ece20c0e35c7df91b712c4e760599b67a30dc6db2a4bd96d414",
+    "validation/moe1000_sim2real_20261105/source/assets/unitree_go2/go2.xml": "2014a3d76e30f17ab9447d8a67bd015291f74fa4d71ae30d005f1a32bd693d4b"
+  },
+  "status": "geometry_not_ready",
+  "strict_publication_guard": true,
+  "step_height_m": 0.15,
+  "real_robot_control": false,
+  "start": {
+    "requested_perturbation": {
+      "yaw_rad": 0.0,
+      "y_m": 0.0
+    },
+    "base_position_m": [
+      -0.7460554592295008,
+      0.0,
+      0.2689532085354127
+    ],
+    "base_quaternion_wxyz": [
+      0.9999668170052891,
+      7.308745047540516e-07,
+      0.008146464741084462,
+      -5.954240962682854e-09
+    ],
+    "joint_position_rad": [
+      0.1616780700664644,
+      0.7691406405874505,
+      -1.8102274856027083,
+      -0.1616794576739453,
+      0.7691364447776228,
+      -1.8102288488485347,
+      0.13562814415423483,
+      1.0054677223451043,
+      -1.7896572412931788,
+      -0.13562627950286582,
+      1.005466974718716,
+      -1.7896624332674878
+    ],
+    "front_feet": {
+      "FL": {
+        "collision_sphere_center_m": [
+          -0.5220012505725555,
+          0.18299358320770498,
+          0.021671890902170837
+        ],
+        "radius_m": 0.022,
+        "front_edge_distance_to_first_riser_m": 0.5000012505725555
+      },
+      "FR": {
+        "collision_sphere_center_m": [
+          -0.5219999999999998,
+          -0.18299314552304158,
+          0.021671914386012445
+        ],
+        "radius_m": 0.022,
+        "front_edge_distance_to_first_riser_m": 0.4999999999999998
+      }
+    },
+    "minimum_front_edge_distance_m": 0.4999999999999998,
+    "settle_seconds": 2.0,
+    "settling_guard_audit": {
+      "physics_samples_per_joint": 1000,
+      "startup_samples_per_joint": 1000,
+      "scope": "Every policy physics substep, including failed task-terminal samples; settling is separate; numerical-corruption samples are flagged and excluded",
+      "speed_limit_rad_s": 13.0,
+      "tracking_limit_rad": 0.9,
+      "first_violations": {},
+      "joint_order": [
+        "FL_hip_joint",
+        "FL_thigh_joint",
+        "FL_calf_joint",
+        "FR_hip_joint",
+        "FR_thigh_joint",
+        "FR_calf_joint",
+        "RL_hip_joint",
+        "RL_thigh_joint",
+        "RL_calf_joint",
+        "RR_hip_joint",
+        "RR_thigh_joint",
+        "RR_calf_joint"
+      ],
+      "joints": {
+        "FL_hip_joint": {
+          "local_guard_position_range_rad": [
+            -1.0472,
+            1.0472
+          ],
+          "model_position_range_rad": [
+            -1.0472,
+            1.0472
+          ],
+          "effort_limit_nm": 23.7,
+          "nominal_description_speed_rad_s": 30.1,
+          "velocity": {
+            "peak": 0.3983957098797685,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "nominal_velocity": {
+            "peak": 0.3983957098797685,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "actual_position": {
+            "peak": 0.0,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "target_position": {
+            "peak": 0.0,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "tracking_error": {
+            "peak": 0.06601215042849984,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "requested_torque": {
+            "peak": 1.3448743105807464,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 1.3448743105807464,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "model_actual_position": {
+            "peak": 0.0,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "model_target_position": {
+            "peak": 0.0,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          }
+        },
+        "FL_thigh_joint": {
+          "local_guard_position_range_rad": [
+            -1.5708,
+            3.4907
+          ],
+          "model_position_range_rad": [
+            -1.5708,
+            3.4907
+          ],
+          "effort_limit_nm": 23.7,
+          "nominal_description_speed_rad_s": 30.1,
+          "velocity": {
+            "peak": 1.2256740052382924,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "nominal_velocity": {
+            "peak": 1.2256740052382924,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "actual_position": {
+            "peak": 0.0,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "target_position": {
+            "peak": 0.0,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "tracking_error": {
+            "peak": 0.12703763057523176,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "requested_torque": {
+            "peak": 2.6190317635494758,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 2.6190317635494758,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "model_actual_position": {
+            "peak": 0.0,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "model_target_position": {
+            "peak": 0.0,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          }
+        },
+        "FL_calf_joint": {
+          "local_guard_position_range_rad": [
+            -2.7227,
+            -0.83776
+          ],
+          "model_position_range_rad": [
+            -2.7227,
+            -0.83776
+          ],
+          "effort_limit_nm": 45.43,
+          "nominal_description_speed_rad_s": 15.7,
+          "velocity": {
+            "peak": 2.9585091551553995,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "nominal_velocity": {
+            "peak": 2.9585091551553995,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "actual_position": {
+            "peak": 0.0,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "target_position": {
+            "peak": 0.0,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "tracking_error": {
+            "peak": 0.4528323742399254,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "requested_torque": {
+            "peak": 9.215075689409096,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 9.215075689409096,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "model_actual_position": {
+            "peak": 0.0,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "model_target_position": {
+            "peak": 0.0,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          }
+        },
+        "FR_hip_joint": {
+          "local_guard_position_range_rad": [
+            -1.0472,
+            1.0472
+          ],
+          "model_position_range_rad": [
+            -1.0472,
+            1.0472
+          ],
+          "effort_limit_nm": 23.7,
+          "nominal_description_speed_rad_s": 30.1,
+          "velocity": {
+            "peak": 0.3989332126561152,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "nominal_velocity": {
+            "peak": 0.3989332126561152,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "actual_position": {
+            "peak": 0.0,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "target_position": {
+            "peak": 0.0,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "tracking_error": {
+            "peak": 0.06604725793977362,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "requested_torque": {
+            "peak": 1.3456537016979608,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 1.3456537016979608,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "model_actual_position": {
+            "peak": 0.0,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "model_target_position": {
+            "peak": 0.0,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          }
+        },
+        "FR_thigh_joint": {
+          "local_guard_position_range_rad": [
+            -1.5708,
+            3.4907
+          ],
+          "model_position_range_rad": [
+            -1.5708,
+            3.4907
+          ],
+          "effort_limit_nm": 23.7,
+          "nominal_description_speed_rad_s": 30.1,
+          "velocity": {
+            "peak": 1.2256238280157237,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "nominal_velocity": {
+            "peak": 1.2256238280157237,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "actual_position": {
+            "peak": 0.0,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "target_position": {
+            "peak": 0.0,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "tracking_error": {
+            "peak": 0.12703065183495166,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "requested_torque": {
+            "peak": 2.6188752600436205,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 2.6188752600436205,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "model_actual_position": {
+            "peak": 0.0,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "model_target_position": {
+            "peak": 0.0,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          }
+        },
+        "FR_calf_joint": {
+          "local_guard_position_range_rad": [
+            -2.7227,
+            -0.83776
+          ],
+          "model_position_range_rad": [
+            -2.7227,
+            -0.83776
+          ],
+          "effort_limit_nm": 45.43,
+          "nominal_description_speed_rad_s": 15.7,
+          "velocity": {
+            "peak": 2.9582677890656717,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "nominal_velocity": {
+            "peak": 2.9582677890656717,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "actual_position": {
+            "peak": 0.0,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "target_position": {
+            "peak": 0.0,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "tracking_error": {
+            "peak": 0.452831653310215,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "requested_torque": {
+            "peak": 9.215064369781384,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 9.215064369781384,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "model_actual_position": {
+            "peak": 0.0,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "model_target_position": {
+            "peak": 0.0,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          }
+        },
+        "RL_hip_joint": {
+          "local_guard_position_range_rad": [
+            -1.0472,
+            1.0472
+          ],
+          "model_position_range_rad": [
+            -1.0472,
+            1.0472
+          ],
+          "effort_limit_nm": 23.7,
+          "nominal_description_speed_rad_s": 30.1,
+          "velocity": {
+            "peak": 0.17777506085306619,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "nominal_velocity": {
+            "peak": 0.17777506085306619,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "actual_position": {
+            "peak": 0.0,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "target_position": {
+            "peak": 0.0,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "tracking_error": {
+            "peak": 0.03562814415423482,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "requested_torque": {
+            "peak": 0.7127193033056632,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 0.7127193033056632,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "model_actual_position": {
+            "peak": 0.0,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "model_target_position": {
+            "peak": 0.0,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          }
+        },
+        "RL_thigh_joint": {
+          "local_guard_position_range_rad": [
+            -0.5236,
+            4.5379
+          ],
+          "model_position_range_rad": [
+            -0.5236,
+            4.5379
+          ],
+          "effort_limit_nm": 23.7,
+          "nominal_description_speed_rad_s": 30.1,
+          "velocity": {
+            "peak": 1.4636668780414799,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "nominal_velocity": {
+            "peak": 1.4636668780414799,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "actual_position": {
+            "peak": 0.0,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "target_position": {
+            "peak": 0.0,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "tracking_error": {
+            "peak": 0.07333112369537753,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "requested_torque": {
+            "peak": 1.6467576885144999,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 1.6467576885144999,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "model_actual_position": {
+            "peak": 0.0,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "model_target_position": {
+            "peak": 0.0,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          }
+        },
+        "RL_calf_joint": {
+          "local_guard_position_range_rad": [
+            -2.7227,
+            -0.83776
+          ],
+          "model_position_range_rad": [
+            -2.7227,
+            -0.83776
+          ],
+          "effort_limit_nm": 45.43,
+          "nominal_description_speed_rad_s": 15.7,
+          "velocity": {
+            "peak": 2.612302876009619,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "nominal_velocity": {
+            "peak": 2.612302876009619,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "actual_position": {
+            "peak": 0.0,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "target_position": {
+            "peak": 0.0,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "tracking_error": {
+            "peak": 0.2896853120537417,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "requested_torque": {
+            "peak": 5.797279050329909,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 5.797279050329909,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "model_actual_position": {
+            "peak": 0.0,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "model_target_position": {
+            "peak": 0.0,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          }
+        },
+        "RR_hip_joint": {
+          "local_guard_position_range_rad": [
+            -1.0472,
+            1.0472
+          ],
+          "model_position_range_rad": [
+            -1.0472,
+            1.0472
+          ],
+          "effort_limit_nm": 23.7,
+          "nominal_description_speed_rad_s": 30.1,
+          "velocity": {
+            "peak": 0.1769791864350577,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "nominal_velocity": {
+            "peak": 0.1769791864350577,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "actual_position": {
+            "peak": 0.0,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "target_position": {
+            "peak": 0.0,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "tracking_error": {
+            "peak": 0.035626279502865815,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "requested_torque": {
+            "peak": 0.7126819854490413,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 0.7126819854490413,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "model_actual_position": {
+            "peak": 0.0,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "model_target_position": {
+            "peak": 0.0,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          }
+        },
+        "RR_thigh_joint": {
+          "local_guard_position_range_rad": [
+            -0.5236,
+            4.5379
+          ],
+          "model_position_range_rad": [
+            -0.5236,
+            4.5379
+          ],
+          "effort_limit_nm": 23.7,
+          "nominal_description_speed_rad_s": 30.1,
+          "velocity": {
+            "peak": 1.4636794261256465,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "nominal_velocity": {
+            "peak": 1.4636794261256465,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "actual_position": {
+            "peak": 0.0,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "target_position": {
+            "peak": 0.0,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "tracking_error": {
+            "peak": 0.07332920898815831,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "requested_torque": {
+            "peak": 1.6467125080558782,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 1.6467125080558782,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "model_actual_position": {
+            "peak": 0.0,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "model_target_position": {
+            "peak": 0.0,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          }
+        },
+        "RR_calf_joint": {
+          "local_guard_position_range_rad": [
+            -2.7227,
+            -0.83776
+          ],
+          "model_position_range_rad": [
+            -2.7227,
+            -0.83776
+          ],
+          "effort_limit_nm": 45.43,
+          "nominal_description_speed_rad_s": 15.7,
+          "velocity": {
+            "peak": 2.6122817994721106,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "nominal_velocity": {
+            "peak": 2.6122817994721106,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "actual_position": {
+            "peak": 0.0,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "target_position": {
+            "peak": 0.0,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "tracking_error": {
+            "peak": 0.2896906911060173,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "requested_torque": {
+            "peak": 5.797385612833042,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 5.797385612833042,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "model_actual_position": {
+            "peak": 0.0,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          },
+          "model_target_position": {
+            "peak": 0.0,
+            "excess_samples": 0,
+            "excess_fraction": 0.0
+          }
+        }
+      },
+      "velocity": {
+        "excess_samples": 0,
+        "excess_fraction": 0.0,
+        "peak": 2.9585091551553995,
+        "startup_excess_fraction": 0.0
+      },
+      "nominal_velocity": {
+        "excess_samples": 0,
+        "excess_fraction": 0.0,
+        "peak": 2.9585091551553995,
+        "startup_excess_fraction": 0.0
+      },
+      "actual_position": {
+        "excess_samples": 0,
+        "excess_fraction": 0.0,
+        "peak": 0.0,
+        "startup_excess_fraction": 0.0
+      },
+      "target_position": {
+        "excess_samples": 0,
+        "excess_fraction": 0.0,
+        "peak": 0.0,
+        "startup_excess_fraction": 0.0
+      },
+      "tracking_error": {
+        "excess_samples": 0,
+        "excess_fraction": 0.0,
+        "peak": 0.4528323742399254,
+        "startup_excess_fraction": 0.0
+      },
+      "requested_torque": {
+        "excess_samples": 0,
+        "excess_fraction": 0.0,
+        "peak": 9.215075689409096,
+        "startup_excess_fraction": 0.0
+      },
+      "applied_torque": {
+        "excess_samples": 0,
+        "excess_fraction": 0.0,
+        "peak": 9.215075689409096,
+        "startup_excess_fraction": 0.0
+      },
+      "model_actual_position": {
+        "excess_samples": 0,
+        "excess_fraction": 0.0,
+        "peak": 0.0,
+        "startup_excess_fraction": 0.0
+      },
+      "model_target_position": {
+        "excess_samples": 0,
+        "excess_fraction": 0.0,
+        "peak": 0.0,
+        "startup_excess_fraction": 0.0
+      },
+      "local_guard_audit_passed": true,
+      "requested_torque_peak_ratio": 0.20284119941468404,
+      "applied_torque_peak_ratio": 0.20284119941468404
+    }
+  },
+  "yaw_rad": 0.0,
+  "lateral_offset_m": 0.0,
+  "active_at_s": null,
+  "final_position_m": [
+    -0.7465661172054227,
+    2.144671845243103e-08,
+    0.2684725767170354
+  ],
+  "wall_contact": null,
+  "minimum_wall_clearance_m": 1.6070719657404822,
+  "target_joint_limit_violations": 0,
+  "first_guard_violation": null,
+  "last_supervisor": {
+    "mode": "WAIT",
+    "phase": "WAIT",
+    "reason": "need_three_consistent_geometry_frames",
+    "command": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "confirmed_frames": 0,
+    "ready": false
+  },
+  "geometry_valid_frames": 0,
+  "geometry_frames": 31,
+  "sensor_model": "forward ray grid from accepted lidar mounting position; exact MuJoCo visibility, no added noise; not vendor beam model",
+  "full_real_controller_equivalence": false
+}

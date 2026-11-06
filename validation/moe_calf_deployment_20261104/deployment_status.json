@@ -1,0 +1,50 @@
+{
+  "checked_at_utc": "2026-11-04T08:28:37.986697+00:00",
+  "deployment_state": "model_staged_and_onboard_readonly_inference_verified; motion_not_started",
+  "robot_host": "192.168.1.180",
+  "robot_model_directory": "/home/unitree/go2-moe-calf1500-20261104",
+  "model": "calf1500",
+  "checkpoint_sha256": "9a07d4b300d19bb563a11f35ff2b8df2a7385483bd80d0f9b2b3df1e57bf3f1f",
+  "onnx_sha256": "b5a9f44a9f13b23e7e257e5d7889124c1f7d76f01abdd5290e590a61c03ff758",
+  "user_reported_front_foot_distance_m": 0.5,
+  "completion_verified": true,
+  "final_checkpoint_exists": true,
+  "eval_summary_exists": true,
+  "evaluation_sha256": "b541531f8efcb3d20dfd4622f498ce3d2a5e3b4ddf98d0c5fcbe310d79f2cd4c",
+  "latest_successes": 119,
+  "latest_episodes": 129,
+  "task_regressed_from_reference": true,
+  "calf_speed_acceptance_passed": false,
+  "task_and_calf_speed_acceptance_passed": false,
+  "joint_and_torque_acceptance_passed": false,
+  "calf_speed_fraction": 0.01412226426672121,
+  "calf_speed_peak_rad_s": 29.450572276432876,
+  "arm_parity_cases": 199,
+  "counterfactual_first_frame_inferences": 200,
+  "closed_loop_test_performed": false,
+  "motor_commands_sent": false,
+  "mode_release_called": false,
+  "autostart_installed": false,
+  "active_policy_replaced": false,
+  "protection_changed": false,
+  "mode_before": [
+    0,
+    {
+      "form": "0",
+      "name": "mcf"
+    }
+  ],
+  "mode_after": [
+    0,
+    {
+      "form": "0",
+      "name": "mcf"
+    }
+  ],
+  "blockers": [
+    "Independent evaluation violates calf 15.7rad/s limit and other application guards; task success regressed.",
+    "Installed protected legacy controller uses 294 inputs/16 outputs and PD40/1; staged MoE policy requires 225 inputs/12 outputs and PD20/.5; no protected MoE motor-controller integration has been installed.",
+    "Simulation stop depends on geometric ground truth; real wall-stop function has not been implemented or verified."
+  ],
+  "ssh_password_saved": false
+}

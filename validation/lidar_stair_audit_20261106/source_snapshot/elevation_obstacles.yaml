@@ -1,0 +1,52 @@
+height_map_bridge:
+  ros__parameters:
+    input_topic: /utlidar/height_map_array
+    output_topic: /go2/terrain/local_elevation
+    output_frame: utlidar_odom
+    use_message_stamp: true
+    min_accepted_height: -3.0
+    max_accepted_height: 5.0
+
+global_elevation_mapper:
+  ros__parameters:
+    input_topic: /utlidar/height_map_array
+    # The deskewed cloud and HeightMap use the same vendor-world coordinates.
+    # The driver exposes those coordinates to navigation as utlidar_odom.
+    surface_cloud_topic: /utlidar/cloud_deskewed
+    surface_cloud_frame_alias: odom
+    map_frame: utlidar_odom
+    use_input_resolution: true
+    global_resolution: 0.05
+    integration_period: 0.10
+    publish_period: 0.20
+    minimum_observations: 1
+    ambiguous_height_span: 0.15
+    min_accepted_height: -3.0
+    max_accepted_height: 5.0
+
+    terrain_min_neighbors: 2
+    terrain_neighborhood_radius: 2
+    # Local ground/obstacle separation. A 3.5 cm threshold leaves margin for
+    # sensor noise while targeting real 5-10 cm objects.
+    terrain_trim_quantile: 0.05
+    ground_height_tolerance: 0.025
+    obstacle_min_cluster_cells: 2
+    obstacle_min_height: 0.035
+    obstacle_max_height: 0.30
+    # Keep disabled until the recorded target-stair dataset is analyzed.
+    step_candidates_enabled: false
+    semantic_memory_enabled: true
+    step_confirmation_observations: 2
+    danger_confirmation_observations: 2
+
+    surface_smoothing_radius: 1
+    surface_smoothing_height_tolerance: 0.025
+    surface_max_triangle_height_delta: 0.035
+    surface_require_cloud_support: true
+    # Separate supported vertical point clusters before selecting the surface.
+    # This prevents a low object top from being averaged into the floor.
+    surface_cloud_height_tolerance: 0.15
+    surface_cloud_search_radius_cells: 1
+    surface_cloud_cluster_tolerance: 0.025
+    surface_cloud_min_cluster_points: 2
+    save_directory: /home/unitree/go2_foxy/maps

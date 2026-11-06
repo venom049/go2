@@ -1,0 +1,630 @@
+[INFO][AppLauncher]: Using device: cuda:0
+[INFO][AppLauncher]: Loading experience file: /opt/conda/envs/isaaclab/lib/python3.11/site-packages/isaaclab/apps/isaaclab.python.headless.kit
+Loading user config located at: '/opt/conda/envs/isaaclab/lib/python3.11/site-packages/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /opt/conda/envs/isaaclab/lib/python3.11/site-packages/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20261103_155100.log
+2026-11-03T07:51:00Z [119ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-11-03T07:51:01Z [742ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-11-03T07:51:01Z [754ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-11-03T07:51:04Z [4,328ms] [Warning] [carb.graphics-vulkan.plugin] Could not initialize nvperf_grfx_host library. PerfSDK disabled
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 580.126.09    | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA GeForce RTX 4090          | Yes: 0 |     | 24564   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2684      | 995aad5d.. |
+|     |                                  |        |     |            | 38        |            |
+|=============================================================================================|
+| OS: 24.04.5 LTS (Noble Numbat) ubuntu, Version: 24.04.5, Kernel: 5.15.0-176-generic
+| XServer Vendor: The X.Org Foundation, XServer Version: 12101011 (1.21.1.11)
+| Processor: Intel(R) Xeon(R) Gold 6430
+| Bare Metal Cores: 64 | Bare Metal Logical Cores: 128
+| Core Usage Quota: 14
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 51200 | Free Memory: 49640
+| Total Page/Swap (MB): 0 | Free Page/Swap: 0
+|---------------------------------------------------------------------------------------------|
+
+[36m======================================================================================[0m
+[36m[1m[INFO][IsaacLab]: Logging to file: /tmp/isaaclab/logs/isaaclab_2026-11-03_15-51-05.log[0m
+[36m======================================================================================[0m
+
+[33m15:51:05 [simulation_context.py] WARNING: The `enable_external_forces_every_iteration` parameter in the PhysxCfg is set to False. If you are experiencing noisy velocities, consider enabling this flag. You may need to slightly increase the number of velocity iterations (setting it to 1 or 2 rather than 0), together with this flag, to improve the accuracy of velocity updates.[0m
+[INFO]: Base environment:
+	Environment device    : cuda:0
+	Environment seed      : 42
+	Physics step-size     : 0.005
+	Rendering step-size   : 0.02
+	Environment step-size : 0.02
+[INFO] Generating terrains based on curriculum took : 0.157101 seconds
+2026-11-03T07:51:05Z [5,679ms] [Warning] [carb.graphics-vulkan.plugin] Could not initialize nvperf_grfx_host library. PerfSDK disabled
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 580.126.09    | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA GeForce RTX 4090          | Yes: 0 |     | 24564   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2684      | 995aad5d.. |
+|     |                                  |        |     |            | 38        |            |
+|=============================================================================================|
+| OS: 24.04.5 LTS (Noble Numbat) ubuntu, Version: 24.04.5, Kernel: 5.15.0-176-generic
+| XServer Vendor: The X.Org Foundation, XServer Version: 12101011 (1.21.1.11)
+| Processor: Intel(R) Xeon(R) Gold 6430
+| Bare Metal Cores: 64 | Bare Metal Logical Cores: 128
+| Core Usage Quota: 14
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 51200 | Free Memory: 49400
+| Total Page/Swap (MB): 0 | Free Page/Swap: 0
+|---------------------------------------------------------------------------------------------|
+2026-11-03T07:51:07Z [7,185ms] [Warning] [omni.graph.visualization.nodes._impl.extension] No Viewport Window to add omni.graph.visualization.nodes-2.1.3 scene to
+[INFO]: Time taken for scene creation : 2.309114 seconds
+[INFO]: Scene manager:  <class InteractiveScene>
+	Number of environments: 8
+	Environment spacing   : 3.0
+	Source prim name      : /World/envs/env_0
+	Global prim paths     : ['/World/ground']
+	Replicate physics     : True
+[INFO]: Starting the simulation. This may take a few seconds. Please wait...
+[INFO]: Time taken for simulation start : 0.773458 seconds
+[INFO] Command Manager:  <CommandManager> contains 1 active terms.
++------------------------------------------------+
+|              Active Command Terms              |
++-------+---------------+------------------------+
+| Index | Name          |          Type          |
++-------+---------------+------------------------+
+|   0   | base_velocity | UniformVelocityCommand |
++-------+---------------+------------------------+
+
+[INFO] Event Manager:  <EventManager> contains 1 active terms.
++-----------------------------------+
+| Active Event Terms in Mode: 'reset' |
++-----------+-----------------------+
+|   Index   | Name                  |
++-----------+-----------------------+
+|     0     | reset_base            |
+|     1     | reset_joints          |
++-----------+-----------------------+
+
+[INFO] Recorder Manager:  <RecorderManager> contains 0 active terms.
++---------------------+
+| Active Recorder Terms |
++-----------+---------+
+|   Index   | Name    |
++-----------+---------+
++-----------+---------+
+
+[INFO] Action Manager:  <ActionManager> contains 1 active terms.
++-----------------------------------+
+|  Active Action Terms (shape: 12)  |
++---------+----------+--------------+
+|  Index  | Name     |    Dimension |
++---------+----------+--------------+
+|    0    | joints   |           12 |
++---------+----------+--------------+
+
+[INFO] Observation Manager: <ObservationManager> contains 2 groups.
++----------------------------------------------------------+
+| Active Observation Terms in Group: 'policy' (shape: (45,)) |
++------------+--------------------------------+------------+
+|   Index    | Name                           |   Shape    |
++------------+--------------------------------+------------+
+|     0      | commands                       |    (3,)    |
+|     1      | angular_velocity               |    (3,)    |
+|     2      | gravity                        |    (3,)    |
+|     3      | joint_pos                      |   (12,)    |
+|     4      | joint_vel                      |   (12,)    |
+|     5      | previous_action                |   (12,)    |
++------------+--------------------------------+------------+
++---------------------------------------------------------+
+| Active Observation Terms in Group: 'critic' (shape: (235,)) |
++-----------+-------------------------------+-------------+
+|   Index   | Name                          |    Shape    |
++-----------+-------------------------------+-------------+
+|     0     | commands                      |     (3,)    |
+|     1     | angular_velocity              |     (3,)    |
+|     2     | gravity                       |     (3,)    |
+|     3     | joint_pos                     |    (12,)    |
+|     4     | joint_vel                     |    (12,)    |
+|     5     | previous_action               |    (12,)    |
+|     6     | linear_velocity               |     (3,)    |
+|     7     | terrain_heights               |    (187,)   |
++-----------+-------------------------------+-------------+
+
+[INFO] Termination Manager:  <TerminationManager> contains 5 active terms.
++----------------------------------+
+|     Active Termination Terms     |
++-------+---------------+----------+
+| Index | Name          | Time Out |
++-------+---------------+----------+
+|   0   | time_out      |   True   |
+|   1   | base_contact  |  False   |
+|   2   | fall          |  False   |
+|   3   | out_of_bounds |  False   |
+|   4   | success       |  False   |
++-------+---------------+----------+
+
+[INFO] Reward Manager:  <RewardManager> contains 30 active terms.
++---------------------------------------+
+|          Active Reward Terms          |
++-------+--------------------+----------+
+| Index | Name               |   Weight |
++-------+--------------------+----------+
+|   0   | tracking_lin_vel   |      2.0 |
+|   1   | tracking_ang_vel   |      0.5 |
+|   2   | forward_progress   |      0.8 |
+|   3   | success            |      5.0 |
+|   4   | failure            |     -2.0 |
+|   5   | lin_vel_z          |     -0.2 |
+|   6   | ang_vel_xy         |     -0.1 |
+|   7   | orientation        |    -0.05 |
+|   8   | base_height        |     -1.0 |
+|   9   | joint_acc          | -2.5e-07 |
+|   10  | torque_margin      |      0.0 |
+|   11  | torque_excess      |      0.0 |
+|   12  | joint_power        |   -3e-05 |
+|   13  | action_rate        |    -0.02 |
+|   14  | action_smoothness  |    -0.01 |
+|   15  | roll_orientation   |     -3.0 |
+|   16  | roll_rate          |    -0.25 |
+|   17  | lateral_velocity   |     -0.4 |
+|   18  | joint_deviation    |    -0.03 |
+|   19  | hip_deviation      |     -0.1 |
+|   20  | hip_abduction      |     -3.0 |
+|   21  | feet_lateral       |    -40.0 |
+|   22  | joint_vel          |  -0.0005 |
+|   23  | joint_limits       |     -2.0 |
+|   24  | undesired_contacts |     -1.0 |
+|   25  | foot_slip          |     -0.6 |
+|   26  | lateral_drift      |     -0.3 |
+|   27  | foot_clearance     |     -0.5 |
+|   28  | feet_air_time      |      0.2 |
+|   29  | feet_stumble       |     -0.5 |
++-------+--------------------+----------+
+
+[INFO] Curriculum Manager:  <CurriculumManager> contains 2 active terms.
++--------------------------+
+| Active Curriculum Terms  |
++--------+-----------------+
+| Index  | Name            |
++--------+-----------------+
+|   0    | stairs          |
+|   1    | command_speed   |
++--------+-----------------+
+
+[INFO]: Completed setting up the environment...
+Actor MLP: Sequential(
+  (0): Linear(in_features=64, out_features=512, bias=True)
+  (1): ELU(alpha=1.0)
+  (2): Linear(in_features=512, out_features=256, bias=True)
+  (3): ELU(alpha=1.0)
+  (4): Linear(in_features=256, out_features=128, bias=True)
+  (5): ELU(alpha=1.0)
+  (6): Linear(in_features=128, out_features=12, bias=True)
+)
+Critic MLP: Sequential(
+  (0): Linear(in_features=235, out_features=512, bias=True)
+  (1): ELU(alpha=1.0)
+  (2): Linear(in_features=512, out_features=256, bias=True)
+  (3): ELU(alpha=1.0)
+  (4): Linear(in_features=256, out_features=128, bias=True)
+  (5): ELU(alpha=1.0)
+  (6): Linear(in_features=128, out_features=1, bias=True)
+)
+Estimator: Sequential(
+  (0): Linear(in_features=270, out_features=128, bias=True)
+  (1): ELU(alpha=1.0)
+  (2): Linear(in_features=128, out_features=64, bias=True)
+  (3): ELU(alpha=1.0)
+  (4): Linear(in_features=64, out_features=19, bias=True)
+)
+GO2_PLAYBACK_READY checkpoint=validation/torque_constraints/reference1100/model_1100.pt controller=stairs interactive=False
+{
+  "steps": 150,
+  "max_steps": 200,
+  "episodes": 8,
+  "successes": 0,
+  "failures": 0,
+  "timeouts": 8,
+  "success_rate": 0.0,
+  "episodes_per_env_target": 1,
+  "completed_episodes_per_env": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "incomplete_env_ids": [],
+  "envs_incomplete": 0,
+  "checkpoint": "validation/torque_constraints/reference1100/model_1100.pt",
+  "settings": {
+    "seed": 42,
+    "num_envs": 8,
+    "max_iterations": 1000,
+    "episode_length_s": 3,
+    "terrain": {
+      "rows": 10,
+      "cols": 4,
+      "initial_level": 1,
+      "height_min": 0.15,
+      "height_max": 0.15,
+      "tread": 0.3,
+      "num_steps": 8,
+      "curriculum": true
+    },
+    "commands": {
+      "forward_min": 0.6,
+      "forward_max": 0.6,
+      "start_forward_min": 0.35,
+      "start_forward_max": 0.5,
+      "speed_ramp_updates": 0
+    },
+    "control": {
+      "stiffness": 40.0,
+      "damping": 1.0,
+      "action_scale": 0.25,
+      "action_clip": 4.0
+    },
+    "randomization": {
+      "enabled": true,
+      "friction_min": 0.6,
+      "friction_max": 1.2,
+      "payload_min": -0.5,
+      "payload_max": 1.0
+    },
+    "torque": {
+      "enabled": true,
+      "soft_ratio": 0.8,
+      "startup_seconds": 2.0,
+      "startup_multiplier": 2.0
+    },
+    "rewards": {
+      "torque_margin": 0.0,
+      "torque_excess": 0.0,
+      "tracking_lin_vel": 2.0,
+      "tracking_ang_vel": 0.5,
+      "forward_progress": 0.8,
+      "success": 5.0,
+      "failure": -2.0,
+      "lin_vel_z": -0.2,
+      "ang_vel_xy": -0.1,
+      "orientation": -0.05,
+      "base_height": -1.0,
+      "joint_acc": -2.5e-07,
+      "joint_power": -3e-05,
+      "action_rate": -0.02,
+      "joint_limits": -2.0,
+      "undesired_contacts": -1.0,
+      "foot_slip": -0.6,
+      "lateral_drift": -0.3,
+      "foot_clearance": -0.5,
+      "action_smoothness": -0.01,
+      "roll_orientation": -3.0,
+      "roll_rate": -0.25,
+      "lateral_velocity": -0.4,
+      "feet_air_time": 0.2,
+      "feet_stumble": -0.5,
+      "joint_deviation": -0.03,
+      "hip_deviation": -0.1,
+      "hip_abduction": -3.0,
+      "feet_lateral": -40.0,
+      "joint_vel": -0.0005
+    },
+    "targets": {
+      "base_height": 0.3,
+      "foot_clearance": 0.1,
+      "air_time": 0.12,
+      "max_air_time": 0.4,
+      "hip_abduction_max": 0.22,
+      "feet_lateral_min": 0.12,
+      "feet_lateral_max": 0.205,
+      "feet_lateral_inner_weight": 2.0
+    },
+    "training": {
+      "num_steps_per_env": 24,
+      "save_interval": 100,
+      "learning_rate": 0.0003,
+      "entropy_coef": 0.001,
+      "init_noise_std": 0.45,
+      "min_noise_std": 0.1,
+      "max_noise_std": 0.8,
+      "min_learning_rate": 1e-05,
+      "max_learning_rate": 0.001,
+      "action_mean_penalty_coef": 0.01,
+      "num_learning_epochs": 5,
+      "num_mini_batches": 4
+    }
+  },
+  "torque_audit": {
+    "scope": "Every physics substep in active episodes, including failures and terminal steps; not successful episodes only",
+    "physics_samples_per_joint": 4800,
+    "startup_physics_samples_per_joint": 3200,
+    "requested_excess_joint_samples": 8735,
+    "applied_excess_joint_samples": 0,
+    "startup_excess_joint_samples": 5619,
+    "requested_excess_fraction": 0.15164930555555556,
+    "torque_limits_passed": false,
+    "note": "Zero sampled violations is an evaluation result, not a guarantee for unseen real-world states.",
+    "joints": {
+      "FL_hip_joint": {
+        "limit_nm": 23.700000762939453,
+        "requested_peak_nm": 33.15228271484375,
+        "applied_peak_nm": 23.700000762939453,
+        "requested_excess_samples": 271,
+        "saturation_samples": 271
+      },
+      "FR_hip_joint": {
+        "limit_nm": 23.700000762939453,
+        "requested_peak_nm": 36.79454040527344,
+        "applied_peak_nm": 23.700000762939453,
+        "requested_excess_samples": 549,
+        "saturation_samples": 549
+      },
+      "RL_hip_joint": {
+        "limit_nm": 23.700000762939453,
+        "requested_peak_nm": 37.97637176513672,
+        "applied_peak_nm": 23.700000762939453,
+        "requested_excess_samples": 126,
+        "saturation_samples": 126
+      },
+      "RR_hip_joint": {
+        "limit_nm": 23.700000762939453,
+        "requested_peak_nm": 45.418975830078125,
+        "applied_peak_nm": 23.700000762939453,
+        "requested_excess_samples": 942,
+        "saturation_samples": 942
+      },
+      "FL_thigh_joint": {
+        "limit_nm": 23.700000762939453,
+        "requested_peak_nm": 73.55675506591797,
+        "applied_peak_nm": 23.700000762939453,
+        "requested_excess_samples": 2795,
+        "saturation_samples": 2795
+      },
+      "FR_thigh_joint": {
+        "limit_nm": 23.700000762939453,
+        "requested_peak_nm": 68.09697723388672,
+        "applied_peak_nm": 23.700000762939453,
+        "requested_excess_samples": 3083,
+        "saturation_samples": 3083
+      },
+      "RL_thigh_joint": {
+        "limit_nm": 23.700000762939453,
+        "requested_peak_nm": 37.68191146850586,
+        "applied_peak_nm": 23.700000762939453,
+        "requested_excess_samples": 31,
+        "saturation_samples": 31
+      },
+      "RR_thigh_joint": {
+        "limit_nm": 23.700000762939453,
+        "requested_peak_nm": 31.180158615112305,
+        "applied_peak_nm": 23.700000762939453,
+        "requested_excess_samples": 498,
+        "saturation_samples": 498
+      },
+      "FL_calf_joint": {
+        "limit_nm": 45.43000030517578,
+        "requested_peak_nm": 35.01553726196289,
+        "applied_peak_nm": 35.01553726196289,
+        "requested_excess_samples": 0,
+        "saturation_samples": 0
+      },
+      "FR_calf_joint": {
+        "limit_nm": 45.43000030517578,
+        "requested_peak_nm": 40.949031829833984,
+        "applied_peak_nm": 40.949031829833984,
+        "requested_excess_samples": 0,
+        "saturation_samples": 0
+      },
+      "RL_calf_joint": {
+        "limit_nm": 45.43000030517578,
+        "requested_peak_nm": 61.86049270629883,
+        "applied_peak_nm": 45.43000030517578,
+        "requested_excess_samples": 295,
+        "saturation_samples": 295
+      },
+      "RR_calf_joint": {
+        "limit_nm": 45.43000030517578,
+        "requested_peak_nm": 56.69783401489258,
+        "applied_peak_nm": 45.43000030517578,
+        "requested_excess_samples": 145,
+        "saturation_samples": 145
+      }
+    }
+  },
+  "torque_acceptance_passed": false,
+  "controller": "stairs",
+  "spawn_x_offset_m": 0.0,
+  "first_terminal_pre_step_states": [
+    {
+      "relative_position_m": [
+        1.5232429504394531,
+        0.0350184440612793,
+        0.5390709638595581
+      ],
+      "world_velocity_m_s": [
+        0.09071211516857147,
+        0.08167523890733719,
+        0.06313076615333557
+      ],
+      "projected_gravity": [
+        -0.49256935715675354,
+        0.013277587480843067,
+        -0.8701719045639038
+      ],
+      "elapsed_s": 2.9800000190734863,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": true,
+      "terminated": false
+    },
+    {
+      "relative_position_m": [
+        1.5889759063720703,
+        0.06057119369506836,
+        0.56102454662323
+      ],
+      "world_velocity_m_s": [
+        0.6536657810211182,
+        -0.033025167882442474,
+        0.12567992508411407
+      ],
+      "projected_gravity": [
+        -0.5208732485771179,
+        -0.044539645314216614,
+        -0.8524712920188904
+      ],
+      "elapsed_s": 2.9800000190734863,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": true,
+      "terminated": false
+    },
+    {
+      "relative_position_m": [
+        1.4345169067382812,
+        0.0683208703994751,
+        0.5471620559692383
+      ],
+      "world_velocity_m_s": [
+        0.49994924664497375,
+        -0.022084660828113556,
+        0.31134042143821716
+      ],
+      "projected_gravity": [
+        -0.5200178623199463,
+        0.02414577826857567,
+        -0.8538140058517456
+      ],
+      "elapsed_s": 2.9800000190734863,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": true,
+      "terminated": false
+    },
+    {
+      "relative_position_m": [
+        1.4975967407226562,
+        0.1243753433227539,
+        0.5438678860664368
+      ],
+      "world_velocity_m_s": [
+        0.5481482744216919,
+        -0.07683006674051285,
+        0.2612352669239044
+      ],
+      "projected_gravity": [
+        -0.5193552374839783,
+        -0.021427752450108528,
+        -0.8542897701263428
+      ],
+      "elapsed_s": 2.9800000190734863,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": true,
+      "terminated": false
+    },
+    {
+      "relative_position_m": [
+        1.4990482330322266,
+        0.09854364395141602,
+        0.5470218062400818
+      ],
+      "world_velocity_m_s": [
+        0.530491054058075,
+        -0.040739621967077255,
+        0.31205296516418457
+      ],
+      "projected_gravity": [
+        -0.512004554271698,
+        -0.0005129631608724594,
+        -0.8589825630187988
+      ],
+      "elapsed_s": 2.9800000190734863,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": true,
+      "terminated": false
+    },
+    {
+      "relative_position_m": [
+        1.4848308563232422,
+        0.11496841907501221,
+        0.5408933162689209
+      ],
+      "world_velocity_m_s": [
+        0.5115998983383179,
+        -0.06872145086526871,
+        0.2934260368347168
+      ],
+      "projected_gravity": [
+        -0.5177130103111267,
+        -0.009826350957155228,
+        -0.8554979562759399
+      ],
+      "elapsed_s": 2.9800000190734863,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": true,
+      "terminated": false
+    },
+    {
+      "relative_position_m": [
+        1.5253143310546875,
+        0.05615806579589844,
+        0.5386602282524109
+      ],
+      "world_velocity_m_s": [
+        0.1015714481472969,
+        0.09272217005491257,
+        0.05972321331501007
+      ],
+      "projected_gravity": [
+        -0.4843805730342865,
+        -0.008918519131839275,
+        -0.8748119473457336
+      ],
+      "elapsed_s": 2.9800000190734863,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": true,
+      "terminated": false
+    },
+    {
+      "relative_position_m": [
+        1.4899215698242188,
+        0.14183521270751953,
+        0.5632526278495789
+      ],
+      "world_velocity_m_s": [
+        0.6589152812957764,
+        -0.03983305022120476,
+        0.08691761642694473
+      ],
+      "projected_gravity": [
+        -0.5128195285797119,
+        -0.055616382509469986,
+        -0.8566930294036865
+      ],
+      "elapsed_s": 2.9800000190734863,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": true,
+      "terminated": false
+    }
+  ],
+  "stop_reason": "episode_target_reached"
+}
+Traceback (most recent call last):
+  File "/root/go2-himloco/scripts/play_lab.py", line 189, in main
+    raise SystemExit("Torque acceptance FAILED; see saved evaluation report")
+SystemExit: Torque acceptance FAILED; see saved evaluation report

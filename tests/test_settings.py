@@ -14,6 +14,30 @@ class SettingsTests(unittest.TestCase):
         self.assertEqual(settings["num_envs"], 1024)
         self.assertEqual(settings["terrain"]["num_steps"], 8)
 
+    def test_joint_constraints_preserve_old_experiments_and_enforce_guard_bounds(self):
+        old = load_settings("configs/stairs_torque_limited.yaml")
+        new = load_settings("configs/stairs_joint_limited.yaml")
+        self.assertFalse(old["joint_constraints"]["enabled"])
+        self.assertEqual(old["rewards"]["velocity_excess"], 0)
+        self.assertTrue(new["joint_constraints"]["enabled"])
+        self.assertTrue(new["torque"]["enabled"])
+        self.assertEqual(new["joint_constraints"]["velocity_limit"], 13.)
+        for override in ("joint_constraints.velocity_limit=13.1", "joint_constraints.velocity_limit=0",
+                         "joint_constraints.tracking_error_limit=0.91", "joint_constraints.position_soft_ratio=1",
+                         "joint_constraints.velocity_soft_ratio=0", "joint_constraints.tracking_soft_ratio=-1",
+                         "joint_constraints.startup_seconds=30", "joint_constraints.startup_multiplier=0.5",
+                         "joint_constraints.enabled=1", "joint_constraints.terminate_on_violation=0",
+                         "rewards.velocity_margin=1", "rewards.velocity_excess=1",
+                         "rewards.position_margin=1", "rewards.position_excess=1",
+                         "rewards.target_position_excess=1", "rewards.tracking_error=1",
+                         "joint_constraints.enabled=false"):
+            with self.subTest(override=override), self.assertRaises(ValueError):
+                load_settings("configs/stairs_joint_limited.yaml", [override])
+        for kind in ("velocity_margin", "velocity_excess", "position_margin", "position_excess",
+                     "target_position_excess", "tracking_error"):
+            with self.subTest(disabled_penalty=kind), self.assertRaises(ValueError):
+                load_settings(overrides=[f"rewards.{kind}=-1"])
+
     def test_nested_overrides_preserve_other_defaults(self):
         settings = load_settings(overrides=["rewards.foot_clearance=-0.3", "training.learning_rate=0.0005"])
         self.assertEqual(settings["rewards"]["foot_clearance"], -.3)

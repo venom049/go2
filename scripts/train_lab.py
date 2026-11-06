@@ -48,9 +48,8 @@ def main():
         import yaml
         from isaaclab.utils.io import dump_yaml
         from go2_him.lab_config import build_env_cfg, agent_config, JOINT_NAMES
-        from himloco_lab.envs import HimlocoManagerBasedRLEnv
+        from go2_him.lab_torque import TorqueHimlocoEnv, TorqueHIMRunner
         from himloco_lab.rsl_rl.wrappers.himloco_vec_env_wrapper import HimlocoVecEnvWrapper
-        from himloco_lab.rsl_rl.runners.him_on_policy_runner import HIMOnPolicyRunner
         from go2_him.validation import validate_runtime
         device = args.device or "cuda:0"
         torch.manual_seed(s["seed"])
@@ -61,7 +60,7 @@ def main():
         (log_dir / "settings.yaml").write_text(yaml.safe_dump(s, sort_keys=False))
         cfg = build_env_cfg(s, device)
         cfg.log_dir = str(log_dir)
-        env = HimlocoManagerBasedRLEnv(cfg)
+        env = TorqueHimlocoEnv(cfg)
         wrapped = HimlocoVecEnvWrapper(env, history_length=5, privileged_history_length=0,
             clip_actions=s["control"]["action_clip"])
         report = validate_runtime(wrapped)
@@ -75,9 +74,12 @@ def main():
             source_model=json.loads((ROOT / "assets/go2/PROVENANCE.json").read_text()),
             joint_order=JOINT_NAMES, observation_order=["commands3", "angular_velocity3", "gravity3", "joint_pos12", "joint_vel12", "action12"],
             history_frames=6, critic_layout="policy45, base_linear_velocity3, height_scan187",
+            torque_monitoring=s["torque"], torque_acceptance="Separate evaluation required; finite tensors do not certify torque",
+            joint_constraints=s["joint_constraints"],
+            joint_acceptance="Separate complete-episode evaluation required, including failed terminal substeps; no deployment certification",
             torch=torch.__version__, cuda=torch.version.cuda)
         (log_dir / "manifest.json").write_text(json.dumps(manifest, indent=2))
-        runner = HIMOnPolicyRunner(wrapped, train_cfg, log_dir=str(log_dir), device=device)
+        runner = TorqueHIMRunner(wrapped, train_cfg, log_dir=str(log_dir), device=device)
         if checkpoint:
             check_manifest = checkpoint.parent / "manifest.json"
             if not check_manifest.is_file() or json.loads(check_manifest.read_text()).get("algorithm") != "HIMLoco":
@@ -101,6 +103,17 @@ def main():
         (log_dir / "completed.json").write_text(json.dumps({"iterations":runner.current_learning_iteration,
             "all_model_tensors_finite":True}, indent=2))
         print("GO2_TRAINING_COMPLETE", flush=True)
+    except BaseException as exc:
+        # Kit shutdown can terminate Python before an uncaught traceback prints.
+        import traceback
+        traceback.print_exc()
+        sys.stderr.flush()
+        # Preserve failure status across Kit's fast shutdown (which otherwise
+        # terminates the process before Python propagates the exception).
+        import omni.kit.app
+        code = exc.code if isinstance(exc, SystemExit) and isinstance(exc.code, int) else 1
+        omni.kit.app.get_app().post_quit(code)
+        raise
     finally:
         if env is not None: env.close()
         app.close()

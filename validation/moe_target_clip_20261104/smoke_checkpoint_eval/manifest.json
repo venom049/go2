@@ -1,0 +1,138 @@
+{
+  "format": "moe_two_steps_wall_evaluation_v1",
+  "started_unix": 1793795863.8897202,
+  "guard_mode": "audit",
+  "target_mode_requested": "auto",
+  "target_command_scope": "Raw affine request and post-filter command proposal at every control call. Strict rejection may prevent its physical application; physical guard evidence is separate.",
+  "strict_guard_scope": "Joint/target/tracking/requested and applied torque stop at first observed violating pre/post boundary. No damping continuation, communication, factory handoff, 45-degree attitude or two-second runtime gate is simulated; not full real-controller equivalence.",
+  "device": "cpu",
+  "dtype": "float32",
+  "tf32_enabled": false,
+  "scenario": {
+    "width_m": 0.9,
+    "step_height_m": 0.15,
+    "first_tread_depth_m": 0.3,
+    "steps": 2,
+    "top_platform_depth_m": 0.9,
+    "wall_front_x_m": 1.2,
+    "front_foot_edge_initial_distance_m": 0.5,
+    "timeout_s": 15.0,
+    "command_forward_m_s": 0.6,
+    "command_value_is_not_measured_speed": true,
+    "physics_dt_s": 0.002,
+    "control_dt_s": 0.02,
+    "motor_torque_mode": "physical clipping",
+    "external_platform_stop": true
+  },
+  "samples": [
+    {
+      "kind": "nominal",
+      "seed": null,
+      "episode": 0,
+      "y_m": 0.0,
+      "yaw_rad": 0.0
+    }
+  ],
+  "profile": {
+    "profile_id": "unitree_go2_2ded279_hip48",
+    "source_path": "/home/venom/\u6587\u6863/ChatGPT/\u673a\u5668\u72d7/validation/official_joint_limits_20261104/limit_profile.json",
+    "source_sha256": "bd3ea1830ca2ff7d8eb6eda1fb0b5077e33192a1ee663f2c16f96195d948c8af",
+    "joint_names": [
+      "FL_hip",
+      "FL_thigh",
+      "FL_calf",
+      "FR_hip",
+      "FR_thigh",
+      "FR_calf",
+      "RL_hip",
+      "RL_thigh",
+      "RL_calf",
+      "RR_hip",
+      "RR_thigh",
+      "RR_calf"
+    ],
+    "velocity_limits_rad_s": [
+      30.100000381469727,
+      30.100000381469727,
+      15.699999809265137,
+      30.100000381469727,
+      30.100000381469727,
+      15.699999809265137,
+      30.100000381469727,
+      30.100000381469727,
+      15.699999809265137,
+      30.100000381469727,
+      30.100000381469727,
+      15.699999809265137
+    ],
+    "position_lower_rad": [
+      -0.8377580642700195,
+      -1.5707999467849731,
+      -2.7227001190185547,
+      -0.8377580642700195,
+      -1.5707999467849731,
+      -2.7227001190185547,
+      -0.8377580642700195,
+      -0.5235999822616577,
+      -2.7227001190185547,
+      -0.8377580642700195,
+      -0.5235999822616577,
+      -2.7227001190185547
+    ],
+    "position_upper_rad": [
+      0.8377580642700195,
+      3.4907000064849854,
+      -0.8377599716186523,
+      0.8377580642700195,
+      3.4907000064849854,
+      -0.8377599716186523,
+      0.8377580642700195,
+      4.537899971008301,
+      -0.8377599716186523,
+      0.8377580642700195,
+      4.537899971008301,
+      -0.8377599716186523
+    ],
+    "effort_limits_nm": [
+      23.7,
+      23.7,
+      45.43,
+      23.7,
+      23.7,
+      45.43,
+      23.7,
+      23.7,
+      45.43,
+      23.7,
+      23.7,
+      45.43
+    ],
+    "tracking_error_limit_rad": 0.8999999761581421,
+    "q_dq_boundary_semantics": "SDK float32 boundary, strict outside comparison",
+    "scope": "application joint checks; not firmware readback or permission to actuate"
+  },
+  "actors": [
+    {
+      "label": "smoke5",
+      "path": "/home/venom/\u6587\u6863/ChatGPT/\u673a\u5668\u72d7/validation/moe_target_clip_20261104/smoke_cpu_128_w8/model_5.pt",
+      "sha256": "3a9f85c71c4042229a190ce4f4b3920e5bc582dc6493fde2505bb11891e5a1cb"
+    }
+  ],
+  "gait_scope": "Successful first episodes only, including approach and 2-second platform stop; no resets counted",
+  "climb_speed_definition": "0.30 m / interpolated base crossing time from first riser x=0 to platform x=0.30",
+  "hip_definition": "Mean positive outward component: FL/RL +q_hip, FR/RR -q_hip, average across four joints",
+  "slip_definition": "Contact-foot horizontal-speed RMS; 2 ms endpoint finite differences, contact-time weighted",
+  "guard_aggregation": "Integer count sums / sample-count sums; peaks are maxima across every seed and failure",
+  "real_robot_driven": false,
+  "source_sha256": {
+    "scripts/evaluate_moe_finetune.py": "7817a1a14e92241a18dc369d06f328bab7cf6262af19b7380fbe01b6e744c1d4",
+    "scripts/train_moe_stairs.py": "3fec91e0885edfd952dcc89eb161cc9f9bcd135b8ba8c4b57aa90719ccf44e37",
+    "go2_him/moe_stair_env.py": "434be82506009b5a5af42dc2c1f599391ccceda6b87889afce40bf501d682f96",
+    "go2_him/moe_stair_rewards.py": "389ee0100bfa8bfba2bb0eb6c93033344dfbb73bcca2ec6d9207c91981978003",
+    "go2_him/official_guard.py": "8c0befbfce5bfb18182f9109a806aaa5e3bf2f22fc6e4d3429658604893583a9",
+    "go2_him/moe_cts_actor.py": "5e80517a3e0d6a97d604d142c280e23f22df7e05a5608599bb6b92c6a03535ad",
+    "go2_him/calf_speed.py": "fe91d20997304aef487833680acf85dd0f106e3c27000dd188fbe33a75ca6a83",
+    "go2_him/joint_recovery.py": "2fe8df092968b45db020b0a2fab58c139badc39aed41956f7dbbd160027997b0",
+    "go2_him/target_clip.py": "3ffb902a8303aac93a74b8cfe8c7221d660effd3780c992c89cc62aa04b46ae7"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "user_hardware": "Go2 EDU",
+  "extra_payload": "none, confirmed by user",
+  "robot_source": "https://github.com/unitreerobotics/unitree_mujoco",
+  "robot_commit": "ae6a8403e272733e9996ef59990880330496177f",
+  "model_xml_sha256": "2014a3d76e30f17ab9447d8a67bd015291f74fa4d71ae30d005f1a32bd693d4b",
+  "reference_commit": "0830f3e3582acd5c9b3a5c09186d4f028f54d9dd",
+  "reference_files": {
+    "go2_env_stair.py": "b70649110eeb1ba246fd81872620b367cc2b07a6c80c54540ecb2cf65870909f",
+    "go2_train_stair.py": "6b2c1a2a2f913477841827dd3e281e71f1e76c1a0ad043a913a8b70a225069b6"
+  },
+  "actor_initialization": "same original converted RoboGauge MoE-CTS actor as previous run; fresh asymmetric critic and optimizer",
+  "updates": 1000,
+  "num_envs": 128,
+  "workers": 32,
+  "control_dt": 0.02,
+  "physics_dt": 0.002,
+  "new_critic_input": 370,
+  "actor_input": 225,
+  "actor_output": 12,
+  "nominal_kp": 20,
+  "nominal_kd": 0.5,
+  "source_archive_sha256": "99408ad211c36498544776e990ce2ae4b6e90e36b4f8fa20f079941e55912af4",
+  "no_hardware_io": true,
+  "official_model_note": "official generic Go2 XML; no separately calibrated EDU inertial model; preserve official physical joint and actuator limits; SDK target limits remain narrower at hips",
+  "evaluation_plan": "same official model and deterministic samples for previous ONNX and new ONNX: 129 nominal, 129 level .5, 129 level 1; new nominal strict 129; evaluation seeds 442/443; additionally 129 matched light level .15 episodes per policy, predeclared at update 323 before final weights existed",
+  "local_checks": {
+    "unit_tests_passed": 6,
+    "training_smoke_updates": 4
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "requested_repository": "https://github.com/wxz-521/go2-stairs-sim2real",
+  "requested_repository_commit": "530a10fee4232317aef4343f2b85b6bad9cf7905",
+  "model_dependency_declared_in": "mujoco_sim/setup.sh",
+  "model_repository": "https://github.com/unitreerobotics/unitree_mujoco.git",
+  "model_commit": "ae6a8403e272733e9996ef59990880330496177f",
+  "model_subdirectory": "unitree_robots/go2",
+  "model_content_sha256": "f8ff4b63d3ccec08a4cc4627ac44d44eaa279fb3a0d55ef3756f4896a36127aa",
+  "total_mass_kg": 15.206408,
+  "source_sha256": {
+    "mjcf/assets/base_0.obj": "8cdc53719002a5ee737d867904e534a6d6fa930b616bdcc1b3131e577d4e46c0",
+    "mjcf/assets/base_1.obj": "39d2f4724ff64dd5a0640c308fd98902a2946660a8d033ec8dbf368fd5af0dd6",
+    "mjcf/assets/base_2.obj": "29cae463f95d678e4ede863c36c9b19b0d356b8340412add10670d70bdcc3095",
+    "mjcf/assets/base_3.obj": "f51ba43bf300e68957a0c1aa83eaf3e4926f4ac7e64a0d6c33ae5d21fcbcf5f6",
+    "mjcf/assets/base_4.obj": "49ddec0129546e5dd2075d5beacf7f207baa2860aeff7626818e64d2efbf3821",
+    "mjcf/assets/calf_0.obj": "4a818cd563c5b7e2a271504442d05fd777d38cbaa028d4a10ad29c9f87bb355e",
+    "mjcf/assets/calf_1.obj": "51950c3a153ae3208592df86ea11c9d6756f8f645ebca5caf6910c61aeb03817",
+    "mjcf/assets/calf_mirror_0.obj": "6dc0406207a1c08a5953fd5962aca1a270fd06593d30d100205e05c1b32d4af2",
+    "mjcf/assets/calf_mirror_1.obj": "f84f5af90b914633165beb3a5493ee499169144c5797dcf04c6eb5842f74b31a",
+    "mjcf/assets/foot.obj": "df9e78a7c0110d02557439010f2a5f11f0ec4fd907b32704145dbd6aa7affc0b",
+    "mjcf/assets/hip_0.obj": "cc29932ab4d251ce3f72389ec4c1f757e44eee138b87e772b648c2bc76b506cd",
+    "mjcf/assets/hip_1.obj": "3fd5bd9b2ef6abe622c0739d3c67eaa1679b19b47132951972c4892a779ea7cf",
+    "mjcf/assets/thigh_0.obj": "bb3edfe6a7b04f4f4dff1ce7b05d426ddce941e276cc6372fb542055893c71ec",
+    "mjcf/assets/thigh_1.obj": "3a631822f9f7d2114b1b79dcdff5abf95103630abb7d91d1f3b8b18117132ed2",
+    "mjcf/assets/thigh_mirror_0.obj": "07abaedce761f1dd48647384ac14ba1959276bc78d5a2a62051e8f1c6093933b",
+    "mjcf/assets/thigh_mirror_1.obj": "db984a3e983eabbc9b38183427cca9ab0bb3bdb049f9eab030e06edda36579d6",
+    "mjcf/go2.xml": "2014a3d76e30f17ab9447d8a67bd015291f74fa4d71ae30d005f1a32bd693d4b"
+  },
+  "urdf_sha256": "41d7c0fc5b9a9b34289da5ad041ed94b9c561f7d032b4cd17987929d68590a10",
+  "conversion": [
+    "Original MJCF and all 16 OBJ meshes are copied byte-for-byte; no policy/checkpoint is used.",
+    "MJCF quaternion-rotated diagonal inertias become full URDF inertia tensors in link axes.",
+    "Primitive dimensions, collision poses, visual poses, joint axes/ranges and actuator effort limits are preserved.",
+    "Each existing empty fixed foot body receives its calf's foot collision and visual geometry.",
+    "Each foot is assigned 0.01 kg and solid-sphere inertia; calf mass, COM and inertia are adjusted to exactly preserve combined rigid-body inertia.",
+    "MJCF base world translation (z=0.445), freejoint, sensors and home keyframe are omitted; the simulator supplies the floating root state.",
+    "URDF joint velocity limit is 30 rad/s, an explicit training assumption absent from source MJCF.",
+    "MJCF joint damping=0.1 and frictionloss=0.2 are copied to URDF dynamics; actuator config may override them.",
+    "MJCF armature=0.01 is not representable in standard URDF; configure armature=0.01 in the simulator actuator.",
+    "MuJoCo friction, contact dimensionality, solver and margin parameters have no exact URDF/PhysX equivalent; configure PhysX contact material and solver separately.",
+    "Keep fixed foot bodies when importing (merge_fixed_joints=False) for isolated foot contact observations."
+  ]
+}

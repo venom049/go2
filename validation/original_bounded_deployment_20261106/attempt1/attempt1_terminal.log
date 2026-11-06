@@ -1,0 +1,43 @@
+Script started on 2026-11-06 11:16:49+08:00 [TERM="dumb" TTY="/dev/pts/0" COLUMNS="80" LINES="24"]
+受保护交接：H 请求交接，等待 STAND_LOCKED；1 选择 0.6 m/s，再按 G 启动策略。
+策略最多运行 2 秒。X / 空格 / 0 锁存阻尼；固定阻尼不能保证站立。现场支撑须保持有效。
+Logs: /home/unitree/go2-original-bounded-20261106/logs/20261106T111649-4363
+[2026-11-06 11:16:51.053] [info] MOTION_BRIDGE {"ok": true, "operation": "check", "release_attempted": false, "code": 0, "mode": {"form": "0", "name": "mcf"}}
+
+[2026-11-06 11:16:51.162] [info] Preflight: finite in-range pose and advancing tick; this is not permission for unprotected locomotion.
+[2026-11-06 11:16:51.263] [info] Initializing State_Passive ...
+[2026-11-06 11:16:51.264] [info] Initializing State_FixStand ...
+[2026-11-06 11:16:51.264] [info] Initializing State_Stairs ...
+[2026-11-06 11:16:51.384] [info] Initializing State_LieDown ...
+[2026-11-06 11:16:51.391] [info] HANDOFF_PRELOADED: no motor commands sent. H requests one mcf release and immediate hold; X/space/0 cancels. 45s deadline. Fall support remains required.
+[2026-11-06 11:17:07.708] [info] MOTION_BRIDGE {"ok": true, "operation": "release", "release_attempted": true, "release_code": 0, "check_code": 0, "mode": {"form": "0", "name": ""}, "elapsed_ms": 139.82750299987856}
+
+[2026-11-06 11:17:07.709] [info] HANDOFF_RELEASE elapsed_ms=154.1
+[2026-11-06 11:17:07.711] [info] FSM: Start FixStand
+[2026-11-06 11:17:07.711] [info] HANDOFF_HOLD_STARTED elapsed_since_release_ms=156.7; awaiting measured STAND_LOCKED. Software timing is not a hard watchdog or delivery acknowledgment.
+[2026-11-06 11:17:07.712] [info] First test: only [1] arms 0.6 m/s before G (current selection 0.60 m/s).
+FIRST_TEST: F=FixStand; after settling press 1 to select 0.6, then G.
+Stairs has a 2-second software deadline checked at each publication boundary.
+X / Space / 0 or remote stop transition requests latched fixed damping.
+Native blocking/network failure defeats software timing; hardware stop remains essential.
+No automatic LieDown, rearm or factory-mode restoration. Ctrl-C exits after damping.
+[2026-11-06 11:17:10.463] [info] STAND_LOCKED: measured joint error <=0.30 rad, speed <=0.8 rad/s, tilt <=0.25 rad and gyro <=0.35 rad/s for 0.75s. No contact guarantee.
+[2026-11-06 11:17:27.012] [info] First-test speed armed: vx=0.60 m/s; G starts the software-limited test.
+[2026-11-06 11:17:37.048] [info] FIRST_TEST state FixStand -> Stairs
+[2026-11-06 11:17:38.094] [warning] FIRST_TEST_LATCHED reason=tracking_error_above_0.9rad
+[2026-11-06 11:17:38.096] [error] GUARD_REJECTION reason=tracking_error_above_0.9rad state=Stairs tick=1678378 accepted_stairs_publications=789
+[2026-11-06 11:17:38.096] [error] GUARD_JOINT joint=FR_hip q=0.04792192578315735 dq=-0.03875523805618286 target_q=0.16805478930473328 target_dq=0.0 kp=20.0 kd=0.5 tau_ff=0.0 estimated_nm=2.42203488945961 limit_nm=23.7 dq_limit_rad_s=30.100000381469727 q_lower_rad=-0.8377580642700195 q_upper_rad=0.8377580642700195
+[2026-11-06 11:17:38.096] [error] GUARD_JOINT joint=FR_thigh q=0.8949575424194336 dq=1.2983005046844482 target_q=0.3438163697719574 target_dq=0.0 kp=20.0 kd=0.5 tau_ff=0.0 estimated_nm=-11.671973705291748 limit_nm=23.7 dq_limit_rad_s=30.100000381469727 q_lower_rad=-1.5707999467849731 q_upper_rad=3.4907000064849854
+[2026-11-06 11:17:38.096] [error] GUARD_JOINT joint=FR_calf q=-1.406097173690796 dq=-0.09301257133483887 target_q=-0.8377599716186523 target_dq=0.0 kp=20.0 kd=0.5 tau_ff=0.0 estimated_nm=11.41325032711029 limit_nm=45.43 dq_limit_rad_s=15.699999809265137 q_lower_rad=-2.7227001190185547 q_upper_rad=-0.8377599716186523
+[2026-11-06 11:17:38.096] [error] GUARD_JOINT joint=FL_hip q=0.06779879331588745 dq=0.034879714250564575 target_q=0.2840840518474579 target_dq=0.0 kp=20.0 kd=0.5 tau_ff=0.0 estimated_nm=4.308265313506126 limit_nm=23.7 dq_limit_rad_s=30.100000381469727 q_lower_rad=-0.8377580642700195 q_upper_rad=0.8377580642700195
+[2026-11-06 11:17:38.096] [error] GUARD_JOINT joint=FL_thigh q=0.8913242816925049 dq=2.6896135807037354 target_q=1.6455798149108887 target_dq=0.0 kp=20.0 kd=0.5 tau_ff=0.0 estimated_nm=13.740303874015808 limit_nm=23.7 dq_limit_rad_s=30.100000381469727 q_lower_rad=-1.5707999467849731 q_upper_rad=3.4907000064849854
+[2026-11-06 11:17:38.096] [error] GUARD_JOINT joint=FL_calf q=-1.6523088216781616 dq=-2.3697986602783203 target_q=-2.714754819869995 target_dq=0.0 kp=20.0 kd=0.5 tau_ff=0.0 estimated_nm=-20.06402063369751 limit_nm=45.43 dq_limit_rad_s=15.699999809265137 q_lower_rad=-2.7227001190185547 q_upper_rad=-0.8377599716186523
+[2026-11-06 11:17:38.096] [error] GUARD_JOINT joint=RR_hip q=-0.05372488498687744 dq=-1.201412320137024 target_q=-0.2576044797897339 target_dq=0.0 kp=20.0 kd=0.5 tau_ff=0.0 estimated_nm=-3.476885735988617 limit_nm=23.7 dq_limit_rad_s=30.100000381469727 q_lower_rad=-0.8377580642700195 q_upper_rad=0.8377580642700195
+[2026-11-06 11:17:38.096] [error] GUARD_JOINT joint=RR_thigh q=0.9682842493057251 dq=-2.790377140045166 target_q=1.0398919582366943 target_dq=0.0 kp=20.0 kd=0.5 tau_ff=0.0 estimated_nm=2.8273427486419678 limit_nm=23.7 dq_limit_rad_s=30.100000381469727 q_lower_rad=-0.5235999822616577 q_upper_rad=4.537899971008301
+[2026-11-06 11:17:38.096] [error] GUARD_JOINT joint=RR_calf q=-1.4916377067565918 dq=-5.655568599700928 target_q=-1.768388271331787 target_dq=0.0 kp=20.0 kd=0.5 tau_ff=0.0 estimated_nm=-2.7072269916534424 limit_nm=45.43 dq_limit_rad_s=15.699999809265137 q_lower_rad=-2.7227001190185547 q_upper_rad=-0.8377599716186523
+[2026-11-06 11:17:38.096] [error] GUARD_JOINT joint=RL_hip q=0.03304535150527954 dq=-0.3565481901168823 target_q=-0.5494872331619263 target_dq=0.0 kp=20.0 kd=0.5 tau_ff=0.0 estimated_nm=-11.472377598285675 limit_nm=23.7 dq_limit_rad_s=30.100000381469727 q_lower_rad=-0.8377580642700195 q_upper_rad=0.8377580642700195
+[2026-11-06 11:17:38.096] [error] GUARD_JOINT joint=RL_thigh q=0.9831504821777344 dq=1.0812711715698242 target_q=1.1846274137496948 target_dq=0.0 kp=20.0 kd=0.5 tau_ff=0.0 estimated_nm=3.488903045654297 limit_nm=23.7 dq_limit_rad_s=30.100000381469727 q_lower_rad=-0.5235999822616577 q_upper_rad=4.537899971008301
+[2026-11-06 11:17:38.097] [error] GUARD_JOINT joint=RL_calf q=-1.3188979625701904 dq=0.034374210983514786 target_q=-0.8377599716186523 target_dq=0.0 kp=20.0 kd=0.5 tau_ff=0.0 estimated_nm=9.605572713539004 limit_nm=45.43 dq_limit_rad_s=15.699999809265137 q_lower_rad=-2.7227001190185547 q_upper_rad=-0.8377599716186523
+[2026-11-06 11:18:27.611] [warning] FIRST_TEST_EXIT damping_requests=120 over 250ms; DDS delivery/motor response is not acknowledged; no factory-mode restore.
+
+Script done on 2026-11-06 11:18:27+08:00 [COMMAND_EXIT_CODE="0"]

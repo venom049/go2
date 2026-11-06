@@ -70,6 +70,7 @@ class HimlocoManagerBasedRLEnv(ManagerBasedRLEnv):
                 self.sim.render()
             # update buffers at sim dt
             self.scene.update(dt=self.physics_dt)
+            self._post_physics_substep()
 
         # -- get observations before reset
         self.obs_buf_before_reset = self.observation_manager.compute()
@@ -120,6 +121,10 @@ class HimlocoManagerBasedRLEnv(ManagerBasedRLEnv):
 
         # return observations, rewards, resets and extras
         return self.obs_buf, self.obs_buf_before_reset, self.reward_buf, self.reset_terminated, self.reset_time_outs, self.extras
+
+    def _post_physics_substep(self):
+        """Optional instrumentation after integration, before rewards or reset."""
+        pass
 
     @property
     def pre_pre_action(self) -> torch.Tensor:

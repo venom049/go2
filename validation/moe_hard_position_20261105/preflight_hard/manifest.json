@@ -1,0 +1,362 @@
+{
+  "format": "moe1000_target_clip_abc_v1",
+  "started_unix": 1793844356.0989285,
+  "stair_steps": 6,
+  "environment_contract": {
+    "actual_position_constraint": {
+      "mode": "hard",
+      "version": 1,
+      "kind": "mass-metric displacement QP and inelastic boundary impact",
+      "joint_names": [
+        "FL_hip",
+        "FL_thigh",
+        "FL_calf",
+        "FR_hip",
+        "FR_thigh",
+        "FR_calf",
+        "RL_hip",
+        "RL_thigh",
+        "RL_calf",
+        "RR_hip",
+        "RR_thigh",
+        "RR_calf"
+      ],
+      "lower_rad": [
+        -0.8377580642700195,
+        -1.5707999467849731,
+        -2.7227001190185547,
+        -0.8377580642700195,
+        -1.5707999467849731,
+        -2.7227001190185547,
+        -0.8377580642700195,
+        -0.5235999822616577,
+        -2.7227001190185547,
+        -0.8377580642700195,
+        -0.5235999822616577,
+        -2.7227001190185547
+      ],
+      "upper_rad": [
+        0.8377580642700195,
+        3.4907000064849854,
+        -0.8377599716186523,
+        0.8377580642700195,
+        3.4907000064849854,
+        -0.8377599716186523,
+        0.8377580642700195,
+        4.537899971008301,
+        -0.8377599716186523,
+        0.8377580642700195,
+        4.537899971008301,
+        -0.8377599716186523
+      ],
+      "profile_sha256": "bd3ea1830ca2ff7d8eb6eda1fb0b5077e33192a1ee663f2c16f96195d948c8af",
+      "restitution": 0.0,
+      "rounding_margin_rad": 1e-10,
+      "integrator": "Euler only",
+      "scope": "Every accepted 2 ms endpoint and its linear hinge path, including settling",
+      "failure": "restore prior integration state and raise; never silently accept invalid q",
+      "predictor_audit": true,
+      "motor_effort_and_stop_impulse_separate": true,
+      "physical_fidelity": "Ideal joint stops; split from soft contact solve; not calibrated hardware or firmware"
+    },
+    "steps": 6,
+    "height": 0.15,
+    "tread": 0.3,
+    "width": 0.9,
+    "platform": 0.9,
+    "start_distance": 0.5,
+    "platform_start": 1.5,
+    "platform_end": 2.4,
+    "top_height": 0.8999999999999999,
+    "wall_front": 2.4,
+    "wall_thickness": 0.1,
+    "wall_width": 3.0,
+    "wall_height": 2.0,
+    "height_curriculum": {
+      "evaluation_height": 0.15,
+      "training_frontier_min": 0.1,
+      "training_frontier_max": 0.15,
+      "multipliers": [
+        1.0,
+        0.83,
+        0.67
+      ],
+      "probabilities": [
+        0.6,
+        0.2,
+        0.2
+      ],
+      "rule": "Existing frontier schedule and per-reset height sampling; every riser has the same sampled height."
+    },
+    "physics_dt": 0.002,
+    "control_dt": 0.02,
+    "settle_seconds": 2.0,
+    "evaluation_vx": 0.6,
+    "training_vx_range": [
+      0.5,
+      0.6
+    ],
+    "episode_timeout_seconds": 15.0,
+    "stable_stop_seconds": 2.0,
+    "platform_success": "All feet inside the upper landing with 3 mm edge margin; foot surface clearance [-.025,.20] m; at least two supporting feet in .1 s; base clearance [.18,.60] m and tilt <45 deg.",
+    "stable_stop": "Platform success plus horizontal speed <.05 m/s, absolute vertical speed <.05 m/s, every world angular speed <.1 rad/s and tilt <15 deg for 2 s."
+  },
+  "source_checkpoint": "/home/venom/\u6587\u6863/ChatGPT/\u673a\u5668\u72d7/validation/moe_finetune_20261104/formal_run/training/model_1000.pt",
+  "source_checkpoint_sha256": "3bad0efcc2e751e834bea1e85a5914c410a2a1ff1a1b80193426805f69e4881f",
+  "source_sha256": {
+    "scripts/experiment_moe_target_clip.py": "7900aa5b5968af9a7423174d43240e3cb64ea021d299bd0ab2bc7194945a4920",
+    "scripts/evaluate_moe_finetune.py": "495ec65f588edd0d7eddf2be15549a3b3a3d0e7e234211ea9e20d6d25462ef03",
+    "scripts/train_moe_stairs.py": "5e5cdf6bfd4a3a41f6c71a63ee769e027920fbb889bc96407c41fd1a15b06a97",
+    "scripts/test_robogauge_stairs.py": "5de98d503ccdcc70129414a91e16e684fe7c374ef1c3958e4f27cdd87c915b5e",
+    "scripts/test_robogauge_two_steps_wall.py": "6058c424c960f89025d01b1cbced182ce89668c5ff69c1f26fa9679220950385",
+    "go2_him/moe_stair_env.py": "e85188dd73dce70c31b8127b71b3af9ab4a51b0bed97a613a1794192a449d877",
+    "go2_him/moe_stair_rewards.py": "389ee0100bfa8bfba2bb0eb6c93033344dfbb73bcca2ec6d9207c91981978003",
+    "go2_him/official_guard.py": "8c0befbfce5bfb18182f9109a806aaa5e3bf2f22fc6e4d3429658604893583a9",
+    "go2_him/moe_cts_actor.py": "5e80517a3e0d6a97d604d142c280e23f22df7e05a5608599bb6b92c6a03535ad",
+    "go2_him/calf_speed.py": "fe91d20997304aef487833680acf85dd0f106e3c27000dd188fbe33a75ca6a83",
+    "go2_him/joint_recovery.py": "2fe8df092968b45db020b0a2fab58c139badc39aed41956f7dbbd160027997b0",
+    "go2_him/hard_joint_limits.py": "d9dc780b067d4cd19c602cbf6a249260dcf3efacc25139a26cab88e3084b1836",
+    "validation/official_joint_limits_20261104/limit_profile.json": "bd3ea1830ca2ff7d8eb6eda1fb0b5077e33192a1ee663f2c16f96195d948c8af"
+  },
+  "profile": {
+    "profile_id": "unitree_go2_2ded279_hip48",
+    "source_path": "/home/venom/\u6587\u6863/ChatGPT/\u673a\u5668\u72d7/validation/official_joint_limits_20261104/limit_profile.json",
+    "source_sha256": "bd3ea1830ca2ff7d8eb6eda1fb0b5077e33192a1ee663f2c16f96195d948c8af",
+    "joint_names": [
+      "FL_hip",
+      "FL_thigh",
+      "FL_calf",
+      "FR_hip",
+      "FR_thigh",
+      "FR_calf",
+      "RL_hip",
+      "RL_thigh",
+      "RL_calf",
+      "RR_hip",
+      "RR_thigh",
+      "RR_calf"
+    ],
+    "velocity_limits_rad_s": [
+      30.100000381469727,
+      30.100000381469727,
+      15.699999809265137,
+      30.100000381469727,
+      30.100000381469727,
+      15.699999809265137,
+      30.100000381469727,
+      30.100000381469727,
+      15.699999809265137,
+      30.100000381469727,
+      30.100000381469727,
+      15.699999809265137
+    ],
+    "position_lower_rad": [
+      -0.8377580642700195,
+      -1.5707999467849731,
+      -2.7227001190185547,
+      -0.8377580642700195,
+      -1.5707999467849731,
+      -2.7227001190185547,
+      -0.8377580642700195,
+      -0.5235999822616577,
+      -2.7227001190185547,
+      -0.8377580642700195,
+      -0.5235999822616577,
+      -2.7227001190185547
+    ],
+    "position_upper_rad": [
+      0.8377580642700195,
+      3.4907000064849854,
+      -0.8377599716186523,
+      0.8377580642700195,
+      3.4907000064849854,
+      -0.8377599716186523,
+      0.8377580642700195,
+      4.537899971008301,
+      -0.8377599716186523,
+      0.8377580642700195,
+      4.537899971008301,
+      -0.8377599716186523
+    ],
+    "effort_limits_nm": [
+      23.7,
+      23.7,
+      45.43,
+      23.7,
+      23.7,
+      45.43,
+      23.7,
+      23.7,
+      45.43,
+      23.7,
+      23.7,
+      45.43
+    ],
+    "tracking_error_limit_rad": 0.8999999761581421,
+    "q_dq_boundary_semantics": "SDK float32 boundary, strict outside comparison",
+    "scope": "application joint checks; not firmware readback or permission to actuate"
+  },
+  "self_checks": {
+    "passed": true,
+    "checks": [
+      "zero action preserves default pose",
+      "12 positive/negative axes",
+      "front/rear thigh limit asymmetry",
+      "left/right hip default signs",
+      "front/rear thigh defaults",
+      "102 random/extreme actions remain inside exact profile bounds after float32 inverse mapping"
+    ]
+  },
+  "device": "cpu",
+  "dtype": "float32",
+  "samples": [
+    {
+      "kind": "nominal",
+      "seed": null,
+      "episode": 0,
+      "y_m": 0.0,
+      "yaw_rad": 0.0
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 0,
+      "y_m": 0.010958241942238534,
+      "yaw_rad": -0.004267089881131076
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 1,
+      "y_m": 0.0143439167964553,
+      "yaw_rad": 0.013778887781030986
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 2,
+      "y_m": -0.016232906084494018,
+      "yaw_rad": 0.03320470412855853
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 3,
+      "y_m": 0.01044558807961412,
+      "yaw_rad": 0.019971055998052135
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 4,
+      "y_m": -0.014875454692978164,
+      "yaw_rad": -0.003463714956045201
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 5,
+      "y_m": -0.0051680790306967515,
+      "yaw_rad": 0.02979381675057994
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 6,
+      "y_m": 0.0057546048032265824,
+      "yaw_rad": 0.02253301140249843
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 7,
+      "y_m": -0.0022634320469067555,
+      "yaw_rad": -0.019042329507215704
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 0,
+      "y_m": 0.0060919705080364275,
+      "yaw_rad": -0.031850490925380205
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 1,
+      "y_m": -0.019198816525031324,
+      "yaw_rad": 0.023681505716041634
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 2,
+      "y_m": 0.0034857219035223375,
+      "yaw_rad": -0.01921920058586637
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 3,
+      "y_m": 0.01007169087274462,
+      "yaw_rad": -0.016497396808619683
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 4,
+      "y_m": -0.0032008836113492783,
+      "yaw_rad": -0.0034186541078621777
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 5,
+      "y_m": 0.018212583168849505,
+      "yaw_rad": 0.027359897885222764
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 6,
+      "y_m": -0.00885467897924226,
+      "yaw_rad": -0.015461222735964848
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 7,
+      "y_m": -0.003120017006109487,
+      "yaw_rad": -0.03462190613190122
+    }
+  ],
+  "arms": {
+    "A_original": "Original targets; raw network-action history",
+    "B_clip_raw_history": "Profile target clipping; raw network-action history",
+    "C_clip_sent_history": "Profile target clipping; float32 inverse-mapped sent-action history"
+  },
+  "guard_modes": [
+    "audit",
+    "strict"
+  ],
+  "real_robot_driven": false,
+  "model_weights_modified": false,
+  "scenario": {
+    "steps": 6,
+    "height_m": 0.15,
+    "tread_m": 0.3,
+    "width_m": 0.9,
+    "platform_m": 0.9,
+    "front_foot_edge_distance_m": 0.5,
+    "vx_command_m_s": 0.6,
+    "physics_dt_s": 0.002,
+    "control_dt_s": 0.02,
+    "timeout_s": 15.0
+  },
+  "history_reset": "All arms keep existing zero last-action reset; measured real-handoff history is not simulated",
+  "reward_semantics": "A/B smoothness uses raw actions; C uses forwarded executed actions; return is not an across-arm performance metric",
+  "target_metric_scope": "One sample per policy command attempt, including rejected strict proposals. Sent means target forwarded to environment, not proof it was applied; guard reports acceptance and physical evidence separately.",
+  "guard_scope": "Unchanged official joint/target/tracking/torque audit at every pre/post physics boundary; strict rejects first violation without damping continuation. No communication, handoff, two-second watchdog or full real-controller equivalence.",
+  "success_scope": "Existing full-platform ascent plus two continuous seconds stable stop; external simulation geometry supplies stop command",
+  "slew_scope": "Diagnostic finite difference only; no target rate limit, first command compared with default target"
+}

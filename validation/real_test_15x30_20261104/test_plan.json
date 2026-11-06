@@ -1,0 +1,64 @@
+{
+  "status": "simulation_recheck_completed_physical_test_not_started",
+  "server_evaluation_path": "/root/go2-himloco/validation/real_test_15x30_20261104/evaluation_attempt2",
+  "first_attempt_status": "initialization_failed_before_rollout_config_copy_compatibility_fixed",
+  "initial_physics_velocity_readback_verified_environments": 64,
+  "physical_test_started": false,
+  "motor_commands_sent": false,
+  "physical_test_decision": "not_started_due_to_failed_calibrated_simulation",
+  "decision_evidence": {
+    "guard1000_completed_conditions": 4,
+    "guard1000_successes": 0,
+    "guard1000_episodes": 256,
+    "guard1000_measured_velocity_peak_rad_s": 15.990626335144043,
+    "guard1000_requested_torque_peak_limit_ratio": 2.734034003598692,
+    "all_four_conditions_joint_and_torque_acceptance_passed": false,
+    "remaining_comparisons_do_not_authorize_automatic_model_replacement": true
+  },
+  "scene": {
+    "risers": 2,
+    "height_m": 0.15,
+    "tread_m": 0.3,
+    "flight_width_m": 0.6,
+    "front_feet_to_first_riser_m": 0.5,
+    "upper_landing_geometry": null
+  },
+  "candidate_models": [
+    "reference_torque1000",
+    "guard500",
+    "guard1000"
+  ],
+  "evaluation_commands_m_s": [
+    0.45,
+    0.6
+  ],
+  "seeds": [
+    42,
+    43
+  ],
+  "episodes_per_condition": 64,
+  "controller": "stairs",
+  "live_protection_changed": false,
+  "audit_velocity_threshold_rad_s": 13.0,
+  "calibrated_urdf_velocity_limits_rad_s": {
+    "hip": 30.1,
+    "thigh": 30.1,
+    "calf": 15.7
+  },
+  "firmware_limit_readback": false,
+  "motion_prerequisites": [
+    "complete calibrated relevant-scene evaluations with existing guard limits satisfied",
+    "validated independent bounded controller",
+    "fresh pose/held-model checks and controlled standing handoff",
+    "confirmed approach distance and landing geometry"
+  ],
+  "notes": [
+    "Original factory controller remains active.",
+    "No training or reward changes.",
+    "Simulation caps are model specifications, not a physical safety certificate.",
+    "Current installed controller ends in damping, not automatic stable stand."
+  ],
+  "simulation_recheck_completed": true,
+  "completed_conditions": 12,
+  "decision_path": "/home/venom/\u6587\u6863/ChatGPT/\u673a\u5668\u72d7/validation/real_test_15x30_20261104/decision.json"
+}

@@ -1,0 +1,27 @@
+{
+  "scope": "Independent copies only; source originals unchanged; no network or robot interaction",
+  "candidate_directory": "/home/unitree/go2-stairs-torque1000-20261103/legacy_candidate/v0",
+  "rpc_socket": "/home/unitree/go2-stairs-torque1000-test-20261103/validation/motion_rpc.sock",
+  "rpc_socket_utf8_bytes": 76,
+  "unix_sun_path_capacity": 108,
+  "robot_network_interface": "eth1",
+  "guard_thresholds_changed": false,
+  "handoff_flow_changed": false,
+  "software_deadlines_changed": false,
+  "files": [
+    {
+      "source": "/home/venom/\u6587\u6863/ChatGPT/\u673a\u5668\u72d7/deploy/handoff_overlay/robots/go2/main.cpp",
+      "destination": "/home/venom/\u6587\u6863/ChatGPT/\u673a\u5668\u72d7/deploy/torque1000_test/main.cpp",
+      "source_sha256": "f421b67e12cc2e7fafa90c0ac1760ba084c98a6eb10db36503fb0c6fd79daa4b",
+      "destination_sha256": "f2f6783a6225885287c8bbbaa7de5ef7987df501cb76d817e784634b60ab8d89",
+      "diff": "--- deploy/handoff_overlay/robots/go2/main.cpp\n+++ deploy/torque1000_test/main.cpp\n@@ -208,7 +208,7 @@\n // Its default path never initializes DDS and never creates any publisher.\n namespace {\n constexpr const char* kCandidateDirectory =\n-    \"/home/unitree/go2-stairs-addon-1100-20261103/legacy_candidate/v0\";\n+    \"/home/unitree/go2-stairs-torque1000-20261103/legacy_candidate/v0\";\n \n bool candidate_selected(const boost::program_options::variables_map& vm)\n {\n@@ -307,7 +307,7 @@\n     setsockopt(fd,SOL_SOCKET,SO_RCVTIMEO,&timeout,sizeof(timeout));\n     setsockopt(fd,SOL_SOCKET,SO_SNDTIMEO,&timeout,sizeof(timeout));\n     sockaddr_un addr{};addr.sun_family=AF_UNIX;\n-    std::strcpy(addr.sun_path,\"/home/unitree/go2-stairs-handoff-20261103/validation/motion_rpc.sock\");\n+    std::strcpy(addr.sun_path,\"/home/unitree/go2-stairs-torque1000-test-20261103/validation/motion_rpc.sock\");\n     if(connect(fd,reinterpret_cast<sockaddr*>(&addr),sizeof(addr))!=0) {\n         close(fd);throw std::runtime_error(\"Local Python motion bridge is unavailable\");\n     }\n@@ -490,7 +490,7 @@\n             return 0;\n         }\n         if((actuate || preflight_only || vm.count(\"robot-print\")) && !candidate_selected(vm))\n-            throw std::runtime_error(\"Explicit --stairs-policy must select the installed cumulative-1100 candidate v0.\");\n+            throw std::runtime_error(\"Explicit --stairs-policy must select the installed torque1000 candidate v0.\");\n         if(vm.count(\"stairs-policy\"))\n             param::config[\"FSM\"][\"Stairs\"][\"policy_dir\"] = vm[\"stairs-policy\"].as<std::string>();\n         if(vm.count(\"stairs-trace\"))\n"
+    },
+    {
+      "source": "/home/venom/\u6587\u6863/ChatGPT/\u673a\u5668\u72d7/deploy/handoff_overlay/motion_rpc_bridge.py",
+      "destination": "/home/venom/\u6587\u6863/ChatGPT/\u673a\u5668\u72d7/deploy/torque1000_test/motion_rpc_bridge.py",
+      "source_sha256": "5a6b997652de96ae31136c4a2afa0fd1de619b56a591900d903d59c93f1a94b1",
+      "destination_sha256": "35b3f60bdd55767920f2179e15d53275a63eee56572c1aea3369d6ceb9333932",
+      "diff": "--- deploy/handoff_overlay/motion_rpc_bridge.py\n+++ deploy/torque1000_test/motion_rpc_bridge.py\n@@ -17,13 +17,13 @@\n     args=p.parse_args()\n     from unitree_sdk2py.core.channel import ChannelFactoryInitialize\n     from unitree_sdk2py.comm.motion_switcher.motion_switcher_client import MotionSwitcherClient\n-    ChannelFactoryInitialize(0,'eth0')\n+    ChannelFactoryInitialize(0,'eth1')\n     client=MotionSwitcherClient();client.SetTimeout(1.0);client.Init()\n     code,data=client.CheckMode()\n     print(json.dumps({'event':'bridge_check','code':code,'data':data,'read_only':True}),flush=True)\n     if code!=0: return 2\n     if not args.allow_release: return 0\n-    path=Path('/home/unitree/go2-stairs-handoff-20261103/validation/motion_rpc.sock')\n+    path=Path('/home/unitree/go2-stairs-torque1000-test-20261103/validation/motion_rpc.sock')\n     # An existing socket is never silently replaced: avoid duplicate bridges.\n     if path.exists(): raise RuntimeError('RPC socket already exists')\n     used=False\n"
+    }
+  ]
+}

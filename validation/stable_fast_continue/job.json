@@ -1,0 +1,51 @@
+{
+  "pid": 33238,
+  "train_pid": 33239,
+  "start_iteration": 600,
+  "additional_updates": 1000,
+  "target_iteration": 1600,
+  "num_envs": 1024,
+  "source_checkpoint": "/root/go2-himloco/logs/20261102_183927_stairs_stable_fast/model_600.pt",
+  "source_sha256": "45133df9bbc5439d67656607988403229d2558656ef848c6ca4f93b02e484124",
+  "command": [
+    "bash",
+    "scripts/run_lab.sh",
+    "scripts/train_lab.py",
+    "--headless",
+    "--config",
+    "/root/go2-himloco/logs/20261102_183927_stairs_stable_fast/settings.yaml",
+    "--resume",
+    "/root/go2-himloco/logs/20261102_183927_stairs_stable_fast/model_600.pt",
+    "--set",
+    "commands.speed_ramp_updates=0",
+    "--num-envs",
+    "1024",
+    "--max-iterations",
+    "1000",
+    "--run-name",
+    "stairs_stable_fast_continue"
+  ],
+  "output_dir": "/root/go2-himloco/validation/stable_fast_continue",
+  "console_log": "/root/go2-himloco/validation/stable_fast_continue/training.console.log",
+  "evaluation_console": "/root/go2-himloco/validation/stable_fast_continue/evaluation.console.log",
+  "run_directory": null,
+  "pipeline_status": "training",
+  "started_at_unix": 1793620590.1500432,
+  "eval_summary_path": "/root/go2-himloco/validation/stable_fast_continue/comparison.json",
+  "evaluation_plan": {
+    "iterations": [
+      1100,
+      1600
+    ],
+    "seeds": [
+      42,
+      43
+    ],
+    "num_envs": 64,
+    "height_m": 0.18,
+    "command_m_s": 0.6,
+    "controller": "hybrid",
+    "gate_lookahead_m": 1.1
+  },
+  "updated_at_unix": 1793620590.2121034
+}

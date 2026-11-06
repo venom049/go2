@@ -1,0 +1,71 @@
+{
+  "source_sha256": {
+    "configs/stairs.yaml": "0444a649b5d6bb37d1e9be88e287a62e409dd8b9ef8bb57260d72f85e7c86fc6",
+    "configs/stairs_natural.yaml": "a612b1df54bca5628a866f9a462790282d8d8b557591da9d344c1c89b0367567",
+    "go2_him/mdp.py": "05c3928fa0fb3ce70bdd5244f5d008613dc2e23efdf6643729ea5e5bfa84c7fb",
+    "go2_him/lab_config.py": "bad09c92050cfcf3988e76887d0f0f8ce658905500c70d398a1947fa71d8f6b7",
+    "go2_him/settings.py": "da6ea5f935c3130fe1ef0a3aa4490c0919cb16070323441f7f1bdb4270805ce5",
+    "go2_him/gait_metrics.py": "177483f9e78299dab519481142c6463f9f020b9dc4be37cc5534b47c27fb2869",
+    "scripts/train_lab.py": "ebb37be29a0666342e3eadcfcda6c30d071b7335bbcaa7be8e4c640d2f53a07c",
+    "scripts/play_lab.py": "06951261a65e9037cc9e5d3d06e9d64238f45342f4974dedb4676b31e7521a30",
+    "upstream/himloco_lab/source/himloco_lab/himloco_lab/rsl_rl/runners/him_on_policy_runner.py": "dc8b1e56f47688072fe52dd4c8ab4c864b324e11feeaea114b9ce53ebaf2357e",
+    "upstream/himloco_lab/source/himloco_lab/himloco_lab/rsl_rl/algorithms/him_ppo.py": "234e98f9044580b168c8b12775b95ed503b99b97c4e3eb79ea29792195ed5ade",
+    "upstream/himloco_lab/source/himloco_lab/himloco_lab/rsl_rl/modules/him_actor_critic.py": "7ebd38744888a54094b5b90d177205d2a957c2c59762ebfeed6d5e64ffe6ff67"
+  },
+  "reference_repositories": [
+    {
+      "url": "https://github.com/saifahmadgit/go2-sim2real-locomotion-rl",
+      "commit": "0830f3e3582acd5c9b3a5c09186d4f028f54d9dd",
+      "application": "roll tilt, default pose, contact quality, staged refinement; no policy loaded; distinct Genesis action interface"
+    },
+    {
+      "url": "https://github.com/InternRobotics/HIMLoco",
+      "commit": "ef289acaa62795009363b7b819c9186690630441",
+      "application": "second action difference smoothness; retained HIM observation and action dimensions"
+    }
+  ],
+  "video_reference": {
+    "url": "https://www.youtube.com/watch?v=m1GyvmJ9dBw",
+    "observed": "stair segment near 0-12s; feet on different treads; torso pitches with staircase",
+    "limits": "qualitative observation, no joint trajectories or gait frequency inferred"
+  },
+  "report_reference": {
+    "path": "/home/venom/文档/xwechat_files/wxid_t1dj1uqb75s122_96ce/msg/file/2026-11/四足机器人系统开发开题汇报.pptx",
+    "slides": [
+      12,
+      13,
+      14,
+      16
+    ],
+    "application": "action continuity, contact quality, equal-condition evaluation; AMP deferred pending motion data and baseline validation"
+  },
+  "validation": {
+    "tensor_and_geometry_suite": "63 tests passed in 2.149s; validation/natural_gait/tests.txt",
+    "comparison_fix": "evaluation contact history unified to 4 physics steps; training behavior unchanged; reviewed and py_compile passed",
+    "transport_note": "The baseline3000 seed43 SSH exec ended with status255 after complete evaluation JSON was saved. Retrieved JSON and log were complete, episode target reached, no evaluation process remained. No rerun was needed."
+  },
+  "protocol": {
+    "height_m": 0.18,
+    "tread_m": 0.32,
+    "step_count": 8,
+    "forward_command_m_s": 0.4,
+    "seed": 42,
+    "environments": 64,
+    "episodes_per_env": 1,
+    "observation_corruption": false,
+    "randomization": false,
+    "reset_pose_randomization": "same saved evaluation reset distribution",
+    "action_clip": 4.0,
+    "action_scale": 0.25,
+    "contact_history_length": 4
+  },
+  "training_run": {
+    "server_directory": "/root/go2-himloco/logs/20261102_171629_stairs_natural_refinement",
+    "warm_start": "/root/go2-himloco/logs/20261102_154245_stairs_baseline/model_1000.pt",
+    "updates_completed": 500,
+    "num_envs": 1024,
+    "selected_checkpoint": "model_400.pt",
+    "selection_validation_seed": 42,
+    "held_out_confirmation_seed": 43
+  }
+}

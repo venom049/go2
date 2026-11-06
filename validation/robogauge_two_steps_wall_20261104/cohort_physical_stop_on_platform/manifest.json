@@ -1,0 +1,452 @@
+{
+  "upstream": "RoboGauge f116b00a934262348f41cbfd0d07cc4cb6fbf8d8",
+  "model_sha256": "bc08253fd68f661bf6be5ce5ca70cec555c3fde2c397d23fbe9814a998e056f5",
+  "deploy_yaml_sha256": "7d04bfd00a60cf858572597667d9f33e78b94f71dca2b101104162caef0aca00",
+  "robot_xml_sha256": "a5f61c8ae7bd783e94ddb096f591e2854806f7f1ede76594c1ee92a8653e74b9",
+  "runner_sha256": "6110ee032979d046e019839986520b6ecec2e4b206c8a04b0438f3f0208663e0",
+  "shared_runner_sha256": "d93c378307c946a7f0d2f5f9b86606d03b11aab43b342ac51dabbf58e5528893",
+  "source_files": {
+    "policy": "/root/go2-himloco/upstream/robogauge/unitree_cpp_deploy/logs/rsl_rl/go2_moe_cts_expert_goal_137000_0.6745/exported/policy.onnx",
+    "config": "/root/go2-himloco/upstream/robogauge/unitree_cpp_deploy/logs/rsl_rl/go2_moe_cts_expert_goal_137000_0.6745/params/deploy.yaml",
+    "robot_xml": "/root/go2-himloco/upstream/robogauge/RoboGauge/resources/robots/go2/go2.xml"
+  },
+  "geometry": {
+    "width_m": 0.9,
+    "risers": 2,
+    "rise_m": 0.15,
+    "first_tread": {
+      "x_min_m": 0.0,
+      "x_max_m": 0.3,
+      "top_z_m": 0.15
+    },
+    "second_tread_and_upper_platform": {
+      "x_min_m": 0.3,
+      "x_max_m": 1.2,
+      "depth_m": 0.9,
+      "top_z_m": 0.3
+    },
+    "wall": {
+      "inner_face_x_m": 1.2,
+      "thickness_m": 0.1,
+      "width_m": 3.0,
+      "height_m": 2.0
+    },
+    "start_front_foot_sphere_leading_edge_distance_m": 0.5
+  },
+  "geometry_assumptions": "Uppermost depth 90 cm includes the second tread; wall dimensions (3 m wide, 2 m tall, 10 cm thick) are simulation assumptions. No side railings.",
+  "command_mode": "stop_on_platform",
+  "initial_command_m_s": 0.6,
+  "stop_command_definition": "stop_on_platform alone latches zero vx at first supported full-four-foot upper-platform entry using simulation ground truth. Original ONNX/history/PD unchanged. Not autonomous wall recognition.",
+  "success_definition": "Full four foot spheres within upper platform with 3 mm edge margin, feet surface clearance [-.025,.20] m, at least two different supporting feet over last .10 s, base .18-.60 m above platform; world planar base speed <.05 m/s, absolute vertical speed <.05 m/s, absolute angular velocity about EACH world x/y/z axis <.1 rad/s, and tilt <15 degrees continuously 2 seconds; no wall contact ever. Platform-entry/stop-command trigger retains tilt <45 degrees and does not require these stopped-state limits.",
+  "stop_success_thresholds": {
+    "horizontal_speed_m_s": 0.05,
+    "absolute_vertical_speed_m_s": 0.05,
+    "absolute_each_world_angular_velocity_rad_s": 0.1,
+    "tilt_rad": 0.2617993877991494,
+    "continuous_duration_s": 2.0
+  },
+  "wall_failure_definition": "Any effective robot collision geom touching wall with contact-force vector norm >1 N or negative signed contact distance; fails immediately after the audited terminal substep.",
+  "wall_clearance_definition": "Signed x gap to wall inner plane from frontmost effective robot sphere/box/capsule/cylinder exact world-x extent, including head and legs. This infinite-plane envelope diagnostic is not itself the wall-contact criterion.",
+  "other_failures": "Inherited trunk/terrain contact 50 ms, >60 degree tilt or base below .12 m 100 ms, or lateral exit 100 ms; timeout; numerical failure.",
+  "physics_dt": 0.002,
+  "control_dt": 0.02,
+  "kp": [
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0
+  ],
+  "kd": [
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5
+  ],
+  "torque_limit_mode": "physical",
+  "author_actuator_limits": {
+    "ctrllimited": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "ctrlrange": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ]
+    ],
+    "forcelimited": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "forcerange": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ]
+    ],
+    "gear": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ]
+  },
+  "physical_mode_effort_limit_nm": [
+    23.7,
+    23.7,
+    45.43,
+    23.7,
+    23.7,
+    45.43,
+    23.7,
+    23.7,
+    45.43,
+    23.7,
+    23.7,
+    45.43
+  ],
+  "torque_note": "author preserves original unlimited motors; physical explicitly clips PD requested torque and is a separate comparison, not an alteration of original weights.",
+  "observation_contract": "Shared audited adapter: term-major 5-frame history, 225 floats, raw-term clipping then scaling, raw last action.",
+  "action_contract": "Shared audited adapter: FL/FR/RL/RR joint mapping, upstream target scale/offset then target clipping, 50 Hz inference and 500 Hz PD.",
+  "samples": [
+    {
+      "kind": "deterministic",
+      "seed": null,
+      "episode": 0,
+      "y_m": 0.0,
+      "yaw_rad": 0.0
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 0,
+      "y_m": 0.010958241942238534,
+      "yaw_rad": -0.004267089881131076
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 1,
+      "y_m": 0.0143439167964553,
+      "yaw_rad": 0.013778887781030986
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 2,
+      "y_m": -0.016232906084494018,
+      "yaw_rad": 0.03320470412855853
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 3,
+      "y_m": 0.01044558807961412,
+      "yaw_rad": 0.019971055998052135
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 4,
+      "y_m": -0.014875454692978164,
+      "yaw_rad": -0.003463714956045201
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 5,
+      "y_m": -0.0051680790306967515,
+      "yaw_rad": 0.02979381675057994
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 6,
+      "y_m": 0.0057546048032265824,
+      "yaw_rad": 0.02253301140249843
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 7,
+      "y_m": -0.0022634320469067555,
+      "yaw_rad": -0.019042329507215704
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 0,
+      "y_m": 0.0060919705080364275,
+      "yaw_rad": -0.031850490925380205
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 1,
+      "y_m": -0.019198816525031324,
+      "yaw_rad": 0.023681505716041634
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 2,
+      "y_m": 0.0034857219035223375,
+      "yaw_rad": -0.01921920058586637
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 3,
+      "y_m": 0.01007169087274462,
+      "yaw_rad": -0.016497396808619683
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 4,
+      "y_m": -0.0032008836113492783,
+      "yaw_rad": -0.0034186541078621777
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 5,
+      "y_m": 0.018212583168849505,
+      "yaw_rad": 0.027359897885222764
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 6,
+      "y_m": -0.00885467897924226,
+      "yaw_rad": -0.015461222735964848
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 7,
+      "y_m": -0.003120017006109487,
+      "yaw_rad": -0.03462190613190122
+    }
+  ],
+  "randomization": "y +/-2 cm and yaw +/-2 degrees only; no dynamics randomization or noise",
+  "maximum_episode_duration_s": 25.0,
+  "real_robot_driven": false,
+  "network_interfaces_used": false
+}

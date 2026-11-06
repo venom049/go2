@@ -1,0 +1,40 @@
+{
+  "checked_at_utc": "2026-11-04T07:41:28.437719+00:00",
+  "status": "read_only_preflight_completed_motion_not_started",
+  "robot_ssh_host": "192.168.1.180",
+  "management_connection": "Wi-Fi",
+  "onboard_dds_interface": "eth1",
+  "onboard_dds_ip": "192.168.123.10",
+  "user_confirmed_support_and_estop": true,
+  "user_reported_posture": "standing",
+  "user_reported_front_foot_distance_m": 1.5,
+  "mode_check": {
+    "code": 0,
+    "form": "0",
+    "name": "mcf"
+  },
+  "lowstate_report": "readonly_state_20261104T073916Z.json",
+  "installed_protection_binary_sha256": "834b41f1068c5c1b764724089daf3622cf77d3e05027ad219dcddadb09a3855f",
+  "installed_protection_config_sha256": "a63dc32d00675ad41204e10eefacc401df1595507772c7f60a45ed641e722608",
+  "existing_launcher": "/home/unitree/go2_himloco_stairs_1100/start_stairs.sh",
+  "existing_launcher_policy": "HIMLoco cumulative 1100",
+  "candidate": "MoE-CTS fine-tune 1000",
+  "evaluation_file": "../moe_finetune_20261104/formal_run/evaluation/comparison.json",
+  "candidate_task_successes": 129,
+  "candidate_task_episodes": 129,
+  "candidate_joint_and_torque_acceptance_passed": false,
+  "blockers": [
+    "Existing protected controller expects external 294 observations and 16 actions with PD40/1; MoE requires 225 observations, 12 actions and PD20/.5, different joint/history ordering.",
+    "Candidate independent evaluation still violates measured joint velocity, actual position, target position and tracking guards.",
+    "Existing validation starts 0.5m from the first step, while user reports 1.5m. Existing 2-second first-test deadline and latch-to-damping cannot serve as a full approach/climb/stop sequence.",
+    "Evaluated platform stop uses simulator ground-truth geometry and is not an implemented real-robot wall-stop function."
+  ],
+  "release_mode_called": false,
+  "lowcmd_publisher_created": false,
+  "motor_commands_sent": false,
+  "onboard_models_or_controllers_modified": false,
+  "ssh_password_saved": false,
+  "automation": "go2-500",
+  "automation_status": "PAUSED",
+  "completed_event_acknowledged": true
+}

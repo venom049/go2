@@ -1,0 +1,104 @@
+{
+  "kind": "go2-stairs-offline-cpu-check-v1",
+  "timestamp_utc": "2026-11-03T08:41:16.976306+00:00",
+  "model_directory": "/home/unitree/go2-stairs-torque1000-20261103/model",
+  "checkpoint_iteration": 1000,
+  "export_sha256": "db71e25f5de85d6bd96a5e35795fb8a19d77a95919f85de4c7aa77b339d3a234",
+  "manifest_sha256": "fe21c2edd16454f86cc5c9a199833c0074328cb42f158b1386b8071198b4a7f8",
+  "export_hash_verified": true,
+  "load_and_contract_verified": true,
+  "torch_version": "2.7.0+cpu",
+  "platform": "Linux-5.10.104-tegra-aarch64-with-glibc2.31",
+  "machine": "aarch64",
+  "torch_cpu_threads": 1,
+  "input": {
+    "source": "synthetic only",
+    "command_m_s_m_s_rad_s": [
+      0.6,
+      0.0,
+      0.0
+    ],
+    "joint_position": [
+      0.1,
+      0.8,
+      -1.5,
+      -0.1,
+      0.8,
+      -1.5,
+      0.1,
+      1.0,
+      -1.5,
+      -0.1,
+      1.0,
+      -1.5
+    ],
+    "previous_target": "same fixed default pose; normalized previous action is zero",
+    "gyro": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "quaternion_wxyz": [
+      1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "joint_velocity": "all zero",
+    "history_shape": [
+      1,
+      270
+    ]
+  },
+  "raw_output_shape": [
+    1,
+    12
+  ],
+  "all_outputs_finite": true,
+  "raw_output": [
+    0.36775219440460205,
+    -1.6223875284194946,
+    0.042499132454395294,
+    -1.0502122640609741,
+    -1.244975209236145,
+    0.616364061832428,
+    1.0877749919891357,
+    0.48435670137405396,
+    -1.3461426496505737,
+    0.1603025197982788,
+    -0.8177317380905151,
+    -0.2569887042045593
+  ],
+  "proposed_joint_target_rad": [
+    0.19193804264068604,
+    0.3944031298160553,
+    -1.4893752336502075,
+    -0.36255306005477905,
+    0.4887562096118927,
+    -1.3459089994430542,
+    0.37194374203681946,
+    1.121089220046997,
+    -1.8365356922149658,
+    -0.05992437154054642,
+    0.7955670356750488,
+    -1.5642471313476562
+  ],
+  "benchmark": {
+    "scope": "observe plus CPU inference plus proposal construction; no IO or deliberate sleep",
+    "warmup_iterations": 20,
+    "timed_iterations": 100,
+    "warmup_excluded_from_statistics": true,
+    "p50_ms": 3.790736,
+    "p95_ms": 6.595817199999997,
+    "minimum_ms": 3.651664,
+    "maximum_ms": 9.4062,
+    "mean_ms": 4.089856190000001,
+    "budget_ms": 20.0,
+    "policy_frequency_hz": 50.0,
+    "p95_within_budget": true,
+    "all_samples_within_budget": true,
+    "samples_over_budget": 0
+  },
+  "robot_validation": false,
+  "limitations": "Synthetic CPU numerical and timing check only. Timing is not a real-time scheduling guarantee, and does not measure robot communications, control ownership, actual motor response or stair performance."
+}

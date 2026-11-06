@@ -1,0 +1,261 @@
+{
+  "audit_date_local": "2026-11-04",
+  "timezone": "Asia/Shanghai",
+  "scope": "Read-only historical protection incident audit. No controller, SDK example, robot actuation or protection-parameter modification.",
+  "incidents": [
+    {
+      "id": "first_1100_released_then_preflight_refused",
+      "date_local": "2026-11-03",
+      "recorded_utc": "2026-11-03T05:42:14.731014+00:00",
+      "classification": "rejected_before_custom_lowcmd_publisher",
+      "trigger": "target_position_outside_urdf_range",
+      "factory_control_released": true,
+      "custom_motor_commands_sent": false,
+      "stairs_entered": false,
+      "custom_damping_proven": false,
+      "measured_calf_positions_rad": {
+        "FR": -2.8094210624694824,
+        "FL": -2.7475759983062744,
+        "RR": -2.8143813610076904,
+        "RL": -2.8337485790252686
+      },
+      "threshold_calf_lower_rad": -2.7227,
+      "interpretation": "The range probe set hypothetical target=q_measured. The rejected values are measured folded posture, not a model stair action. There were zero LowCmd samples for 1.3 seconds after release. The custom controller never created a publisher, so this record does not support describing the collapse as a custom damping command.",
+      "evidence": [
+        {
+          "path": "/home/venom/文档/ChatGPT/机器狗/validation/first_test_1100/first_attempt_result.json",
+          "line": 29,
+          "end_line": 47,
+          "sha256": "312d4b20367bc078ff9efca861d5f2d9c4470cfa372fbbaea280cac5f36e594b"
+        },
+        {
+          "path": "/home/venom/文档/ChatGPT/机器狗/validation/first_test_1100/control_handoff.json",
+          "line": 11,
+          "end_line": 22,
+          "sha256": "2f1e1a897cadb46afda385e79e9b7c984219c4596d95a737ea867126ef886a3c"
+        }
+      ]
+    },
+    {
+      "id": "handoff_1100_factory_gain_rejected",
+      "time_local": "2026-11-03 14:43:43",
+      "classification": "rejected_before_handoff",
+      "trigger": "gain_outside_software_range",
+      "joint": null,
+      "observed_value": null,
+      "threshold_in_event_log": null,
+      "factory_control_released": false,
+      "custom_motor_commands_sent": false,
+      "interpretation": "The preloaded controller reports no motor commands then rejects factory command/pose; no H/release/hold entry is recorded for this attempt. Exact joint and gains were not logged in this event.",
+      "evidence": [
+        {
+          "path": "/home/venom/文档/ChatGPT/机器狗/validation/handoff_1100/onboard_evidence/controller/robots/go2/log/log.txt",
+          "line": 12,
+          "end_line": 13,
+          "sha256": "e54a581342b47923f2d58e97d9df280ec6b56f8d6798c21c3f5fe3e5f9f90a09"
+        }
+      ]
+    },
+    {
+      "id": "handoff_1100_pd_effort_stop",
+      "time_local": "2026-11-03 14:49:37",
+      "classification": "entered_stairs_then_latched_damping",
+      "trigger": "estimated_pd_effort_outside_urdf_range",
+      "factory_control_released": true,
+      "stand_locked": true,
+      "stairs_entered": true,
+      "accepted_stairs_publications": null,
+      "joint": null,
+      "observed_value_nm": null,
+      "threshold_nm_by_type": {
+        "hip": 23.7,
+        "thigh": 23.7,
+        "calf": 45.43
+      },
+      "actual_rejected_frame_available": false,
+      "completed_two_seconds": false,
+      "interpretation": "Original trace has no saved rows. Exact rejected joint/value and accepted action count cannot be reconstructed. Offline ideal-stance FL_thigh estimate -29.292373657226562 Nm is synthetic and must not be substituted for the true failure frame.",
+      "evidence": [
+        {
+          "path": "/home/venom/文档/ChatGPT/机器狗/validation/handoff_1100/onboard_evidence/controller/robots/go2/log/log.txt",
+          "line": 26,
+          "end_line": 36,
+          "sha256": "e54a581342b47923f2d58e97d9df280ec6b56f8d6798c21c3f5fe3e5f9f90a09"
+        },
+        {
+          "path": "/home/venom/文档/ChatGPT/机器狗/validation/handoff_1100/attempt_result.json",
+          "line": 19,
+          "end_line": 27,
+          "sha256": "28e2db88b115c47ecc0c9d2794e689401db055652110e77f39b38f482be7fe3e"
+        },
+        {
+          "path": "/home/venom/文档/ChatGPT/机器狗/validation/handoff_1100/attempt_result.json",
+          "line": 45,
+          "end_line": 49,
+          "sha256": "28e2db88b115c47ecc0c9d2794e689401db055652110e77f39b38f482be7fe3e"
+        }
+      ]
+    },
+    {
+      "id": "avoidance_off_handoff_refused",
+      "time_local": "2026-11-03 15:15:29",
+      "classification": "rejected_without_release_or_custom_lowcmd",
+      "trigger": "Factory stand cannot be converted to bounded 40/1 hold; no release",
+      "factory_control_released": false,
+      "custom_motor_commands_sent": false,
+      "stairs_entered": false,
+      "exact_rejected_joint_recorded": false,
+      "subsequent_readonly_diagnostic": {
+        "joint": "RL_calf",
+        "position_tracking_error_rad": 0.2080397605895996,
+        "later_100_sample_error_range_rad": [
+          0.23347854614257812,
+          0.23781359195709229
+        ],
+        "qualification_threshold_rad": 0.18,
+        "not_actual_rejected_frame": true
+      },
+      "interpretation": "Obstacle avoidance had been disabled. The controller refused the handoff; later telemetry corroborates that stand qualification was not met but is not the exact failure frame. This attempt did not command damping or enter the stair policy.",
+      "evidence": [
+        {
+          "path": "/home/venom/文档/ChatGPT/机器狗/validation/handoff_1100/avoidance_off_recheck/retry_result.json",
+          "line": 2,
+          "end_line": 11,
+          "sha256": "021eb80c11804c2a19336b0f134e5898915c5e8d63f19c966072ef1f2402b490"
+        },
+        {
+          "path": "/home/venom/文档/ChatGPT/机器狗/validation/handoff_1100/avoidance_off_recheck/retry_result.json",
+          "line": 156,
+          "end_line": 174,
+          "sha256": "021eb80c11804c2a19336b0f134e5898915c5e8d63f19c966072ef1f2402b490"
+        }
+      ]
+    },
+    {
+      "id": "avoidance_off_locked_stand_policy_start_refused",
+      "time_local": "2026-11-03 15:25:17 to 15:26:14",
+      "classification": "held_stand_startup_readonly_check_failed_shutdown_damping",
+      "trigger": "startup_readonly_pd_effort_exceeds_limit",
+      "factory_control_released": true,
+      "stand_locked": true,
+      "stairs_entered": false,
+      "stairs_policy_commands_sent": false,
+      "joint": "FL_thigh",
+      "first_estimated_effort_nm": -33.49773406982422,
+      "peak_abs_estimated_effort_nm": 33.73917770385742,
+      "limit_nm": 23.7,
+      "overlimit_proposal_frames": 50,
+      "sample_frames": 50,
+      "interpretation": "Held-pose inference and estimated PD effort, not measured output torque and not published stair commands. Protected handoff/stand motor activity did occur. The eventual process shutdown commanded damping; this must not be reported as a stair policy run or a 2-second timeout. The saved summary does not specify the exact operator exit key.",
+      "evidence": [
+        {
+          "path": "/home/venom/文档/ChatGPT/机器狗/validation/handoff_1100/avoidance_off_recheck/reattempt_1525_result.json",
+          "line": 3,
+          "end_line": 24,
+          "sha256": "93a4df521f0ab02b1339e957fc1345a6a3c31d0928e80b7c5d27267dba20c687"
+        },
+        {
+          "path": "/home/venom/文档/ChatGPT/机器狗/validation/handoff_1100/avoidance_off_recheck/readonly_probe_20261103T072538223143Z.json",
+          "line": 21,
+          "end_line": 34,
+          "sha256": "09d1f4b6acbd00719df9e6db1afbdc55b9ed9e3d1f17dd0e4312f49487edd984"
+        }
+      ]
+    },
+    {
+      "id": "torque1000_live_velocity_stop",
+      "time_local": "2026-11-03 16:53:50.909",
+      "classification": "running_stairs_measured_velocity_stop_latched_damping",
+      "trigger": "max_abs_dq",
+      "factory_control_released": true,
+      "stand_locked": true,
+      "stairs_entered": true,
+      "joint": "RL_calf",
+      "measured_signed_velocity_rad_s": -13.312929153442383,
+      "measured_abs_velocity_rad_s": 13.312929153442383,
+      "software_threshold_rad_s": 13.0,
+      "duration_policy_state_s_approx": 0.06,
+      "accepted_stairs_publication_requests": 49,
+      "dds_delivery_or_actuation_acknowledged": false,
+      "software_duration_limit_s": 2.0,
+      "time_limit_triggered": false,
+      "latched_reason": "stop_transition_LieDown",
+      "interpretation": "STAIRS_SAFETY_STOP max_abs_dq is the initiating reason; the LieDown transition is intercepted and becomes fixed damping. GUARD_JOINT lines are rejected stop-transition proposals, not an additional identified initiating torque fault or proof of sent/measured motor torque. CSV has no rows.",
+      "evidence": [
+        {
+          "path": "/home/venom/文档/ChatGPT/机器狗/validation/torque_deployment/start_test/attempt_terminal.log",
+          "line": 25,
+          "end_line": 31,
+          "sha256": "163630d3b50b65d42d1806f7755f4a25c5d5cd2c832a30822c457e82a2122150"
+        },
+        {
+          "path": "/home/venom/文档/ChatGPT/机器狗/validation/torque_deployment/start_test/attempt_terminal.log",
+          "line": 42,
+          "end_line": 43,
+          "sha256": "163630d3b50b65d42d1806f7755f4a25c5d5cd2c832a30822c457e82a2122150"
+        },
+        {
+          "path": "/home/venom/文档/ChatGPT/机器狗/validation/torque_deployment/start_test/attempt_result.json",
+          "line": 13,
+          "end_line": 24,
+          "sha256": "ad24c06de1e581feaa42327f0bbe2c83b53753dc8529e1afd10e46a22aad2d75"
+        },
+        {
+          "path": "/home/venom/文档/ChatGPT/机器狗/validation/torque_deployment/start_test/attempt_result.json",
+          "line": 34,
+          "end_line": 35,
+          "sha256": "ad24c06de1e581feaa42327f0bbe2c83b53753dc8529e1afd10e46a22aad2d75"
+        }
+      ]
+    }
+  ],
+  "general_limitations": [
+    "The logs establish user-space protection behavior, not a proprietary firmware protection threshold.",
+    "None of the reviewed stair tests records successful completion of the 2-second stair policy deadline.",
+    "No saved evidence shows a manual stop as the initiating cause for the two confirmed running-policy stops; one separate held-stand attempt was shutdown after a readonly precheck failure.",
+    "Accepted publication requests are not DDS delivery or physical execution acknowledgments."
+  ],
+  "onboard_readonly_hash_verification": {
+    "date_local": "2026-11-04",
+    "host": "192.168.1.180",
+    "account": "unitree",
+    "read_only": true,
+    "files": [
+      {
+        "remote_path": "/home/unitree/go2-stairs-first-test-20261103/validation/first_attempt_result.json",
+        "local_path": "/home/venom/文档/ChatGPT/机器狗/validation/first_test_1100/first_attempt_result.json",
+        "remote_sha256": "312d4b20367bc078ff9efca861d5f2d9c4470cfa372fbbaea280cac5f36e594b",
+        "local_sha256": "312d4b20367bc078ff9efca861d5f2d9c4470cfa372fbbaea280cac5f36e594b",
+        "match": true
+      },
+      {
+        "remote_path": "/home/unitree/go2-stairs-handoff-20261103/validation/attempt_result.json",
+        "local_path": "/home/venom/文档/ChatGPT/机器狗/validation/handoff_1100/attempt_result.json",
+        "remote_sha256": "28e2db88b115c47ecc0c9d2794e689401db055652110e77f39b38f482be7fe3e",
+        "local_sha256": "28e2db88b115c47ecc0c9d2794e689401db055652110e77f39b38f482be7fe3e",
+        "match": true
+      },
+      {
+        "remote_path": "/home/unitree/go2-stairs-handoff-20261103/controller/robots/go2/log/log.txt",
+        "local_path": "/home/venom/文档/ChatGPT/机器狗/validation/handoff_1100/onboard_evidence/controller/robots/go2/log/log.txt",
+        "remote_sha256": "e54a581342b47923f2d58e97d9df280ec6b56f8d6798c21c3f5fe3e5f9f90a09",
+        "local_sha256": "e54a581342b47923f2d58e97d9df280ec6b56f8d6798c21c3f5fe3e5f9f90a09",
+        "match": true
+      },
+      {
+        "remote_path": "/home/unitree/go2-stairs-torque1000-test-20261103/logs/attempt_terminal.log",
+        "local_path": "/home/venom/文档/ChatGPT/机器狗/validation/torque_deployment/start_test/attempt_terminal.log",
+        "remote_sha256": "163630d3b50b65d42d1806f7755f4a25c5d5cd2c832a30822c457e82a2122150",
+        "local_sha256": "163630d3b50b65d42d1806f7755f4a25c5d5cd2c832a30822c457e82a2122150",
+        "match": true
+      },
+      {
+        "remote_path": "/home/unitree/go2-stairs-torque1000-test-20261103/validation/attempt_result.json",
+        "local_path": "/home/venom/文档/ChatGPT/机器狗/validation/torque_deployment/start_test/attempt_result.json",
+        "remote_sha256": "ad24c06de1e581feaa42327f0bbe2c83b53753dc8529e1afd10e46a22aad2d75",
+        "local_sha256": "ad24c06de1e581feaa42327f0bbe2c83b53753dc8529e1afd10e46a22aad2d75",
+        "match": true
+      }
+    ]
+  }
+}

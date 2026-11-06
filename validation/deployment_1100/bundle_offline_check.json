@@ -1,0 +1,104 @@
+{
+  "kind": "go2-stairs-offline-cpu-check-v1",
+  "timestamp_utc": "2026-11-03T04:24:42.129735+00:00",
+  "model_directory": "/home/venom/文档/ChatGPT/机器狗/_exports/go2-stairs-addon-1100-20261103/model",
+  "checkpoint_iteration": 1100,
+  "export_sha256": "9b512caa8468a656f90428ad285c371e42ce20ff609176710651fe16ef2891c2",
+  "manifest_sha256": "eaeedd2fff551d87ad7d7b3860fc1c4f51b22e0dad6eef8676bbff190bff0ab4",
+  "export_hash_verified": true,
+  "load_and_contract_verified": true,
+  "torch_version": "2.7.0+cpu",
+  "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+  "machine": "x86_64",
+  "torch_cpu_threads": 1,
+  "input": {
+    "source": "synthetic only",
+    "command_m_s_m_s_rad_s": [
+      0.6,
+      0.0,
+      0.0
+    ],
+    "joint_position": [
+      0.1,
+      0.8,
+      -1.5,
+      -0.1,
+      0.8,
+      -1.5,
+      0.1,
+      1.0,
+      -1.5,
+      -0.1,
+      1.0,
+      -1.5
+    ],
+    "previous_target": "same fixed default pose; normalized previous action is zero",
+    "gyro": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "quaternion_wxyz": [
+      1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "joint_velocity": "all zero",
+    "history_shape": [
+      1,
+      270
+    ]
+  },
+  "raw_output_shape": [
+    1,
+    12
+  ],
+  "all_outputs_finite": true,
+  "raw_output": [
+    0.9402262568473816,
+    -2.8876094818115234,
+    0.012659527361392975,
+    -1.407045602798462,
+    -1.366505742073059,
+    0.21475127339363098,
+    1.7536314725875854,
+    1.0032496452331543,
+    -1.7217336893081665,
+    -0.16538302600383759,
+    -0.5427039265632629,
+    -0.2210794985294342
+  ],
+  "proposed_joint_target_rad": [
+    0.3350565731525421,
+    0.0780976414680481,
+    -1.4968351125717163,
+    -0.451761394739151,
+    0.4583735764026642,
+    -1.4463121891021729,
+    0.5384078621864319,
+    1.2508124113082886,
+    -1.9304333925247192,
+    -0.14134575426578522,
+    0.8643240332603455,
+    -1.5552698373794556
+  ],
+  "benchmark": {
+    "scope": "observe plus CPU inference plus proposal construction; no IO or deliberate sleep",
+    "warmup_iterations": 20,
+    "timed_iterations": 100,
+    "warmup_excluded_from_statistics": true,
+    "p50_ms": 0.280203,
+    "p95_ms": 0.30044635000000003,
+    "minimum_ms": 0.273079,
+    "maximum_ms": 0.31226,
+    "mean_ms": 0.2844412999999999,
+    "budget_ms": 20.0,
+    "policy_frequency_hz": 50.0,
+    "p95_within_budget": true,
+    "all_samples_within_budget": true,
+    "samples_over_budget": 0
+  },
+  "robot_validation": false,
+  "limitations": "Synthetic CPU numerical and timing check only. Timing is not a real-time scheduling guarantee, and does not measure robot communications, control ownership, actual motor response or stair performance."
+}

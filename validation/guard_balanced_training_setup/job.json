@@ -1,0 +1,94 @@
+{
+  "pid": 10104,
+  "train_pid": 10105,
+  "start_iteration": 0,
+  "additional_updates": 1000,
+  "target_iteration": 1000,
+  "num_envs": 1024,
+  "initialization": "warm_start",
+  "fresh_optimizers": true,
+  "tensorboard_joint_metrics": true,
+  "source_checkpoint": "/root/go2-himloco/validation/joint_constraints/source_torque1000/model_1000.pt",
+  "source_sha256": "508f5435b1a9de3ffe3bbf24ea3bd700c241e97dcb8671d5dba2b6c7ed3f325f",
+  "expected_source_sha256": "508f5435b1a9de3ffe3bbf24ea3bd700c241e97dcb8671d5dba2b6c7ed3f325f",
+  "command": [
+    "bash",
+    "scripts/run_lab.sh",
+    "scripts/train_lab.py",
+    "--headless",
+    "--config",
+    "configs/stairs_guard_balanced.yaml",
+    "--warm-start",
+    "/root/go2-himloco/validation/joint_constraints/source_torque1000/model_1000.pt",
+    "--num-envs",
+    "1024",
+    "--max-iterations",
+    "1000",
+    "--run-name",
+    "stairs_guard_balanced"
+  ],
+  "output_dir": "/root/go2-himloco/validation/guard_balanced_training",
+  "console_log": "/root/go2-himloco/validation/guard_balanced_training/training.console.log",
+  "evaluation_console": "/root/go2-himloco/validation/guard_balanced_training/evaluation.console.log",
+  "run_directory": null,
+  "pipeline_status": "training",
+  "started_at_unix": 1793761846.7975755,
+  "eval_summary_path": "/root/go2-himloco/validation/guard_balanced_training/comparison.json",
+  "source_snapshot": "/root/go2-himloco/validation/guard_balanced_training/training_source_snapshot.tar.gz",
+  "source_manifest": "/root/go2-himloco/validation/guard_balanced_training/source_manifest.json",
+  "training_config": "/root/go2-himloco/configs/stairs_guard_balanced.yaml",
+  "evaluation_plan": {
+    "iterations": [
+      500,
+      1000
+    ],
+    "reference_source_iteration": 1000,
+    "labels": [
+      "reference_torque1000",
+      "guard500",
+      "guard1000"
+    ],
+    "expected_report_count": 12,
+    "seeds": [
+      42,
+      43
+    ],
+    "num_envs": 64,
+    "episodes_per_env": 1,
+    "conditions": [
+      {
+        "height": 0.15,
+        "tread": 0.3,
+        "controller": "stairs"
+      },
+      {
+        "height": 0.18,
+        "tread": 0.32,
+        "controller": "hybrid"
+      }
+    ],
+    "command_m_s": 0.6,
+    "gate_lookahead_m": 1.1,
+    "joint_metrics": true,
+    "torque_metrics": true,
+    "guard_objectives": [
+      "velocity_13_rad_s",
+      "actual_angle_bounds",
+      "target_angle_bounds",
+      "tracking_error_0.9_rad",
+      "requested_and_applied_torque"
+    ],
+    "constraint_early_termination": false
+  },
+  "updated_at_unix": 1793761846.9245152,
+  "config_sha256": "f1f6d1dc9b6e8dd246b5359b0ce77a997ab3dab006ba3cbd594fec1fceb41cdd",
+  "source_snapshot_sha256": "28110ba72c5cc167b1c2b6ab874d4fee1d7abb69376aa4efdb558ea08234bcba",
+  "source_manifest_sha256": "d41007d510f96acb127f09617d0b98a47a1105e11cbd5433554c55763fed4f53",
+  "wiring_report_sha256": "3b5c50922f2bc26429abb5bd77dfb9d904eaf69c78b4072d05a04967197af1da",
+  "protection_evidence": {
+    "validation/onboard_joint_limits_20261104/protection_audit.json": "427ca4d77d2d93173e152ca7dfaacbce47d17f5fa2063b3a1d9fedc3d75a6ac0",
+    "validation/onboard_joint_limits_20261104/protection_incidents.json": "c0ca96854099150ec9f69021065fdc8903f357c5547986c9211debc8c3e6733e",
+    "validation/onboard_joint_limits_20261104/joint_limits.json": "185d1082f317e9d260fa7fd13c1d2e557159cfa3c67369a7f1be2aeba09b405f"
+  },
+  "protection_evidence_scope": "Read-only deployed application/controller code and incident logs; not a claim to have read proprietary motor firmware limits."
+}

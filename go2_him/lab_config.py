@@ -136,6 +136,15 @@ class RewardsCfg:
     orientation = Reward(func=lab_mdp.flat_orientation_l2, weight=-0.15)
     base_height = Reward(func=mdp.base_height, weight=-1.0, params={"target_height":0.30})
     joint_acc = Reward(func=lab_mdp.joint_acc_l2, weight=-2.5e-7)
+    torque_margin = Reward(func=mdp.torque_margin, weight=0.0)
+    torque_excess = Reward(func=mdp.torque_excess, weight=0.0)
+    guard_balance = Reward(func=mdp.guard_balance_penalty, weight=0.0)
+    velocity_margin = Reward(func=mdp.joint_constraint_penalty, weight=0.0, params={"kind":"velocity_margin"})
+    velocity_excess = Reward(func=mdp.joint_constraint_penalty, weight=0.0, params={"kind":"velocity_excess"})
+    position_margin = Reward(func=mdp.joint_constraint_penalty, weight=0.0, params={"kind":"position_margin"})
+    position_excess = Reward(func=mdp.joint_constraint_penalty, weight=0.0, params={"kind":"position_excess"})
+    target_position_excess = Reward(func=mdp.joint_constraint_penalty, weight=0.0, params={"kind":"target_position_excess"})
+    tracking_error = Reward(func=mdp.joint_constraint_penalty, weight=0.0, params={"kind":"tracking_error"})
     joint_power = Reward(func=mdp.joint_power, weight=-2e-5)
     action_rate = Reward(func=lab_mdp.action_rate_l2, weight=-0.01)
     action_smoothness = Reward(func=mdp.action_smoothness, weight=0.0)
@@ -177,6 +186,7 @@ class TerminationsCfg:
         params={"sensor_cfg":SceneEntityCfg("contact_forces", body_names="base_link"), "threshold":1.0})
     fall = Done(func=lab_mdp.bad_orientation, params={"limit_angle":1.1})
     out_of_bounds = Done(func=mdp.out_of_bounds)
+    joint_constraint = None
     success = Done(func=mdp.success)
 
 
@@ -245,10 +255,30 @@ def build_env_cfg(s, device="cuda:0", evaluation=False):
         cfg.go2_settings = copy.deepcopy(s)
         cfg.go2_settings["terrain"]["curriculum"] = False
         cfg.go2_settings["commands"]["speed_ramp_updates"] = 0
+        cfg.go2_settings["guard_balance"]["ramp_updates"] = 0
     if not evaluation and s["commands"]["speed_ramp_updates"] > 0:
         cfg.commands.base_velocity.ranges.lin_vel_x = (s["commands"]["start_forward_min"], s["commands"]["start_forward_max"])
     else:
         cfg.commands.base_velocity.ranges.lin_vel_x = (s["commands"]["forward_min"], s["commands"]["forward_max"])
+    joint = s["joint_constraints"]
+    if s["torque"]["enabled"] or joint["enabled"]:
+        from go2_him.lab_torque import MonitoredPDActuatorCfg
+        from go2_him.torque import EFFORT_LIMITS_NM
+        limits = {f".*_{kind}_joint": value for kind, value in EFFORT_LIMITS_NM.items()}
+        cfg.scene.robot.actuators["legs"] = MonitoredPDActuatorCfg(
+            joint_names_expr=[".*_joint"], stiffness=40.0, damping=1.0, armature=.01,
+            effort_limit=limits, effort_limit_sim=dict(limits), velocity_limit=30.0,
+            # Keep physical dynamics unchanged: the 13 rad/s acceptance bound
+            # is observed, penalized and terminated, not hidden by solver clipping.
+            velocity_limit_sim=30.0, torque_soft_ratio=s["torque"]["soft_ratio"],
+            joint_constraints_enabled=joint["enabled"],
+            joint_velocity_limit=joint["velocity_limit"],
+            joint_velocity_soft_ratio=joint["velocity_soft_ratio"],
+            joint_position_soft_ratio=joint["position_soft_ratio"],
+            joint_tracking_error_limit=joint["tracking_error_limit"],
+            joint_tracking_soft_ratio=joint["tracking_soft_ratio"])
+    if joint["enabled"] and joint["terminate_on_violation"]:
+        cfg.terminations.joint_constraint = Done(func=mdp.joint_constraint_violation)
     cfg.scene.robot.actuators["legs"].stiffness = s["control"]["stiffness"]
     cfg.scene.robot.actuators["legs"].damping = s["control"]["damping"]
     cfg.actions.joints.scale = s["control"]["action_scale"]

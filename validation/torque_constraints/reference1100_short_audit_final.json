@@ -1,0 +1,400 @@
+{
+  "steps": 150,
+  "max_steps": 200,
+  "episodes": 8,
+  "successes": 0,
+  "failures": 0,
+  "timeouts": 8,
+  "success_rate": 0.0,
+  "episodes_per_env_target": 1,
+  "completed_episodes_per_env": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "incomplete_env_ids": [],
+  "envs_incomplete": 0,
+  "checkpoint": "validation/torque_constraints/reference1100/model_1100.pt",
+  "settings": {
+    "seed": 42,
+    "num_envs": 8,
+    "max_iterations": 1000,
+    "episode_length_s": 3,
+    "terrain": {
+      "rows": 10,
+      "cols": 4,
+      "initial_level": 1,
+      "height_min": 0.15,
+      "height_max": 0.15,
+      "tread": 0.3,
+      "num_steps": 8,
+      "curriculum": true
+    },
+    "commands": {
+      "forward_min": 0.6,
+      "forward_max": 0.6,
+      "start_forward_min": 0.35,
+      "start_forward_max": 0.5,
+      "speed_ramp_updates": 0
+    },
+    "control": {
+      "stiffness": 40.0,
+      "damping": 1.0,
+      "action_scale": 0.25,
+      "action_clip": 4.0
+    },
+    "randomization": {
+      "enabled": true,
+      "friction_min": 0.6,
+      "friction_max": 1.2,
+      "payload_min": -0.5,
+      "payload_max": 1.0
+    },
+    "torque": {
+      "enabled": true,
+      "soft_ratio": 0.8,
+      "startup_seconds": 2.0,
+      "startup_multiplier": 2.0
+    },
+    "rewards": {
+      "torque_margin": 0.0,
+      "torque_excess": 0.0,
+      "tracking_lin_vel": 2.0,
+      "tracking_ang_vel": 0.5,
+      "forward_progress": 0.8,
+      "success": 5.0,
+      "failure": -2.0,
+      "lin_vel_z": -0.2,
+      "ang_vel_xy": -0.1,
+      "orientation": -0.05,
+      "base_height": -1.0,
+      "joint_acc": -2.5e-07,
+      "joint_power": -3e-05,
+      "action_rate": -0.02,
+      "joint_limits": -2.0,
+      "undesired_contacts": -1.0,
+      "foot_slip": -0.6,
+      "lateral_drift": -0.3,
+      "foot_clearance": -0.5,
+      "action_smoothness": -0.01,
+      "roll_orientation": -3.0,
+      "roll_rate": -0.25,
+      "lateral_velocity": -0.4,
+      "feet_air_time": 0.2,
+      "feet_stumble": -0.5,
+      "joint_deviation": -0.03,
+      "hip_deviation": -0.1,
+      "hip_abduction": -3.0,
+      "feet_lateral": -40.0,
+      "joint_vel": -0.0005
+    },
+    "targets": {
+      "base_height": 0.3,
+      "foot_clearance": 0.1,
+      "air_time": 0.12,
+      "max_air_time": 0.4,
+      "hip_abduction_max": 0.22,
+      "feet_lateral_min": 0.12,
+      "feet_lateral_max": 0.205,
+      "feet_lateral_inner_weight": 2.0
+    },
+    "training": {
+      "num_steps_per_env": 24,
+      "save_interval": 100,
+      "learning_rate": 0.0003,
+      "entropy_coef": 0.001,
+      "init_noise_std": 0.45,
+      "min_noise_std": 0.1,
+      "max_noise_std": 0.8,
+      "min_learning_rate": 1e-05,
+      "max_learning_rate": 0.001,
+      "action_mean_penalty_coef": 0.01,
+      "num_learning_epochs": 5,
+      "num_mini_batches": 4
+    }
+  },
+  "torque_audit": {
+    "scope": "Every physics substep in active episodes, including failures and terminal steps; not successful episodes only",
+    "physics_samples_per_joint": 4800,
+    "startup_physics_samples_per_joint": 3200,
+    "requested_excess_joint_samples": 8735,
+    "applied_excess_joint_samples": 0,
+    "startup_excess_joint_samples": 5619,
+    "requested_excess_fraction": 0.15164930555555556,
+    "torque_limits_passed": false,
+    "note": "Zero sampled violations is an evaluation result, not a guarantee for unseen real-world states.",
+    "joints": {
+      "FL_hip_joint": {
+        "limit_nm": 23.700000762939453,
+        "requested_peak_nm": 33.15228271484375,
+        "applied_peak_nm": 23.700000762939453,
+        "requested_excess_samples": 271,
+        "saturation_samples": 271
+      },
+      "FR_hip_joint": {
+        "limit_nm": 23.700000762939453,
+        "requested_peak_nm": 36.79454040527344,
+        "applied_peak_nm": 23.700000762939453,
+        "requested_excess_samples": 549,
+        "saturation_samples": 549
+      },
+      "RL_hip_joint": {
+        "limit_nm": 23.700000762939453,
+        "requested_peak_nm": 37.97637176513672,
+        "applied_peak_nm": 23.700000762939453,
+        "requested_excess_samples": 126,
+        "saturation_samples": 126
+      },
+      "RR_hip_joint": {
+        "limit_nm": 23.700000762939453,
+        "requested_peak_nm": 45.418975830078125,
+        "applied_peak_nm": 23.700000762939453,
+        "requested_excess_samples": 942,
+        "saturation_samples": 942
+      },
+      "FL_thigh_joint": {
+        "limit_nm": 23.700000762939453,
+        "requested_peak_nm": 73.55675506591797,
+        "applied_peak_nm": 23.700000762939453,
+        "requested_excess_samples": 2795,
+        "saturation_samples": 2795
+      },
+      "FR_thigh_joint": {
+        "limit_nm": 23.700000762939453,
+        "requested_peak_nm": 68.09697723388672,
+        "applied_peak_nm": 23.700000762939453,
+        "requested_excess_samples": 3083,
+        "saturation_samples": 3083
+      },
+      "RL_thigh_joint": {
+        "limit_nm": 23.700000762939453,
+        "requested_peak_nm": 37.68191146850586,
+        "applied_peak_nm": 23.700000762939453,
+        "requested_excess_samples": 31,
+        "saturation_samples": 31
+      },
+      "RR_thigh_joint": {
+        "limit_nm": 23.700000762939453,
+        "requested_peak_nm": 31.180158615112305,
+        "applied_peak_nm": 23.700000762939453,
+        "requested_excess_samples": 498,
+        "saturation_samples": 498
+      },
+      "FL_calf_joint": {
+        "limit_nm": 45.43000030517578,
+        "requested_peak_nm": 35.01553726196289,
+        "applied_peak_nm": 35.01553726196289,
+        "requested_excess_samples": 0,
+        "saturation_samples": 0
+      },
+      "FR_calf_joint": {
+        "limit_nm": 45.43000030517578,
+        "requested_peak_nm": 40.949031829833984,
+        "applied_peak_nm": 40.949031829833984,
+        "requested_excess_samples": 0,
+        "saturation_samples": 0
+      },
+      "RL_calf_joint": {
+        "limit_nm": 45.43000030517578,
+        "requested_peak_nm": 61.86049270629883,
+        "applied_peak_nm": 45.43000030517578,
+        "requested_excess_samples": 295,
+        "saturation_samples": 295
+      },
+      "RR_calf_joint": {
+        "limit_nm": 45.43000030517578,
+        "requested_peak_nm": 56.69783401489258,
+        "applied_peak_nm": 45.43000030517578,
+        "requested_excess_samples": 145,
+        "saturation_samples": 145
+      }
+    }
+  },
+  "torque_acceptance_passed": false,
+  "controller": "stairs",
+  "spawn_x_offset_m": 0.0,
+  "first_terminal_pre_step_states": [
+    {
+      "relative_position_m": [
+        1.5232429504394531,
+        0.0350184440612793,
+        0.5390709638595581
+      ],
+      "world_velocity_m_s": [
+        0.09071211516857147,
+        0.08167523890733719,
+        0.06313076615333557
+      ],
+      "projected_gravity": [
+        -0.49256935715675354,
+        0.013277587480843067,
+        -0.8701719045639038
+      ],
+      "elapsed_s": 2.9800000190734863,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": true,
+      "terminated": false
+    },
+    {
+      "relative_position_m": [
+        1.5889759063720703,
+        0.06057119369506836,
+        0.56102454662323
+      ],
+      "world_velocity_m_s": [
+        0.6536657810211182,
+        -0.033025167882442474,
+        0.12567992508411407
+      ],
+      "projected_gravity": [
+        -0.5208732485771179,
+        -0.044539645314216614,
+        -0.8524712920188904
+      ],
+      "elapsed_s": 2.9800000190734863,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": true,
+      "terminated": false
+    },
+    {
+      "relative_position_m": [
+        1.4345169067382812,
+        0.0683208703994751,
+        0.5471620559692383
+      ],
+      "world_velocity_m_s": [
+        0.49994924664497375,
+        -0.022084660828113556,
+        0.31134042143821716
+      ],
+      "projected_gravity": [
+        -0.5200178623199463,
+        0.02414577826857567,
+        -0.8538140058517456
+      ],
+      "elapsed_s": 2.9800000190734863,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": true,
+      "terminated": false
+    },
+    {
+      "relative_position_m": [
+        1.4975967407226562,
+        0.1243753433227539,
+        0.5438678860664368
+      ],
+      "world_velocity_m_s": [
+        0.5481482744216919,
+        -0.07683006674051285,
+        0.2612352669239044
+      ],
+      "projected_gravity": [
+        -0.5193552374839783,
+        -0.021427752450108528,
+        -0.8542897701263428
+      ],
+      "elapsed_s": 2.9800000190734863,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": true,
+      "terminated": false
+    },
+    {
+      "relative_position_m": [
+        1.4990482330322266,
+        0.09854364395141602,
+        0.5470218062400818
+      ],
+      "world_velocity_m_s": [
+        0.530491054058075,
+        -0.040739621967077255,
+        0.31205296516418457
+      ],
+      "projected_gravity": [
+        -0.512004554271698,
+        -0.0005129631608724594,
+        -0.8589825630187988
+      ],
+      "elapsed_s": 2.9800000190734863,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": true,
+      "terminated": false
+    },
+    {
+      "relative_position_m": [
+        1.4848308563232422,
+        0.11496841907501221,
+        0.5408933162689209
+      ],
+      "world_velocity_m_s": [
+        0.5115998983383179,
+        -0.06872145086526871,
+        0.2934260368347168
+      ],
+      "projected_gravity": [
+        -0.5177130103111267,
+        -0.009826350957155228,
+        -0.8554979562759399
+      ],
+      "elapsed_s": 2.9800000190734863,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": true,
+      "terminated": false
+    },
+    {
+      "relative_position_m": [
+        1.5253143310546875,
+        0.05615806579589844,
+        0.5386602282524109
+      ],
+      "world_velocity_m_s": [
+        0.1015714481472969,
+        0.09272217005491257,
+        0.05972321331501007
+      ],
+      "projected_gravity": [
+        -0.4843805730342865,
+        -0.008918519131839275,
+        -0.8748119473457336
+      ],
+      "elapsed_s": 2.9800000190734863,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": true,
+      "terminated": false
+    },
+    {
+      "relative_position_m": [
+        1.4899215698242188,
+        0.14183521270751953,
+        0.5632526278495789
+      ],
+      "world_velocity_m_s": [
+        0.6589152812957764,
+        -0.03983305022120476,
+        0.08691761642694473
+      ],
+      "projected_gravity": [
+        -0.5128195285797119,
+        -0.055616382509469986,
+        -0.8566930294036865
+      ],
+      "elapsed_s": 2.9800000190734863,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": true,
+      "terminated": false
+    }
+  ],
+  "stop_reason": "episode_target_reached"
+}

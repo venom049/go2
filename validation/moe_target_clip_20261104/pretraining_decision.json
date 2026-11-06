@@ -1,0 +1,30 @@
+{
+  "format": "moe_target_clip_pretraining_decision_v1",
+  "created_unix": 1793796044.0686176,
+  "preflight": "preflight_20261104_202254/comparison.json",
+  "selected_mode": "bounded target + submitted-action history + raw violation penalty",
+  "raw_penalty_reward_rate": "20 * sum(max(qmin-qraw,qraw-qmax,0))",
+  "source_checkpoint_sha256": "3bad0efcc2e751e834bea1e85a5914c410a2a1ff1a1b80193426805f69e4881f",
+  "new_updates": 1000,
+  "source_update": 1000,
+  "final_cumulative_update": 2000,
+  "device": "cpu",
+  "num_envs": 128,
+  "workers": 8,
+  "steps_per_update": 24,
+  "training_transitions": 3072000,
+  "critic_warmup_updates": 20,
+  "full_resume": true,
+  "smoke_updates_not_used_for_formal_initialization": true,
+  "benchmark_steady_update_seconds": [
+    2.873948574066162,
+    2.957449197769165,
+    2.8862502574920654
+  ],
+  "nominal_smoke_success": true,
+  "smoke_sent_excess_count": 0,
+  "tests_log": "pretraining_tests.log",
+  "scope": "target command angle bounds only; other guards and actual states retain existing semantics",
+  "formal_training_started": false,
+  "user_requested_pre_start_notification": true
+}

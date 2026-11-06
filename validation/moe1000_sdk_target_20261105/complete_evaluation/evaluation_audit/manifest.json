@@ -1,0 +1,1096 @@
+{
+  "format": "moe_stairs_wall_evaluation_v2",
+  "started_unix": 1793869616.4458458,
+  "stair_steps": 2,
+  "environment_contract": {
+    "actual_position_constraint": {
+      "mode": "native",
+      "kind": "original MJCF soft limits",
+      "hard_position_guarantee": false
+    },
+    "steps": 2,
+    "height": 0.15,
+    "tread": 0.3,
+    "width": 0.9,
+    "platform": 0.9,
+    "start_distance": 0.5,
+    "platform_start": 0.3,
+    "platform_end": 1.2,
+    "top_height": 0.3,
+    "wall_front": 1.2,
+    "wall_thickness": 0.1,
+    "wall_width": 3.0,
+    "wall_height": 2.0,
+    "height_curriculum": {
+      "evaluation_height": 0.15,
+      "training_frontier_min": 0.1,
+      "training_frontier_max": 0.15,
+      "multipliers": [
+        1.0,
+        0.83,
+        0.67
+      ],
+      "probabilities": [
+        0.6,
+        0.2,
+        0.2
+      ],
+      "rule": "Existing frontier schedule and per-reset height sampling; every riser has the same sampled height."
+    },
+    "physics_dt": 0.002,
+    "control_dt": 0.02,
+    "settle_seconds": 2.0,
+    "evaluation_vx": 0.6,
+    "training_vx_range": [
+      0.5,
+      0.6
+    ],
+    "episode_timeout_seconds": 15.0,
+    "stable_stop_seconds": 2.0,
+    "platform_success": "All feet inside the upper landing with 3 mm edge margin; foot surface clearance [-.025,.20] m; at least two supporting feet in .1 s; base clearance [.18,.60] m and tilt <45 deg.",
+    "stable_stop": "Platform success plus horizontal speed <.05 m/s, absolute vertical speed <.05 m/s, every world angular speed <.1 rad/s and tilt <15 deg for 2 s."
+  },
+  "guard_mode": "audit",
+  "target_mode_requested": "auto",
+  "target_command_scope": "Raw affine request and post-filter command proposal at every control call. Strict rejection may prevent its physical application; physical guard evidence is separate.",
+  "strict_guard_scope": "Joint/target/tracking/requested and applied torque stop at first observed violating pre/post boundary. No damping continuation, communication, factory handoff, 45-degree attitude or two-second runtime gate is simulated; not full real-controller equivalence.",
+  "device": "cpu",
+  "dtype": "float32",
+  "tf32_enabled": false,
+  "scenario": {
+    "width_m": 0.9,
+    "step_height_m": 0.15,
+    "first_tread_depth_m": 0.3,
+    "steps": 2,
+    "top_platform_depth_m": 0.9,
+    "wall_front_x_m": 1.2,
+    "platform_start_x_m": 0.3,
+    "top_height_m": 0.3,
+    "front_foot_edge_initial_distance_m": 0.5,
+    "timeout_s": 15.0,
+    "command_forward_m_s": 0.6,
+    "command_value_is_not_measured_speed": true,
+    "physics_dt_s": 0.002,
+    "control_dt_s": 0.02,
+    "motor_torque_mode": "physical clipping",
+    "external_platform_stop": true
+  },
+  "samples": [
+    {
+      "kind": "nominal",
+      "seed": null,
+      "episode": 0,
+      "y_m": 0.0,
+      "yaw_rad": 0.0
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 0,
+      "y_m": 0.010958241942238534,
+      "yaw_rad": -0.004267089881131076
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 1,
+      "y_m": 0.0143439167964553,
+      "yaw_rad": 0.013778887781030986
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 2,
+      "y_m": -0.016232906084494018,
+      "yaw_rad": 0.03320470412855853
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 3,
+      "y_m": 0.01044558807961412,
+      "yaw_rad": 0.019971055998052135
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 4,
+      "y_m": -0.014875454692978164,
+      "yaw_rad": -0.003463714956045201
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 5,
+      "y_m": -0.0051680790306967515,
+      "yaw_rad": 0.02979381675057994
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 6,
+      "y_m": 0.0057546048032265824,
+      "yaw_rad": 0.02253301140249843
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 7,
+      "y_m": -0.0022634320469067555,
+      "yaw_rad": -0.019042329507215704
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 8,
+      "y_m": 0.0021833914806333905,
+      "yaw_rad": -0.030451300085461354
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 9,
+      "y_m": 0.01310524687970328,
+      "yaw_rad": 0.009191909089359851
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 10,
+      "y_m": 0.010323509603414955,
+      "yaw_rad": -0.010156003329139844
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 11,
+      "y_m": 0.018827920975796133,
+      "yaw_rad": 0.027445031704817734
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 12,
+      "y_m": 0.011135339882950474,
+      "yaw_rad": -0.021318239824509894
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 13,
+      "y_m": -0.0013311598509186326,
+      "yaw_rad": -0.031848505288848236
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 14,
+      "y_m": -0.013828420317298088,
+      "yaw_rad": 0.012779227705639933
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 15,
+      "y_m": 0.009790486236312686,
+      "yaw_rad": 0.032638336464378755
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 16,
+      "y_m": -0.006966985674473923,
+      "yaw_rad": -0.009043618574771515
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 17,
+      "y_m": -0.0012177675489676819,
+      "yaw_rad": -0.021678988822889576
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 18,
+      "y_m": -0.014803139786581133,
+      "yaw_rad": -0.0016961161174895226
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 19,
+      "y_m": -0.010923626037964635,
+      "yaw_rad": 0.011855253292695794
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 20,
+      "y_m": -0.0025139232451067695,
+      "yaw_rad": 0.023225319483217932
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 21,
+      "y_m": 0.008010604080089963,
+      "yaw_rad": -0.013099279577834643
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 22,
+      "y_m": 0.01329039205580804,
+      "yaw_rad": 0.021276565924177024
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 23,
+      "y_m": -0.004500864838793021,
+      "yaw_rad": -0.014777486081425942
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 24,
+      "y_m": 0.007299820158999021,
+      "yaw_rad": -0.02515002113259913
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 25,
+      "y_m": -0.012003671900995667,
+      "yaw_rad": -0.03439260164958648
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 26,
+      "y_m": 0.011476975100085534,
+      "yaw_rad": 0.011508760889055836
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 27,
+      "y_m": 0.008206615145053404,
+      "yaw_rad": 0.01959858358906657
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 28,
+      "y_m": -0.0016433689784664009,
+      "yaw_rad": 0.004799040804546385
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 29,
+      "y_m": -0.014408120074893702,
+      "yaw_rad": -0.02691087753687075
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 30,
+      "y_m": 0.006736118471618865,
+      "yaw_rad": -0.0020178654764801893
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 31,
+      "y_m": 0.002609444259247553,
+      "yaw_rad": 0.018500410303730556
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 32,
+      "y_m": 0.005388732800023631,
+      "yaw_rad": 0.0037405478109089757
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 33,
+      "y_m": 0.0023682864298165407,
+      "yaw_rad": -0.01368686514807771
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 34,
+      "y_m": -0.018767286617282424,
+      "yaw_rad": -0.004417959668613171
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 35,
+      "y_m": -0.011416613087218832,
+      "yaw_rad": -0.006385905353079504
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 36,
+      "y_m": 0.014136122930726646,
+      "yaw_rad": -0.018574527924794863
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 37,
+      "y_m": -0.01766789033243736,
+      "yaw_rad": -0.015262283528446413
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 38,
+      "y_m": -0.008256249689332655,
+      "yaw_rad": 0.011303905181352825
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 39,
+      "y_m": 0.0022812860936511324,
+      "yaw_rad": 0.019819833957689055
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 40,
+      "y_m": 0.006572541613095503,
+      "yaw_rad": -0.00653542996398573
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 41,
+      "y_m": 0.012560815386641385,
+      "yaw_rad": -0.023249676183653714
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 42,
+      "y_m": -0.01909151707464558,
+      "yaw_rad": -0.028620058420236977
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 43,
+      "y_m": 0.008894374023858013,
+      "yaw_rad": -0.002661471408371925
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 44,
+      "y_m": -0.013549128838655928,
+      "yaw_rad": 7.293906198622968e-05
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 45,
+      "y_m": -0.013907515891473264,
+      "yaw_rad": 0.013705747735426849
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 46,
+      "y_m": -0.0021537489770387733,
+      "yaw_rad": -0.008306285378409148
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 47,
+      "y_m": -0.007939516434084939,
+      "yaw_rad": 0.009095440831842848
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 48,
+      "y_m": -0.005527495577864383,
+      "yaw_rad": -0.028787466315193237
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 49,
+      "y_m": -0.015279763915179389,
+      "yaw_rad": 0.03224654021464527
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 50,
+      "y_m": 0.016343227628304282,
+      "yaw_rad": 0.013942188098873882
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 51,
+      "y_m": -0.009365201541619217,
+      "yaw_rad": 0.032754690229188484
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 52,
+      "y_m": 0.011150036158631783,
+      "yaw_rad": 0.015141791664391141
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 53,
+      "y_m": -0.0020255399142484545,
+      "yaw_rad": -0.015900538580007416
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 54,
+      "y_m": -0.016144361513860027,
+      "yaw_rad": 0.02810694958443951
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 55,
+      "y_m": -0.0017689484066555558,
+      "yaw_rad": -0.020778957035521992
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 56,
+      "y_m": -0.007761735033973901,
+      "yaw_rad": 0.005530569240186897
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 57,
+      "y_m": -0.012929088682430732,
+      "yaw_rad": 0.024896373668217564
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 58,
+      "y_m": 0.010340781193408404,
+      "yaw_rad": 0.015321404670012521
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 59,
+      "y_m": -0.00271627840899585,
+      "yaw_rad": 0.008887833748618415
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 60,
+      "y_m": 0.0033639187565094215,
+      "yaw_rad": 0.010461266280222654
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 61,
+      "y_m": -0.016622227154404437,
+      "yaw_rad": -0.005877752151721174
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 62,
+      "y_m": -0.0183354330455243,
+      "yaw_rad": -0.00041951995812249815
+    },
+    {
+      "kind": "perturbed",
+      "seed": 42,
+      "episode": 63,
+      "y_m": -0.006805551506688587,
+      "yaw_rad": -0.024816893261939997
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 0,
+      "y_m": 0.0060919705080364275,
+      "yaw_rad": -0.031850490925380205
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 1,
+      "y_m": -0.019198816525031324,
+      "yaw_rad": 0.023681505716041634
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 2,
+      "y_m": 0.0034857219035223375,
+      "yaw_rad": -0.01921920058586637
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 3,
+      "y_m": 0.01007169087274462,
+      "yaw_rad": -0.016497396808619683
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 4,
+      "y_m": -0.0032008836113492783,
+      "yaw_rad": -0.0034186541078621777
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 5,
+      "y_m": 0.018212583168849505,
+      "yaw_rad": 0.027359897885222764
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 6,
+      "y_m": -0.00885467897924226,
+      "yaw_rad": -0.015461222735964848
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 7,
+      "y_m": -0.003120017006109487,
+      "yaw_rad": -0.03462190613190122
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 8,
+      "y_m": -0.007643049290194952,
+      "yaw_rad": 0.031538379985594965
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 9,
+      "y_m": 0.013528191130739175,
+      "yaw_rad": 0.0024524149873610263
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 10,
+      "y_m": -0.0005804581617004957,
+      "yaw_rad": 0.031075704628411797
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 11,
+      "y_m": 0.003726967498566554,
+      "yaw_rad": 0.03091801332191251
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 12,
+      "y_m": 0.019915269770964816,
+      "yaw_rad": -0.03254936748546015
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 13,
+      "y_m": -0.015257575916306125,
+      "yaw_rad": 0.01823511890031674
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 14,
+      "y_m": -0.014954501240267759,
+      "yaw_rad": -0.011041451654938955
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 15,
+      "y_m": -0.007999228408141122,
+      "yaw_rad": 0.00356361959107776
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 16,
+      "y_m": -0.01797520950806253,
+      "yaw_rad": -0.003422913246953381
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 17,
+      "y_m": 0.002216662486452886,
+      "yaw_rad": -0.026586912956908924
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 18,
+      "y_m": -0.006342996559102469,
+      "yaw_rad": 0.0003177720377891477
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 19,
+      "y_m": -0.007841395577104464,
+      "yaw_rad": -0.005736105908332147
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 20,
+      "y_m": -0.003417559934155486,
+      "yaw_rad": -0.028392049906592987
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 21,
+      "y_m": 0.0035198560235727254,
+      "yaw_rad": -0.02973651058052909
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 22,
+      "y_m": 0.003220777275691214,
+      "yaw_rad": -0.029121061801598146
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 23,
+      "y_m": 0.0015649527062124857,
+      "yaw_rad": 0.02448829466394229
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 24,
+      "y_m": -0.00844814958753501,
+      "yaw_rad": -0.029129904286670616
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 25,
+      "y_m": -0.007180796310541337,
+      "yaw_rad": -0.0052709506462246605
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 26,
+      "y_m": 0.004486624269191882,
+      "yaw_rad": -0.024327667591694427
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 27,
+      "y_m": -0.019841545451055244,
+      "yaw_rad": 0.02395166389862765
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 28,
+      "y_m": -0.0017964272818001663,
+      "yaw_rad": 0.0051403862167125405
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 29,
+      "y_m": 0.012053126522258071,
+      "yaw_rad": 0.01837811023166651
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 30,
+      "y_m": 0.014477362605996056,
+      "yaw_rad": -0.012430162559436988
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 31,
+      "y_m": -0.012248217862426164,
+      "yaw_rad": -0.03401970769411414
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 32,
+      "y_m": -0.004157717951775459,
+      "yaw_rad": 0.007435461352245529
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 33,
+      "y_m": 0.002660705249384252,
+      "yaw_rad": 0.026446361142299826
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 34,
+      "y_m": 0.013111132922567648,
+      "yaw_rad": -0.00024188242370723478
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 35,
+      "y_m": -0.01509235886697685,
+      "yaw_rad": 4.0254400585672256e-05
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 36,
+      "y_m": 0.01677944356398729,
+      "yaw_rad": 0.026588751514731515
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 37,
+      "y_m": 0.006963023732255883,
+      "yaw_rad": 0.011093713437217434
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 38,
+      "y_m": 0.013161284751159973,
+      "yaw_rad": 0.013057744375888587
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 39,
+      "y_m": 0.004967714039730172,
+      "yaw_rad": -0.00685833482038593
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 40,
+      "y_m": -0.004019729497437102,
+      "yaw_rad": -0.0009534009097272103
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 41,
+      "y_m": 0.015269195957865283,
+      "yaw_rad": 0.00988043726930795
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 42,
+      "y_m": 0.013018597615415736,
+      "yaw_rad": 0.00018716199216137208
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 43,
+      "y_m": 0.001458617316514154,
+      "yaw_rad": 0.013878366412890579
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 44,
+      "y_m": 0.007783051123725824,
+      "yaw_rad": -0.019584447252683337
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 45,
+      "y_m": 0.017077389436679535,
+      "yaw_rad": -0.01922140299482724
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 46,
+      "y_m": 0.006326971560324891,
+      "yaw_rad": -0.009609429584114561
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 47,
+      "y_m": -0.008739947223062079,
+      "yaw_rad": 0.03443367019273826
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 48,
+      "y_m": 0.00718123412943604,
+      "yaw_rad": -0.015124374050940359
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 49,
+      "y_m": 0.009087560899837966,
+      "yaw_rad": 0.017638370293054907
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 50,
+      "y_m": -0.005485259732701668,
+      "yaw_rad": 0.030240598371732354
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 51,
+      "y_m": 0.018779405241765617,
+      "yaw_rad": -0.016376599154064572
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 52,
+      "y_m": 0.009227548721894071,
+      "yaw_rad": -0.02081127769648008
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 53,
+      "y_m": -0.011263231339554163,
+      "yaw_rad": 0.019034207279046228
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 54,
+      "y_m": 0.01780863050187145,
+      "yaw_rad": -0.00028129440838357833
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 55,
+      "y_m": -0.007438748168135398,
+      "yaw_rad": -0.015197845532688877
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 56,
+      "y_m": -0.001848302998560647,
+      "yaw_rad": 0.009793437807424192
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 57,
+      "y_m": 0.016759582796603712,
+      "yaw_rad": 0.017280092256629118
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 58,
+      "y_m": 0.015182423475770642,
+      "yaw_rad": 0.018070112255822474
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 59,
+      "y_m": -0.0027843050329368173,
+      "yaw_rad": 0.03165699290474331
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 60,
+      "y_m": 0.004281019312815326,
+      "yaw_rad": -0.003267044832248746
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 61,
+      "y_m": 0.007143906373920414,
+      "yaw_rad": 0.01769416606442513
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 62,
+      "y_m": 0.0028538170427009936,
+      "yaw_rad": -0.0011624157135692037
+    },
+    {
+      "kind": "perturbed",
+      "seed": 43,
+      "episode": 63,
+      "y_m": 0.01655535148630945,
+      "yaw_rad": 0.0005521387557724244
+    }
+  ],
+  "profile": {
+    "profile_id": "unitree_go2_2ded279_hip48",
+    "source_path": "/root/gpufree-data/moe1000-sdk-target-20261105/source/validation/official_joint_limits_20261104/limit_profile.json",
+    "source_sha256": "bd3ea1830ca2ff7d8eb6eda1fb0b5077e33192a1ee663f2c16f96195d948c8af",
+    "joint_names": [
+      "FL_hip",
+      "FL_thigh",
+      "FL_calf",
+      "FR_hip",
+      "FR_thigh",
+      "FR_calf",
+      "RL_hip",
+      "RL_thigh",
+      "RL_calf",
+      "RR_hip",
+      "RR_thigh",
+      "RR_calf"
+    ],
+    "velocity_limits_rad_s": [
+      30.100000381469727,
+      30.100000381469727,
+      15.699999809265137,
+      30.100000381469727,
+      30.100000381469727,
+      15.699999809265137,
+      30.100000381469727,
+      30.100000381469727,
+      15.699999809265137,
+      30.100000381469727,
+      30.100000381469727,
+      15.699999809265137
+    ],
+    "position_lower_rad": [
+      -0.8377580642700195,
+      -1.5707999467849731,
+      -2.7227001190185547,
+      -0.8377580642700195,
+      -1.5707999467849731,
+      -2.7227001190185547,
+      -0.8377580642700195,
+      -0.5235999822616577,
+      -2.7227001190185547,
+      -0.8377580642700195,
+      -0.5235999822616577,
+      -2.7227001190185547
+    ],
+    "position_upper_rad": [
+      0.8377580642700195,
+      3.4907000064849854,
+      -0.8377599716186523,
+      0.8377580642700195,
+      3.4907000064849854,
+      -0.8377599716186523,
+      0.8377580642700195,
+      4.537899971008301,
+      -0.8377599716186523,
+      0.8377580642700195,
+      4.537899971008301,
+      -0.8377599716186523
+    ],
+    "effort_limits_nm": [
+      23.7,
+      23.7,
+      45.43,
+      23.7,
+      23.7,
+      45.43,
+      23.7,
+      23.7,
+      45.43,
+      23.7,
+      23.7,
+      45.43
+    ],
+    "tracking_error_limit_rad": 0.8999999761581421,
+    "q_dq_boundary_semantics": "SDK float32 boundary, strict outside comparison",
+    "scope": "application joint checks; not firmware readback or permission to actuate"
+  },
+  "actors": [
+    {
+      "label": "original_moe1000",
+      "path": "/root/gpufree-data/moe1000-sdk-target-20261105/source/validation/moe_finetune_20261104/formal_run/training/model_1000.pt",
+      "sha256": "3bad0efcc2e751e834bea1e85a5914c410a2a1ff1a1b80193426805f69e4881f"
+    },
+    {
+      "label": "sdk_target500",
+      "path": "/root/gpufree-data/moe1000-sdk-target-20261105/formal_run/training/model_500.pt",
+      "sha256": "a63aa7e78b71b07ba68a4967f3cbbb5c8445b0eb3fba1ddc256b225b958845d8"
+    },
+    {
+      "label": "sdk_target1000",
+      "path": "/root/gpufree-data/moe1000-sdk-target-20261105/formal_run/training/model_1000.pt",
+      "sha256": "bbf7aab2ad095fd5f5dcc69df4bdb1ce77cfd2e49c0172f41c53230ef3b9b6ca"
+    }
+  ],
+  "gait_scope": "Successful first episodes only, including approach and 2-second platform stop; no resets counted",
+  "climb_speed_definition": "0.3 m / interpolated base crossing time from first riser x=0 to platform x=0.3",
+  "hip_definition": "Mean positive outward component: FL/RL +q_hip, FR/RR -q_hip, average across four joints",
+  "slip_definition": "Contact-foot horizontal-speed RMS; 2 ms endpoint finite differences, contact-time weighted",
+  "guard_aggregation": "Integer count sums / sample-count sums; peaks are maxima across every seed and failure",
+  "real_robot_driven": false,
+  "source_sha256": {
+    "scripts/evaluate_moe_finetune.py": "b5034280c52d24e827e96c6cfb2eeda072946d1d9f6fd14e9d95c923e6561eba",
+    "scripts/train_moe_stairs.py": "3e960ed92f8fb9658bb8122bafb871179f5e87f437057081f641c3fae5e5e878",
+    "go2_him/moe_stair_env.py": "e4e61ac3675b734e92b31e9eb6b6f3fbc53e8a58b7179d87b4df4503c6b144f2",
+    "go2_him/moe_stair_rewards.py": "389ee0100bfa8bfba2bb0eb6c93033344dfbb73bcca2ec6d9207c91981978003",
+    "go2_him/official_guard.py": "8c0befbfce5bfb18182f9109a806aaa5e3bf2f22fc6e4d3429658604893583a9",
+    "go2_him/moe_cts_actor.py": "5e80517a3e0d6a97d604d142c280e23f22df7e05a5608599bb6b92c6a03535ad",
+    "go2_him/calf_speed.py": "fe91d20997304aef487833680acf85dd0f106e3c27000dd188fbe33a75ca6a83",
+    "go2_him/joint_recovery.py": "2fe8df092968b45db020b0a2fab58c139badc39aed41956f7dbbd160027997b0",
+    "go2_him/target_clip.py": "3ffb902a8303aac93a74b8cfe8c7221d660effd3780c992c89cc62aa04b46ae7",
+    "go2_him/hard_joint_limits.py": "d9dc780b067d4cd19c602cbf6a249260dcf3efacc25139a26cab88e3084b1836"
+  }
+}

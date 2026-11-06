@@ -1,0 +1,157 @@
+{
+  "created_utc": "2026-11-04T02:56:14.008269+00:00",
+  "scope": "read-only audit of onboard trial controller, its binary/configuration, and historical logs",
+  "runtime_identity": {
+    "deploy_path": "/home/unitree/go2-stairs-torque1000-20261103/legacy_candidate/v0/params/deploy.yaml",
+    "deploy_sha256": "c3817799231b7a0b9e0148e4a72a943ce111c248ecd9c31388fbdc89e44a73bf",
+    "binaries": [
+      {
+        "path": "/home/unitree/go2-stairs-torque1000-test-20261103/controller/robots/go2/build/go2_ctrl",
+        "sha256": "770ad446e7ef45f51f4ee8e8baf68c15c5a72cb064cad01d94341be1799645de"
+      }
+    ],
+    "historical_binary_sha256": "770ad446e7ef45f51f4ee8e8baf68c15c5a72cb064cad01d94341be1799645de",
+    "binary_matches_previous_trial": true,
+    "local_deploy_path": "/home/venom/文档/ChatGPT/机器狗/validation/onboard_joint_limits_20261104/protection_sources/torque1000_test/candidate_deploy.yaml"
+  },
+  "motor_commands_sent": false,
+  "remote_files_modified": false,
+  "limits_modified": false,
+  "joint_order": "SDK FR, FL, RR, RL, each hip/thigh/calf; installed legacy adapter joint_ids_map is identity 0..11",
+  "stair_policy_checks": {
+    "source": "/home/venom/文档/ChatGPT/机器狗/validation/onboard_joint_limits_20261104/protection_sources/torque1000_test/robots/go2/src/State_RLBase.cpp",
+    "configuration": "/home/venom/文档/ChatGPT/机器狗/validation/onboard_joint_limits_20261104/protection_sources/torque1000_test/robots/go2/config/config.yaml",
+    "priority_order": [
+      "max_q_error",
+      "max_abs_dq",
+      "max_abs_raw_action",
+      "kp_saturated",
+      "bad_orientation"
+    ],
+    "position_tracking_error": {
+      "condition": "max(abs(q_measured-q_target)) > 0.9",
+      "unit": "rad",
+      "source_line": 319
+    },
+    "measured_speed": {
+      "condition": "max(abs(dq_measured)) > 13.0",
+      "unit": "rad/s",
+      "source_line": 327,
+      "all_joints_same_threshold": true
+    },
+    "raw_action": {
+      "condition": "max(abs(raw)) > 5.0",
+      "source_line": 335,
+      "caveat": "process_actions clips finite model output to +/-4.5 before storing raw in this installed policy; nonfinite original output throws before clipping"
+    },
+    "stiffness": {
+      "condition": "max(kp)>=69.5 for >=3 policy frames",
+      "source_line": 343,
+      "caveat": "installed candidate fixes kp=40, kd approximately1"
+    },
+    "body_tilt": {
+      "condition": "acos(clamp(-projected_gravity_z)) > 0.7853981634",
+      "unit": "rad",
+      "source_line": 354
+    },
+    "reaction": "sets safety_stop_requested and records first cause; registered transition targets LieDown; protected CtrlFSM intercepts that transition and latches fixed damping, not the ordinary LieDown trajectory"
+  },
+  "publication_guard": {
+    "source": "/home/venom/文档/ChatGPT/机器狗/validation/onboard_joint_limits_20261104/protection_sources/torque1000_test/include/FirstTestGuard.h",
+    "position_ranges_rad": {
+      "all_hip": [
+        -1.0472,
+        1.0472
+      ],
+      "front_thigh": [
+        -1.5708,
+        3.4907
+      ],
+      "rear_thigh": [
+        -0.5236,
+        4.5379
+      ],
+      "all_calf": [
+        -2.7227,
+        -0.83776
+      ]
+    },
+    "position_checks": "both measured q and proposed q; only for nonpassive command; lower/upper boundaries inclusive",
+    "uniform_target_and_measured_dq_limit_rad_s": 30.0,
+    "velocity_mismatch": "still uses former uniform training assumption; onboard/official URDF is hip/thigh30.1, calf15.7. Stair-policy measured-speed stop at13 normally fires first during Stairs.",
+    "effort_limits_Nm": {
+      "hip": 23.7,
+      "thigh": 23.7,
+      "calf": 45.43
+    },
+    "estimated_pd_formula": "kp*(q_target-q_measured) + kd*(dq_target-dq_measured) + tau_ff",
+    "effort_checks": "abs(tau_ff)>limit or, for nonpassive commands, abs(estimated_PD_total)>limit; not actual measured motor torque; GuardInput has no tau_est",
+    "gains": {
+      "kp_inclusive": [
+        0,
+        80
+      ],
+      "kd_inclusive": [
+        0,
+        5
+      ]
+    },
+    "state_and_numeric_checks": [
+      "finite state and command",
+      "quaternion norm within0.05 of1",
+      "no clock/tick regression",
+      "tick advance no longer than0.1s gap",
+      "provided age within[0,0.1]s"
+    ],
+    "active_deadline_s": 2.0,
+    "active_deadline_comparison": ">=",
+    "latch": "first failure is immutable, no reset/rearm in process",
+    "damping": {
+      "kp": 0,
+      "kd": 3,
+      "dq_target": 0,
+      "tau_ff": 0,
+      "q_field": 0
+    },
+    "damping_caveat": "Fixed damping does not lock standing pose. Latched fallback bypasses normal estimated-total-torque checks; it does not guarantee actual damping torque remains within the above model effort limits.",
+    "other_damping_causes": [
+      "operator X/space/0",
+      "stop transition to LieDown/Passive",
+      "process exit",
+      "policy exception",
+      "two_second_test_complete"
+    ],
+    "nonlatched_damping": [
+      "passive command",
+      "waiting for first observed source tick advance"
+    ]
+  },
+  "handoff_and_stand_readiness": {
+    "source": [
+      "/home/venom/文档/ChatGPT/机器狗/validation/onboard_joint_limits_20261104/protection_sources/torque1000_test/include/HandoffHold.h",
+      "/home/venom/文档/ChatGPT/机器狗/validation/onboard_joint_limits_20261104/protection_sources/torque1000_test/include/StandReadiness.h"
+    ],
+    "measured_speed_max_rad_s": 0.8,
+    "target_actual_error_max_rad": 0.18,
+    "factory_target_speed_max_rad_s": 0.01,
+    "tilt_max_rad": 0.25,
+    "gyro_component_max_rad_s": 0.35,
+    "stable_duration_min_s": 0.75,
+    "reaction": "failed handoff gate refuses ownership; failed stand readiness prevents entering Stairs/resets readiness timer. These are not moving-policy speed limits."
+  },
+  "historical_evidence": "protection_incidents.json",
+  "verified_recent_trigger": {
+    "date_local": "2026-11-03 16:53:50.909 Asia/Shanghai",
+    "reason": "max_abs_dq",
+    "joint": "RL_calf",
+    "measured_speed_magnitude_rad_s": 13.312929153442383,
+    "threshold_rad_s": 13,
+    "policy_state_elapsed_s_approx": 0.06,
+    "accepted_publication_requests": 49,
+    "source": "/home/venom/文档/ChatGPT/机器狗/validation/torque_deployment/start_test/attempt_terminal.log",
+    "source_line": 28,
+    "later_transition_label": "stop_transition_LieDown",
+    "later_diagnostic_caveat": "GUARD_JOINT estimated torques from rejected transition proposal are not the initial cause or confirmed applied torque"
+  },
+  "conclusion": "URDF limits, application stop thresholds, startup readiness thresholds, and firmware limits are distinct. Passing URDF speed limits alone does not pass current13rad/s policy stop. Training penalty removal does not remove runtime position/tracking/effort protections."
+}

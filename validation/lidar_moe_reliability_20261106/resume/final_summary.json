@@ -1,0 +1,89 @@
+{
+  "status": "NOT READY FOR REAL STAIR LOCOMOTION",
+  "default_estimator": "body_attitude_translation_registration",
+  "motion_entry_enabled": false,
+  "real_robot_actuation_this_task": "one factory SelectMode(mcf) request returned 3104; subsequent mode read and stable-pose check confirmed mcf; no policy takeover or walking",
+  "ground_contact_confirmed_by_user": true,
+  "python_regression_tests_passed": 55,
+  "final_onboard": {
+    "directory": "validation/lidar_moe_reliability_20261106/resume/onboard_alignment_gate_final/20261106T170806-8605",
+    "exit_code": 5,
+    "exit_reason": "ready_inferences is zero; intended no-readiness result, not a segfault",
+    "steps": 1495,
+    "ready_inferences": 0,
+    "target_limit_violations": 0,
+    "max_cycle_ms": 0.17370299974572845,
+    "publisher_created": false,
+    "release_called": false,
+    "guard_counterfactual_latched": false,
+    "command_rows": 549,
+    "sensor_healthy_rows": 538,
+    "ready_rows": 0,
+    "command_reasons": {
+      "sensor_stale": 22,
+      "need_three_consistent_geometry_frames": 507,
+      "floor_foot_alignment_unverified": 20
+    },
+    "geometry_rows": 132,
+    "geometry_valid_rows": 49,
+    "geometry_reasons": {
+      "two_consistent_risers_not_observed": 1,
+      "rear_wall_not_observed": 47,
+      "middle_tread_not_planar": 10,
+      "inconsistent_step_heights": 5,
+      "two_risers_tread_landing_and_wall_supported": 49,
+      "upper_tread_not_observed": 20
+    },
+    "stance_alignment_checks": 20,
+    "stance_alignment_passes": 0,
+    "median_inferred_sole_gap_m": [
+      0.03240472807908911,
+      0.03492778102494504,
+      0.04872946342210959,
+      0.04992139141929422
+    ]
+  },
+  "simulation_relevant_source_hashes_match_current": true,
+  "simulation": [
+    {
+      "step_height_m": 0.15,
+      "status": "geometry_not_ready",
+      "active_at_s": null,
+      "riser_contact_count": 0,
+      "first_guard_violation": null,
+      "target_joint_limit_violations": 0
+    },
+    {
+      "step_height_m": 0.1,
+      "status": "OBSTACLE_HOLD",
+      "active_at_s": 0.2,
+      "riser_contact_count": 0,
+      "first_guard_violation": null,
+      "target_joint_limit_violations": 0
+    }
+  ],
+  "final_readonly_audit": {
+    "source_manifest_files": 96,
+    "source_and_binary_hash_checks_passed": true,
+    "mode_rpc": {
+      "code": 0,
+      "name": "mcf"
+    },
+    "residual_custom_processes": [],
+    "residual_communication_sockets": [],
+    "non_socket_run_entry": "validate_cpp_guard"
+  },
+  "remaining_blockers": [
+    "absolute lidar-to-URDF physical ground/foot registration mismatch",
+    "intermittent measured tread/landing/wall support",
+    "independent odometry and stopping behavior not dynamically validated",
+    "blind original policy does not plan swing feet from lidar terrain"
+  ],
+  "hashes": {
+    "deploy/lidar_moe_20261106/SHA256SUMS": "bedbbc615f3713353f6e3038a56b646a837c2aaef03a183012fa3ad097553f64",
+    "deploy/lidar_moe_20261106/config/independent_lio.json": "bba1b3bae0cee5a0ae3fc5a17e2836f9f13f49df10daf740765469c5efd711eb",
+    "deploy/lidar_moe_20261106/config/supervisor_independent.json": "20e88c4f7f084235fd2da37721442c82c3680fe50f427c12536eeb53cf31e679",
+    "deploy/lidar_moe_20261106/lidar_moe/supervisor.py": "41568507249ed648c8a26e84b53e253ec50be14938095a75e13b24bd427d0826",
+    "deploy/lidar_moe_20261106/lidar_moe/leg_clearance.py": "48ffcd93dc33b1e7023671874587d8dc8f29a5e19d99fa850e66f85406a8cf49"
+  }
+}

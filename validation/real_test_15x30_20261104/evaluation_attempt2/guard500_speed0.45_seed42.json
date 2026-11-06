@@ -1,0 +1,2889 @@
+{
+  "steps": 1250,
+  "max_steps": 1500,
+  "episodes": 64,
+  "successes": 0,
+  "failures": 60,
+  "timeouts": 4,
+  "success_rate": 0.0,
+  "episodes_per_env_target": 1,
+  "completed_episodes_per_env": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "incomplete_env_ids": [],
+  "envs_incomplete": 0,
+  "checkpoint": "/root/go2-himloco/logs/20261104_111052_stairs_guard_balanced/model_500.pt",
+  "settings": {
+    "seed": 42,
+    "num_envs": 64,
+    "max_iterations": 1000,
+    "episode_length_s": 25.0,
+    "terrain": {
+      "rows": 1,
+      "cols": 4,
+      "initial_level": 0,
+      "height_min": 0.15,
+      "height_max": 0.15,
+      "tread": 0.3,
+      "num_steps": 2,
+      "curriculum": true
+    },
+    "commands": {
+      "forward_min": 0.45,
+      "forward_max": 0.45,
+      "start_forward_min": 0.35,
+      "start_forward_max": 0.5,
+      "speed_ramp_updates": 300
+    },
+    "control": {
+      "stiffness": 40.0,
+      "damping": 1.0,
+      "action_scale": 0.25,
+      "action_clip": 4.0
+    },
+    "randomization": {
+      "enabled": true,
+      "friction_min": 0.6,
+      "friction_max": 1.2,
+      "payload_min": -0.5,
+      "payload_max": 1.0
+    },
+    "torque": {
+      "enabled": true,
+      "soft_ratio": 0.8,
+      "startup_seconds": 2.0,
+      "startup_multiplier": 2.0
+    },
+    "joint_constraints": {
+      "enabled": true,
+      "velocity_limit": 13.0,
+      "velocity_soft_ratio": 0.9,
+      "position_soft_ratio": 0.9,
+      "tracking_error_limit": 0.9,
+      "tracking_soft_ratio": 0.8,
+      "startup_seconds": 2.0,
+      "startup_multiplier": 1.0,
+      "terminate_on_violation": false
+    },
+    "guard_balance": {
+      "enabled": true,
+      "initial_scale": 0.2,
+      "ramp_updates": 300,
+      "velocity_soft_ratio": 0.9,
+      "torque_soft_ratio": 0.85,
+      "tracking_soft_ratio": 0.85,
+      "position_overshoot_scale_rad": 0.1,
+      "target_position_overshoot_scale_rad": 0.15,
+      "budget_velocity": 1.25,
+      "budget_torque": 1.0,
+      "budget_tracking": 0.35,
+      "budget_target_position": 0.25,
+      "budget_position": 0.15
+    },
+    "rewards": {
+      "guard_balance": -1.0,
+      "torque_margin": 0.0,
+      "torque_excess": 0.0,
+      "velocity_margin": 0.0,
+      "velocity_excess": 0.0,
+      "position_margin": 0.0,
+      "position_excess": 0.0,
+      "target_position_excess": 0.0,
+      "tracking_error": 0.0,
+      "tracking_lin_vel": 2.0,
+      "tracking_ang_vel": 0.5,
+      "forward_progress": 0.8,
+      "success": 5.0,
+      "failure": -2.0,
+      "lin_vel_z": -0.2,
+      "ang_vel_xy": -0.1,
+      "orientation": -0.05,
+      "base_height": -1.0,
+      "joint_acc": -2.5e-07,
+      "joint_power": -3e-05,
+      "action_rate": -0.02,
+      "joint_limits": 0.0,
+      "undesired_contacts": -1.0,
+      "foot_slip": -0.6,
+      "lateral_drift": -0.3,
+      "foot_clearance": -0.5,
+      "action_smoothness": -0.01,
+      "roll_orientation": -3.0,
+      "roll_rate": -0.25,
+      "lateral_velocity": -0.4,
+      "feet_air_time": 0.2,
+      "feet_stumble": -0.5,
+      "joint_deviation": 0.0,
+      "hip_deviation": 0.0,
+      "hip_abduction": 0.0,
+      "feet_lateral": -40.0,
+      "joint_vel": 0.0
+    },
+    "targets": {
+      "base_height": 0.3,
+      "foot_clearance": 0.1,
+      "air_time": 0.12,
+      "max_air_time": 0.4,
+      "hip_abduction_max": 0.22,
+      "feet_lateral_min": 0.12,
+      "feet_lateral_max": 0.205,
+      "feet_lateral_inner_weight": 2.0
+    },
+    "training": {
+      "num_steps_per_env": 24,
+      "save_interval": 100,
+      "learning_rate": 0.0001,
+      "entropy_coef": 0.001,
+      "init_noise_std": 0.1,
+      "min_noise_std": 0.05,
+      "max_noise_std": 0.25,
+      "min_learning_rate": 1e-05,
+      "max_learning_rate": 0.001,
+      "action_mean_penalty_coef": 0.01,
+      "num_learning_epochs": 5,
+      "num_mini_batches": 4
+    }
+  },
+  "narrow_stairs_geometry": {
+    "scope": "evaluation_only_finite_width_geometry",
+    "tile_size_m": [
+      8.0,
+      3.0
+    ],
+    "flight_width_m": 0.6,
+    "num_steps": 2,
+    "step_height_m": 0.15,
+    "tread_m": 0.3,
+    "upper_height_m": 0.3,
+    "flight_x_relative_m": [
+      1.2,
+      1.8
+    ],
+    "landing_x_relative_m": [
+      1.8,
+      6.85
+    ],
+    "goal_x_relative_m": 2.5,
+    "ground_floor_width_m": 3.0,
+    "neighboring_flight_ground_gap_m": 2.4,
+    "assumed_upper_landing": {
+      "real_dimensions_known": false,
+      "width_m": 0.6,
+      "tile_x_start_m": 2.6,
+      "tile_x_end_m": 8.0,
+      "length_m": 5.4,
+      "note": "Final 30 cm tread merges with an assumed long narrow upper landing. Its real width and depth are unknown; this is not an exact site replica."
+    },
+    "foot_center_edge_margin_m": 0.025,
+    "foot_center_height_above_landing_m": [
+      -0.025,
+      0.1
+    ],
+    "root_height_above_landing_m": [
+      0.15,
+      0.8
+    ],
+    "minimum_contact_feet": 2,
+    "contact_threshold_n": 1.0,
+    "success_addition": "All four named foot centers inside assumed upper landing and near its height, at least two positive vertical contacts, centered elevated root, plus every original success/failure predicate.",
+    "interpretation": "Sampled geometric completion only; not balance certification, contact-patch clearance certification, or authorization for real traversal onto an unmeasured landing.",
+    "side_exit_diagnostic_added": false
+  },
+  "joint_velocity_calibration": {
+    "profile_path": "/root/go2-himloco/validation/real_test_15x30_20261104/source/validation/onboard_joint_limits_20261104/joint_limits.json",
+    "profile_sha256": "185d1082f317e9d260fa7fd13c1d2e557159cfa3c67369a7f1be2aeba09b405f",
+    "scope": "evaluation_only_actuator_and_physics_velocity_limits",
+    "source_field": "description_velocity_limit_rad_s",
+    "interpretation": "URDF specification; not drive firmware readback or a real-world safety guarantee",
+    "requested_limits_rad_s": {
+      "FR_hip_joint": 30.1,
+      "FR_thigh_joint": 30.1,
+      "FR_calf_joint": 15.7,
+      "FL_hip_joint": 30.1,
+      "FL_thigh_joint": 30.1,
+      "FL_calf_joint": 15.7,
+      "RR_hip_joint": 30.1,
+      "RR_thigh_joint": 30.1,
+      "RR_calf_joint": 15.7,
+      "RL_hip_joint": 30.1,
+      "RL_thigh_joint": 30.1,
+      "RL_calf_joint": 15.7
+    },
+    "measured_velocity_clipping": false,
+    "audit_velocity_limit_rad_s": 13.0,
+    "initial_readback": {
+      "physics": {
+        "verified_environments": 64,
+        "per_joint": {
+          "FL_hip_joint": {
+            "min_rad_s": 30.100000381469727,
+            "max_rad_s": 30.100000381469727
+          },
+          "FR_hip_joint": {
+            "min_rad_s": 30.100000381469727,
+            "max_rad_s": 30.100000381469727
+          },
+          "RL_hip_joint": {
+            "min_rad_s": 30.100000381469727,
+            "max_rad_s": 30.100000381469727
+          },
+          "RR_hip_joint": {
+            "min_rad_s": 30.100000381469727,
+            "max_rad_s": 30.100000381469727
+          },
+          "FL_thigh_joint": {
+            "min_rad_s": 30.100000381469727,
+            "max_rad_s": 30.100000381469727
+          },
+          "FR_thigh_joint": {
+            "min_rad_s": 30.100000381469727,
+            "max_rad_s": 30.100000381469727
+          },
+          "RL_thigh_joint": {
+            "min_rad_s": 30.100000381469727,
+            "max_rad_s": 30.100000381469727
+          },
+          "RR_thigh_joint": {
+            "min_rad_s": 30.100000381469727,
+            "max_rad_s": 30.100000381469727
+          },
+          "FL_calf_joint": {
+            "min_rad_s": 15.699999809265137,
+            "max_rad_s": 15.699999809265137
+          },
+          "FR_calf_joint": {
+            "min_rad_s": 15.699999809265137,
+            "max_rad_s": 15.699999809265137
+          },
+          "RL_calf_joint": {
+            "min_rad_s": 15.699999809265137,
+            "max_rad_s": 15.699999809265137
+          },
+          "RR_calf_joint": {
+            "min_rad_s": 15.699999809265137,
+            "max_rad_s": 15.699999809265137
+          }
+        }
+      },
+      "actuator": {
+        "verified_environments": 64,
+        "per_joint": {
+          "FL_hip_joint": {
+            "min_rad_s": 30.100000381469727,
+            "max_rad_s": 30.100000381469727
+          },
+          "FR_hip_joint": {
+            "min_rad_s": 30.100000381469727,
+            "max_rad_s": 30.100000381469727
+          },
+          "RL_hip_joint": {
+            "min_rad_s": 30.100000381469727,
+            "max_rad_s": 30.100000381469727
+          },
+          "RR_hip_joint": {
+            "min_rad_s": 30.100000381469727,
+            "max_rad_s": 30.100000381469727
+          },
+          "FL_thigh_joint": {
+            "min_rad_s": 30.100000381469727,
+            "max_rad_s": 30.100000381469727
+          },
+          "FR_thigh_joint": {
+            "min_rad_s": 30.100000381469727,
+            "max_rad_s": 30.100000381469727
+          },
+          "RL_thigh_joint": {
+            "min_rad_s": 30.100000381469727,
+            "max_rad_s": 30.100000381469727
+          },
+          "RR_thigh_joint": {
+            "min_rad_s": 30.100000381469727,
+            "max_rad_s": 30.100000381469727
+          },
+          "FL_calf_joint": {
+            "min_rad_s": 15.699999809265137,
+            "max_rad_s": 15.699999809265137
+          },
+          "FR_calf_joint": {
+            "min_rad_s": 15.699999809265137,
+            "max_rad_s": 15.699999809265137
+          },
+          "RL_calf_joint": {
+            "min_rad_s": 15.699999809265137,
+            "max_rad_s": 15.699999809265137
+          },
+          "RR_calf_joint": {
+            "min_rad_s": 15.699999809265137,
+            "max_rad_s": 15.699999809265137
+          }
+        }
+      },
+      "actuator_sim": {
+        "verified_environments": 64,
+        "per_joint": {
+          "FL_hip_joint": {
+            "min_rad_s": 30.100000381469727,
+            "max_rad_s": 30.100000381469727
+          },
+          "FR_hip_joint": {
+            "min_rad_s": 30.100000381469727,
+            "max_rad_s": 30.100000381469727
+          },
+          "RL_hip_joint": {
+            "min_rad_s": 30.100000381469727,
+            "max_rad_s": 30.100000381469727
+          },
+          "RR_hip_joint": {
+            "min_rad_s": 30.100000381469727,
+            "max_rad_s": 30.100000381469727
+          },
+          "FL_thigh_joint": {
+            "min_rad_s": 30.100000381469727,
+            "max_rad_s": 30.100000381469727
+          },
+          "FR_thigh_joint": {
+            "min_rad_s": 30.100000381469727,
+            "max_rad_s": 30.100000381469727
+          },
+          "RL_thigh_joint": {
+            "min_rad_s": 30.100000381469727,
+            "max_rad_s": 30.100000381469727
+          },
+          "RR_thigh_joint": {
+            "min_rad_s": 30.100000381469727,
+            "max_rad_s": 30.100000381469727
+          },
+          "FL_calf_joint": {
+            "min_rad_s": 15.699999809265137,
+            "max_rad_s": 15.699999809265137
+          },
+          "FR_calf_joint": {
+            "min_rad_s": 15.699999809265137,
+            "max_rad_s": 15.699999809265137
+          },
+          "RL_calf_joint": {
+            "min_rad_s": 15.699999809265137,
+            "max_rad_s": 15.699999809265137
+          },
+          "RR_calf_joint": {
+            "min_rad_s": 15.699999809265137,
+            "max_rad_s": 15.699999809265137
+          }
+        }
+      }
+    },
+    "final_readback": {
+      "physics": {
+        "verified_environments": 64,
+        "per_joint": {
+          "FL_hip_joint": {
+            "min_rad_s": 30.100000381469727,
+            "max_rad_s": 30.100000381469727
+          },
+          "FR_hip_joint": {
+            "min_rad_s": 30.100000381469727,
+            "max_rad_s": 30.100000381469727
+          },
+          "RL_hip_joint": {
+            "min_rad_s": 30.100000381469727,
+            "max_rad_s": 30.100000381469727
+          },
+          "RR_hip_joint": {
+            "min_rad_s": 30.100000381469727,
+            "max_rad_s": 30.100000381469727
+          },
+          "FL_thigh_joint": {
+            "min_rad_s": 30.100000381469727,
+            "max_rad_s": 30.100000381469727
+          },
+          "FR_thigh_joint": {
+            "min_rad_s": 30.100000381469727,
+            "max_rad_s": 30.100000381469727
+          },
+          "RL_thigh_joint": {
+            "min_rad_s": 30.100000381469727,
+            "max_rad_s": 30.100000381469727
+          },
+          "RR_thigh_joint": {
+            "min_rad_s": 30.100000381469727,
+            "max_rad_s": 30.100000381469727
+          },
+          "FL_calf_joint": {
+            "min_rad_s": 15.699999809265137,
+            "max_rad_s": 15.699999809265137
+          },
+          "FR_calf_joint": {
+            "min_rad_s": 15.699999809265137,
+            "max_rad_s": 15.699999809265137
+          },
+          "RL_calf_joint": {
+            "min_rad_s": 15.699999809265137,
+            "max_rad_s": 15.699999809265137
+          },
+          "RR_calf_joint": {
+            "min_rad_s": 15.699999809265137,
+            "max_rad_s": 15.699999809265137
+          }
+        }
+      },
+      "actuator": {
+        "verified_environments": 64,
+        "per_joint": {
+          "FL_hip_joint": {
+            "min_rad_s": 30.100000381469727,
+            "max_rad_s": 30.100000381469727
+          },
+          "FR_hip_joint": {
+            "min_rad_s": 30.100000381469727,
+            "max_rad_s": 30.100000381469727
+          },
+          "RL_hip_joint": {
+            "min_rad_s": 30.100000381469727,
+            "max_rad_s": 30.100000381469727
+          },
+          "RR_hip_joint": {
+            "min_rad_s": 30.100000381469727,
+            "max_rad_s": 30.100000381469727
+          },
+          "FL_thigh_joint": {
+            "min_rad_s": 30.100000381469727,
+            "max_rad_s": 30.100000381469727
+          },
+          "FR_thigh_joint": {
+            "min_rad_s": 30.100000381469727,
+            "max_rad_s": 30.100000381469727
+          },
+          "RL_thigh_joint": {
+            "min_rad_s": 30.100000381469727,
+            "max_rad_s": 30.100000381469727
+          },
+          "RR_thigh_joint": {
+            "min_rad_s": 30.100000381469727,
+            "max_rad_s": 30.100000381469727
+          },
+          "FL_calf_joint": {
+            "min_rad_s": 15.699999809265137,
+            "max_rad_s": 15.699999809265137
+          },
+          "FR_calf_joint": {
+            "min_rad_s": 15.699999809265137,
+            "max_rad_s": 15.699999809265137
+          },
+          "RL_calf_joint": {
+            "min_rad_s": 15.699999809265137,
+            "max_rad_s": 15.699999809265137
+          },
+          "RR_calf_joint": {
+            "min_rad_s": 15.699999809265137,
+            "max_rad_s": 15.699999809265137
+          }
+        }
+      },
+      "actuator_sim": {
+        "verified_environments": 64,
+        "per_joint": {
+          "FL_hip_joint": {
+            "min_rad_s": 30.100000381469727,
+            "max_rad_s": 30.100000381469727
+          },
+          "FR_hip_joint": {
+            "min_rad_s": 30.100000381469727,
+            "max_rad_s": 30.100000381469727
+          },
+          "RL_hip_joint": {
+            "min_rad_s": 30.100000381469727,
+            "max_rad_s": 30.100000381469727
+          },
+          "RR_hip_joint": {
+            "min_rad_s": 30.100000381469727,
+            "max_rad_s": 30.100000381469727
+          },
+          "FL_thigh_joint": {
+            "min_rad_s": 30.100000381469727,
+            "max_rad_s": 30.100000381469727
+          },
+          "FR_thigh_joint": {
+            "min_rad_s": 30.100000381469727,
+            "max_rad_s": 30.100000381469727
+          },
+          "RL_thigh_joint": {
+            "min_rad_s": 30.100000381469727,
+            "max_rad_s": 30.100000381469727
+          },
+          "RR_thigh_joint": {
+            "min_rad_s": 30.100000381469727,
+            "max_rad_s": 30.100000381469727
+          },
+          "FL_calf_joint": {
+            "min_rad_s": 15.699999809265137,
+            "max_rad_s": 15.699999809265137
+          },
+          "FR_calf_joint": {
+            "min_rad_s": 15.699999809265137,
+            "max_rad_s": 15.699999809265137
+          },
+          "RL_calf_joint": {
+            "min_rad_s": 15.699999809265137,
+            "max_rad_s": 15.699999809265137
+          },
+          "RR_calf_joint": {
+            "min_rad_s": 15.699999809265137,
+            "max_rad_s": 15.699999809265137
+          }
+        }
+      }
+    }
+  },
+  "torque_audit": {
+    "scope": "Every physics substep in active episodes, including failures and terminal steps; not successful episodes only",
+    "physics_samples_per_joint": 104244,
+    "startup_physics_samples_per_joint": 25600,
+    "requested_excess_joint_samples": 17584,
+    "applied_excess_joint_samples": 0,
+    "startup_excess_joint_samples": 1320,
+    "requested_excess_fraction": 0.0140567642582147,
+    "torque_limits_passed": false,
+    "note": "Zero sampled violations is an evaluation result, not a guarantee for unseen real-world states.",
+    "joints": {
+      "FL_hip_joint": {
+        "limit_nm": 23.700000762939453,
+        "requested_peak_nm": 29.798728942871094,
+        "applied_peak_nm": 23.700000762939453,
+        "requested_excess_samples": 571,
+        "saturation_samples": 571
+      },
+      "FR_hip_joint": {
+        "limit_nm": 23.700000762939453,
+        "requested_peak_nm": 39.406982421875,
+        "applied_peak_nm": 23.700000762939453,
+        "requested_excess_samples": 793,
+        "saturation_samples": 793
+      },
+      "RL_hip_joint": {
+        "limit_nm": 23.700000762939453,
+        "requested_peak_nm": 52.1904182434082,
+        "applied_peak_nm": 23.700000762939453,
+        "requested_excess_samples": 1397,
+        "saturation_samples": 1397
+      },
+      "RR_hip_joint": {
+        "limit_nm": 23.700000762939453,
+        "requested_peak_nm": 28.15787124633789,
+        "applied_peak_nm": 23.700000762939453,
+        "requested_excess_samples": 57,
+        "saturation_samples": 57
+      },
+      "FL_thigh_joint": {
+        "limit_nm": 23.700000762939453,
+        "requested_peak_nm": 56.50450134277344,
+        "applied_peak_nm": 23.700000762939453,
+        "requested_excess_samples": 3187,
+        "saturation_samples": 3187
+      },
+      "FR_thigh_joint": {
+        "limit_nm": 23.700000762939453,
+        "requested_peak_nm": 44.765769958496094,
+        "applied_peak_nm": 23.700000762939453,
+        "requested_excess_samples": 2736,
+        "saturation_samples": 2736
+      },
+      "RL_thigh_joint": {
+        "limit_nm": 23.700000762939453,
+        "requested_peak_nm": 39.92070007324219,
+        "applied_peak_nm": 23.700000762939453,
+        "requested_excess_samples": 2818,
+        "saturation_samples": 2818
+      },
+      "RR_thigh_joint": {
+        "limit_nm": 23.700000762939453,
+        "requested_peak_nm": 47.91118240356445,
+        "applied_peak_nm": 23.700000762939453,
+        "requested_excess_samples": 1566,
+        "saturation_samples": 1566
+      },
+      "FL_calf_joint": {
+        "limit_nm": 45.43000030517578,
+        "requested_peak_nm": 32.092960357666016,
+        "applied_peak_nm": 32.092960357666016,
+        "requested_excess_samples": 0,
+        "saturation_samples": 0
+      },
+      "FR_calf_joint": {
+        "limit_nm": 45.43000030517578,
+        "requested_peak_nm": 41.31010437011719,
+        "applied_peak_nm": 41.31010437011719,
+        "requested_excess_samples": 0,
+        "saturation_samples": 0
+      },
+      "RL_calf_joint": {
+        "limit_nm": 45.43000030517578,
+        "requested_peak_nm": 65.33866119384766,
+        "applied_peak_nm": 45.43000030517578,
+        "requested_excess_samples": 4376,
+        "saturation_samples": 4376
+      },
+      "RR_calf_joint": {
+        "limit_nm": 45.43000030517578,
+        "requested_peak_nm": 58.334197998046875,
+        "applied_peak_nm": 45.43000030517578,
+        "requested_excess_samples": 83,
+        "saturation_samples": 83
+      }
+    }
+  },
+  "torque_acceptance_passed": false,
+  "joint_audit": {
+    "scope": "Every physics substep in active episodes, including failures and terminal steps; commands before integration and measured state after integration",
+    "physics_samples_per_joint": 104244,
+    "startup_physics_samples_per_joint": 25600,
+    "joint_limits_passed": false,
+    "audit_invalid": false,
+    "velocity_limit_rad_s": 13.0,
+    "tracking_error_limit_rad": 0.9,
+    "tracking_sampling": "maximum pre/post-integration target error per physical substep, counted once",
+    "note": "Zero sampled violations is an evaluation result, not a guarantee for unseen real-world states; no clipping is performed by this audit.",
+    "velocity_excess_joint_samples": 1703,
+    "velocity_excess_fraction": 0.0013613893045802796,
+    "startup_velocity_excess_joint_samples": 314,
+    "startup_velocity_excess_fraction": 0.0010221354166666666,
+    "velocity_peak_ratio": 1.1561945676803589,
+    "position_excess_joint_samples": 5567,
+    "position_excess_fraction": 0.0044502961001752295,
+    "startup_position_excess_joint_samples": 1240,
+    "startup_position_excess_fraction": 0.004036458333333334,
+    "position_peak_ratio": 1.0063378810882568,
+    "target_position_excess_joint_samples": 115676,
+    "target_position_excess_fraction": 0.09247214867682232,
+    "startup_target_position_excess_joint_samples": 29080,
+    "startup_target_position_excess_fraction": 0.09466145833333334,
+    "target_position_peak_ratio": 1.3583773374557495,
+    "tracking_error_excess_joint_samples": 27220,
+    "tracking_error_excess_fraction": 0.0217598454907077,
+    "startup_tracking_error_excess_joint_samples": 4018,
+    "startup_tracking_error_excess_fraction": 0.013079427083333333,
+    "tracking_error_peak_ratio": 1.8433293104171753,
+    "joints": {
+      "FL_hip_joint": {
+        "position_lower_rad": -1.0471999645233154,
+        "position_upper_rad": 1.0471999645233154,
+        "velocity_peak_rad_s": 6.366242408752441,
+        "position_peak_overshoot_rad": 0.0,
+        "target_position_peak_overshoot_rad": 0.0,
+        "tracking_error_peak_rad": 0.7310250401496887,
+        "velocity_excess_samples": 0,
+        "position_excess_samples": 0,
+        "target_position_excess_samples": 0,
+        "tracking_error_excess_samples": 0
+      },
+      "FR_hip_joint": {
+        "position_lower_rad": -1.0471999645233154,
+        "position_upper_rad": 1.0471999645233154,
+        "velocity_peak_rad_s": 5.479334354400635,
+        "position_peak_overshoot_rad": 0.0,
+        "target_position_peak_overshoot_rad": 0.0,
+        "tracking_error_peak_rad": 0.9840058088302612,
+        "velocity_excess_samples": 0,
+        "position_excess_samples": 0,
+        "target_position_excess_samples": 0,
+        "tracking_error_excess_samples": 22
+      },
+      "RL_hip_joint": {
+        "position_lower_rad": -1.0471999645233154,
+        "position_upper_rad": 1.0471999645233154,
+        "velocity_peak_rad_s": 12.689358711242676,
+        "position_peak_overshoot_rad": 0.0,
+        "target_position_peak_overshoot_rad": 0.05280005931854248,
+        "tracking_error_peak_rad": 1.3077324628829956,
+        "velocity_excess_samples": 0,
+        "position_excess_samples": 0,
+        "target_position_excess_samples": 132,
+        "tracking_error_excess_samples": 399
+      },
+      "RR_hip_joint": {
+        "position_lower_rad": -1.0471999645233154,
+        "position_upper_rad": 1.0471999645233154,
+        "velocity_peak_rad_s": 10.421360969543457,
+        "position_peak_overshoot_rad": 0.0,
+        "target_position_peak_overshoot_rad": 0.0,
+        "tracking_error_peak_rad": 0.7092968821525574,
+        "velocity_excess_samples": 0,
+        "position_excess_samples": 0,
+        "target_position_excess_samples": 0,
+        "tracking_error_excess_samples": 0
+      },
+      "FL_thigh_joint": {
+        "position_lower_rad": -1.5707999467849731,
+        "position_upper_rad": 3.4907000064849854,
+        "velocity_peak_rad_s": 11.001354217529297,
+        "position_peak_overshoot_rad": 0.0,
+        "target_position_peak_overshoot_rad": 0.0,
+        "tracking_error_peak_rad": 1.413672685623169,
+        "velocity_excess_samples": 0,
+        "position_excess_samples": 0,
+        "target_position_excess_samples": 0,
+        "tracking_error_excess_samples": 490
+      },
+      "FR_thigh_joint": {
+        "position_lower_rad": -1.5707999467849731,
+        "position_upper_rad": 3.4907000064849854,
+        "velocity_peak_rad_s": 14.499217987060547,
+        "position_peak_overshoot_rad": 0.0,
+        "target_position_peak_overshoot_rad": 0.0,
+        "tracking_error_peak_rad": 1.1194915771484375,
+        "velocity_excess_samples": 18,
+        "position_excess_samples": 0,
+        "target_position_excess_samples": 0,
+        "tracking_error_excess_samples": 67
+      },
+      "RL_thigh_joint": {
+        "position_lower_rad": -0.5235999822616577,
+        "position_upper_rad": 4.537899971008301,
+        "velocity_peak_rad_s": 12.617892265319824,
+        "position_peak_overshoot_rad": 0.0,
+        "target_position_peak_overshoot_rad": 0.0,
+        "tracking_error_peak_rad": 0.9922162294387817,
+        "velocity_excess_samples": 0,
+        "position_excess_samples": 0,
+        "target_position_excess_samples": 0,
+        "tracking_error_excess_samples": 43
+      },
+      "RR_thigh_joint": {
+        "position_lower_rad": -0.5235999822616577,
+        "position_upper_rad": 4.537899971008301,
+        "velocity_peak_rad_s": 12.901674270629883,
+        "position_peak_overshoot_rad": 0.0,
+        "target_position_peak_overshoot_rad": 0.0,
+        "tracking_error_peak_rad": 1.206026315689087,
+        "velocity_excess_samples": 0,
+        "position_excess_samples": 0,
+        "target_position_excess_samples": 0,
+        "tracking_error_excess_samples": 318
+      },
+      "FL_calf_joint": {
+        "position_lower_rad": -2.7227001190185547,
+        "position_upper_rad": -0.8377599716186523,
+        "velocity_peak_rad_s": 15.030529022216797,
+        "position_peak_overshoot_rad": 0.0024123191833496094,
+        "target_position_peak_overshoot_rad": 0.33775997161865234,
+        "tracking_error_peak_rad": 0.8372135162353516,
+        "velocity_excess_samples": 227,
+        "position_excess_samples": 2893,
+        "target_position_excess_samples": 30860,
+        "tracking_error_excess_samples": 0
+      },
+      "FR_calf_joint": {
+        "position_lower_rad": -2.7227001190185547,
+        "position_upper_rad": -0.8377599716186523,
+        "velocity_peak_rad_s": 14.94689655303955,
+        "position_peak_overshoot_rad": 0.0019868016242980957,
+        "target_position_peak_overshoot_rad": 0.33775997161865234,
+        "tracking_error_peak_rad": 1.3149949312210083,
+        "velocity_excess_samples": 1068,
+        "position_excess_samples": 930,
+        "target_position_excess_samples": 36916,
+        "tracking_error_excess_samples": 2572
+      },
+      "RL_calf_joint": {
+        "position_lower_rad": -2.7227001190185547,
+        "position_upper_rad": -0.8377599716186523,
+        "velocity_peak_rad_s": 14.94640827178955,
+        "position_peak_overshoot_rad": 0.0,
+        "target_position_peak_overshoot_rad": 0.33775997161865234,
+        "tracking_error_peak_rad": 1.658996343612671,
+        "velocity_excess_samples": 239,
+        "position_excess_samples": 0,
+        "target_position_excess_samples": 28332,
+        "tracking_error_excess_samples": 18759
+      },
+      "RR_calf_joint": {
+        "position_lower_rad": -2.7227001190185547,
+        "position_upper_rad": -0.8377599716186523,
+        "velocity_peak_rad_s": 14.885287284851074,
+        "position_peak_overshoot_rad": 0.0059732794761657715,
+        "target_position_peak_overshoot_rad": 0.33775997161865234,
+        "tracking_error_peak_rad": 1.4501208066940308,
+        "velocity_excess_samples": 151,
+        "position_excess_samples": 1744,
+        "target_position_excess_samples": 19436,
+        "tracking_error_excess_samples": 4550
+      }
+    }
+  },
+  "joint_acceptance_passed": false,
+  "joint_evaluation": {
+    "settings": {
+      "enabled": true,
+      "velocity_limit": 13.0,
+      "velocity_soft_ratio": 0.9,
+      "position_soft_ratio": 0.9,
+      "tracking_error_limit": 0.9,
+      "tracking_soft_ratio": 0.8,
+      "startup_seconds": 2.0,
+      "startup_multiplier": 1.0,
+      "terminate_on_violation": false
+    },
+    "termination_policy": "observe_without_joint_constraint_early_termination",
+    "sample_selection": "all_active_episodes_including_failed_terminal_substeps",
+    "acceptance_requires": "complete_nonempty_episode_quota_and_zero_joint_limit_violations"
+  },
+  "controller": "stairs",
+  "spawn_x_offset_m": 0.0,
+  "first_terminal_pre_step_states": [
+    {
+      "relative_position_m": [
+        1.7198729515075684,
+        0.6181430816650391,
+        0.2977631688117981
+      ],
+      "world_velocity_m_s": [
+        0.6051071882247925,
+        0.5308090448379517,
+        -0.36528992652893066
+      ],
+      "projected_gravity": [
+        -0.1505376100540161,
+        0.862830638885498,
+        -0.48255759477615356
+      ],
+      "elapsed_s": 5.759999752044678,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        0.843533992767334,
+        0.48476362228393555,
+        0.4242744743824005
+      ],
+      "world_velocity_m_s": [
+        -0.6992539763450623,
+        0.2532564401626587,
+        -0.25465407967567444
+      ],
+      "projected_gravity": [
+        -0.8156168460845947,
+        0.31854209303855896,
+        -0.4830116033554077
+      ],
+      "elapsed_s": 3.799999952316284,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        3.4775800704956055,
+        1.1477084159851074,
+        0.34581634402275085
+      ],
+      "world_velocity_m_s": [
+        0.6596010327339172,
+        0.2100645750761032,
+        -0.14498676359653473
+      ],
+      "projected_gravity": [
+        -0.14410017430782318,
+        0.07927382737398148,
+        -0.9863826632499695
+      ],
+      "elapsed_s": 7.980000019073486,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        3.395650625228882,
+        1.1455225944519043,
+        0.3378342092037201
+      ],
+      "world_velocity_m_s": [
+        0.4673958420753479,
+        0.26818394660949707,
+        -0.11524854600429535
+      ],
+      "projected_gravity": [
+        -0.28132274746894836,
+        0.14487618207931519,
+        -0.9486139416694641
+      ],
+      "elapsed_s": 7.639999866485596,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        0.9404776096343994,
+        0.6781930923461914,
+        0.4190865755081177
+      ],
+      "world_velocity_m_s": [
+        -0.5012410879135132,
+        0.7361906170845032,
+        -0.5609394907951355
+      ],
+      "projected_gravity": [
+        -0.7372085452079773,
+        0.47515028715133667,
+        -0.48037052154541016
+      ],
+      "elapsed_s": 3.7799999713897705,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        3.4822099208831787,
+        1.146233081817627,
+        0.35816049575805664
+      ],
+      "world_velocity_m_s": [
+        0.5111810564994812,
+        0.29633867740631104,
+        -0.14015911519527435
+      ],
+      "projected_gravity": [
+        -0.1572016477584839,
+        0.0850999653339386,
+        -0.983893096446991
+      ],
+      "elapsed_s": 14.219999313354492,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        1.041839599609375,
+        0.721707820892334,
+        0.34511107206344604
+      ],
+      "world_velocity_m_s": [
+        -0.09617500007152557,
+        0.5876835584640503,
+        0.01547254342585802
+      ],
+      "projected_gravity": [
+        -0.4950453042984009,
+        0.7212706804275513,
+        -0.48445719480514526
+      ],
+      "elapsed_s": 3.619999885559082,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        2.837817668914795,
+        1.1450812816619873,
+        0.33467939496040344
+      ],
+      "world_velocity_m_s": [
+        0.44011932611465454,
+        0.3128044307231903,
+        -0.15913614630699158
+      ],
+      "projected_gravity": [
+        -0.3146607577800751,
+        0.15791383385658264,
+        -0.9359763860702515
+      ],
+      "elapsed_s": 7.0,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        0.9583799839019775,
+        0.6197700500488281,
+        0.4347078502178192
+      ],
+      "world_velocity_m_s": [
+        -0.5459221601486206,
+        0.6836640238761902,
+        -0.2947627902030945
+      ],
+      "projected_gravity": [
+        -0.7635972499847412,
+        0.43071049451828003,
+        -0.4810487627983093
+      ],
+      "elapsed_s": 3.93999981880188,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        3.9881038665771484,
+        1.1466772556304932,
+        0.3563992977142334
+      ],
+      "world_velocity_m_s": [
+        0.5112190246582031,
+        0.30247148871421814,
+        -0.14718742668628693
+      ],
+      "projected_gravity": [
+        -0.17112159729003906,
+        0.0976952314376831,
+        -0.9803943037986755
+      ],
+      "elapsed_s": 9.479999542236328,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        3.183354377746582,
+        1.1445958614349365,
+        0.3611059784889221
+      ],
+      "world_velocity_m_s": [
+        0.4740664064884186,
+        0.3022412955760956,
+        -0.09949804842472076
+      ],
+      "projected_gravity": [
+        -0.14963409304618835,
+        0.10112282633781433,
+        -0.9835566878318787
+      ],
+      "elapsed_s": 7.940000057220459,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        1.5187915563583374,
+        0.696662187576294,
+        0.3262832760810852
+      ],
+      "world_velocity_m_s": [
+        -0.26105472445487976,
+        0.8266710638999939,
+        -0.3463619649410248
+      ],
+      "projected_gravity": [
+        -0.3575924038887024,
+        0.7905851602554321,
+        -0.49709439277648926
+      ],
+      "elapsed_s": 5.0,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        3.380342721939087,
+        1.1484148502349854,
+        0.36959558725357056
+      ],
+      "world_velocity_m_s": [
+        0.41649115085601807,
+        0.26016947627067566,
+        -0.052778005599975586
+      ],
+      "projected_gravity": [
+        -0.11104606091976166,
+        0.0922003760933876,
+        -0.9895291328430176
+      ],
+      "elapsed_s": 7.859999656677246,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        3.5465543270111084,
+        1.1485722064971924,
+        0.33806976675987244
+      ],
+      "world_velocity_m_s": [
+        0.35716721415519714,
+        0.12552331387996674,
+        0.044431865215301514
+      ],
+      "projected_gravity": [
+        -0.30793511867523193,
+        0.17508740723133087,
+        -0.9351579546928406
+      ],
+      "elapsed_s": 9.399999618530273,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        3.6309056282043457,
+        1.1455132961273193,
+        0.35056403279304504
+      ],
+      "world_velocity_m_s": [
+        0.5453663468360901,
+        0.29705893993377686,
+        -0.14585591852664948
+      ],
+      "projected_gravity": [
+        -0.20554283261299133,
+        0.09725944697856903,
+        -0.9738032221794128
+      ],
+      "elapsed_s": 8.59999942779541,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        3.8090615272521973,
+        1.1481547355651855,
+        0.36975112557411194
+      ],
+      "world_velocity_m_s": [
+        0.4474715292453766,
+        0.1049136072397232,
+        -0.20430807769298553
+      ],
+      "projected_gravity": [
+        -0.14114972949028015,
+        0.015933265909552574,
+        -0.9898600578308105
+      ],
+      "elapsed_s": 8.84000015258789,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        1.0747127532958984,
+        0.8133277893066406,
+        0.3359374403953552
+      ],
+      "world_velocity_m_s": [
+        -0.2655467987060547,
+        0.3561895787715912,
+        0.05702110752463341
+      ],
+      "projected_gravity": [
+        -0.5067745447158813,
+        0.7275294661521912,
+        -0.4624723196029663
+      ],
+      "elapsed_s": 3.619999885559082,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        3.6826171875,
+        1.1484776735305786,
+        0.338195264339447
+      ],
+      "world_velocity_m_s": [
+        0.4152411222457886,
+        0.11094082146883011,
+        0.021761910989880562
+      ],
+      "projected_gravity": [
+        -0.28921061754226685,
+        0.1522466242313385,
+        -0.9450810551643372
+      ],
+      "elapsed_s": 8.199999809265137,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        4.114490509033203,
+        1.145684003829956,
+        0.3624022603034973
+      ],
+      "world_velocity_m_s": [
+        0.48001840710639954,
+        0.2757566571235657,
+        -0.07391452044248581
+      ],
+      "projected_gravity": [
+        -0.1206064224243164,
+        0.08056033402681351,
+        -0.9894261360168457
+      ],
+      "elapsed_s": 9.579999923706055,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        0.8658761978149414,
+        0.5081307888031006,
+        0.4221835434436798
+      ],
+      "world_velocity_m_s": [
+        -0.7006834149360657,
+        0.2362370491027832,
+        -0.17084425687789917
+      ],
+      "projected_gravity": [
+        -0.8198463916778564,
+        0.322074830532074,
+        -0.47341281175613403
+      ],
+      "elapsed_s": 3.43999981880188,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        1.7270640134811401,
+        0.6809808611869812,
+        0.28183990716934204
+      ],
+      "world_velocity_m_s": [
+        0.556946873664856,
+        0.7583141326904297,
+        -0.6222708821296692
+      ],
+      "projected_gravity": [
+        0.17184889316558838,
+        0.8636189103126526,
+        -0.47395187616348267
+      ],
+      "elapsed_s": 4.960000038146973,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        0.9431357383728027,
+        0.5876304507255554,
+        0.4289066791534424
+      ],
+      "world_velocity_m_s": [
+        -0.5335355401039124,
+        0.7671266198158264,
+        -0.39026787877082825
+      ],
+      "projected_gravity": [
+        -0.7480877041816711,
+        0.4633910059928894,
+        -0.4750089645385742
+      ],
+      "elapsed_s": 3.5799999237060547,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        1.5706815719604492,
+        0.48674654960632324,
+        0.3033938407897949
+      ],
+      "world_velocity_m_s": [
+        -0.1264425665140152,
+        -0.25864216685295105,
+        0.0783667117357254
+      ],
+      "projected_gravity": [
+        -0.24662956595420837,
+        0.051291223615407944,
+        -0.9677515625953674
+      ],
+      "elapsed_s": 24.979999542236328,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": true,
+      "terminated": false
+    },
+    {
+      "relative_position_m": [
+        3.321420192718506,
+        1.143786907196045,
+        0.3406987488269806
+      ],
+      "world_velocity_m_s": [
+        0.4731086194515228,
+        0.32734522223472595,
+        -0.21963368356227875
+      ],
+      "projected_gravity": [
+        -0.290505051612854,
+        0.1509992629289627,
+        -0.944884181022644
+      ],
+      "elapsed_s": 8.0,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        1.5870699882507324,
+        0.6519778966903687,
+        0.31942373514175415
+      ],
+      "world_velocity_m_s": [
+        -0.01100541464984417,
+        0.8906427621841431,
+        -0.4073585271835327
+      ],
+      "projected_gravity": [
+        -0.27501577138900757,
+        0.8284497261047363,
+        -0.4878907799720764
+      ],
+      "elapsed_s": 4.819999694824219,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        1.7730364799499512,
+        0.6710982918739319,
+        0.28232523798942566
+      ],
+      "world_velocity_m_s": [
+        0.79792320728302,
+        0.3369128108024597,
+        -0.523333728313446
+      ],
+      "projected_gravity": [
+        0.06236980855464935,
+        0.867207407951355,
+        -0.4940258264541626
+      ],
+      "elapsed_s": 5.339999675750732,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        3.538524627685547,
+        1.1491538286209106,
+        0.3404139280319214
+      ],
+      "world_velocity_m_s": [
+        0.47423702478408813,
+        0.31799179315567017,
+        -0.174612894654274
+      ],
+      "projected_gravity": [
+        -0.28101715445518494,
+        0.14062002301216125,
+        -0.9493446946144104
+      ],
+      "elapsed_s": 8.679999351501465,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        1.2279986143112183,
+        0.8261932730674744,
+        0.34629079699516296
+      ],
+      "world_velocity_m_s": [
+        0.014923220500349998,
+        0.3036160171031952,
+        -0.02048105001449585
+      ],
+      "projected_gravity": [
+        -0.5055277347564697,
+        0.7283356189727783,
+        -0.4625677466392517
+      ],
+      "elapsed_s": 5.339999675750732,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        3.7368178367614746,
+        1.1497273445129395,
+        0.3588729798793793
+      ],
+      "world_velocity_m_s": [
+        0.5611208081245422,
+        0.2675132751464844,
+        -0.13286736607551575
+      ],
+      "projected_gravity": [
+        -0.11977619677782059,
+        0.07338293641805649,
+        -0.9900851249694824
+      ],
+      "elapsed_s": 8.420000076293945,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        3.807751178741455,
+        1.1472011804580688,
+        0.339753121137619
+      ],
+      "world_velocity_m_s": [
+        0.536395788192749,
+        0.15937815606594086,
+        -0.26241153478622437
+      ],
+      "projected_gravity": [
+        -0.15693986415863037,
+        0.06388462334871292,
+        -0.9855397939682007
+      ],
+      "elapsed_s": 8.5,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        1.0848958492279053,
+        0.7062548995018005,
+        0.33150848746299744
+      ],
+      "world_velocity_m_s": [
+        -0.2666463255882263,
+        0.4302218556404114,
+        -0.04086146503686905
+      ],
+      "projected_gravity": [
+        -0.4857237935066223,
+        0.7448980808258057,
+        -0.4573829770088196
+      ],
+      "elapsed_s": 3.740000009536743,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        3.0777366161346436,
+        1.1497763395309448,
+        0.33582937717437744
+      ],
+      "world_velocity_m_s": [
+        0.45584630966186523,
+        0.116328664124012,
+        0.031548913568258286
+      ],
+      "projected_gravity": [
+        -0.24674926698207855,
+        0.14304344356060028,
+        -0.9584640860557556
+      ],
+      "elapsed_s": 7.279999732971191,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        1.0625813007354736,
+        0.801400899887085,
+        0.33765801787376404
+      ],
+      "world_velocity_m_s": [
+        -0.11849123984575272,
+        0.2633678913116455,
+        -0.02171855792403221
+      ],
+      "projected_gravity": [
+        -0.4965820014476776,
+        0.7396793365478516,
+        -0.4541816711425781
+      ],
+      "elapsed_s": 4.119999885559082,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        1.5480481386184692,
+        0.4954019784927368,
+        0.3159457743167877
+      ],
+      "world_velocity_m_s": [
+        0.005558203440159559,
+        0.007851820439100266,
+        -0.00815675500780344
+      ],
+      "projected_gravity": [
+        -0.14048278331756592,
+        0.1041417345404625,
+        -0.9845908284187317
+      ],
+      "elapsed_s": 24.979999542236328,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": true,
+      "terminated": false
+    },
+    {
+      "relative_position_m": [
+        3.1713767051696777,
+        1.1492764949798584,
+        0.33723604679107666
+      ],
+      "world_velocity_m_s": [
+        0.328029990196228,
+        0.06205406412482262,
+        0.035872653126716614
+      ],
+      "projected_gravity": [
+        -0.33008912205696106,
+        0.18352721631526947,
+        -0.9259368181228638
+      ],
+      "elapsed_s": 6.980000019073486,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        4.257726192474365,
+        1.149169921875,
+        0.3426392078399658
+      ],
+      "world_velocity_m_s": [
+        0.471352219581604,
+        0.27770301699638367,
+        -0.16114604473114014
+      ],
+      "projected_gravity": [
+        -0.2588037848472595,
+        0.15896113216876984,
+        -0.9527601599693298
+      ],
+      "elapsed_s": 14.739999771118164,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        0.917604923248291,
+        0.5499241352081299,
+        0.4432995021343231
+      ],
+      "world_velocity_m_s": [
+        -0.6747119426727295,
+        0.5305574536323547,
+        -0.2587391436100006
+      ],
+      "projected_gravity": [
+        -0.7976868748664856,
+        0.3900628387928009,
+        -0.4599420428276062
+      ],
+      "elapsed_s": 3.259999990463257,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        3.2796847820281982,
+        1.1464300155639648,
+        0.3606390655040741
+      ],
+      "world_velocity_m_s": [
+        0.4451192021369934,
+        0.2687874734401703,
+        0.19891153275966644
+      ],
+      "projected_gravity": [
+        -0.12502913177013397,
+        0.07944022119045258,
+        -0.9889675974845886
+      ],
+      "elapsed_s": 7.539999961853027,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        3.6461973190307617,
+        1.1464393138885498,
+        0.363380491733551
+      ],
+      "world_velocity_m_s": [
+        0.4295014441013336,
+        0.22526657581329346,
+        0.08872367441654205
+      ],
+      "projected_gravity": [
+        -0.10444944351911545,
+        0.05976265296339989,
+        -0.9927329421043396
+      ],
+      "elapsed_s": 8.279999732971191,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        0.9203565120697021,
+        0.6265146732330322,
+        0.443340003490448
+      ],
+      "world_velocity_m_s": [
+        -0.7003487348556519,
+        0.4114658832550049,
+        -0.2407052367925644
+      ],
+      "projected_gravity": [
+        -0.8095042109489441,
+        0.35418084263801575,
+        -0.46825093030929565
+      ],
+      "elapsed_s": 3.5999999046325684,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        3.3101768493652344,
+        1.1475460529327393,
+        0.3504798114299774
+      ],
+      "world_velocity_m_s": [
+        0.4745714068412781,
+        0.21385492384433746,
+        -0.11956509947776794
+      ],
+      "projected_gravity": [
+        -0.1522233933210373,
+        0.05932464450597763,
+        -0.986564040184021
+      ],
+      "elapsed_s": 7.419999599456787,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        1.3673781156539917,
+        0.8227138519287109,
+        0.3337287902832031
+      ],
+      "world_velocity_m_s": [
+        -0.11043013632297516,
+        0.38656437397003174,
+        -0.06393323838710785
+      ],
+      "projected_gravity": [
+        -0.4720783233642578,
+        0.747306764125824,
+        -0.46762675046920776
+      ],
+      "elapsed_s": 4.339999675750732,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        3.885282516479492,
+        1.1476941108703613,
+        0.36732786893844604
+      ],
+      "world_velocity_m_s": [
+        0.38359934091567993,
+        0.3502892255783081,
+        0.1273946464061737
+      ],
+      "projected_gravity": [
+        -0.14361505210399628,
+        0.12394163012504578,
+        -0.9818417429924011
+      ],
+      "elapsed_s": 8.65999984741211,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        3.446958541870117,
+        1.146362543106079,
+        0.3486234247684479
+      ],
+      "world_velocity_m_s": [
+        0.5371653437614441,
+        0.2878660261631012,
+        -0.16029664874076843
+      ],
+      "projected_gravity": [
+        -0.216022327542305,
+        0.1054416298866272,
+        -0.9706783294677734
+      ],
+      "elapsed_s": 7.619999885559082,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        3.906979560852051,
+        1.1466853618621826,
+        0.3677986264228821
+      ],
+      "world_velocity_m_s": [
+        0.42867037653923035,
+        0.263393372297287,
+        -0.04941311851143837
+      ],
+      "projected_gravity": [
+        -0.12431029975414276,
+        0.09093760699033737,
+        -0.9880674481391907
+      ],
+      "elapsed_s": 8.619999885559082,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        1.0897676944732666,
+        0.5775055885314941,
+        0.3384251296520233
+      ],
+      "world_velocity_m_s": [
+        -0.10631296783685684,
+        0.251110702753067,
+        -0.015272784046828747
+      ],
+      "projected_gravity": [
+        -0.5016685128211975,
+        0.7311364412307739,
+        -0.46235066652297974
+      ],
+      "elapsed_s": 3.7200000286102295,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        3.054227590560913,
+        1.1469035148620605,
+        0.33435800671577454
+      ],
+      "world_velocity_m_s": [
+        0.3899648189544678,
+        0.18405498564243317,
+        0.048186615109443665
+      ],
+      "projected_gravity": [
+        -0.31131818890571594,
+        0.1638120710849762,
+        -0.9360804557800293
+      ],
+      "elapsed_s": 7.299999713897705,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        0.936086893081665,
+        0.6176505088806152,
+        0.4481894075870514
+      ],
+      "world_velocity_m_s": [
+        -0.5817449688911438,
+        0.6130663752555847,
+        -0.22325393557548523
+      ],
+      "projected_gravity": [
+        -0.7844906449317932,
+        0.40514540672302246,
+        -0.46950143575668335
+      ],
+      "elapsed_s": 3.4600000381469727,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        0.9812221527099609,
+        0.671104907989502,
+        0.38425061106681824
+      ],
+      "world_velocity_m_s": [
+        0.021768564358353615,
+        0.9258984923362732,
+        -0.3387342095375061
+      ],
+      "projected_gravity": [
+        -0.6490088105201721,
+        0.6052466630935669,
+        -0.46093809604644775
+      ],
+      "elapsed_s": 3.359999895095825,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        3.1998608112335205,
+        1.1480727195739746,
+        0.3567720949649811
+      ],
+      "world_velocity_m_s": [
+        0.46840423345565796,
+        0.31993114948272705,
+        -0.20355427265167236
+      ],
+      "projected_gravity": [
+        -0.2002151608467102,
+        0.12907466292381287,
+        -0.9712124466896057
+      ],
+      "elapsed_s": 7.739999771118164,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        1.560118317604065,
+        0.5050191879272461,
+        0.31275784969329834
+      ],
+      "world_velocity_m_s": [
+        -0.004578095860779285,
+        -0.012669802643358707,
+        0.0072655146941542625
+      ],
+      "projected_gravity": [
+        -0.1395033299922943,
+        0.11806534230709076,
+        -0.9831578731536865
+      ],
+      "elapsed_s": 24.979999542236328,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": true,
+      "terminated": false
+    },
+    {
+      "relative_position_m": [
+        3.7021617889404297,
+        1.149278163909912,
+        0.3715760111808777
+      ],
+      "world_velocity_m_s": [
+        0.439296156167984,
+        0.2504465579986572,
+        -0.034612275660037994
+      ],
+      "projected_gravity": [
+        -0.08313290029764175,
+        0.10194206982851028,
+        -0.9913105964660645
+      ],
+      "elapsed_s": 8.859999656677246,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        3.5910255908966064,
+        1.1490421295166016,
+        0.3717135488986969
+      ],
+      "world_velocity_m_s": [
+        0.5086215138435364,
+        0.2857881188392639,
+        -0.30637261271476746
+      ],
+      "projected_gravity": [
+        -0.08755113184452057,
+        0.03627222403883934,
+        -0.9954994320869446
+      ],
+      "elapsed_s": 8.139999389648438,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        3.545714855194092,
+        1.1485700607299805,
+        0.3335060775279999
+      ],
+      "world_velocity_m_s": [
+        0.357480525970459,
+        0.19597011804580688,
+        0.058020781725645065
+      ],
+      "projected_gravity": [
+        -0.3099346160888672,
+        0.17568567395210266,
+        -0.9343848824501038
+      ],
+      "elapsed_s": 8.84000015258789,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        3.746885061264038,
+        1.1487064361572266,
+        0.3357265591621399
+      ],
+      "world_velocity_m_s": [
+        0.4445301592350006,
+        0.3308429419994354,
+        -0.21039824187755585
+      ],
+      "projected_gravity": [
+        -0.3186066746711731,
+        0.1633242815732956,
+        -0.9337103366851807
+      ],
+      "elapsed_s": 17.719999313354492,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        3.7104568481445312,
+        1.1495375633239746,
+        0.3424287736415863
+      ],
+      "world_velocity_m_s": [
+        0.5896335244178772,
+        0.16621440649032593,
+        -0.4365929365158081
+      ],
+      "projected_gravity": [
+        -0.16183972358703613,
+        0.06966996192932129,
+        -0.9843546152114868
+      ],
+      "elapsed_s": 8.139999389648438,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        4.1686224937438965,
+        1.1473922729492188,
+        0.3644949197769165
+      ],
+      "world_velocity_m_s": [
+        0.45558249950408936,
+        0.25200560688972473,
+        0.1840497851371765
+      ],
+      "projected_gravity": [
+        -0.07893270999193192,
+        0.0957421362400055,
+        -0.9922716617584229
+      ],
+      "elapsed_s": 10.059999465942383,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        1.4644627571105957,
+        0.42310142517089844,
+        0.3687741756439209
+      ],
+      "world_velocity_m_s": [
+        -0.0012216346804052591,
+        -0.00016047681856434792,
+        -0.006735609378665686
+      ],
+      "projected_gravity": [
+        -0.17935287952423096,
+        -0.33147159218788147,
+        -0.9262608289718628
+      ],
+      "elapsed_s": 24.979999542236328,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": true,
+      "terminated": false
+    },
+    {
+      "relative_position_m": [
+        1.0761559009552002,
+        0.7232379913330078,
+        0.33373939990997314
+      ],
+      "world_velocity_m_s": [
+        -0.25113359093666077,
+        0.405831515789032,
+        -0.027183344587683678
+      ],
+      "projected_gravity": [
+        -0.4876747131347656,
+        0.7408692836761475,
+        -0.4618290662765503
+      ],
+      "elapsed_s": 3.5399999618530273,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        3.8713598251342773,
+        1.147702693939209,
+        0.3483982980251312
+      ],
+      "world_velocity_m_s": [
+        0.6401915550231934,
+        0.21402698755264282,
+        -0.0745953917503357
+      ],
+      "projected_gravity": [
+        -0.17073623836040497,
+        0.04684124141931534,
+        -0.9842027425765991
+      ],
+      "elapsed_s": 12.019999504089355,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        1.0767128467559814,
+        0.7552905082702637,
+        0.33493444323539734
+      ],
+      "world_velocity_m_s": [
+        -0.1527177393436432,
+        0.33620938658714294,
+        -0.030736412853002548
+      ],
+      "projected_gravity": [
+        -0.4876743257045746,
+        0.7378726005554199,
+        -0.4666022062301636
+      ],
+      "elapsed_s": 4.139999866485596,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        0.9432902336120605,
+        0.573390007019043,
+        0.44042181968688965
+      ],
+      "world_velocity_m_s": [
+        -0.5953547954559326,
+        0.6510567665100098,
+        -0.23739506304264069
+      ],
+      "projected_gravity": [
+        -0.7724817991256714,
+        0.4275971055030823,
+        -0.46950262784957886
+      ],
+      "elapsed_s": 3.059999942779541,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        3.383594036102295,
+        1.1471290588378906,
+        0.35844576358795166
+      ],
+      "world_velocity_m_s": [
+        0.45740392804145813,
+        0.2173340618610382,
+        -0.04141469672322273
+      ],
+      "projected_gravity": [
+        -0.12472177296876907,
+        0.06063051521778107,
+        -0.9903375506401062
+      ],
+      "elapsed_s": 7.460000038146973,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    },
+    {
+      "relative_position_m": [
+        3.8650436401367188,
+        1.1473088264465332,
+        0.36998090147972107
+      ],
+      "world_velocity_m_s": [
+        0.4227672219276428,
+        0.32223573327064514,
+        0.10876723378896713
+      ],
+      "projected_gravity": [
+        -0.12036414444446564,
+        0.13519270718097687,
+        -0.9834812879562378
+      ],
+      "elapsed_s": 8.920000076293945,
+      "stairs_weight": 1.0,
+      "success": false,
+      "time_out": false,
+      "terminated": true
+    }
+  ],
+  "stop_reason": "episode_target_reached",
+  "gait_metrics": {
+    "planar_velocity_mae_m_s": 0.15773575437305692,
+    "joint_velocity_rms_rad_s": 2.133600924376944,
+    "mechanical_power_mean_w": 110.72420696637295,
+    "stairs_traversal_time_mean_s": 2.0074831120025234,
+    "stairs_traversal_speed_mean_m_s": 0.42596525313462563,
+    "course_forward_velocity_mean_m_s": 0.31304446774066214,
+    "body_forward_velocity_mean_m_s": 0.3273625587145826,
+    "forward_command_mean_m_s": 0.44999998807907104,
+    "forward_velocity_mae_m_s": 0.2085583524086305,
+    "body_roll_rms_rad": 0.17872749844883135,
+    "body_pitch_rms_rad": 0.2576613720425499,
+    "body_roll_rate_rms_rad_s": 0.45678958365000905,
+    "body_pitch_rate_rms_rad_s": 0.647605397750353,
+    "body_yaw_rate_rms_rad_s": 0.27841725473316176,
+    "hip_abduction_mean_rad": 0.023334186610187973,
+    "hip_outward_component_mean_rad": 0.05229283125969806,
+    "hip_adduction_fraction": 0.4300505147881078,
+    "hip_abduction_rms_rad": 0.10894641073456866,
+    "hip_abduction_over_limit_fraction": 0.04517410249489068,
+    "feet_lateral_mean_m": 0.1456960360856718,
+    "feet_lateral_outer_fraction": 0.023338988933019705,
+    "feet_lateral_inner_fraction": 0.16237033895037212,
+    "feet_cross_body_center_fraction": 2.8920680214398643e-05,
+    "FL_hip_abduction_mean_rad": 0.015368792914001051,
+    "FL_hip_outward_component_mean_rad": 0.04363883672132365,
+    "FL_hip_adduction_fraction": 0.49415802259669145,
+    "FL_hip_abduction_rms_rad": 0.09877160624206487,
+    "FL_hip_abduction_over_limit_fraction": 0.03751976246481317,
+    "FL_foot_lateral_mean_m": 0.14441176432699898,
+    "FL_foot_lateral_outer_fraction": 0.025720124937338527,
+    "FL_foot_lateral_inner_fraction": 0.17016928238152162,
+    "FL_foot_cross_body_center_fraction": 0.00011568272085759457,
+    "FR_hip_abduction_mean_rad": 0.04819171860294671,
+    "FR_hip_outward_component_mean_rad": 0.06460532270152028,
+    "FR_hip_adduction_fraction": 0.2916747001889484,
+    "FR_hip_abduction_rms_rad": 0.1151676395478777,
+    "FR_hip_abduction_over_limit_fraction": 0.04700574557513593,
+    "FR_foot_lateral_mean_m": 0.15314394892402927,
+    "FR_foot_lateral_outer_fraction": 0.04796976824894922,
+    "FR_foot_lateral_inner_fraction": 0.11012995025643003,
+    "FR_foot_cross_body_center_fraction": 0.0,
+    "RL_hip_abduction_mean_rad": -0.0006759580756951926,
+    "RL_hip_outward_component_mean_rad": 0.04247066494879695,
+    "RL_hip_adduction_fraction": 0.46423475880152704,
+    "RL_hip_abduction_rms_rad": 0.10465322307742622,
+    "RL_hip_abduction_over_limit_fraction": 0.008252034087841746,
+    "RL_foot_lateral_mean_m": 0.1383039065721556,
+    "RL_foot_lateral_outer_fraction": 0.0012725099294335403,
+    "RL_foot_lateral_inner_fraction": 0.22191801951181891,
+    "RL_foot_cross_body_center_fraction": 0.0,
+    "RR_hip_abduction_mean_rad": 0.03045219299949931,
+    "RR_hip_outward_component_mean_rad": 0.05845650066715136,
+    "RR_hip_adduction_fraction": 0.47013457756526433,
+    "RR_hip_abduction_rms_rad": 0.11621346371492579,
+    "RR_hip_abduction_over_limit_fraction": 0.08791886785177187,
+    "RR_foot_lateral_mean_m": 0.14692452451950333,
+    "RR_foot_lateral_outer_fraction": 0.01839355261635754,
+    "RR_foot_lateral_inner_fraction": 0.14726410365171788,
+    "RR_foot_cross_body_center_fraction": 0.0,
+    "front_foot_lateral_width_mean_m": 0.2975557132706725,
+    "rear_foot_lateral_width_mean_m": 0.28522843112081997,
+    "stairs_course_forward_velocity_mean_m_s": 0.15130435653481397,
+    "stairs_body_forward_velocity_mean_m_s": 0.14729327876770348,
+    "stairs_forward_command_mean_m_s": 0.44999998807907104,
+    "stairs_forward_velocity_mae_m_s": 0.3401247326451252,
+    "stairs_body_roll_rms_rad": 0.20694402766724124,
+    "stairs_body_pitch_rms_rad": 0.22954982815119057,
+    "stairs_body_roll_rate_rms_rad_s": 0.5043275298564731,
+    "stairs_body_pitch_rate_rms_rad_s": 0.5403666515712829,
+    "stairs_body_yaw_rate_rms_rad_s": 0.27090773181698274,
+    "stairs_hip_abduction_mean_rad": 0.06174434088296365,
+    "stairs_hip_outward_component_mean_rad": 0.08387563228286012,
+    "stairs_hip_adduction_fraction": 0.28983303518187237,
+    "stairs_hip_abduction_rms_rad": 0.14129388743046553,
+    "stairs_hip_abduction_over_limit_fraction": 0.11499701848539058,
+    "stairs_feet_lateral_mean_m": 0.15690734799821918,
+    "stairs_feet_lateral_outer_fraction": 0.056320810971973764,
+    "stairs_feet_lateral_inner_fraction": 0.10805008944543829,
+    "stairs_feet_cross_body_center_fraction": 8.944543828264758e-05,
+    "stairs_FL_hip_abduction_mean_rad": 0.013423962749101783,
+    "stairs_FL_hip_outward_component_mean_rad": 0.03500598912079283,
+    "stairs_FL_hip_adduction_fraction": 0.4649970184853906,
+    "stairs_FL_hip_abduction_rms_rad": 0.08929059288497254,
+    "stairs_FL_hip_abduction_over_limit_fraction": 0.04245676803816339,
+    "stairs_FL_foot_lateral_mean_m": 0.14505379345738947,
+    "stairs_FL_foot_lateral_outer_fraction": 0.03828264758497316,
+    "stairs_FL_foot_lateral_inner_fraction": 0.11997614788312463,
+    "stairs_FL_foot_cross_body_center_fraction": 0.00035778175313059033,
+    "stairs_FR_hip_abduction_mean_rad": 0.10411697090427609,
+    "stairs_FR_hip_outward_component_mean_rad": 0.11114293286011642,
+    "stairs_FR_hip_adduction_fraction": 0.1370304114490161,
+    "stairs_FR_hip_abduction_rms_rad": 0.16639560558405167,
+    "stairs_FR_hip_abduction_over_limit_fraction": 0.14430530709600478,
+    "stairs_FR_foot_lateral_mean_m": 0.1749203353116181,
+    "stairs_FR_foot_lateral_outer_fraction": 0.14573643410852713,
+    "stairs_FR_foot_lateral_inner_fraction": 0.04007155635062612,
+    "stairs_FR_foot_cross_body_center_fraction": 0.0,
+    "stairs_RL_hip_abduction_mean_rad": 0.0011776760970929078,
+    "stairs_RL_hip_outward_component_mean_rad": 0.05137433678505075,
+    "stairs_RL_hip_adduction_fraction": 0.4143112701252236,
+    "stairs_RL_hip_abduction_rms_rad": 0.12492874245823468,
+    "stairs_RL_hip_abduction_over_limit_fraction": 0.01943947525342874,
+    "stairs_RL_foot_lateral_mean_m": 0.13819631255394516,
+    "stairs_RL_foot_lateral_outer_fraction": 0.0015503875968992248,
+    "stairs_RL_foot_lateral_inner_fraction": 0.227072152653548,
+    "stairs_RL_foot_cross_body_center_fraction": 0.0,
+    "stairs_RR_hip_abduction_mean_rad": 0.12825875378138382,
+    "stairs_RR_hip_outward_component_mean_rad": 0.13797927036548047,
+    "stairs_RR_hip_adduction_fraction": 0.14299344066785927,
+    "stairs_RR_hip_abduction_rms_rad": 0.16908090451976854,
+    "stairs_RR_hip_abduction_over_limit_fraction": 0.2537865235539654,
+    "stairs_RR_foot_lateral_mean_m": 0.169458950669924,
+    "stairs_RR_foot_lateral_outer_fraction": 0.039713774597495526,
+    "stairs_RR_foot_lateral_inner_fraction": 0.04508050089445438,
+    "stairs_RR_foot_cross_body_center_fraction": 0.0,
+    "stairs_front_foot_lateral_width_mean_m": 0.3199741288637504,
+    "stairs_rear_foot_lateral_width_mean_m": 0.3076552630234987,
+    "raw_action_clip_fraction": 0.05507461535495315,
+    "raw_action_abs_mean": 1.4681181693243792,
+    "applied_vs_clipped_raw_action_rms": 0.0,
+    "stance_foot_slip_rms_m_s": 0.15773171655881638,
+    "stairs_stance_foot_slip_rms_m_s": 0.15019012001436938,
+    "contact_0_feet_fraction": 0.028419388424015733,
+    "contact_1_feet_fraction": 0.12497589943315467,
+    "contact_2_feet_fraction": 0.6395326418077353,
+    "contact_3_feet_fraction": 0.19858867080553735,
+    "contact_4_feet_fraction": 0.008483399529556936,
+    "applied_action_delta_rms_rad": 0.09930849564526376,
+    "joint_acceleration_rms_rad_s2": 66.9001112978577,
+    "applied_action_second_delta_rms_rad": 0.06495524968999218,
+    "raw_action_abs_max": 8.262306213378906,
+    "valid_env_samples": 25933,
+    "stairs_valid_env_samples": 8385,
+    "nonfinite_metric_elements": 0,
+    "metric_element_counts": {
+      "planar_velocity_mae_m_s": 51866,
+      "joint_velocity_rms_rad_s": 311196,
+      "mechanical_power_mean_w": 25933,
+      "stairs_traversal_time_mean_s": 36,
+      "stairs_traversal_speed_mean_m_s": 36,
+      "course_forward_velocity_mean_m_s": 25933,
+      "body_forward_velocity_mean_m_s": 25933,
+      "forward_command_mean_m_s": 25933,
+      "forward_velocity_mae_m_s": 25933,
+      "body_roll_rms_rad": 25933,
+      "body_pitch_rms_rad": 25933,
+      "body_roll_rate_rms_rad_s": 25933,
+      "body_pitch_rate_rms_rad_s": 25933,
+      "body_yaw_rate_rms_rad_s": 25933,
+      "hip_abduction_mean_rad": 103732,
+      "hip_outward_component_mean_rad": 103732,
+      "hip_adduction_fraction": 103732,
+      "hip_abduction_rms_rad": 103732,
+      "hip_abduction_over_limit_fraction": 103732,
+      "feet_lateral_mean_m": 103732,
+      "feet_lateral_outer_fraction": 103732,
+      "feet_lateral_inner_fraction": 103732,
+      "feet_cross_body_center_fraction": 103732,
+      "FL_hip_abduction_mean_rad": 25933,
+      "FL_hip_outward_component_mean_rad": 25933,
+      "FL_hip_adduction_fraction": 25933,
+      "FL_hip_abduction_rms_rad": 25933,
+      "FL_hip_abduction_over_limit_fraction": 25933,
+      "FL_foot_lateral_mean_m": 25933,
+      "FL_foot_lateral_outer_fraction": 25933,
+      "FL_foot_lateral_inner_fraction": 25933,
+      "FL_foot_cross_body_center_fraction": 25933,
+      "FR_hip_abduction_mean_rad": 25933,
+      "FR_hip_outward_component_mean_rad": 25933,
+      "FR_hip_adduction_fraction": 25933,
+      "FR_hip_abduction_rms_rad": 25933,
+      "FR_hip_abduction_over_limit_fraction": 25933,
+      "FR_foot_lateral_mean_m": 25933,
+      "FR_foot_lateral_outer_fraction": 25933,
+      "FR_foot_lateral_inner_fraction": 25933,
+      "FR_foot_cross_body_center_fraction": 25933,
+      "RL_hip_abduction_mean_rad": 25933,
+      "RL_hip_outward_component_mean_rad": 25933,
+      "RL_hip_adduction_fraction": 25933,
+      "RL_hip_abduction_rms_rad": 25933,
+      "RL_hip_abduction_over_limit_fraction": 25933,
+      "RL_foot_lateral_mean_m": 25933,
+      "RL_foot_lateral_outer_fraction": 25933,
+      "RL_foot_lateral_inner_fraction": 25933,
+      "RL_foot_cross_body_center_fraction": 25933,
+      "RR_hip_abduction_mean_rad": 25933,
+      "RR_hip_outward_component_mean_rad": 25933,
+      "RR_hip_adduction_fraction": 25933,
+      "RR_hip_abduction_rms_rad": 25933,
+      "RR_hip_abduction_over_limit_fraction": 25933,
+      "RR_foot_lateral_mean_m": 25933,
+      "RR_foot_lateral_outer_fraction": 25933,
+      "RR_foot_lateral_inner_fraction": 25933,
+      "RR_foot_cross_body_center_fraction": 25933,
+      "front_foot_lateral_width_mean_m": 25933,
+      "rear_foot_lateral_width_mean_m": 25933,
+      "stairs_course_forward_velocity_mean_m_s": 8385,
+      "stairs_body_forward_velocity_mean_m_s": 8385,
+      "stairs_forward_command_mean_m_s": 8385,
+      "stairs_forward_velocity_mae_m_s": 8385,
+      "stairs_body_roll_rms_rad": 8385,
+      "stairs_body_pitch_rms_rad": 8385,
+      "stairs_body_roll_rate_rms_rad_s": 8385,
+      "stairs_body_pitch_rate_rms_rad_s": 8385,
+      "stairs_body_yaw_rate_rms_rad_s": 8385,
+      "stairs_hip_abduction_mean_rad": 33540,
+      "stairs_hip_outward_component_mean_rad": 33540,
+      "stairs_hip_adduction_fraction": 33540,
+      "stairs_hip_abduction_rms_rad": 33540,
+      "stairs_hip_abduction_over_limit_fraction": 33540,
+      "stairs_feet_lateral_mean_m": 33540,
+      "stairs_feet_lateral_outer_fraction": 33540,
+      "stairs_feet_lateral_inner_fraction": 33540,
+      "stairs_feet_cross_body_center_fraction": 33540,
+      "stairs_FL_hip_abduction_mean_rad": 8385,
+      "stairs_FL_hip_outward_component_mean_rad": 8385,
+      "stairs_FL_hip_adduction_fraction": 8385,
+      "stairs_FL_hip_abduction_rms_rad": 8385,
+      "stairs_FL_hip_abduction_over_limit_fraction": 8385,
+      "stairs_FL_foot_lateral_mean_m": 8385,
+      "stairs_FL_foot_lateral_outer_fraction": 8385,
+      "stairs_FL_foot_lateral_inner_fraction": 8385,
+      "stairs_FL_foot_cross_body_center_fraction": 8385,
+      "stairs_FR_hip_abduction_mean_rad": 8385,
+      "stairs_FR_hip_outward_component_mean_rad": 8385,
+      "stairs_FR_hip_adduction_fraction": 8385,
+      "stairs_FR_hip_abduction_rms_rad": 8385,
+      "stairs_FR_hip_abduction_over_limit_fraction": 8385,
+      "stairs_FR_foot_lateral_mean_m": 8385,
+      "stairs_FR_foot_lateral_outer_fraction": 8385,
+      "stairs_FR_foot_lateral_inner_fraction": 8385,
+      "stairs_FR_foot_cross_body_center_fraction": 8385,
+      "stairs_RL_hip_abduction_mean_rad": 8385,
+      "stairs_RL_hip_outward_component_mean_rad": 8385,
+      "stairs_RL_hip_adduction_fraction": 8385,
+      "stairs_RL_hip_abduction_rms_rad": 8385,
+      "stairs_RL_hip_abduction_over_limit_fraction": 8385,
+      "stairs_RL_foot_lateral_mean_m": 8385,
+      "stairs_RL_foot_lateral_outer_fraction": 8385,
+      "stairs_RL_foot_lateral_inner_fraction": 8385,
+      "stairs_RL_foot_cross_body_center_fraction": 8385,
+      "stairs_RR_hip_abduction_mean_rad": 8385,
+      "stairs_RR_hip_outward_component_mean_rad": 8385,
+      "stairs_RR_hip_adduction_fraction": 8385,
+      "stairs_RR_hip_abduction_rms_rad": 8385,
+      "stairs_RR_hip_abduction_over_limit_fraction": 8385,
+      "stairs_RR_foot_lateral_mean_m": 8385,
+      "stairs_RR_foot_lateral_outer_fraction": 8385,
+      "stairs_RR_foot_lateral_inner_fraction": 8385,
+      "stairs_RR_foot_cross_body_center_fraction": 8385,
+      "stairs_front_foot_lateral_width_mean_m": 8385,
+      "stairs_rear_foot_lateral_width_mean_m": 8385,
+      "raw_action_clip_fraction": 311196,
+      "raw_action_abs_mean": 311196,
+      "applied_vs_clipped_raw_action_rms": 311196,
+      "stance_foot_slip_rms_m_s": 52741,
+      "stairs_stance_foot_slip_rms_m_s": 19185,
+      "contact_0_feet_fraction": 25933,
+      "contact_1_feet_fraction": 25933,
+      "contact_2_feet_fraction": 25933,
+      "contact_3_feet_fraction": 25933,
+      "contact_4_feet_fraction": 25933,
+      "applied_action_delta_rms_rad": 310428,
+      "joint_acceleration_rms_rad_s2": 310428,
+      "applied_action_second_delta_rms_rad": 309660
+    },
+    "selection": "all_environments",
+    "selected_env_count": 64,
+    "sampling": "pre-step; active environments with episode_length > 1; differences require consecutive valid frames",
+    "planar_velocity_mae_definition": "mean absolute error across vx and vy components in body frame",
+    "forward_velocity_definition": "course_forward_velocity uses world +X (stair ascent direction); body_forward_velocity and forward_velocity_mae use body vx; means weight valid control samples",
+    "stairs_traversal_definition": "first complete forward crossing from stair start to end in each episode; boundaries linearly interpolated between consecutive valid pre-step samples; elapsed time includes retreats; one value per completed crossing; spawned-inside, interrupted and incomplete crossings excluded; geometric completion is not episode success",
+    "stairs_completed_traversals": 36,
+    "power_definition": "mean sum(abs(applied_torque * joint_velocity)), not electrical power",
+    "joint_acceleration_definition": "finite difference at control step interval",
+    "lateral_metric_thresholds": {
+      "hip_abduction_max_rad": 0.22,
+      "feet_lateral_min_m": 0.12,
+      "feet_lateral_max_m": 0.205
+    },
+    "hip_abduction_definition": "URDF hip angle multiplied by left +1 / right -1; positive is outward; over-limit fraction uses signed angle > maximum, not absolute angle",
+    "hip_outward_component_definition": "mean(max(signed hip angle, 0)); unlike signed mean this cannot be reduced by inward angles; adduction fraction separately counts signed angles below zero",
+    "feet_lateral_definition": "foot position relative to root, rotated into full body frame (including roll/pitch), with left +y / right -y positive outward; all gait phases; pair width sums left and right signed lateral positions",
+    "feet_cross_body_center_definition": "signed foot lateral coordinate below zero; distinct from merely being inside the configured positive minimum width",
+    "stairs_lateral_sampling": {
+      "definition": "stairs_ metrics include only valid pre-step frames whose base center is within the stair flight horizontal projection; approach and upper platform excluded; this does not classify individual foot contacts",
+      "relative_x_definition": "root_pos_w.x minus current scene.env_origins.x",
+      "start_x_inclusive_m": 1.2,
+      "end_x_exclusive_m": 1.7999999999999998
+    }
+  },
+  "gait_metrics_successful_episodes": {
+    "planar_velocity_mae_m_s": null,
+    "joint_velocity_rms_rad_s": null,
+    "mechanical_power_mean_w": null,
+    "stairs_traversal_time_mean_s": null,
+    "stairs_traversal_speed_mean_m_s": null,
+    "course_forward_velocity_mean_m_s": null,
+    "body_forward_velocity_mean_m_s": null,
+    "forward_command_mean_m_s": null,
+    "forward_velocity_mae_m_s": null,
+    "body_roll_rms_rad": null,
+    "body_pitch_rms_rad": null,
+    "body_roll_rate_rms_rad_s": null,
+    "body_pitch_rate_rms_rad_s": null,
+    "body_yaw_rate_rms_rad_s": null,
+    "hip_abduction_mean_rad": null,
+    "hip_outward_component_mean_rad": null,
+    "hip_adduction_fraction": null,
+    "hip_abduction_rms_rad": null,
+    "hip_abduction_over_limit_fraction": null,
+    "feet_lateral_mean_m": null,
+    "feet_lateral_outer_fraction": null,
+    "feet_lateral_inner_fraction": null,
+    "feet_cross_body_center_fraction": null,
+    "FL_hip_abduction_mean_rad": null,
+    "FL_hip_outward_component_mean_rad": null,
+    "FL_hip_adduction_fraction": null,
+    "FL_hip_abduction_rms_rad": null,
+    "FL_hip_abduction_over_limit_fraction": null,
+    "FL_foot_lateral_mean_m": null,
+    "FL_foot_lateral_outer_fraction": null,
+    "FL_foot_lateral_inner_fraction": null,
+    "FL_foot_cross_body_center_fraction": null,
+    "FR_hip_abduction_mean_rad": null,
+    "FR_hip_outward_component_mean_rad": null,
+    "FR_hip_adduction_fraction": null,
+    "FR_hip_abduction_rms_rad": null,
+    "FR_hip_abduction_over_limit_fraction": null,
+    "FR_foot_lateral_mean_m": null,
+    "FR_foot_lateral_outer_fraction": null,
+    "FR_foot_lateral_inner_fraction": null,
+    "FR_foot_cross_body_center_fraction": null,
+    "RL_hip_abduction_mean_rad": null,
+    "RL_hip_outward_component_mean_rad": null,
+    "RL_hip_adduction_fraction": null,
+    "RL_hip_abduction_rms_rad": null,
+    "RL_hip_abduction_over_limit_fraction": null,
+    "RL_foot_lateral_mean_m": null,
+    "RL_foot_lateral_outer_fraction": null,
+    "RL_foot_lateral_inner_fraction": null,
+    "RL_foot_cross_body_center_fraction": null,
+    "RR_hip_abduction_mean_rad": null,
+    "RR_hip_outward_component_mean_rad": null,
+    "RR_hip_adduction_fraction": null,
+    "RR_hip_abduction_rms_rad": null,
+    "RR_hip_abduction_over_limit_fraction": null,
+    "RR_foot_lateral_mean_m": null,
+    "RR_foot_lateral_outer_fraction": null,
+    "RR_foot_lateral_inner_fraction": null,
+    "RR_foot_cross_body_center_fraction": null,
+    "front_foot_lateral_width_mean_m": null,
+    "rear_foot_lateral_width_mean_m": null,
+    "stairs_course_forward_velocity_mean_m_s": null,
+    "stairs_body_forward_velocity_mean_m_s": null,
+    "stairs_forward_command_mean_m_s": null,
+    "stairs_forward_velocity_mae_m_s": null,
+    "stairs_body_roll_rms_rad": null,
+    "stairs_body_pitch_rms_rad": null,
+    "stairs_body_roll_rate_rms_rad_s": null,
+    "stairs_body_pitch_rate_rms_rad_s": null,
+    "stairs_body_yaw_rate_rms_rad_s": null,
+    "stairs_hip_abduction_mean_rad": null,
+    "stairs_hip_outward_component_mean_rad": null,
+    "stairs_hip_adduction_fraction": null,
+    "stairs_hip_abduction_rms_rad": null,
+    "stairs_hip_abduction_over_limit_fraction": null,
+    "stairs_feet_lateral_mean_m": null,
+    "stairs_feet_lateral_outer_fraction": null,
+    "stairs_feet_lateral_inner_fraction": null,
+    "stairs_feet_cross_body_center_fraction": null,
+    "stairs_FL_hip_abduction_mean_rad": null,
+    "stairs_FL_hip_outward_component_mean_rad": null,
+    "stairs_FL_hip_adduction_fraction": null,
+    "stairs_FL_hip_abduction_rms_rad": null,
+    "stairs_FL_hip_abduction_over_limit_fraction": null,
+    "stairs_FL_foot_lateral_mean_m": null,
+    "stairs_FL_foot_lateral_outer_fraction": null,
+    "stairs_FL_foot_lateral_inner_fraction": null,
+    "stairs_FL_foot_cross_body_center_fraction": null,
+    "stairs_FR_hip_abduction_mean_rad": null,
+    "stairs_FR_hip_outward_component_mean_rad": null,
+    "stairs_FR_hip_adduction_fraction": null,
+    "stairs_FR_hip_abduction_rms_rad": null,
+    "stairs_FR_hip_abduction_over_limit_fraction": null,
+    "stairs_FR_foot_lateral_mean_m": null,
+    "stairs_FR_foot_lateral_outer_fraction": null,
+    "stairs_FR_foot_lateral_inner_fraction": null,
+    "stairs_FR_foot_cross_body_center_fraction": null,
+    "stairs_RL_hip_abduction_mean_rad": null,
+    "stairs_RL_hip_outward_component_mean_rad": null,
+    "stairs_RL_hip_adduction_fraction": null,
+    "stairs_RL_hip_abduction_rms_rad": null,
+    "stairs_RL_hip_abduction_over_limit_fraction": null,
+    "stairs_RL_foot_lateral_mean_m": null,
+    "stairs_RL_foot_lateral_outer_fraction": null,
+    "stairs_RL_foot_lateral_inner_fraction": null,
+    "stairs_RL_foot_cross_body_center_fraction": null,
+    "stairs_RR_hip_abduction_mean_rad": null,
+    "stairs_RR_hip_outward_component_mean_rad": null,
+    "stairs_RR_hip_adduction_fraction": null,
+    "stairs_RR_hip_abduction_rms_rad": null,
+    "stairs_RR_hip_abduction_over_limit_fraction": null,
+    "stairs_RR_foot_lateral_mean_m": null,
+    "stairs_RR_foot_lateral_outer_fraction": null,
+    "stairs_RR_foot_lateral_inner_fraction": null,
+    "stairs_RR_foot_cross_body_center_fraction": null,
+    "stairs_front_foot_lateral_width_mean_m": null,
+    "stairs_rear_foot_lateral_width_mean_m": null,
+    "raw_action_clip_fraction": null,
+    "raw_action_abs_mean": null,
+    "applied_vs_clipped_raw_action_rms": null,
+    "stance_foot_slip_rms_m_s": null,
+    "stairs_stance_foot_slip_rms_m_s": null,
+    "contact_0_feet_fraction": null,
+    "contact_1_feet_fraction": null,
+    "contact_2_feet_fraction": null,
+    "contact_3_feet_fraction": null,
+    "contact_4_feet_fraction": null,
+    "applied_action_delta_rms_rad": null,
+    "joint_acceleration_rms_rad_s2": null,
+    "applied_action_second_delta_rms_rad": null,
+    "raw_action_abs_max": null,
+    "valid_env_samples": 0,
+    "stairs_valid_env_samples": 0,
+    "nonfinite_metric_elements": 0,
+    "metric_element_counts": {
+      "planar_velocity_mae_m_s": 0,
+      "joint_velocity_rms_rad_s": 0,
+      "mechanical_power_mean_w": 0,
+      "stairs_traversal_time_mean_s": 0,
+      "stairs_traversal_speed_mean_m_s": 0,
+      "course_forward_velocity_mean_m_s": 0,
+      "body_forward_velocity_mean_m_s": 0,
+      "forward_command_mean_m_s": 0,
+      "forward_velocity_mae_m_s": 0,
+      "body_roll_rms_rad": 0,
+      "body_pitch_rms_rad": 0,
+      "body_roll_rate_rms_rad_s": 0,
+      "body_pitch_rate_rms_rad_s": 0,
+      "body_yaw_rate_rms_rad_s": 0,
+      "hip_abduction_mean_rad": 0,
+      "hip_outward_component_mean_rad": 0,
+      "hip_adduction_fraction": 0,
+      "hip_abduction_rms_rad": 0,
+      "hip_abduction_over_limit_fraction": 0,
+      "feet_lateral_mean_m": 0,
+      "feet_lateral_outer_fraction": 0,
+      "feet_lateral_inner_fraction": 0,
+      "feet_cross_body_center_fraction": 0,
+      "FL_hip_abduction_mean_rad": 0,
+      "FL_hip_outward_component_mean_rad": 0,
+      "FL_hip_adduction_fraction": 0,
+      "FL_hip_abduction_rms_rad": 0,
+      "FL_hip_abduction_over_limit_fraction": 0,
+      "FL_foot_lateral_mean_m": 0,
+      "FL_foot_lateral_outer_fraction": 0,
+      "FL_foot_lateral_inner_fraction": 0,
+      "FL_foot_cross_body_center_fraction": 0,
+      "FR_hip_abduction_mean_rad": 0,
+      "FR_hip_outward_component_mean_rad": 0,
+      "FR_hip_adduction_fraction": 0,
+      "FR_hip_abduction_rms_rad": 0,
+      "FR_hip_abduction_over_limit_fraction": 0,
+      "FR_foot_lateral_mean_m": 0,
+      "FR_foot_lateral_outer_fraction": 0,
+      "FR_foot_lateral_inner_fraction": 0,
+      "FR_foot_cross_body_center_fraction": 0,
+      "RL_hip_abduction_mean_rad": 0,
+      "RL_hip_outward_component_mean_rad": 0,
+      "RL_hip_adduction_fraction": 0,
+      "RL_hip_abduction_rms_rad": 0,
+      "RL_hip_abduction_over_limit_fraction": 0,
+      "RL_foot_lateral_mean_m": 0,
+      "RL_foot_lateral_outer_fraction": 0,
+      "RL_foot_lateral_inner_fraction": 0,
+      "RL_foot_cross_body_center_fraction": 0,
+      "RR_hip_abduction_mean_rad": 0,
+      "RR_hip_outward_component_mean_rad": 0,
+      "RR_hip_adduction_fraction": 0,
+      "RR_hip_abduction_rms_rad": 0,
+      "RR_hip_abduction_over_limit_fraction": 0,
+      "RR_foot_lateral_mean_m": 0,
+      "RR_foot_lateral_outer_fraction": 0,
+      "RR_foot_lateral_inner_fraction": 0,
+      "RR_foot_cross_body_center_fraction": 0,
+      "front_foot_lateral_width_mean_m": 0,
+      "rear_foot_lateral_width_mean_m": 0,
+      "stairs_course_forward_velocity_mean_m_s": 0,
+      "stairs_body_forward_velocity_mean_m_s": 0,
+      "stairs_forward_command_mean_m_s": 0,
+      "stairs_forward_velocity_mae_m_s": 0,
+      "stairs_body_roll_rms_rad": 0,
+      "stairs_body_pitch_rms_rad": 0,
+      "stairs_body_roll_rate_rms_rad_s": 0,
+      "stairs_body_pitch_rate_rms_rad_s": 0,
+      "stairs_body_yaw_rate_rms_rad_s": 0,
+      "stairs_hip_abduction_mean_rad": 0,
+      "stairs_hip_outward_component_mean_rad": 0,
+      "stairs_hip_adduction_fraction": 0,
+      "stairs_hip_abduction_rms_rad": 0,
+      "stairs_hip_abduction_over_limit_fraction": 0,
+      "stairs_feet_lateral_mean_m": 0,
+      "stairs_feet_lateral_outer_fraction": 0,
+      "stairs_feet_lateral_inner_fraction": 0,
+      "stairs_feet_cross_body_center_fraction": 0,
+      "stairs_FL_hip_abduction_mean_rad": 0,
+      "stairs_FL_hip_outward_component_mean_rad": 0,
+      "stairs_FL_hip_adduction_fraction": 0,
+      "stairs_FL_hip_abduction_rms_rad": 0,
+      "stairs_FL_hip_abduction_over_limit_fraction": 0,
+      "stairs_FL_foot_lateral_mean_m": 0,
+      "stairs_FL_foot_lateral_outer_fraction": 0,
+      "stairs_FL_foot_lateral_inner_fraction": 0,
+      "stairs_FL_foot_cross_body_center_fraction": 0,
+      "stairs_FR_hip_abduction_mean_rad": 0,
+      "stairs_FR_hip_outward_component_mean_rad": 0,
+      "stairs_FR_hip_adduction_fraction": 0,
+      "stairs_FR_hip_abduction_rms_rad": 0,
+      "stairs_FR_hip_abduction_over_limit_fraction": 0,
+      "stairs_FR_foot_lateral_mean_m": 0,
+      "stairs_FR_foot_lateral_outer_fraction": 0,
+      "stairs_FR_foot_lateral_inner_fraction": 0,
+      "stairs_FR_foot_cross_body_center_fraction": 0,
+      "stairs_RL_hip_abduction_mean_rad": 0,
+      "stairs_RL_hip_outward_component_mean_rad": 0,
+      "stairs_RL_hip_adduction_fraction": 0,
+      "stairs_RL_hip_abduction_rms_rad": 0,
+      "stairs_RL_hip_abduction_over_limit_fraction": 0,
+      "stairs_RL_foot_lateral_mean_m": 0,
+      "stairs_RL_foot_lateral_outer_fraction": 0,
+      "stairs_RL_foot_lateral_inner_fraction": 0,
+      "stairs_RL_foot_cross_body_center_fraction": 0,
+      "stairs_RR_hip_abduction_mean_rad": 0,
+      "stairs_RR_hip_outward_component_mean_rad": 0,
+      "stairs_RR_hip_adduction_fraction": 0,
+      "stairs_RR_hip_abduction_rms_rad": 0,
+      "stairs_RR_hip_abduction_over_limit_fraction": 0,
+      "stairs_RR_foot_lateral_mean_m": 0,
+      "stairs_RR_foot_lateral_outer_fraction": 0,
+      "stairs_RR_foot_lateral_inner_fraction": 0,
+      "stairs_RR_foot_cross_body_center_fraction": 0,
+      "stairs_front_foot_lateral_width_mean_m": 0,
+      "stairs_rear_foot_lateral_width_mean_m": 0,
+      "raw_action_clip_fraction": 0,
+      "raw_action_abs_mean": 0,
+      "applied_vs_clipped_raw_action_rms": 0,
+      "stance_foot_slip_rms_m_s": 0,
+      "stairs_stance_foot_slip_rms_m_s": 0,
+      "contact_0_feet_fraction": 0,
+      "contact_1_feet_fraction": 0,
+      "contact_2_feet_fraction": 0,
+      "contact_3_feet_fraction": 0,
+      "contact_4_feet_fraction": 0,
+      "applied_action_delta_rms_rad": 0,
+      "joint_acceleration_rms_rad_s2": 0,
+      "applied_action_second_delta_rms_rad": 0
+    },
+    "selection": "completed_successful_first_episodes_only",
+    "selected_env_count": 0,
+    "sampling": "pre-step; active environments with episode_length > 1; differences require consecutive valid frames",
+    "planar_velocity_mae_definition": "mean absolute error across vx and vy components in body frame",
+    "forward_velocity_definition": "course_forward_velocity uses world +X (stair ascent direction); body_forward_velocity and forward_velocity_mae use body vx; means weight valid control samples",
+    "stairs_traversal_definition": "first complete forward crossing from stair start to end in each episode; boundaries linearly interpolated between consecutive valid pre-step samples; elapsed time includes retreats; one value per completed crossing; spawned-inside, interrupted and incomplete crossings excluded; geometric completion is not episode success",
+    "stairs_completed_traversals": 0,
+    "power_definition": "mean sum(abs(applied_torque * joint_velocity)), not electrical power",
+    "joint_acceleration_definition": "finite difference at control step interval",
+    "lateral_metric_thresholds": {
+      "hip_abduction_max_rad": 0.22,
+      "feet_lateral_min_m": 0.12,
+      "feet_lateral_max_m": 0.205
+    },
+    "hip_abduction_definition": "URDF hip angle multiplied by left +1 / right -1; positive is outward; over-limit fraction uses signed angle > maximum, not absolute angle",
+    "hip_outward_component_definition": "mean(max(signed hip angle, 0)); unlike signed mean this cannot be reduced by inward angles; adduction fraction separately counts signed angles below zero",
+    "feet_lateral_definition": "foot position relative to root, rotated into full body frame (including roll/pitch), with left +y / right -y positive outward; all gait phases; pair width sums left and right signed lateral positions",
+    "feet_cross_body_center_definition": "signed foot lateral coordinate below zero; distinct from merely being inside the configured positive minimum width",
+    "stairs_lateral_sampling": {
+      "definition": "stairs_ metrics include only valid pre-step frames whose base center is within the stair flight horizontal projection; approach and upper platform excluded; this does not classify individual foot contacts",
+      "relative_x_definition": "root_pos_w.x minus current scene.env_origins.x",
+      "start_x_inclusive_m": 1.2,
+      "end_x_exclusive_m": 1.7999999999999998
+    }
+  }
+}

@@ -1,0 +1,703 @@
+{
+  "passed": true,
+  "input_case_count": 199,
+  "input_cases": [
+    "zero",
+    "standing_forward",
+    "history_ramp",
+    "normal_0",
+    "random_0",
+    "normal_1",
+    "random_1",
+    "normal_2",
+    "random_2",
+    "normal_3",
+    "random_3",
+    "normal_4",
+    "random_4",
+    "normal_5",
+    "random_5",
+    "normal_6",
+    "random_6",
+    "normal_7",
+    "random_7",
+    "normal_8",
+    "random_8",
+    "normal_9",
+    "random_9",
+    "normal_10",
+    "random_10",
+    "normal_11",
+    "random_11",
+    "normal_12",
+    "random_12",
+    "normal_13",
+    "random_13",
+    "normal_14",
+    "random_14",
+    "normal_15",
+    "random_15",
+    "normal_16",
+    "random_16",
+    "normal_17",
+    "random_17",
+    "normal_18",
+    "random_18",
+    "normal_19",
+    "random_19",
+    "normal_20",
+    "random_20",
+    "normal_21",
+    "random_21",
+    "normal_22",
+    "random_22",
+    "normal_23",
+    "random_23",
+    "normal_24",
+    "random_24",
+    "normal_25",
+    "random_25",
+    "normal_26",
+    "random_26",
+    "normal_27",
+    "random_27",
+    "normal_28",
+    "random_28",
+    "normal_29",
+    "random_29",
+    "normal_30",
+    "random_30",
+    "normal_31",
+    "random_31",
+    "normal_32",
+    "random_32",
+    "normal_33",
+    "random_33",
+    "normal_34",
+    "random_34",
+    "normal_35",
+    "random_35",
+    "normal_36",
+    "random_36",
+    "normal_37",
+    "random_37",
+    "normal_38",
+    "random_38",
+    "normal_39",
+    "random_39",
+    "normal_40",
+    "random_40",
+    "normal_41",
+    "random_41",
+    "normal_42",
+    "random_42",
+    "normal_43",
+    "random_43",
+    "normal_44",
+    "random_44",
+    "normal_45",
+    "random_45",
+    "normal_46",
+    "random_46",
+    "normal_47",
+    "random_47",
+    "normal_48",
+    "random_48",
+    "normal_49",
+    "random_49",
+    "normal_50",
+    "random_50",
+    "normal_51",
+    "random_51",
+    "normal_52",
+    "random_52",
+    "normal_53",
+    "random_53",
+    "normal_54",
+    "random_54",
+    "normal_55",
+    "random_55",
+    "normal_56",
+    "random_56",
+    "normal_57",
+    "random_57",
+    "normal_58",
+    "random_58",
+    "normal_59",
+    "random_59",
+    "normal_60",
+    "random_60",
+    "normal_61",
+    "random_61",
+    "normal_62",
+    "random_62",
+    "normal_63",
+    "random_63",
+    "clip_upper",
+    "clip_lower",
+    "clip_alternating",
+    "tiny",
+    "boundary_0",
+    "boundary_1",
+    "boundary_2",
+    "boundary_3",
+    "boundary_4",
+    "boundary_5",
+    "boundary_6",
+    "boundary_7",
+    "boundary_8",
+    "boundary_9",
+    "boundary_10",
+    "boundary_11",
+    "boundary_12",
+    "boundary_13",
+    "boundary_14",
+    "boundary_15",
+    "boundary_16",
+    "boundary_17",
+    "boundary_18",
+    "boundary_19",
+    "boundary_20",
+    "boundary_21",
+    "boundary_22",
+    "boundary_23",
+    "boundary_24",
+    "boundary_25",
+    "boundary_26",
+    "boundary_27",
+    "boundary_28",
+    "boundary_29",
+    "boundary_30",
+    "boundary_31",
+    "boundary_32",
+    "boundary_33",
+    "boundary_34",
+    "boundary_35",
+    "boundary_36",
+    "boundary_37",
+    "boundary_38",
+    "boundary_39",
+    "boundary_40",
+    "boundary_41",
+    "boundary_42",
+    "boundary_43",
+    "boundary_44",
+    "boundary_45",
+    "boundary_46",
+    "boundary_47",
+    "boundary_48",
+    "boundary_49",
+    "boundary_50",
+    "boundary_51",
+    "boundary_52",
+    "boundary_53",
+    "boundary_54",
+    "boundary_55",
+    "boundary_56",
+    "boundary_57",
+    "boundary_58",
+    "boundary_59",
+    "boundary_60",
+    "boundary_61",
+    "boundary_62",
+    "boundary_63"
+  ],
+  "computed_node_outputs_checked": 81,
+  "constant_nodes_pinned_by_source_sha256": 27,
+  "operator_counts": {
+    "Constant": 27,
+    "Slice": 7,
+    "Reshape": 7,
+    "Gather": 30,
+    "Concat": 5,
+    "Gemm": 10,
+    "Elu": 8,
+    "Softmax": 1,
+    "Unsqueeze": 2,
+    "Conv": 1,
+    "Mul": 1,
+    "ReduceSum": 2,
+    "Abs": 1,
+    "Pow": 2,
+    "Clip": 1,
+    "Shape": 1,
+    "Expand": 1,
+    "Div": 1
+  },
+  "all_computed_operators_covered": true,
+  "batch_extension_rows": 8,
+  "atol": 0.0002,
+  "rtol": 0.0002,
+  "intermediate_tensor_scale_rtol": 0.0001,
+  "stress_action_tensor_scale_rtol": 1e-05,
+  "tolerance_note": "All computed node outputs: atol + rtol*abs(reference); intermediate tensors add intermediate_tensor_scale_rtol*max(abs(reference)). Only actions at extreme clip-boundary stress cases add stress_action_tensor_scale_rtol*max(abs(reference)). Normal/random/deterministic public outputs and all weights/latent use the elementwise tolerance only. Float32 numerical equivalence, not bitwise equality.",
+  "max_public_output_absolute_error_by_input_family": {
+    "deterministic": {
+      "actions": 9.5367431640625e-06,
+      "weights": 1.0132789611816406e-06,
+      "latent": 2.980232238769531e-07
+    },
+    "normal": {
+      "actions": 2.35140323638916e-05,
+      "weights": 1.7881393432617188e-06,
+      "latent": 1.4975666999816895e-06
+    },
+    "random": {
+      "actions": 0.000213623046875,
+      "weights": 1.8298625946044922e-05,
+      "latent": 1.0117888450622559e-05
+    },
+    "clip_boundary": {
+      "actions": 0.0078125,
+      "weights": 8.709728717803955e-05,
+      "latent": 2.9906630516052246e-05
+    }
+  },
+  "max_action_absolute_error": 0.0078125,
+  "outputs": {
+    "/Slice_output_0": {
+      "max_absolute_error": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "max_error_over_tensor_peak": 0.0
+    },
+    "/Slice_1_output_0": {
+      "max_absolute_error": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "max_error_over_tensor_peak": 0.0
+    },
+    "/Slice_2_output_0": {
+      "max_absolute_error": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "max_error_over_tensor_peak": 0.0
+    },
+    "/Slice_3_output_0": {
+      "max_absolute_error": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "max_error_over_tensor_peak": 0.0
+    },
+    "/Slice_4_output_0": {
+      "max_absolute_error": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "max_error_over_tensor_peak": 0.0
+    },
+    "/Slice_5_output_0": {
+      "max_absolute_error": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "max_error_over_tensor_peak": 0.0
+    },
+    "/Reshape_output_0": {
+      "max_absolute_error": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "max_error_over_tensor_peak": 0.0
+    },
+    "/Reshape_1_output_0": {
+      "max_absolute_error": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "max_error_over_tensor_peak": 0.0
+    },
+    "/Reshape_2_output_0": {
+      "max_absolute_error": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "max_error_over_tensor_peak": 0.0
+    },
+    "/Reshape_3_output_0": {
+      "max_absolute_error": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "max_error_over_tensor_peak": 0.0
+    },
+    "/Reshape_4_output_0": {
+      "max_absolute_error": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "max_error_over_tensor_peak": 0.0
+    },
+    "/Reshape_5_output_0": {
+      "max_absolute_error": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "max_error_over_tensor_peak": 0.0
+    },
+    "/Gather_output_0": {
+      "max_absolute_error": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "max_error_over_tensor_peak": 0.0
+    },
+    "/Gather_1_output_0": {
+      "max_absolute_error": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "max_error_over_tensor_peak": 0.0
+    },
+    "/Gather_2_output_0": {
+      "max_absolute_error": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "max_error_over_tensor_peak": 0.0
+    },
+    "/Gather_3_output_0": {
+      "max_absolute_error": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "max_error_over_tensor_peak": 0.0
+    },
+    "/Gather_4_output_0": {
+      "max_absolute_error": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "max_error_over_tensor_peak": 0.0
+    },
+    "/Gather_5_output_0": {
+      "max_absolute_error": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "max_error_over_tensor_peak": 0.0
+    },
+    "/Gather_6_output_0": {
+      "max_absolute_error": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "max_error_over_tensor_peak": 0.0
+    },
+    "/Gather_7_output_0": {
+      "max_absolute_error": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "max_error_over_tensor_peak": 0.0
+    },
+    "/Gather_8_output_0": {
+      "max_absolute_error": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "max_error_over_tensor_peak": 0.0
+    },
+    "/Gather_9_output_0": {
+      "max_absolute_error": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "max_error_over_tensor_peak": 0.0
+    },
+    "/Gather_10_output_0": {
+      "max_absolute_error": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "max_error_over_tensor_peak": 0.0
+    },
+    "/Gather_11_output_0": {
+      "max_absolute_error": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "max_error_over_tensor_peak": 0.0
+    },
+    "/Gather_12_output_0": {
+      "max_absolute_error": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "max_error_over_tensor_peak": 0.0
+    },
+    "/Gather_13_output_0": {
+      "max_absolute_error": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "max_error_over_tensor_peak": 0.0
+    },
+    "/Gather_14_output_0": {
+      "max_absolute_error": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "max_error_over_tensor_peak": 0.0
+    },
+    "/Gather_15_output_0": {
+      "max_absolute_error": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "max_error_over_tensor_peak": 0.0
+    },
+    "/Gather_16_output_0": {
+      "max_absolute_error": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "max_error_over_tensor_peak": 0.0
+    },
+    "/Gather_17_output_0": {
+      "max_absolute_error": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "max_error_over_tensor_peak": 0.0
+    },
+    "/Concat_output_0": {
+      "max_absolute_error": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "max_error_over_tensor_peak": 0.0
+    },
+    "/Gather_18_output_0": {
+      "max_absolute_error": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "max_error_over_tensor_peak": 0.0
+    },
+    "/Gather_19_output_0": {
+      "max_absolute_error": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "max_error_over_tensor_peak": 0.0
+    },
+    "/Gather_20_output_0": {
+      "max_absolute_error": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "max_error_over_tensor_peak": 0.0
+    },
+    "/Gather_21_output_0": {
+      "max_absolute_error": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "max_error_over_tensor_peak": 0.0
+    },
+    "/Gather_22_output_0": {
+      "max_absolute_error": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "max_error_over_tensor_peak": 0.0
+    },
+    "/Gather_23_output_0": {
+      "max_absolute_error": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "max_error_over_tensor_peak": 0.0
+    },
+    "/Concat_1_output_0": {
+      "max_absolute_error": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "max_error_over_tensor_peak": 0.0
+    },
+    "/Gather_24_output_0": {
+      "max_absolute_error": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "max_error_over_tensor_peak": 0.0
+    },
+    "/Gather_25_output_0": {
+      "max_absolute_error": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "max_error_over_tensor_peak": 0.0
+    },
+    "/Gather_26_output_0": {
+      "max_absolute_error": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "max_error_over_tensor_peak": 0.0
+    },
+    "/Gather_27_output_0": {
+      "max_absolute_error": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "max_error_over_tensor_peak": 0.0
+    },
+    "/Gather_28_output_0": {
+      "max_absolute_error": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "max_error_over_tensor_peak": 0.0
+    },
+    "/Gather_29_output_0": {
+      "max_absolute_error": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "max_error_over_tensor_peak": 0.0
+    },
+    "/Concat_2_output_0": {
+      "max_absolute_error": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "max_error_over_tensor_peak": 0.0
+    },
+    "/Concat_3_output_0": {
+      "max_absolute_error": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "max_error_over_tensor_peak": 0.0
+    },
+    "/Slice_6_output_0": {
+      "max_absolute_error": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "max_error_over_tensor_peak": 0.0
+    },
+    "/student_moe_encoder/gating_network/gating_network.0/Gemm_output_0": {
+      "max_absolute_error": 0.00732421875,
+      "max_tolerance_ratio": 0.004700505791898149,
+      "max_error_over_tensor_peak": 1.0434208092124876e-06
+    },
+    "/student_moe_encoder/gating_network/experts_backbone.1/Elu_output_0": {
+      "max_absolute_error": 0.00732421875,
+      "max_tolerance_ratio": 0.0037093789436225878,
+      "max_error_over_tensor_peak": 9.162993527994411e-07
+    },
+    "/student_moe_encoder/gating_network/gating_network.2/Gemm_output_0": {
+      "max_absolute_error": 0.1328125,
+      "max_tolerance_ratio": 0.006045790293168307,
+      "max_error_over_tensor_peak": 1.4997621939571208e-06
+    },
+    "/student_moe_encoder/gating_network/experts_backbone.1_1/Elu_output_0": {
+      "max_absolute_error": 0.0650634765625,
+      "max_tolerance_ratio": 0.03463203463203463,
+      "max_error_over_tensor_peak": 4.805142570359745e-06
+    },
+    "/student_moe_encoder/gating_network/gating_network.4/Gemm_output_0": {
+      "max_absolute_error": 0.01953125,
+      "max_tolerance_ratio": 0.05673272482315009,
+      "max_error_over_tensor_peak": 7.873136114820115e-06
+    },
+    "weights": {
+      "max_absolute_error": 8.709728717803955e-05,
+      "max_tolerance_ratio": 0.39495236872902223,
+      "max_error_over_tensor_peak": 9.705841757682942e-05
+    },
+    "/student_moe_encoder/experts_backbone/experts_backbone.0/Gemm_output_0": {
+      "max_absolute_error": 0.009765625,
+      "max_tolerance_ratio": 0.004039506316079535,
+      "max_error_over_tensor_peak": 9.832471080244434e-07
+    },
+    "/student_moe_encoder/experts_backbone/experts_backbone.1/Elu_output_0": {
+      "max_absolute_error": 0.0087890625,
+      "max_tolerance_ratio": 0.004324676155465251,
+      "max_error_over_tensor_peak": 9.832471080244434e-07
+    },
+    "/student_moe_encoder/experts_backbone/experts_backbone.2/Gemm_output_0": {
+      "max_absolute_error": 0.625,
+      "max_tolerance_ratio": 0.006176758051512195,
+      "max_error_over_tensor_peak": 9.676207133229526e-07
+    },
+    "/student_moe_encoder/experts_backbone/experts_backbone.1_1/Elu_output_0": {
+      "max_absolute_error": 0.40234375,
+      "max_tolerance_ratio": 0.009495064699037048,
+      "max_error_over_tensor_peak": 1.0922186663159304e-06
+    },
+    "/student_moe_encoder/experts_hidden/experts_hidden.0/Gemm_output_0": {
+      "max_absolute_error": 18.0,
+      "max_tolerance_ratio": 0.006487224662346445,
+      "max_error_over_tensor_peak": 1.2416392527769827e-06
+    },
+    "/student_moe_encoder/experts_hidden/experts_backbone.1/Elu_output_0": {
+      "max_absolute_error": 11.0,
+      "max_tolerance_ratio": 0.009719383046974558,
+      "max_error_over_tensor_peak": 1.1346374099298126e-06
+    },
+    "/student_moe_encoder/Unsqueeze_output_0": {
+      "max_absolute_error": 11.0,
+      "max_tolerance_ratio": 0.009719383046974558,
+      "max_error_over_tensor_peak": 1.1346374099298126e-06
+    },
+    "/student_moe_encoder/experts_out/Conv_output_0": {
+      "max_absolute_error": 144.0,
+      "max_tolerance_ratio": 0.012644243375536497,
+      "max_error_over_tensor_peak": 1.642685730582132e-06
+    },
+    "/student_moe_encoder/Reshape_output_0": {
+      "max_absolute_error": 144.0,
+      "max_tolerance_ratio": 0.012644243375536497,
+      "max_error_over_tensor_peak": 1.642685730582132e-06
+    },
+    "/student_moe_encoder/Unsqueeze_1_output_0": {
+      "max_absolute_error": 8.709728717803955e-05,
+      "max_tolerance_ratio": 0.28072081793857656,
+      "max_error_over_tensor_peak": 9.705841757682942e-05
+    },
+    "/student_moe_encoder/Mul_output_0": {
+      "max_absolute_error": 6952.0,
+      "max_tolerance_ratio": 0.670070276528593,
+      "max_error_over_tensor_peak": 9.688036311964134e-05
+    },
+    "/student_moe_encoder/ReduceSum_output_0": {
+      "max_absolute_error": 4600.0,
+      "max_tolerance_ratio": 0.35567448042192223,
+      "max_error_over_tensor_peak": 5.8956617567595555e-05
+    },
+    "/student_moe_encoder/norm_layer/Abs_output_0": {
+      "max_absolute_error": 4600.0,
+      "max_tolerance_ratio": 0.35567448042192223,
+      "max_error_over_tensor_peak": 5.8956617567595555e-05
+    },
+    "/student_moe_encoder/norm_layer/Pow_output_0": {
+      "max_absolute_error": 599953244160.0,
+      "max_tolerance_ratio": 0.41123544749508517,
+      "max_error_over_tensor_peak": 9.855232586134733e-05
+    },
+    "/student_moe_encoder/norm_layer/ReduceSum_output_0": {
+      "max_absolute_error": 2920577761280.0,
+      "max_tolerance_ratio": 0.1308832857721574,
+      "max_error_over_tensor_peak": 3.926498543301491e-05
+    },
+    "/student_moe_encoder/norm_layer/Pow_1_output_0": {
+      "max_absolute_error": 3648.0,
+      "max_tolerance_ratio": 0.06556072950717011,
+      "max_error_over_tensor_peak": 1.966822071834636e-05
+    },
+    "/student_moe_encoder/norm_layer/Clip_output_0": {
+      "max_absolute_error": 3648.0,
+      "max_tolerance_ratio": 0.06556072950717011,
+      "max_error_over_tensor_peak": 1.966822071834636e-05
+    },
+    "/student_moe_encoder/norm_layer/Shape_output_0": {
+      "max_absolute_error": 0.0,
+      "max_tolerance_ratio": 0.0,
+      "max_error_over_tensor_peak": 0.0
+    },
+    "/student_moe_encoder/norm_layer/Expand_output_0": {
+      "max_absolute_error": 3648.0,
+      "max_tolerance_ratio": 0.06556072950717011,
+      "max_error_over_tensor_peak": 1.966822071834636e-05
+    },
+    "latent": {
+      "max_absolute_error": 2.9906630516052246e-05,
+      "max_tolerance_ratio": 0.1303090989846549,
+      "max_error_over_tensor_peak": 5.8744679757490725e-05
+    },
+    "/Concat_4_output_0": {
+      "max_absolute_error": 2.9906630516052246e-05,
+      "max_tolerance_ratio": 0.010152916387616834,
+      "max_error_over_tensor_peak": 1.3241165151393749e-06
+    },
+    "/actor/actor.0/Gemm_output_0": {
+      "max_absolute_error": 0.000244140625,
+      "max_tolerance_ratio": 0.009700856833379214,
+      "max_error_over_tensor_peak": 1.3061051355720458e-06
+    },
+    "/actor/actor.1/Elu_output_0": {
+      "max_absolute_error": 0.000213623046875,
+      "max_tolerance_ratio": 0.01205600564877403,
+      "max_error_over_tensor_peak": 2.4827513899744707e-06
+    },
+    "/actor/actor.2/Gemm_output_0": {
+      "max_absolute_error": 0.0029296875,
+      "max_tolerance_ratio": 0.0177489370613295,
+      "max_error_over_tensor_peak": 1.845174273399704e-06
+    },
+    "/actor/actor.1_1/Elu_output_0": {
+      "max_absolute_error": 0.0029296875,
+      "max_tolerance_ratio": 0.016957145198058972,
+      "max_error_over_tensor_peak": 2.174643365922667e-06
+    },
+    "/actor/actor.4/Gemm_output_0": {
+      "max_absolute_error": 0.021484375,
+      "max_tolerance_ratio": 0.016179028327391317,
+      "max_error_over_tensor_peak": 2.0661417863933466e-06
+    },
+    "/actor/actor.1_2/Elu_output_0": {
+      "max_absolute_error": 0.021484375,
+      "max_tolerance_ratio": 0.04627811881547901,
+      "max_error_over_tensor_peak": 7.2754119652867155e-06
+    },
+    "actions": {
+      "max_absolute_error": 0.0078125,
+      "max_tolerance_ratio": 0.11619584271392372,
+      "max_error_over_tensor_peak": 1.0095279994701833e-05
+    }
+  },
+  "torch_version": "2.7.0+cpu",
+  "onnxruntime_version": "1.19.2",
+  "onnx_version": "1.17.0",
+  "format": "robogauge_moe_cts_deployment_actor_v1",
+  "source_onnx_sha256": "bc08253fd68f661bf6be5ce5ca70cec555c3fde2c397d23fbe9814a998e056f5",
+  "source_onnx": "/home/venom/\u6587\u6863/ChatGPT/\u673a\u5668\u72d7/upstream/robogauge/unitree_cpp_deploy/logs/rsl_rl/go2_moe_cts_expert_goal_137000_0.6745/exported/policy.onnx",
+  "parity_passed": true,
+  "source_repository": "https://github.com/robogauge/code",
+  "source_revision": "f116b00a934262348f41cbfd0d07cc4cb6fbf8d8",
+  "observation_layout": "term-major; gyro3,gravity3,command3,q_rel12,dq12,last_action12; 5 oldest-to-newest samples each",
+  "inputs_already_scaled": true,
+  "joint_order": [
+    "FL_hip_joint",
+    "FL_thigh_joint",
+    "FL_calf_joint",
+    "FR_hip_joint",
+    "FR_thigh_joint",
+    "FR_calf_joint",
+    "RL_hip_joint",
+    "RL_thigh_joint",
+    "RL_calf_joint",
+    "RR_hip_joint",
+    "RR_thigh_joint",
+    "RR_calf_joint"
+  ],
+  "absent_training_state": [
+    "teacher_encoder",
+    "critic",
+    "action_noise_std",
+    "optimizer1",
+    "optimizer2",
+    "training_iteration"
+  ],
+  "semantics": "Deployment actor reconstruction for a new warm-start; not original CTS training resume",
+  "checkpoint_path": "/home/venom/\u6587\u6863/ChatGPT/\u673a\u5668\u72d7/validation/moe_cts_actor_conversion_20261104/actor.pt",
+  "checkpoint_sha256": "4b7c51ee0771a375001b1176f9e7e78cc3ad4c1603253ce1e65aeedd2af103a3",
+  "checkpoint_bytes": 5185121,
+  "parameter_tensor_count": 22,
+  "parameter_count": 1293972
+}

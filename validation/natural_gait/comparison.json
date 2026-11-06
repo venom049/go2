@@ -1,0 +1,155 @@
+{
+  "protocol": {
+    "height_m": 0.18,
+    "tread_m": 0.32,
+    "steps": 8,
+    "forward_command_m_s": 0.4,
+    "seeds": [
+      42,
+      43
+    ],
+    "environments_per_seed": 64,
+    "episodes_per_environment": 1,
+    "episode_limit_s": 25,
+    "contact_history_physics_steps": 4,
+    "observation_noise": false,
+    "domain_randomization": false,
+    "reset_pose_randomization": "same evaluation reset distribution",
+    "metric_subset": "successful first episodes only; weighted by each metric element count",
+    "selection": "checkpoint 400 selected among 200/400/500 on seed42; seed43 evaluated after selection"
+  },
+  "models": {
+    "baseline3000": {
+      "checkpoint": "/root/go2-himloco/logs/20261102_154245_stairs_baseline/model_3000.pt",
+      "inputs": [
+        "baseline3000_18cm_seed42_contact4.json",
+        "baseline3000_18cm_seed43_contact4.json"
+      ],
+      "by_seed": [
+        {
+          "seed": 42,
+          "episodes": 64,
+          "successes": 42,
+          "failures": 20,
+          "timeouts": 2
+        },
+        {
+          "seed": 43,
+          "episodes": 64,
+          "successes": 40,
+          "failures": 23,
+          "timeouts": 1
+        }
+      ],
+      "episodes": 128,
+      "successes": 82,
+      "failures": 43,
+      "timeouts": 3,
+      "success_rate": 0.640625,
+      "successful_episode_metrics": {
+        "planar_velocity_mae_m_s": 0.1336634153642467,
+        "body_roll_rms_rad": 0.19826467307194118,
+        "body_roll_rate_rms_rad_s": 0.7786115521882212,
+        "joint_acceleration_rms_rad_s2": 135.18694581534515,
+        "mechanical_power_mean_w": 237.22700664714242,
+        "raw_action_clip_fraction": 0.9203640820968382,
+        "applied_action_second_delta_rms_rad": 0.29830331767245644,
+        "stance_foot_slip_rms_m_s": 0.2688250850587775
+      },
+      "nonfinite_metric_elements": 0
+    },
+    "baseline1000": {
+      "checkpoint": "/root/go2-himloco/logs/20261102_154245_stairs_baseline/model_1000.pt",
+      "inputs": [
+        "baseline1000_18cm_seed42_contact4.json",
+        "baseline1000_18cm_seed43_contact4.json"
+      ],
+      "by_seed": [
+        {
+          "seed": 42,
+          "episodes": 64,
+          "successes": 55,
+          "failures": 1,
+          "timeouts": 8
+        },
+        {
+          "seed": 43,
+          "episodes": 64,
+          "successes": 54,
+          "failures": 0,
+          "timeouts": 10
+        }
+      ],
+      "episodes": 128,
+      "successes": 109,
+      "failures": 1,
+      "timeouts": 18,
+      "success_rate": 0.8515625,
+      "successful_episode_metrics": {
+        "planar_velocity_mae_m_s": 0.10898240968369477,
+        "body_roll_rms_rad": 0.1284505745437403,
+        "body_roll_rate_rms_rad_s": 0.4968163795308763,
+        "joint_acceleration_rms_rad_s2": 92.99444072664454,
+        "mechanical_power_mean_w": 176.14365830620554,
+        "raw_action_clip_fraction": 0.5386287087027589,
+        "applied_action_second_delta_rms_rad": 0.12725437062252137,
+        "stance_foot_slip_rms_m_s": 0.18901918042828003
+      },
+      "nonfinite_metric_elements": 0
+    },
+    "refinement400": {
+      "checkpoint": "/root/go2-himloco/logs/20261102_171629_stairs_natural_refinement/model_400.pt",
+      "inputs": [
+        "refinement400_18cm_seed42.json",
+        "refinement400_18cm_seed43.json"
+      ],
+      "by_seed": [
+        {
+          "seed": 42,
+          "episodes": 64,
+          "successes": 60,
+          "failures": 1,
+          "timeouts": 3
+        },
+        {
+          "seed": 43,
+          "episodes": 64,
+          "successes": 62,
+          "failures": 1,
+          "timeouts": 1
+        }
+      ],
+      "episodes": 128,
+      "successes": 122,
+      "failures": 2,
+      "timeouts": 4,
+      "success_rate": 0.953125,
+      "successful_episode_metrics": {
+        "planar_velocity_mae_m_s": 0.10359315531700143,
+        "body_roll_rms_rad": 0.10882159439113201,
+        "body_roll_rate_rms_rad_s": 0.42357248052161,
+        "joint_acceleration_rms_rad_s2": 64.53859476309495,
+        "mechanical_power_mean_w": 137.2801094434843,
+        "raw_action_clip_fraction": 0.2508262906869718,
+        "applied_action_second_delta_rms_rad": 0.07091315434797413,
+        "stance_foot_slip_rms_m_s": 0.15611437785396218
+      },
+      "nonfinite_metric_elements": 0
+    }
+  },
+  "limitations": [
+    "Two seeds and one staircase geometry; not real-hardware validation or proof of generalization.",
+    "Training sampled curriculum success is not this independent fixed-height success rate.",
+    "Seed42 is model-selection validation, seed43 is the held-out confirmation."
+  ],
+  "selected_model": {
+    "name": "refinement400",
+    "server_checkpoint": "/root/go2-himloco/logs/20261102_171629_stairs_natural_refinement/model_400.pt",
+    "local_checkpoint": "/home/venom/文档/ChatGPT/机器狗/artifacts/20261102_171629_stairs_natural_refinement/model_400.pt",
+    "sha256": "6e67cf6017a0ccb14c29f0e44d311475c1fed60728c6bca889f56b37426172da",
+    "training_completed_updates": 500,
+    "selected_checkpoint_update": 400,
+    "gui_pid": 12847,
+    "gui_url": "http://127.0.0.1:18080/"
+  }
+}

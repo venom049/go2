@@ -1,0 +1,24 @@
+Script started on 2026-11-06 11:30:57+08:00 [TERM="dumb" TTY="/dev/pts/0" COLUMNS="80" LINES="24"]
+受保护交接：H 请求交接，等待 STAND_LOCKED；1 选择 0.6 m/s，再按 G 启动策略。
+策略最多运行 2 秒。X / 空格 / 0 锁存阻尼；固定阻尼不能保证站立。现场支撑须保持有效。
+Logs: /home/unitree/go2-original-bounded-20261106/logs/20261106T113058-2869
+[2026-11-06 11:30:59.403] [info] MOTION_BRIDGE {"ok": true, "operation": "check", "release_attempted": false, "code": 0, "mode": {"form": "0", "name": "mcf"}}
+
+[2026-11-06 11:30:59.512] [info] Preflight: finite in-range pose and advancing tick; this is not permission for unprotected locomotion.
+[2026-11-06 11:30:59.614] [info] Initializing State_Passive ...
+[2026-11-06 11:30:59.614] [info] Initializing State_FixStand ...
+[2026-11-06 11:30:59.615] [info] Initializing State_Stairs ...
+[2026-11-06 11:30:59.741] [info] Initializing State_LieDown ...
+[2026-11-06 11:30:59.749] [info] HANDOFF_PRELOADED: no motor commands sent. H requests one mcf release and immediate hold; X/space/0 cancels. 45s deadline. Fall support remains required.
+[2026-11-06 11:31:15.433] [info] MOTION_BRIDGE {"ok": true, "operation": "release", "release_attempted": true, "release_code": 0, "check_code": 0, "mode": {"form": "0", "name": ""}, "elapsed_ms": 149.75620700002423}
+
+[2026-11-06 11:31:15.433] [info] HANDOFF_RELEASE elapsed_ms=159.3
+[2026-11-06 11:31:15.436] [info] FSM: Start FixStand
+[2026-11-06 11:31:15.436] [info] HANDOFF_HOLD_STARTED elapsed_since_release_ms=161.8; awaiting measured STAND_LOCKED. Software timing is not a hard watchdog or delivery acknowledgment.
+[2026-11-06 11:31:15.436] [info] First test: only [1] arms 0.6 m/s before G (current selection 0.60 m/s).
+FIRST_TEST: F=FixStand; after settling press 1 to select 0.6, then G.
+Stairs has a 2-second software deadline checked at each publication boundary.
+X / Space / 0 or remote stop transition requests latched fixed damping.
+Native blocking/network failure defeats software timing; hardware stop remains essential.
+No automatic LieDown, rearm or factory-mode restoration. Ctrl-C exits after damping.
+[2026-11-06 11:31:18.186] [info] STAND_LOCKED: measured joint error <=0.30 rad, speed <=0.8 rad/s, tilt <=0.25 rad and gyro <=0.35 rad/s for 0.75s. No contact guarantee.

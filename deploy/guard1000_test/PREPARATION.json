@@ -1,0 +1,124 @@
+{
+  "status": "local_source_only_unbuilt_unvalidated_controller",
+  "robot_connected_by_this_task": false,
+  "robot_files_changed_by_this_task": false,
+  "motor_commands_sent_by_this_task": false,
+  "full_controller_built": false,
+  "onboard_controller_validated": false,
+  "motion_eligibility": "Not established by these offline source/header tests. Prior guard1000 dynamic audit failed; calibrated evaluation remains required before activation.",
+  "candidate_directory": "/home/unitree/go2-stairs-guard1000-20261104/legacy_candidate/v0",
+  "onnx_sha256": "8eb200bf9ae5e72428d5d0b9d0d7977bdae569b39c32b57bc7a5ad9c15942dc3",
+  "deploy_yaml_sha256": "c3817799231b7a0b9e0148e4a72a943ce111c248ecd9c31388fbdc89e44a73bf",
+  "controller_config_sha256": "a63dc32d00675ad41204e10eefacc401df1595507772c7f60a45ed641e722608",
+  "prepared_controller_directory": "/home/unitree/go2-stairs-guard1000-test-20261104",
+  "prepared_rpc_socket": "/home/unitree/go2-stairs-guard1000-test-20261104/validation/motion_rpc.sock",
+  "speeds_mps": [
+    0.45,
+    0.6
+  ],
+  "durations_seconds": [
+    0.5,
+    1,
+    2
+  ],
+  "activation_sequence": [
+    "explicit --protected-handoff plus --stairs-speed and --stairs-duration",
+    "attended TTY",
+    "initial read-only identity/pose validation",
+    "H after stable factory stand for single-use release and immediate hold",
+    "measured STAND_LOCKED",
+    "1 arms fixed speed",
+    "G triggers timed policy"
+  ],
+  "preserved_guards": {
+    "policy_tracking_error_rad": 0.9,
+    "publication_joint_positions": "official URDF thigh/calf bounds; hips narrowed to documented +/-48 degrees; SDK float32 boundary comparisons",
+    "estimated_effort_nm": "23.7 hip/thigh, 45.43 calf",
+    "state_age_seconds": 0.1,
+    "maximum_test_seconds": 2,
+    "latch_no_rearm": true,
+    "automatic_factory_restore": false
+  },
+  "remaining_before_use": [
+    "copy known controller dependency tree into independent destination; no original overwrite",
+    "apply overlay and build full controller",
+    "verify resulting binary and all relevant dependency hashes against recorded source",
+    "run full non-actuating controller/parser/preflight checks on target",
+    "calibrated simulation acceptance and current live readiness checks"
+  ],
+  "timing_scope": "Timer is checked at software publication boundaries; native hangs, scheduling delay or transport failure are not bounded by this source alone. Completion produces existing fixed damping, not a standing stop.",
+  "identity_scope": "Coreutils /usr/bin/sha256sum via posix_spawn, no shell. Checks occur before DDS initialization and before handoff preload; this does not pin loaded bytes against concurrent file modification.",
+  "source_sha256": {
+    "live_startup_probe.py": "47c6030f1b63b337d0386fefd185e0ec726fed7a51c5744cdb7ab166d21d7a33",
+    "motion_rpc_bridge.py": "a082c71b4257e933db2a691f97c4fecda02b242e6a2752c7360516bae5197e32",
+    "overlay/include/CandidateIdentity.h": "d7875b83522127f8af2a5b7f8bad6bdeac0cb4687afabb7da1580d4c9db304b9",
+    "overlay/include/FSM/CtrlFSM.h": "8d67f8acfedd877050cecfe7780fd0f377c6d30bc1abcde625850565344bc905",
+    "overlay/include/FSM/FSMState.h": "2f1aca2d9a290accdbbcc58c157ed7b0f882a36a66eb21ffbaa618c23f67a784",
+    "overlay/include/FSM/State_FixStand.h": "f65c148b3e66a75ee8f64d8d5632b2cb4fada16a9c7fa44494dff8455fc5d82d",
+    "overlay/include/FSM/State_RLBase.h": "3cc3a975bae03658721a2bd70b7e662a1ff60f9eccc6ea0fdac430da49b77da0",
+    "overlay/include/FirstTestGuard.h": "7d7d07233910583360fc5feb1b65e73ee7ea378c8e39e0201b1ef2d7f6216672",
+    "overlay/include/Go2JointLimits.h": "584c8a41e3cdf7b7325cbad323ed4d68c1d994f4a85527683eb53504999e382a",
+    "overlay/include/HandoffHold.h": "d2149b327c9da8516da502e57de6fc859737af15fec55ba1623218d510200237",
+    "overlay/include/StandReadiness.h": "fc3de1102d7877616eec034edc5be3826854a532f2ff17a84614e445f4c61b15",
+    "overlay/robots/go2/config/config.yaml": "a63dc32d00675ad41204e10eefacc401df1595507772c7f60a45ed641e722608",
+    "overlay/robots/go2/include/State_StairsReady.h": "8ce50254194fc735155ea347fe40326005ca545143660c8618eb8eae1f2d47f2",
+    "overlay/robots/go2/main.cpp": "99d32926692190dce016c09f274c529a8c6dcd0dfae7c4518e0ae9d989bd98f5",
+    "overlay/robots/go2/src/State_RLBase.cpp": "36aeb86aa0326d69a3ef45a6a6610a92a99220eba8d933dfaed1c3f88fc976a0",
+    "test_bounded_guard.cpp": "ce752ec1938ead4576a3d2137a7253bd86bdb1eaf947821219617f35cc9e16d3"
+  },
+  "official_limits_update": {
+    "profile_id": "unitree_go2_2ded279_hip48",
+    "urdf_commit": "2ded279cfb3207d410b1ade88303e1a8971b0ac3",
+    "urdf_sha256": "7d19fe48e2e689ee1a032ab99f2a4a8b671d87e73de48d3e65811682a5b48b9e",
+    "declared_speed_limits_sdk_order_rad_s": [
+      30.1,
+      30.1,
+      15.7,
+      30.1,
+      30.1,
+      15.7,
+      30.1,
+      30.1,
+      15.7,
+      30.1,
+      30.1,
+      15.7
+    ],
+    "hip_position_magnitude_deg": 48,
+    "comparison_representation": "q/dq limits rounded once to SDK float32, then promoted to double; nominal published values retained separately",
+    "scope": "local implementation sources only; not built, activated, or installed by this source update",
+    "factory_firmware_thresholds_read_back": false,
+    "hip_bounds": "narrower official documentation +/-48 degrees; URDF hip +/-60 not used",
+    "other_position_bounds": "pinned official URDF motor-coordinate thigh/calf bounds; do not transplant anatomical documentation signs",
+    "other_application_guards_changed": false
+  },
+  "previous_offline_checks": [
+    {
+      "name": "existing first-test publication guard",
+      "result": "PASS: 12 groups"
+    },
+    {
+      "name": "new duration, no rearm, invalid values, two fixed speed command buffers, hashes, literal shell metacharacters and symlink rejection",
+      "result": "PASS"
+    },
+    {
+      "name": "Python source syntax compilation",
+      "result": "PASS"
+    }
+  ],
+  "offline_checks": [
+    {
+      "name": "official per-joint profile and publication guard against all three overlays",
+      "result": "PASS: two C++ suites per overlay; 16 publication guard test groups; independently rechecked"
+    },
+    {
+      "name": "handoff hold and stand readiness with new limits",
+      "result": "PASS"
+    },
+    {
+      "name": "bounded durations, no rearm and candidate hashes",
+      "result": "PASS"
+    }
+  ],
+  "official_limits_update_note": "Shared protection code updated and offline tested. This guard1000 bounded controller is still unbuilt/undeployed. Separate torque1000 test controller installation is recorded in validation/official_joint_limits_20261104/installation.json."
+}

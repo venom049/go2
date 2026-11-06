@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "read_only": true,
+  "control_authorized": false,
+  "control_or_motion_performed": false,
+  "state": "unknown",
+  "latest": {
+    "state": "unknown",
+    "geometry": null,
+    "reason": "source_clock_unsynchronized_or_data_delayed",
+    "control_authorized": false
+  },
+  "geometry_preview": {
+    "state": "unknown",
+    "geometry": null,
+    "score": 0.0,
+    "score_definition": "Heuristic geometric support in [0,1], not a calibrated probability or safety confidence",
+    "control_authorized": false,
+    "coverage": {
+      "input_points": 10471,
+      "nonfinite_points_removed": 0,
+      "roi_points": 378,
+      "unique_roi_points": 378,
+      "roi_m": {
+        "x": [
+          0.15,
+          2.5
+        ],
+        "y": [
+          -0.55,
+          0.55
+        ],
+        "z": [
+          -0.8,
+          1.8
+        ]
+      },
+      "lanes": [
+        {
+          "centre_y_m": -0.3,
+          "unique_points": 113,
+          "valid_bins": 2,
+          "total_bins": 59,
+          "valid_fraction": 0.03389830508474576,
+          "lateral_span_m": 0.19336657834056942,
+          "vertical_or_mixed_bins": 3,
+          "tall_vertical_bins": 4,
+          "horizontal_plateaus": 0,
+          "observed_x_min_m": 0.37,
+          "observed_x_max_m": 0.89
+        },
+        {
+          "centre_y_m": 0.0,
+          "unique_points": 149,
+          "valid_bins": 0,
+          "total_bins": 59,
+          "valid_fraction": 0.0,
+          "lateral_span_m": 0.19417636501452823,
+          "vertical_or_mixed_bins": 2,
+          "tall_vertical_bins": 0,
+          "horizontal_plateaus": 0,
+          "observed_x_min_m": null,
+          "observed_x_max_m": null
+        },
+        {
+          "centre_y_m": 0.3,
+          "unique_points": 0,
+          "valid_bins": 0,
+          "total_bins": 59,
+          "valid_fraction": 0.0,
+          "lateral_span_m": 0.0,
+          "vertical_or_mixed_bins": 0,
+          "tall_vertical_bins": 0,
+          "horizontal_plateaus": 0,
+          "observed_x_min_m": null,
+          "observed_x_max_m": null
+        }
+      ],
+      "required_lanes": 3,
+      "rear_footprint_observed": false
+    },
+    "reason": "Insufficient or inconsistent visible horizontal footprint",
+    "assumptions": [
+      "Metres; x forward, y left, z up; already gravity aligned",
+      "Calibrated sensor-to-body transform and synchronized pose supplied by caller",
+      "Straight stair flight approximately aligned with forward direction"
+    ],
+    "limits": [
+      "Prototype geometry only; no collision clearance, load capacity or traversability guarantee",
+      "Required lanes must cover the full forward ROI; sparse or occluded scans can miss real stairs",
+      "No rear-foot or landing-clearance proof; flat means the visible forward footprint only",
+      "No freshness check here; caller must reject stale data and invalid transforms",
+      "The existing 1100 policy has not been validated for real stairs or descending stairs"
+    ]
+  },
+  "cloud_topic": "/utlidar/cloud_deskewed",
+  "odom_topic": "/utlidar/robot_odom",
+  "coordinate_frame": "base_yaw_aligned_z_relative_to_base",
+  "gravity_alignment_verified": false,
+  "assumptions": [
+    "odom z is gravity-aligned; this is an assumption pending calibration",
+    "local x/y follow base yaw; local z is relative to the base origin",
+    "cloud and odometry source stamps share a clock; host synchronization is checked separately",
+    "geometry preview is not a controller readiness or traversability assessment"
+  ],
+  "temporal_confirmation_applied": false,
+  "recognition_scope": "single-frame geometric candidates only; no multi-frame confirmation",
+  "allow_unsynced_preview": true,
+  "transport_note": "Only sensor subscriptions; DDS discovery and ROS framework parameter events may transmit. No application publishers or services.",
+  "source_time": {
+    "source_clock_synchronized": false,
+    "source_age_s": null,
+    "observed_clock_offset_s": 499.5695638656616,
+    "clock_note": "Timestamp proximity alone does not establish clock synchronization; a mismatch may be clock offset or delayed data. No offset correction applied."
+  },
+  "odometry_source_time": {
+    "source_clock_synchronized": false,
+    "source_age_s": null,
+    "observed_clock_offset_s": 499.5719647407532,
+    "clock_note": "Timestamp proximity alone does not establish clock synchronization; a mismatch may be clock offset or delayed data. No offset correction applied."
+  },
+  "cloud_receipt_age_s": 0.021453602999827126,
+  "processed_cloud_receipt_age_s": 0.1535973869999907,
+  "freshness_threshold_s": 0.3,
+  "odom_match_method": "nearest source timestamp; no interpolation",
+  "odom_match_max_difference_s": 0.05,
+  "latest_odom_match_difference_s": 0.0024008750915527344,
+  "counters": {
+    "odom_messages": 1401,
+    "invalid_odom_messages": 0,
+    "cloud_messages": 150,
+    "new_cloud_frames": 150,
+    "duplicate_or_reversed_cloud_stamps": 0,
+    "processed_frames": 48,
+    "valid_input_frames": 48,
+    "unsynchronized_preview_frames": 48
+  },
+  "geometry_state_counts": {
+    "obstacle": 29,
+    "unknown": 19
+  },
+  "diagnostic_reason_counts": {},
+  "latest_input": {
+    "point_count": 10471,
+    "nonfinite_points": 0,
+    "finite_points": 10471,
+    "source_stamp_s": 1793681206.1693428,
+    "odom_stamp_s": 1793681206.166942,
+    "quaternion_original_norm": 1.0000000760295213
+  },
+  "processing_rate_limit_hz": 5.0,
+  "processing_ms_p95": 13.610918500103253,
+  "processing_ms_max": 14.915825000116456,
+  "valid_input_definition": "parsed finite cloud plus matching fresh odometry; may be unsynchronized preview, not recognition accuracy",
+  "elapsed_s": 10.00123067300001,
+  "requested_duration_s": 10.0,
+  "finished_utc": "2026-11-03T04:55:05.739681+00:00",
+  "capture": {
+    "written": true,
+    "path": "validation/live_negative_scene.npz",
+    "point_count": 10471,
+    "metadata": {
+      "point_count": 10471,
+      "nonfinite_points": 0,
+      "finite_points": 10471,
+      "source_stamp_s": 1793681206.1693428,
+      "odom_stamp_s": 1793681206.166942,
+      "quaternion_original_norm": 1.0000000760295213,
+      "sampled_stride": 1,
+      "yaw_rad": -0.03514717661655939,
+      "preview_only": true
+    },
+    "note": "Last analyzed finite frame; may be older than final report. No control readiness implied."
+  }
+}

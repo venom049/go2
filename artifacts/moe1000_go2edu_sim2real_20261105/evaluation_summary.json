@@ -1,0 +1,359 @@
+{
+  "completed": true,
+  "updates": 1000,
+  "transitions": 3072000,
+  "robot": "Go2 EDU without extra payload",
+  "official_model_commit": "ae6a8403e272733e9996ef59990880330496177f",
+  "official_model_xml_sha256": "2014a3d76e30f17ab9447d8a67bd015291f74fa4d71ae30d005f1a32bd693d4b",
+  "official_generic_go2_not_individually_calibrated_edu": true,
+  "training_started_unix": 1793877153.4295783,
+  "training_completed_unix": 1793878638.4000695,
+  "training_seconds": 1484.9704911708832,
+  "target_samples": 36864000,
+  "target_excess_count": 0,
+  "frozen_encoder_tensors": 14,
+  "changed_actor_tensors": 8,
+  "finite_checkpoint_tensors": 70,
+  "critic_input_size": 370,
+  "actor_input_size": 225,
+  "actor_output_size": 12,
+  "training_last_record": {
+    "sample_success_rate_recent256": 0.80859375,
+    "actor_learning_rate": 1.5e-06,
+    "frontier_height_m": 0.1,
+    "all_losses_finite": true
+  },
+  "realized_randomization": {
+    "completed_episodes": 6517,
+    "randomized_episodes": 5857,
+    "nominal_episodes": 660,
+    "delayed_episodes": 408,
+    "push_events": 0,
+    "final_curriculum": {
+      "level": 0.15,
+      "checks": 183,
+      "ema": [
+        0.7702635203736684,
+        0.8633042670955106,
+        0.05144658006116028
+      ],
+      "pending_episodes": 27,
+      "ready_streak": 3,
+      "hard_streak": 0
+    },
+    "max_episode_level": 0.18000000000000002,
+    "observed_ranges": {
+      "friction": {
+        "min": 0.4,
+        "max": 0.8800239305552788
+      },
+      "kp_factors": {
+        "min": 0.9230319682852913,
+        "max": 1.076809223390938
+      },
+      "kd_factors": {
+        "min": 0.9230431247031704,
+        "max": 1.0769980483462829
+      },
+      "motor_strength": {
+        "min": 0.9574859620482911,
+        "max": 1.0425838293708465
+      },
+      "base_mass_shift_kg": {
+        "min": -0.34069270156364845,
+        "max": 0.9449390012021275
+      },
+      "base_com_shift_m": {
+        "min": -0.009369912059915858,
+        "max": 0.00946644074052981
+      },
+      "hip_mass_shift_kg": {
+        "min": -0.17167326550644138,
+        "max": 0.17174358407585158
+      },
+      "gravity_offset_m_s2": {
+        "min": -0.3409308355844276,
+        "max": 0.34258819837939486
+      },
+      "total_mass_kg": {
+        "min": 14.345519090338588,
+        "max": 16.510835730287234
+      }
+    },
+    "scope": "Completed episodes only; update command counts below include all rollout steps"
+  },
+  "paired_evaluation_validation": [
+    {
+      "mode": "nominal",
+      "paired_episodes": 129,
+      "identical_initial_parameters": true
+    },
+    {
+      "mode": "light",
+      "paired_episodes": 129,
+      "identical_initial_parameters": true
+    },
+    {
+      "mode": "moderate",
+      "paired_episodes": 129,
+      "identical_initial_parameters": true
+    },
+    {
+      "mode": "full",
+      "paired_episodes": 129,
+      "identical_initial_parameters": true
+    }
+  ],
+  "evaluations": [
+    {
+      "test": "new_full",
+      "successes": 0,
+      "episodes": 129,
+      "success_rate": 0.0,
+      "statuses": {
+        "trunk_contact": 39,
+        "side_exit": 69,
+        "timeout": 6,
+        "wall_contact": 14,
+        "fall": 1
+      },
+      "target_excess_count": 0,
+      "target_samples": 313452,
+      "climb_horizontal_speed_m_s": null,
+      "guard_acceptance_passed": false,
+      "guard_excess_counts": {
+        "velocity": 26642,
+        "target_velocity": 0,
+        "position": 5991,
+        "target_position": 0,
+        "tracking": 99792,
+        "requested_torque": 3146,
+        "applied_torque": 0
+      },
+      "delayed_episodes": 53,
+      "push_events": 98
+    },
+    {
+      "test": "new_light",
+      "successes": 117,
+      "episodes": 129,
+      "success_rate": 0.9069767441860465,
+      "statuses": {
+        "success": 117,
+        "wall_contact": 1,
+        "trunk_contact": 4,
+        "side_exit": 2,
+        "timeout": 5
+      },
+      "target_excess_count": 0,
+      "target_samples": 623916,
+      "climb_horizontal_speed_m_s": 0.29099740010513486,
+      "guard_acceptance_passed": false,
+      "guard_excess_counts": {
+        "velocity": 29516,
+        "target_velocity": 0,
+        "position": 11686,
+        "target_position": 0,
+        "tracking": 90566,
+        "requested_torque": 634,
+        "applied_torque": 0
+      },
+      "delayed_episodes": 9,
+      "push_events": 0
+    },
+    {
+      "test": "new_moderate",
+      "successes": 0,
+      "episodes": 129,
+      "success_rate": 0.0,
+      "statuses": {
+        "trunk_contact": 44,
+        "timeout": 55,
+        "side_exit": 23,
+        "wall_contact": 7
+      },
+      "target_excess_count": 0,
+      "target_samples": 728772,
+      "climb_horizontal_speed_m_s": null,
+      "guard_acceptance_passed": false,
+      "guard_excess_counts": {
+        "velocity": 23123,
+        "target_velocity": 0,
+        "position": 9993,
+        "target_position": 0,
+        "tracking": 104265,
+        "requested_torque": 1133,
+        "applied_torque": 0
+      },
+      "delayed_episodes": 29,
+      "push_events": 133
+    },
+    {
+      "test": "new_nominal",
+      "successes": 129,
+      "episodes": 129,
+      "success_rate": 1.0,
+      "statuses": {
+        "success": 129
+      },
+      "target_excess_count": 0,
+      "target_samples": 479988,
+      "climb_horizontal_speed_m_s": 0.25038320077543197,
+      "guard_acceptance_passed": false,
+      "guard_excess_counts": {
+        "velocity": 30646,
+        "target_velocity": 0,
+        "position": 12776,
+        "target_position": 0,
+        "tracking": 98659,
+        "requested_torque": 13,
+        "applied_torque": 0
+      },
+      "delayed_episodes": 0,
+      "push_events": 0
+    },
+    {
+      "test": "new_strict",
+      "successes": 0,
+      "episodes": 129,
+      "success_rate": 0.0,
+      "statuses": {
+        "joint_guard_stop": 129
+      },
+      "target_excess_count": 0,
+      "target_samples": 3096,
+      "climb_horizontal_speed_m_s": null,
+      "guard_acceptance_passed": false,
+      "guard_excess_counts": {
+        "velocity": 0,
+        "target_velocity": 0,
+        "position": 0,
+        "target_position": 0,
+        "tracking": 129,
+        "requested_torque": 0,
+        "applied_torque": 0
+      },
+      "delayed_episodes": 0,
+      "push_events": 0
+    },
+    {
+      "test": "previous_full",
+      "successes": 0,
+      "episodes": 129,
+      "success_rate": 0.0,
+      "statuses": {
+        "side_exit": 59,
+        "trunk_contact": 49,
+        "wall_contact": 10,
+        "timeout": 11
+      },
+      "target_excess_count": 0,
+      "target_samples": 326652,
+      "climb_horizontal_speed_m_s": null,
+      "guard_acceptance_passed": false,
+      "guard_excess_counts": {
+        "velocity": 29029,
+        "target_velocity": 0,
+        "position": 6420,
+        "target_position": 0,
+        "tracking": 101286,
+        "requested_torque": 3388,
+        "applied_torque": 0
+      },
+      "delayed_episodes": 53,
+      "push_events": 102
+    },
+    {
+      "test": "previous_light",
+      "successes": 117,
+      "episodes": 129,
+      "success_rate": 0.9069767441860465,
+      "statuses": {
+        "success": 117,
+        "timeout": 8,
+        "trunk_contact": 3,
+        "side_exit": 1
+      },
+      "target_excess_count": 0,
+      "target_samples": 618108,
+      "climb_horizontal_speed_m_s": 0.30887961627164456,
+      "guard_acceptance_passed": false,
+      "guard_excess_counts": {
+        "velocity": 31488,
+        "target_velocity": 0,
+        "position": 12414,
+        "target_position": 0,
+        "tracking": 95640,
+        "requested_torque": 530,
+        "applied_torque": 0
+      },
+      "delayed_episodes": 9,
+      "push_events": 0
+    },
+    {
+      "test": "previous_moderate",
+      "successes": 0,
+      "episodes": 129,
+      "success_rate": 0.0,
+      "statuses": {
+        "side_exit": 23,
+        "timeout": 62,
+        "trunk_contact": 37,
+        "wall_contact": 7
+      },
+      "target_excess_count": 0,
+      "target_samples": 763788,
+      "climb_horizontal_speed_m_s": null,
+      "guard_acceptance_passed": false,
+      "guard_excess_counts": {
+        "velocity": 26807,
+        "target_velocity": 0,
+        "position": 10061,
+        "target_position": 0,
+        "tracking": 112485,
+        "requested_torque": 1104,
+        "applied_torque": 0
+      },
+      "delayed_episodes": 29,
+      "push_events": 144
+    },
+    {
+      "test": "previous_nominal",
+      "successes": 129,
+      "episodes": 129,
+      "success_rate": 1.0,
+      "statuses": {
+        "success": 129
+      },
+      "target_excess_count": 0,
+      "target_samples": 468000,
+      "climb_horizontal_speed_m_s": 0.3032157597816559,
+      "guard_acceptance_passed": false,
+      "guard_excess_counts": {
+        "velocity": 34466,
+        "target_velocity": 0,
+        "position": 16048,
+        "target_position": 0,
+        "tracking": 109049,
+        "requested_torque": 0,
+        "applied_torque": 0
+      },
+      "delayed_episodes": 0,
+      "push_events": 0
+    }
+  ],
+  "onnx_validation": {
+    "passed": true,
+    "onnx_cases": 259,
+    "max_action_absolute_error": 0.00010633468627929688,
+    "action_error_tolerance": 0.0002,
+    "affine_decoder_cases": 300006,
+    "target_excess_count": 0,
+    "checkpoint_sha256": "45005997579efb01fcd402fe393a838d8d05ac3b7066d3a70dc7bb5584dec604",
+    "onnx_sha256": "76ea8645ee77a7acbe80ad31c406193ea62169b6f105433fd41e24cb4b5c2dbb",
+    "formal_training_update": 1000
+  },
+  "real_robot_driven": false,
+  "limits": "Targets bounded; actual position uses native official soft limits; velocity and tracking guards not guaranteed.",
+  "runtime": "Deployment actor needs only original 225 inputs; privileged critic is training-only; deployment uses fixed 20/.5 PD. Noise/delay/pushes are training/evaluation uncertainty, not deployment features."
+}

@@ -1,0 +1,1605 @@
+{
+  "label": "smoke25",
+  "actor_path": "/home/venom/\u6587\u6863/ChatGPT/\u673a\u5668\u72d7/validation/moe_hard_position_20261105/smoke25/model_25.pt",
+  "actor_sha256": "f67b5b5c5b9f7d8303f24d05368983c16e05ebd8cc7a8cd09f8fe2898f88310f",
+  "successes": 1,
+  "episodes": 1,
+  "success_rate": 1.0,
+  "target_mode": "bounded",
+  "stair_steps": 6,
+  "environment_contract": {
+    "actual_position_constraint": {
+      "mode": "hard",
+      "version": 1,
+      "kind": "mass-metric displacement QP and inelastic boundary impact",
+      "joint_names": [
+        "FL_hip",
+        "FL_thigh",
+        "FL_calf",
+        "FR_hip",
+        "FR_thigh",
+        "FR_calf",
+        "RL_hip",
+        "RL_thigh",
+        "RL_calf",
+        "RR_hip",
+        "RR_thigh",
+        "RR_calf"
+      ],
+      "lower_rad": [
+        -0.8377580642700195,
+        -1.5707999467849731,
+        -2.7227001190185547,
+        -0.8377580642700195,
+        -1.5707999467849731,
+        -2.7227001190185547,
+        -0.8377580642700195,
+        -0.5235999822616577,
+        -2.7227001190185547,
+        -0.8377580642700195,
+        -0.5235999822616577,
+        -2.7227001190185547
+      ],
+      "upper_rad": [
+        0.8377580642700195,
+        3.4907000064849854,
+        -0.8377599716186523,
+        0.8377580642700195,
+        3.4907000064849854,
+        -0.8377599716186523,
+        0.8377580642700195,
+        4.537899971008301,
+        -0.8377599716186523,
+        0.8377580642700195,
+        4.537899971008301,
+        -0.8377599716186523
+      ],
+      "profile_sha256": "bd3ea1830ca2ff7d8eb6eda1fb0b5077e33192a1ee663f2c16f96195d948c8af",
+      "restitution": 0.0,
+      "rounding_margin_rad": 1e-10,
+      "integrator": "Euler only",
+      "scope": "Every accepted 2 ms endpoint and its linear hinge path, including settling",
+      "failure": "restore prior integration state and raise; never silently accept invalid q",
+      "predictor_audit": true,
+      "motor_effort_and_stop_impulse_separate": true,
+      "physical_fidelity": "Ideal joint stops; split from soft contact solve; not calibrated hardware or firmware"
+    },
+    "steps": 6,
+    "height": 0.15,
+    "tread": 0.3,
+    "width": 0.9,
+    "platform": 0.9,
+    "start_distance": 0.5,
+    "platform_start": 1.5,
+    "platform_end": 2.4,
+    "top_height": 0.8999999999999999,
+    "wall_front": 2.4,
+    "wall_thickness": 0.1,
+    "wall_width": 3.0,
+    "wall_height": 2.0,
+    "height_curriculum": {
+      "evaluation_height": 0.15,
+      "training_frontier_min": 0.1,
+      "training_frontier_max": 0.15,
+      "multipliers": [
+        1.0,
+        0.83,
+        0.67
+      ],
+      "probabilities": [
+        0.6,
+        0.2,
+        0.2
+      ],
+      "rule": "Existing frontier schedule and per-reset height sampling; every riser has the same sampled height."
+    },
+    "physics_dt": 0.002,
+    "control_dt": 0.02,
+    "settle_seconds": 2.0,
+    "evaluation_vx": 0.6,
+    "training_vx_range": [
+      0.5,
+      0.6
+    ],
+    "episode_timeout_seconds": 15.0,
+    "stable_stop_seconds": 2.0,
+    "platform_success": "All feet inside the upper landing with 3 mm edge margin; foot surface clearance [-.025,.20] m; at least two supporting feet in .1 s; base clearance [.18,.60] m and tilt <45 deg.",
+    "stable_stop": "Platform success plus horizontal speed <.05 m/s, absolute vertical speed <.05 m/s, every world angular speed <.1 rad/s and tilt <15 deg for 2 s."
+  },
+  "action_contract": {
+    "kind": "bounded_joint_target_v1",
+    "joint_names": [
+      "FL_hip",
+      "FL_thigh",
+      "FL_calf",
+      "FR_hip",
+      "FR_thigh",
+      "FR_calf",
+      "RL_hip",
+      "RL_thigh",
+      "RL_calf",
+      "RR_hip",
+      "RR_thigh",
+      "RR_calf"
+    ],
+    "scale": [
+      0.25,
+      0.25,
+      0.25,
+      0.25,
+      0.25,
+      0.25,
+      0.25,
+      0.25,
+      0.25,
+      0.25,
+      0.25,
+      0.25
+    ],
+    "offset": [
+      0.1,
+      0.8,
+      -1.5,
+      -0.1,
+      0.8,
+      -1.5,
+      0.1,
+      1.0,
+      -1.5,
+      -0.1,
+      1.0,
+      -1.5
+    ],
+    "lower_rad": [
+      -0.8377580642700195,
+      -1.5707999467849731,
+      -2.7227001190185547,
+      -0.8377580642700195,
+      -1.5707999467849731,
+      -2.7227001190185547,
+      -0.8377580642700195,
+      -0.5235999822616577,
+      -2.7227001190185547,
+      -0.8377580642700195,
+      -0.5235999822616577,
+      -2.7227001190185547
+    ],
+    "upper_rad": [
+      0.8377580642700195,
+      3.4907000064849854,
+      -0.8377599716186523,
+      0.8377580642700195,
+      3.4907000064849854,
+      -0.8377599716186523,
+      0.8377580642700195,
+      4.537899971008301,
+      -0.8377599716186523,
+      0.8377580642700195,
+      4.537899971008301,
+      -0.8377599716186523
+    ],
+    "raw_action_lower": [
+      -3.7510321140289307,
+      -9.483199119567871,
+      -4.890800476074219,
+      -2.9510321617126465,
+      -9.483199119567871,
+      -4.890800476074219,
+      -3.7510321140289307,
+      -6.094399929046631,
+      -4.890800476074219,
+      -2.9510321617126465,
+      -6.094399929046631,
+      -4.890800476074219
+    ],
+    "raw_action_upper": [
+      2.9510321617126465,
+      10.762799263000488,
+      2.6489601135253906,
+      3.7510321140289307,
+      10.762799263000488,
+      2.6489601135253906,
+      2.9510321617126465,
+      14.151599884033203,
+      2.6489601135253906,
+      3.7510321140289307,
+      14.151599884033203,
+      2.6489601135253906
+    ],
+    "reference_anchor_bound_rounding": "inward float32 to avoid affine boundary overshoot",
+    "history": "inverse-mapped post-clipping submitted target; float32 action",
+    "initial_history": "zero action at settled simulation pose; no hardware handoff simulated",
+    "ppo_distribution": "unbounded Gaussian; original sampled action and log probability retained",
+    "target_slew_limiter": false,
+    "actual_state_clipping": false,
+    "reference_anchor": "source mean projected to per-joint target-action bounds",
+    "config_sha256": "7d04bfd00a60cf858572597667d9f33e78b94f71dca2b101104162caef0aca00",
+    "profile_sha256": "bd3ea1830ca2ff7d8eb6eda1fb0b5077e33192a1ee663f2c16f96195d948c8af"
+  },
+  "target_commands": {
+    "joint_names": [
+      "FL_hip",
+      "FL_thigh",
+      "FL_calf",
+      "FR_hip",
+      "FR_thigh",
+      "FR_calf",
+      "RL_hip",
+      "RL_thigh",
+      "RL_calf",
+      "RR_hip",
+      "RR_thigh",
+      "RR_calf"
+    ],
+    "control_steps": 511,
+    "sampling": "one sample per policy command proposal; strict guard may reject before application; no physics-boundary duplication",
+    "raw": {
+      "sample_count": 6132,
+      "excess_count": 489,
+      "excess_fraction": 0.07974559686888454,
+      "any_step_excess_count": 426,
+      "any_step_excess_fraction": 0.8336594911937377,
+      "max_excess_rad": 0.5678545236587524,
+      "per_joint": {
+        "FL_hip": {
+          "sample_count": 511,
+          "excess_count": 0,
+          "excess_fraction": 0.0,
+          "min_target_rad": -0.44012179374694826,
+          "max_target_rad": 0.44875980019569395,
+          "max_excess_rad": 0.0
+        },
+        "FL_thigh": {
+          "sample_count": 511,
+          "excess_count": 0,
+          "excess_fraction": 0.0,
+          "min_target_rad": 0.2642534255981446,
+          "max_target_rad": 2.2085391759872435,
+          "max_excess_rad": 0.0
+        },
+        "FL_calf": {
+          "sample_count": 511,
+          "excess_count": 51,
+          "excess_fraction": 0.09980430528375733,
+          "min_target_rad": -2.804468512535095,
+          "max_target_rad": -0.30912578105926514,
+          "max_excess_rad": 0.5286341905593872
+        },
+        "FR_hip": {
+          "sample_count": 511,
+          "excess_count": 0,
+          "excess_fraction": 0.0,
+          "min_target_rad": -0.4214309215545654,
+          "max_target_rad": 0.5157020926475525,
+          "max_excess_rad": 0.0
+        },
+        "FR_thigh": {
+          "sample_count": 511,
+          "excess_count": 0,
+          "excess_fraction": 0.0,
+          "min_target_rad": 0.43854107260704045,
+          "max_target_rad": 1.9766551733016968,
+          "max_excess_rad": 0.0
+        },
+        "FR_calf": {
+          "sample_count": 511,
+          "excess_count": 31,
+          "excess_fraction": 0.060665362035225046,
+          "min_target_rad": -2.8161752223968506,
+          "max_target_rad": -0.3433656692504883,
+          "max_excess_rad": 0.49439430236816406
+        },
+        "RL_hip": {
+          "sample_count": 511,
+          "excess_count": 0,
+          "excess_fraction": 0.0,
+          "min_target_rad": -0.5010116338729859,
+          "max_target_rad": 0.2534110307693481,
+          "max_excess_rad": 0.0
+        },
+        "RL_thigh": {
+          "sample_count": 511,
+          "excess_count": 0,
+          "excess_fraction": 0.0,
+          "min_target_rad": 0.6548633575439453,
+          "max_target_rad": 1.7443953156471252,
+          "max_excess_rad": 0.0
+        },
+        "RL_calf": {
+          "sample_count": 511,
+          "excess_count": 113,
+          "excess_fraction": 0.22113502935420742,
+          "min_target_rad": -2.480708599090576,
+          "max_target_rad": -0.31070268154144287,
+          "max_excess_rad": 0.5270572900772095
+        },
+        "RR_hip": {
+          "sample_count": 511,
+          "excess_count": 0,
+          "excess_fraction": 0.0,
+          "min_target_rad": -0.3788942456245422,
+          "max_target_rad": 0.5289336681365967,
+          "max_excess_rad": 0.0
+        },
+        "RR_thigh": {
+          "sample_count": 511,
+          "excess_count": 0,
+          "excess_fraction": 0.0,
+          "min_target_rad": 0.6497122049331665,
+          "max_target_rad": 1.7611860036849976,
+          "max_excess_rad": 0.0
+        },
+        "RR_calf": {
+          "sample_count": 511,
+          "excess_count": 294,
+          "excess_fraction": 0.5753424657534246,
+          "min_target_rad": -2.6302521228790283,
+          "max_target_rad": -0.2699054479598999,
+          "max_excess_rad": 0.5678545236587524
+        }
+      }
+    },
+    "sent": {
+      "sample_count": 6132,
+      "excess_count": 0,
+      "excess_fraction": 0.0,
+      "any_step_excess_count": 0,
+      "any_step_excess_fraction": 0.0,
+      "max_excess_rad": 0.0,
+      "per_joint": {
+        "FL_hip": {
+          "sample_count": 511,
+          "excess_count": 0,
+          "excess_fraction": 0.0,
+          "min_target_rad": -0.44012179374694826,
+          "max_target_rad": 0.44875980019569395,
+          "max_excess_rad": 0.0
+        },
+        "FL_thigh": {
+          "sample_count": 511,
+          "excess_count": 0,
+          "excess_fraction": 0.0,
+          "min_target_rad": 0.2642534255981446,
+          "max_target_rad": 2.2085391759872435,
+          "max_excess_rad": 0.0
+        },
+        "FL_calf": {
+          "sample_count": 511,
+          "excess_count": 0,
+          "excess_fraction": 0.0,
+          "min_target_rad": -2.7227001190185547,
+          "max_target_rad": -0.8377599716186523,
+          "max_excess_rad": 0.0
+        },
+        "FR_hip": {
+          "sample_count": 511,
+          "excess_count": 0,
+          "excess_fraction": 0.0,
+          "min_target_rad": -0.4214309215545654,
+          "max_target_rad": 0.5157020926475525,
+          "max_excess_rad": 0.0
+        },
+        "FR_thigh": {
+          "sample_count": 511,
+          "excess_count": 0,
+          "excess_fraction": 0.0,
+          "min_target_rad": 0.43854107260704045,
+          "max_target_rad": 1.9766551733016968,
+          "max_excess_rad": 0.0
+        },
+        "FR_calf": {
+          "sample_count": 511,
+          "excess_count": 0,
+          "excess_fraction": 0.0,
+          "min_target_rad": -2.7227001190185547,
+          "max_target_rad": -0.8377599716186523,
+          "max_excess_rad": 0.0
+        },
+        "RL_hip": {
+          "sample_count": 511,
+          "excess_count": 0,
+          "excess_fraction": 0.0,
+          "min_target_rad": -0.5010116338729859,
+          "max_target_rad": 0.2534110307693481,
+          "max_excess_rad": 0.0
+        },
+        "RL_thigh": {
+          "sample_count": 511,
+          "excess_count": 0,
+          "excess_fraction": 0.0,
+          "min_target_rad": 0.6548633575439453,
+          "max_target_rad": 1.7443953156471252,
+          "max_excess_rad": 0.0
+        },
+        "RL_calf": {
+          "sample_count": 511,
+          "excess_count": 0,
+          "excess_fraction": 0.0,
+          "min_target_rad": -2.480708599090576,
+          "max_target_rad": -0.8377599716186523,
+          "max_excess_rad": 0.0
+        },
+        "RR_hip": {
+          "sample_count": 511,
+          "excess_count": 0,
+          "excess_fraction": 0.0,
+          "min_target_rad": -0.3788942456245422,
+          "max_target_rad": 0.5289336681365967,
+          "max_excess_rad": 0.0
+        },
+        "RR_thigh": {
+          "sample_count": 511,
+          "excess_count": 0,
+          "excess_fraction": 0.0,
+          "min_target_rad": 0.6497122049331665,
+          "max_target_rad": 1.7611860036849976,
+          "max_excess_rad": 0.0
+        },
+        "RR_calf": {
+          "sample_count": 511,
+          "excess_count": 0,
+          "excess_fraction": 0.0,
+          "min_target_rad": -2.6302521228790283,
+          "max_target_rad": -0.8377599716186523,
+          "max_excess_rad": 0.0
+        }
+      }
+    },
+    "clipping": {
+      "control_steps": 426,
+      "control_step_fraction": 0.8336594911937377,
+      "joint_count": 489,
+      "joint_fraction": 0.07974559686888454,
+      "sum_l1_rad": 83.98990780115128,
+      "mean_l1_rad_per_step": 0.16436381174393597,
+      "max_l1_rad_per_step": 0.9774779081344604,
+      "max_abs_rad": 0.5678545236587524
+    },
+    "raw_cost_rate": {
+      "sum": 1679.7981560230255,
+      "mean": 3.287276234878719,
+      "max": 19.54955816268921,
+      "units": "reward units per second"
+    }
+  },
+  "position_constraints": {
+    "mode": "hard",
+    "episodes": 1,
+    "physics_steps": 5109,
+    "joint_endpoint_samples": 61308,
+    "intervention_steps": 41,
+    "predictor_excess_count": 41,
+    "accepted_excess_count": 0,
+    "stop_generalized_impulse_sum_abs": 0.4261559483350182,
+    "kinetic_energy_removed_j": 1.009296319668865,
+    "predictor_max_excess_rad": 0.008545771094436994,
+    "accepted_max_excess_rad": 0.0,
+    "stop_generalized_impulse_max_abs": 0.10628101435688192,
+    "impulse_units": "base translation N*s, all rotations N*m*s; not motor torque"
+  },
+  "startup_position_constraints": {
+    "mode": "hard",
+    "physics_steps": 1000,
+    "joint_endpoint_samples": 12000,
+    "intervention_steps": 0,
+    "predictor_excess_count": 0,
+    "predictor_max_excess_rad": 0.0,
+    "accepted_excess_count": 0,
+    "accepted_max_excess_rad": 0.0,
+    "stop_generalized_impulse_max_abs": 0.0,
+    "stop_generalized_impulse_sum_abs": 0.0,
+    "impulse_units": "base translation N*s, all rotations N*m*s; not motor torque",
+    "kinetic_energy_removed_j": 0.0,
+    "scope": "one accepted endpoint per physics step; predictor diagnostics retained separately"
+  },
+  "target_command_acceptance_passed": true,
+  "statuses": {
+    "success": 1
+  },
+  "gait_success_only": {
+    "successful_episodes": 1,
+    "physics_samples": 5109,
+    "seconds": 10.218000000000082,
+    "climb_speed_observed_episodes": 1,
+    "climb_horizontal_speed_m_s": 0.2814491399772657,
+    "roll_rms_rad": 0.06112894064209762,
+    "hip_abduction_positive_mean_rad": 0.03702763574583903,
+    "stance_foot_slip_rms_m_s": 0.24046461950201245,
+    "mean_world_forward_speed_m_s": 0.24671722219100656
+  },
+  "guard": {
+    "profile": {
+      "profile_id": "unitree_go2_2ded279_hip48",
+      "source_path": "/home/venom/\u6587\u6863/ChatGPT/\u673a\u5668\u72d7/validation/official_joint_limits_20261104/limit_profile.json",
+      "source_sha256": "bd3ea1830ca2ff7d8eb6eda1fb0b5077e33192a1ee663f2c16f96195d948c8af",
+      "joint_names": [
+        "FL_hip",
+        "FL_thigh",
+        "FL_calf",
+        "FR_hip",
+        "FR_thigh",
+        "FR_calf",
+        "RL_hip",
+        "RL_thigh",
+        "RL_calf",
+        "RR_hip",
+        "RR_thigh",
+        "RR_calf"
+      ],
+      "velocity_limits_rad_s": [
+        30.100000381469727,
+        30.100000381469727,
+        15.699999809265137,
+        30.100000381469727,
+        30.100000381469727,
+        15.699999809265137,
+        30.100000381469727,
+        30.100000381469727,
+        15.699999809265137,
+        30.100000381469727,
+        30.100000381469727,
+        15.699999809265137
+      ],
+      "position_lower_rad": [
+        -0.8377580642700195,
+        -1.5707999467849731,
+        -2.7227001190185547,
+        -0.8377580642700195,
+        -1.5707999467849731,
+        -2.7227001190185547,
+        -0.8377580642700195,
+        -0.5235999822616577,
+        -2.7227001190185547,
+        -0.8377580642700195,
+        -0.5235999822616577,
+        -2.7227001190185547
+      ],
+      "position_upper_rad": [
+        0.8377580642700195,
+        3.4907000064849854,
+        -0.8377599716186523,
+        0.8377580642700195,
+        3.4907000064849854,
+        -0.8377599716186523,
+        0.8377580642700195,
+        4.537899971008301,
+        -0.8377599716186523,
+        0.8377580642700195,
+        4.537899971008301,
+        -0.8377599716186523
+      ],
+      "effort_limits_nm": [
+        23.7,
+        23.7,
+        45.43,
+        23.7,
+        23.7,
+        45.43,
+        23.7,
+        23.7,
+        45.43,
+        23.7,
+        23.7,
+        45.43
+      ],
+      "tracking_error_limit_rad": 0.8999999761581421,
+      "q_dq_boundary_semantics": "SDK float32 boundary, strict outside comparison",
+      "scope": "application joint checks; not firmware readback or permission to actuate"
+    },
+    "physics_state_samples": 10218,
+    "terminal_physics_state_samples": 1,
+    "all_metrics_observed": true,
+    "metrics": {
+      "velocity": {
+        "value_and_excess_unit": "rad/s",
+        "excess_count": 708,
+        "sample_count": 122616,
+        "excess_fraction": 0.005774124094734782,
+        "observed_state_samples": 10218,
+        "unobserved_state_samples": 0,
+        "peak_absolute_value": 23.800038767049315,
+        "max_ratio": 1.515926054534348,
+        "max_excess": 8.100038957784179,
+        "per_joint": {
+          "FL_hip": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": -7.27671786196354,
+            "max_value": 4.416427621330605,
+            "peak_absolute_value": 7.27671786196354,
+            "max_ratio": 0.2417514209216841,
+            "max_excess": 0.0
+          },
+          "FL_thigh": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": -15.22922696377933,
+            "max_value": 17.12836711959814,
+            "peak_absolute_value": 17.12836711959814,
+            "max_ratio": 0.5690487343030988,
+            "max_excess": 0.0
+          },
+          "FL_calf": {
+            "excess_count": 278,
+            "sample_count": 10218,
+            "excess_fraction": 0.02720688980230965,
+            "min_value": -20.18996635799982,
+            "max_value": 23.74651475790015,
+            "peak_absolute_value": 23.74651475790015,
+            "max_ratio": 1.5125168819356594,
+            "max_excess": 8.046514948635014
+          },
+          "FR_hip": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": -4.8158394202946955,
+            "max_value": 5.062376139837647,
+            "peak_absolute_value": 5.062376139837647,
+            "max_ratio": 0.16818525168372309,
+            "max_excess": 0.0
+          },
+          "FR_thigh": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": -12.721012995159246,
+            "max_value": 14.699637009908228,
+            "peak_absolute_value": 14.699637009908228,
+            "max_ratio": 0.4883600273625801,
+            "max_excess": 0.0
+          },
+          "FR_calf": {
+            "excess_count": 112,
+            "sample_count": 10218,
+            "excess_fraction": 0.01096104912898806,
+            "min_value": -16.246437990983168,
+            "max_value": 23.800038767049315,
+            "peak_absolute_value": 23.800038767049315,
+            "max_ratio": 1.515926054534348,
+            "max_excess": 8.100038957784179
+          },
+          "RL_hip": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": -6.495259742645207,
+            "max_value": 6.18017374904127,
+            "peak_absolute_value": 6.495259742645207,
+            "max_ratio": 0.21578935748598338,
+            "max_excess": 0.0
+          },
+          "RL_thigh": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": -10.213288112280054,
+            "max_value": 8.356831862651793,
+            "peak_absolute_value": 10.213288112280054,
+            "max_ratio": 0.33931189311770227,
+            "max_excess": 0.0
+          },
+          "RL_calf": {
+            "excess_count": 152,
+            "sample_count": 10218,
+            "excess_fraction": 0.014875709532198082,
+            "min_value": -16.070785320263806,
+            "max_value": 22.235498309301438,
+            "peak_absolute_value": 22.235498309301438,
+            "max_ratio": 1.416273794868422,
+            "max_excess": 6.535498500036301
+          },
+          "RR_hip": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": -6.154778945998014,
+            "max_value": 4.004696499636915,
+            "peak_absolute_value": 6.154778945998014,
+            "max_ratio": 0.20447770325567974,
+            "max_excess": 0.0
+          },
+          "RR_thigh": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": -10.266656232668717,
+            "max_value": 8.141696237951434,
+            "peak_absolute_value": 10.266656232668717,
+            "max_ratio": 0.3410849203506693,
+            "max_excess": 0.0
+          },
+          "RR_calf": {
+            "excess_count": 166,
+            "sample_count": 10218,
+            "excess_fraction": 0.01624584067332159,
+            "min_value": -18.251198777176906,
+            "max_value": 20.103161175645297,
+            "peak_absolute_value": 20.103161175645297,
+            "max_ratio": 1.2804561413931799,
+            "max_excess": 4.403161366380161
+          }
+        }
+      },
+      "target_velocity": {
+        "value_and_excess_unit": "rad/s",
+        "excess_count": 0,
+        "sample_count": 122616,
+        "excess_fraction": 0.0,
+        "observed_state_samples": 10218,
+        "unobserved_state_samples": 0,
+        "peak_absolute_value": 0.0,
+        "max_ratio": 0.0,
+        "max_excess": 0.0,
+        "per_joint": {
+          "FL_hip": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": 0.0,
+            "max_value": 0.0,
+            "peak_absolute_value": 0.0,
+            "max_ratio": 0.0,
+            "max_excess": 0.0
+          },
+          "FL_thigh": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": 0.0,
+            "max_value": 0.0,
+            "peak_absolute_value": 0.0,
+            "max_ratio": 0.0,
+            "max_excess": 0.0
+          },
+          "FL_calf": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": 0.0,
+            "max_value": 0.0,
+            "peak_absolute_value": 0.0,
+            "max_ratio": 0.0,
+            "max_excess": 0.0
+          },
+          "FR_hip": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": 0.0,
+            "max_value": 0.0,
+            "peak_absolute_value": 0.0,
+            "max_ratio": 0.0,
+            "max_excess": 0.0
+          },
+          "FR_thigh": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": 0.0,
+            "max_value": 0.0,
+            "peak_absolute_value": 0.0,
+            "max_ratio": 0.0,
+            "max_excess": 0.0
+          },
+          "FR_calf": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": 0.0,
+            "max_value": 0.0,
+            "peak_absolute_value": 0.0,
+            "max_ratio": 0.0,
+            "max_excess": 0.0
+          },
+          "RL_hip": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": 0.0,
+            "max_value": 0.0,
+            "peak_absolute_value": 0.0,
+            "max_ratio": 0.0,
+            "max_excess": 0.0
+          },
+          "RL_thigh": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": 0.0,
+            "max_value": 0.0,
+            "peak_absolute_value": 0.0,
+            "max_ratio": 0.0,
+            "max_excess": 0.0
+          },
+          "RL_calf": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": 0.0,
+            "max_value": 0.0,
+            "peak_absolute_value": 0.0,
+            "max_ratio": 0.0,
+            "max_excess": 0.0
+          },
+          "RR_hip": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": 0.0,
+            "max_value": 0.0,
+            "peak_absolute_value": 0.0,
+            "max_ratio": 0.0,
+            "max_excess": 0.0
+          },
+          "RR_thigh": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": 0.0,
+            "max_value": 0.0,
+            "peak_absolute_value": 0.0,
+            "max_ratio": 0.0,
+            "max_excess": 0.0
+          },
+          "RR_calf": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": 0.0,
+            "max_value": 0.0,
+            "peak_absolute_value": 0.0,
+            "max_ratio": 0.0,
+            "max_excess": 0.0
+          }
+        }
+      },
+      "position": {
+        "value_and_excess_unit": "rad",
+        "excess_count": 0,
+        "sample_count": 122616,
+        "excess_fraction": 0.0,
+        "observed_state_samples": 10218,
+        "unobserved_state_samples": 0,
+        "peak_absolute_value": 2.7227001189185547,
+        "max_ratio": 0.9999999998938959,
+        "max_excess": 0.0,
+        "per_joint": {
+          "FL_hip": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": -0.2617930941573281,
+            "max_value": 0.35082841164685696,
+            "peak_absolute_value": 0.35082841164685696,
+            "max_ratio": 0.4187705575267142,
+            "max_excess": 0.0
+          },
+          "FL_thigh": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": 0.5368078515749082,
+            "max_value": 2.197229040912177,
+            "peak_absolute_value": 2.197229040912177,
+            "max_ratio": 0.4888981616063564,
+            "max_excess": 0.0
+          },
+          "FL_calf": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": -2.7227001189185547,
+            "max_value": -0.9329530201165279,
+            "peak_absolute_value": 2.7227001189185547,
+            "max_ratio": 0.9999999998938959,
+            "max_excess": 0.0
+          },
+          "FR_hip": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": -0.42003759263261675,
+            "max_value": 0.294160079158553,
+            "peak_absolute_value": 0.42003759263261675,
+            "max_ratio": 0.5013829296870052,
+            "max_excess": 0.0
+          },
+          "FR_thigh": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": 0.5022921426137119,
+            "max_value": 1.9620244261110416,
+            "peak_absolute_value": 1.9620244261110416,
+            "max_ratio": 0.3959594608367624,
+            "max_excess": 0.0
+          },
+          "FR_calf": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": -2.7227001189185547,
+            "max_value": -1.0015356392059336,
+            "peak_absolute_value": 2.7227001189185547,
+            "max_ratio": 0.9999999998938959,
+            "max_excess": 0.0
+          },
+          "RL_hip": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": -0.28990827065933383,
+            "max_value": 0.20887885193434763,
+            "peak_absolute_value": 0.28990827065933383,
+            "max_ratio": 0.34605249776013247,
+            "max_excess": 0.0
+          },
+          "RL_thigh": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": 0.6507041148051916,
+            "max_value": 1.8498995836442829,
+            "peak_absolute_value": 1.8498995836442829,
+            "max_ratio": 0.5359857323289331,
+            "max_excess": 0.0
+          },
+          "RL_calf": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": -2.4224871072481236,
+            "max_value": -0.8377599717186524,
+            "peak_absolute_value": 2.4224871072481236,
+            "max_ratio": 0.9999999998938959,
+            "max_excess": 0.0
+          },
+          "RR_hip": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": -0.29307240143861235,
+            "max_value": 0.28797462903567306,
+            "peak_absolute_value": 0.29307240143861235,
+            "max_ratio": 0.349829400560866,
+            "max_excess": 0.0
+          },
+          "RR_thigh": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": 0.5284113490593697,
+            "max_value": 1.5796725090838803,
+            "peak_absolute_value": 1.5796725090838803,
+            "max_ratio": 0.5843084694127557,
+            "max_excess": 0.0
+          },
+          "RR_calf": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": -2.63189353966927,
+            "max_value": -1.067859420196726,
+            "peak_absolute_value": 2.63189353966927,
+            "max_ratio": 0.903650437416229,
+            "max_excess": 0.0
+          }
+        }
+      },
+      "target_position": {
+        "value_and_excess_unit": "rad",
+        "excess_count": 0,
+        "sample_count": 122616,
+        "excess_fraction": 0.0,
+        "observed_state_samples": 10218,
+        "unobserved_state_samples": 0,
+        "peak_absolute_value": 2.7227001190185547,
+        "max_ratio": 1.0,
+        "max_excess": 0.0,
+        "per_joint": {
+          "FL_hip": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": -0.44012179374694826,
+            "max_value": 0.44875980019569395,
+            "peak_absolute_value": 0.44875980019569395,
+            "max_ratio": 0.5356675385592626,
+            "max_excess": 0.0
+          },
+          "FL_thigh": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": 0.2642534255981446,
+            "max_value": 2.2085391759872435,
+            "peak_absolute_value": 2.2085391759872435,
+            "max_ratio": 0.49336724594083703,
+            "max_excess": 0.0
+          },
+          "FL_calf": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": -2.7227001190185547,
+            "max_value": -0.8377599716186523,
+            "peak_absolute_value": 2.7227001190185547,
+            "max_ratio": 1.0,
+            "max_excess": 0.0
+          },
+          "FR_hip": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": -0.4214309215545654,
+            "max_value": 0.5157020926475525,
+            "peak_absolute_value": 0.5157020926475525,
+            "max_ratio": 0.6155740119277867,
+            "max_excess": 0.0
+          },
+          "FR_thigh": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": 0.43854107260704045,
+            "max_value": 1.9766551733016968,
+            "peak_absolute_value": 1.9766551733016968,
+            "max_ratio": 0.4017406511264919,
+            "max_excess": 0.0
+          },
+          "FR_calf": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": -2.7227001190185547,
+            "max_value": -0.8377599716186523,
+            "peak_absolute_value": 2.7227001190185547,
+            "max_ratio": 1.0,
+            "max_excess": 0.0
+          },
+          "RL_hip": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": -0.5010116338729859,
+            "max_value": 0.2534110307693481,
+            "peak_absolute_value": 0.5010116338729859,
+            "max_ratio": 0.5980385689388049,
+            "max_excess": 0.0
+          },
+          "RL_thigh": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": 0.6548633575439453,
+            "max_value": 1.7443953156471252,
+            "peak_absolute_value": 1.7443953156471252,
+            "max_ratio": 0.5343422500501014,
+            "max_excess": 0.0
+          },
+          "RL_calf": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": -2.480708599090576,
+            "max_value": -0.8377599716186523,
+            "peak_absolute_value": 2.480708599090576,
+            "max_ratio": 1.0,
+            "max_excess": 0.0
+          },
+          "RR_hip": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": -0.3788942456245422,
+            "max_value": 0.5289336681365967,
+            "peak_absolute_value": 0.5289336681365967,
+            "max_ratio": 0.6313680413180899,
+            "max_excess": 0.0
+          },
+          "RR_thigh": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": 0.6497122049331665,
+            "max_value": 1.7611860036849976,
+            "peak_absolute_value": 1.7611860036849976,
+            "max_ratio": 0.5363776753818554,
+            "max_excess": 0.0
+          },
+          "RR_calf": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": -2.6302521228790283,
+            "max_value": -0.8377599716186523,
+            "peak_absolute_value": 2.6302521228790283,
+            "max_ratio": 1.0,
+            "max_excess": 0.0
+          }
+        }
+      },
+      "tracking": {
+        "value_and_excess_unit": "rad",
+        "excess_count": 1825,
+        "sample_count": 122616,
+        "excess_fraction": 0.01488386507470477,
+        "observed_state_samples": 10218,
+        "unobserved_state_samples": 0,
+        "peak_absolute_value": 1.2538171153071933,
+        "max_ratio": 1.3931301650244496,
+        "max_excess": 0.3538171391490512,
+        "per_joint": {
+          "FL_hip": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": 9.911396368184056e-05,
+            "max_value": 0.39934614954734443,
+            "peak_absolute_value": 0.39934614954734443,
+            "max_ratio": 0.4437179556960054,
+            "max_excess": 0.0
+          },
+          "FL_thigh": {
+            "excess_count": 29,
+            "sample_count": 10218,
+            "excess_fraction": 0.0028381287923272655,
+            "min_value": 1.384143322424869e-05,
+            "max_value": 1.0990627145349332,
+            "peak_absolute_value": 1.0990627145349332,
+            "max_ratio": 1.2211808262779478,
+            "max_excess": 0.19906273837679112
+          },
+          "FL_calf": {
+            "excess_count": 77,
+            "sample_count": 10218,
+            "excess_fraction": 0.007535721276179292,
+            "min_value": 1.000000082740371e-10,
+            "max_value": 1.085389302192397,
+            "peak_absolute_value": 1.085389302192397,
+            "max_ratio": 1.2059881454948833,
+            "max_excess": 0.18538932603425495
+          },
+          "FR_hip": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": 9.33115544394722e-06,
+            "max_value": 0.5547121373138834,
+            "peak_absolute_value": 0.5547121373138834,
+            "max_ratio": 0.6163468355652634,
+            "max_excess": 0.0
+          },
+          "FR_thigh": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": 2.944231348189774e-05,
+            "max_value": 0.716189544448526,
+            "peak_absolute_value": 0.716189544448526,
+            "max_ratio": 0.795766181578967,
+            "max_excess": 0.0
+          },
+          "FR_calf": {
+            "excess_count": 176,
+            "sample_count": 10218,
+            "excess_fraction": 0.017224505774124096,
+            "min_value": 1.000000082740371e-10,
+            "max_value": 1.2538171153071933,
+            "peak_absolute_value": 1.2538171153071933,
+            "max_ratio": 1.3931301650244496,
+            "max_excess": 0.3538171391490512
+          },
+          "RL_hip": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": 1.0257011775621772e-05,
+            "max_value": 0.5079662442829306,
+            "peak_absolute_value": 0.5079662442829306,
+            "max_ratio": 0.5644069530438233,
+            "max_excess": 0.0
+          },
+          "RL_thigh": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": 0.00011227572909056072,
+            "max_value": 0.5892888339011874,
+            "peak_absolute_value": 0.5892888339011874,
+            "max_ratio": 0.6547653883466785,
+            "max_excess": 0.0
+          },
+          "RL_calf": {
+            "excess_count": 372,
+            "sample_count": 10218,
+            "excess_fraction": 0.0364063417498532,
+            "min_value": 1.000000082740371e-10,
+            "max_value": 1.0659351777103796,
+            "peak_absolute_value": 1.0659351777103796,
+            "max_ratio": 1.1843724510533549,
+            "max_excess": 0.1659352015522375
+          },
+          "RR_hip": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": 3.498079730322387e-06,
+            "max_value": 0.42077263339288107,
+            "peak_absolute_value": 0.42077263339288107,
+            "max_ratio": 0.46752516059949945,
+            "max_excess": 0.0
+          },
+          "RR_thigh": {
+            "excess_count": 59,
+            "sample_count": 10218,
+            "excess_fraction": 0.005774124094734782,
+            "min_value": 2.2348274540395785e-05,
+            "max_value": 1.0068430537632684,
+            "peak_absolute_value": 1.0068430537632684,
+            "max_ratio": 1.1187145338172237,
+            "max_excess": 0.10684307760512635
+          },
+          "RR_calf": {
+            "excess_count": 1112,
+            "sample_count": 10218,
+            "excess_fraction": 0.1088275592092386,
+            "min_value": 0.00010807110970167955,
+            "max_value": 1.1373767101798595,
+            "peak_absolute_value": 1.1373767101798595,
+            "max_ratio": 1.2637519336778373,
+            "max_excess": 0.23737673402171744
+          }
+        }
+      },
+      "requested_torque": {
+        "value_and_excess_unit": "Nm",
+        "excess_count": 0,
+        "sample_count": 122616,
+        "excess_fraction": 0.0,
+        "observed_state_samples": 10218,
+        "unobserved_state_samples": 0,
+        "peak_absolute_value": 25.39542183180752,
+        "max_ratio": 0.8287745921543901,
+        "max_excess": 0.0,
+        "per_joint": {
+          "FL_hip": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": -7.8504312805303025,
+            "max_value": 5.87776564925034,
+            "peak_absolute_value": 7.8504312805303025,
+            "max_ratio": 0.3312418261827132,
+            "max_excess": 0.0
+          },
+          "FL_thigh": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": -16.957466254762558,
+            "max_value": 18.052029901049796,
+            "peak_absolute_value": 18.052029901049796,
+            "max_ratio": 0.7616890253607509,
+            "max_excess": 0.0
+          },
+          "FL_calf": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": -15.689033977822847,
+            "max_value": 18.707295738414377,
+            "peak_absolute_value": 18.707295738414377,
+            "max_ratio": 0.4117828689943733,
+            "max_excess": 0.0
+          },
+          "FR_hip": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": -5.363265385756347,
+            "max_value": 10.608627967381832,
+            "peak_absolute_value": 10.608627967381832,
+            "max_ratio": 0.44762143322286213,
+            "max_excess": 0.0
+          },
+          "FR_thigh": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": -12.737848401439917,
+            "max_value": 9.76421954570171,
+            "peak_absolute_value": 12.737848401439917,
+            "max_ratio": 0.5374619578666632,
+            "max_excess": 0.0
+          },
+          "FR_calf": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": -11.484680448010712,
+            "max_value": 25.39542183180752,
+            "peak_absolute_value": 25.39542183180752,
+            "max_ratio": 0.5590011409158601,
+            "max_excess": 0.0
+          },
+          "RL_hip": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": -10.490307866735348,
+            "max_value": 5.648273291827517,
+            "peak_absolute_value": 10.490307866735348,
+            "max_ratio": 0.4426290239128839,
+            "max_excess": 0.0
+          },
+          "RL_thigh": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": -7.961197536924153,
+            "max_value": 10.082753090396146,
+            "peak_absolute_value": 10.082753090396146,
+            "max_ratio": 0.4254326198479387,
+            "max_excess": 0.0
+          },
+          "RL_calf": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": -11.679489805855379,
+            "max_value": 20.021565473669796,
+            "peak_absolute_value": 20.021565473669796,
+            "max_ratio": 0.4407124251303059,
+            "max_excess": 0.0
+          },
+          "RR_hip": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": -6.495154748031042,
+            "max_value": 8.193320428025203,
+            "peak_absolute_value": 8.193320428025203,
+            "max_ratio": 0.34570972270148537,
+            "max_excess": 0.0
+          },
+          "RR_thigh": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": -7.928168083787551,
+            "max_value": 19.641957834059045,
+            "peak_absolute_value": 19.641957834059045,
+            "max_ratio": 0.8287745921543901,
+            "max_excess": 0.0
+          },
+          "RR_calf": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": -13.399688490015537,
+            "max_value": 22.480757164471886,
+            "peak_absolute_value": 22.480757164471886,
+            "max_ratio": 0.4948438733099689,
+            "max_excess": 0.0
+          }
+        }
+      },
+      "applied_torque": {
+        "value_and_excess_unit": "Nm",
+        "excess_count": 0,
+        "sample_count": 122616,
+        "excess_fraction": 0.0,
+        "observed_state_samples": 10218,
+        "unobserved_state_samples": 0,
+        "peak_absolute_value": 25.39542183180752,
+        "max_ratio": 0.8287745921543901,
+        "max_excess": 0.0,
+        "per_joint": {
+          "FL_hip": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": -7.8504312805303025,
+            "max_value": 5.87776564925034,
+            "peak_absolute_value": 7.8504312805303025,
+            "max_ratio": 0.3312418261827132,
+            "max_excess": 0.0
+          },
+          "FL_thigh": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": -16.957466254762558,
+            "max_value": 18.052029901049796,
+            "peak_absolute_value": 18.052029901049796,
+            "max_ratio": 0.7616890253607509,
+            "max_excess": 0.0
+          },
+          "FL_calf": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": -15.689033977822847,
+            "max_value": 18.707295738414377,
+            "peak_absolute_value": 18.707295738414377,
+            "max_ratio": 0.4117828689943733,
+            "max_excess": 0.0
+          },
+          "FR_hip": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": -5.363265385756347,
+            "max_value": 10.608627967381832,
+            "peak_absolute_value": 10.608627967381832,
+            "max_ratio": 0.44762143322286213,
+            "max_excess": 0.0
+          },
+          "FR_thigh": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": -12.565703085233105,
+            "max_value": 9.76421954570171,
+            "peak_absolute_value": 12.565703085233105,
+            "max_ratio": 0.530198442414899,
+            "max_excess": 0.0
+          },
+          "FR_calf": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": -11.484680448010712,
+            "max_value": 25.39542183180752,
+            "peak_absolute_value": 25.39542183180752,
+            "max_ratio": 0.5590011409158601,
+            "max_excess": 0.0
+          },
+          "RL_hip": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": -10.490307866735348,
+            "max_value": 5.648273291827517,
+            "peak_absolute_value": 10.490307866735348,
+            "max_ratio": 0.4426290239128839,
+            "max_excess": 0.0
+          },
+          "RL_thigh": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": -7.961197536924153,
+            "max_value": 10.082753090396146,
+            "peak_absolute_value": 10.082753090396146,
+            "max_ratio": 0.4254326198479387,
+            "max_excess": 0.0
+          },
+          "RL_calf": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": -11.679489805855379,
+            "max_value": 20.021565473669796,
+            "peak_absolute_value": 20.021565473669796,
+            "max_ratio": 0.4407124251303059,
+            "max_excess": 0.0
+          },
+          "RR_hip": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": -6.495154748031042,
+            "max_value": 8.193320428025203,
+            "peak_absolute_value": 8.193320428025203,
+            "max_ratio": 0.34570972270148537,
+            "max_excess": 0.0
+          },
+          "RR_thigh": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": -7.928168083787551,
+            "max_value": 19.641957834059045,
+            "peak_absolute_value": 19.641957834059045,
+            "max_ratio": 0.8287745921543901,
+            "max_excess": 0.0
+          },
+          "RR_calf": {
+            "excess_count": 0,
+            "sample_count": 10218,
+            "excess_fraction": 0.0,
+            "min_value": -13.399688490015537,
+            "max_value": 22.480757164471886,
+            "peak_absolute_value": 22.480757164471886,
+            "max_ratio": 0.4948438733099689,
+            "max_excess": 0.0
+          }
+        }
+      }
+    },
+    "joint_and_torque_acceptance_passed": false,
+    "episodes_passing_joint_and_torque": 0,
+    "incomplete_episodes": 0,
+    "scope": "All first episodes, including failures; pre-send/post-integration physics boundaries; no startup grace"
+  },
+  "joint_and_torque_acceptance_passed": false,
+  "calf_speed": {
+    "scope": "four named calves, actual velocity only; all supplied audit samples",
+    "joint_names": [
+      "FL_calf",
+      "FR_calf",
+      "RL_calf",
+      "RR_calf"
+    ],
+    "value_and_excess_unit": "rad/s",
+    "speed_limits_rad_s": {
+      "FL_calf": 15.699999809265137,
+      "FR_calf": 15.699999809265137,
+      "RL_calf": 15.699999809265137,
+      "RR_calf": 15.699999809265137
+    },
+    "sample_count": 40872,
+    "excess_count": 708,
+    "excess_fraction": 0.017322372284204347,
+    "peak_absolute_value": 23.800038767049315,
+    "max_ratio": 1.515926054534348,
+    "max_excess": 8.100038957784179,
+    "per_joint": {
+      "FL_calf": {
+        "speed_limit_rad_s": 15.699999809265137,
+        "sample_count": 10218,
+        "excess_count": 278,
+        "excess_fraction": 0.02720688980230965,
+        "peak_absolute_value": 23.74651475790015,
+        "max_ratio": 1.5125168819356594,
+        "max_excess": 8.046514948635014,
+        "calf_speed_acceptance_passed": false
+      },
+      "FR_calf": {
+        "speed_limit_rad_s": 15.699999809265137,
+        "sample_count": 10218,
+        "excess_count": 112,
+        "excess_fraction": 0.01096104912898806,
+        "peak_absolute_value": 23.800038767049315,
+        "max_ratio": 1.515926054534348,
+        "max_excess": 8.100038957784179,
+        "calf_speed_acceptance_passed": false
+      },
+      "RL_calf": {
+        "speed_limit_rad_s": 15.699999809265137,
+        "sample_count": 10218,
+        "excess_count": 152,
+        "excess_fraction": 0.014875709532198082,
+        "peak_absolute_value": 22.235498309301438,
+        "max_ratio": 1.416273794868422,
+        "max_excess": 6.535498500036301,
+        "calf_speed_acceptance_passed": false
+      },
+      "RR_calf": {
+        "speed_limit_rad_s": 15.699999809265137,
+        "sample_count": 10218,
+        "excess_count": 166,
+        "excess_fraction": 0.01624584067332159,
+        "peak_absolute_value": 20.103161175645297,
+        "max_ratio": 1.2804561413931799,
+        "max_excess": 4.403161366380161,
+        "calf_speed_acceptance_passed": false
+      }
+    },
+    "all_calf_metrics_observed": true,
+    "incomplete_due_to_numeric_failure": false,
+    "incomplete_episodes": 0,
+    "calf_speed_acceptance_passed": false
+  },
+  "calf_speed_acceptance_passed": false,
+  "task_and_calf_speed_acceptance_passed": false,
+  "task_and_joint_acceptance_passed": false,
+  "episode_files": [
+    "smoke25/episode_000.json"
+  ]
+}

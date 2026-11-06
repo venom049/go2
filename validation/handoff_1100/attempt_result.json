@@ -1,0 +1,52 @@
+{
+  "date_local": "2026-11-03",
+  "timezone": "Asia/Shanghai",
+  "model_cumulative_updates": 1100,
+  "controller_directory": "/home/unitree/go2-stairs-handoff-20261103",
+  "controller_sha256": "d591c83f04e116a3c8809774452ade3de371692d4c8a1bccb16d46d040c5ed50",
+  "original_factory_standup": {
+    "returncode": 0,
+    "performed": true
+  },
+  "handoff": {
+    "release_code": 0,
+    "check_code": 0,
+    "hold_start_after_request_ms": 152.5,
+    "observed_measured_stand_locked": true,
+    "time_locked_local": "14:49:06",
+    "time_policy_enter_local": "14:49:37"
+  },
+  "policy_test": {
+    "passed": false,
+    "requested_command_m_s": 0.6,
+    "software_duration_limit_s": 2,
+    "stop_reason": "estimated_pd_effort_outside_urdf_range",
+    "completed_two_seconds": false,
+    "real_stair_ascent_validated": false,
+    "exact_rejected_joint_unknown": true,
+    "trace_limitation": "Buffered CSV had zero saved rows at process exit; cannot identify the actual rejected frame or number of accepted model actions."
+  },
+  "current_control": {
+    "custom_process_exited": true,
+    "factory_select_rpc_code": 3104,
+    "factory_check_code": 0,
+    "factory_mode": "mcf",
+    "lowcmd_samples_observed_after_restore": 1079,
+    "telemetry_after_restore": "stationary near factory standing pose",
+    "new_standup_command_during_restore": false
+  },
+  "preservation": {
+    "files_checked": 2242,
+    "changed": [],
+    "missing": [],
+    "added_in_original_scope": [],
+    "all_existing_hashes_unchanged": true
+  },
+  "offline_start_probe": {
+    "synthetic": true,
+    "actual_failure_frame": false,
+    "ideal_stance_fl_thigh_estimated_nm": -29.292373657226562,
+    "software_limit_nm": 23.7
+  },
+  "next_required_work": "Validate a bounded stationary-to-locomotion transition in simulation and protected tests; retain existing software limits. Improve guard rejection frame persistence before another motor trial."
+}

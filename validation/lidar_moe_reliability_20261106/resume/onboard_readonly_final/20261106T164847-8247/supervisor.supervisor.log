@@ -1,0 +1,18 @@
+Process SpawnProcess-1:
+Traceback (most recent call last):
+  File "/usr/lib/python3.8/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.8/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.8/concurrent/futures/process.py", line 233, in _process_worker
+    call_item = call_queue.get(block=True)
+  File "/usr/lib/python3.8/multiprocessing/queues.py", line 97, in get
+    res = self._recv_bytes()
+  File "/usr/lib/python3.8/multiprocessing/connection.py", line 216, in recv_bytes
+    buf = self._recv_bytes(maxlength)
+  File "/usr/lib/python3.8/multiprocessing/connection.py", line 414, in _recv_bytes
+    buf = self._recv(4)
+  File "/usr/lib/python3.8/multiprocessing/connection.py", line 379, in _recv
+    chunk = read(handle, remaining)
+KeyboardInterrupt
+{"output": "/home/unitree/go2-lidar-moe-20261106/logs/20261106T164847-8247/supervisor.jsonl", "phase": "WAIT", "commands": 6196360579739, "control_authorized": false}

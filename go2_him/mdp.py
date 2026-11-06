@@ -44,6 +44,8 @@ def success(env) -> torch.Tensor:
     for name in ("base_contact", "fall", "out_of_bounds"):
         term = env.termination_manager.get_term_cfg(name)
         reached &= ~term.func(env, **term.params)
+    if env.cfg.go2_settings.get("joint_constraints", {}).get("enabled", False):
+        reached &= ~joint_constraint_violation(env)
     return reached
 
 
@@ -354,3 +356,44 @@ def curriculum(env, env_ids) -> dict[str, torch.Tensor]:
         "forward_distance": position_x.mean(),
         "terrain_level": terrain.terrain_levels.float().mean(),
     }
+
+
+def torque_margin(env):
+    """Squared normalized margin violations, averaged over ALL physics substeps."""
+    return env.scene["robot"].actuators["legs"].torque_window.penalty(
+        "margin", env.cfg.go2_settings["torque"]["startup_multiplier"])
+
+
+def torque_excess(env):
+    """Additional penalty on requested effort beyond immutable URDF limits."""
+    return env.scene["robot"].actuators["legs"].torque_window.penalty(
+        "excess", env.cfg.go2_settings["torque"]["startup_multiplier"])
+
+
+def joint_constraint_penalty(env, kind):
+    """Window includes every physics substep, including failed terminal samples."""
+    return env.scene["robot"].actuators["legs"].joint_window.penalty(
+        kind, env.cfg.go2_settings["joint_constraints"]["startup_multiplier"])
+
+
+def guard_balance_penalty(env):
+    """A bounded total guard cost; original unbounded audits remain separate."""
+    from go2_him.guard_balance import compute_guard_balance, guard_balance_scale
+
+    settings = env.cfg.go2_settings
+    guard = settings["guard_balance"]
+    scale = guard_balance_scale(env.common_step_counter,
+                                settings["training"]["num_steps_per_env"], guard)
+    actuator = env.scene["robot"].actuators["legs"]
+    result = compute_guard_balance(actuator.joint_window, actuator.torque_window, guard, scale=scale)
+    # _reset_idx may replace extras['log'] after rewards. Publish the frozen
+    # result in TorqueHimlocoEnv.step after reset, including terminal windows.
+    env._guard_balance_result = result
+    return result.total
+
+
+def joint_constraint_violation(env):
+    settings = env.cfg.go2_settings["joint_constraints"]
+    if not settings["enabled"] or not settings["terminate_on_violation"]:
+        return torch.zeros(env.num_envs, dtype=torch.bool, device=env.device)
+    return env.scene["robot"].actuators["legs"].joint_window.hard_violation()

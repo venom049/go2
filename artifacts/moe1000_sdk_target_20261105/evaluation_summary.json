@@ -1,0 +1,84 @@
+{
+  "training_completed": true,
+  "updates": 1000,
+  "primary_artifact": "exported/policy.onnx",
+  "target_angle_constraint_passed": true,
+  "overall_joint_guard_acceptance_passed": false,
+  "training_joint_target_samples": 36864000,
+  "training_target_excess_count": 0,
+  "final_onnx": {
+    "successes": 123,
+    "episodes": 129,
+    "success_rate": 0.9534883720930233,
+    "target_samples": 484548,
+    "target_excess_count": 0,
+    "climb_horizontal_speed_m_s": 0.26558537923403824,
+    "statuses": {
+      "success": 123,
+      "timeout": 3,
+      "wall_contact": 2,
+      "trunk_contact": 1
+    },
+    "guard_excess_counts": {
+      "velocity": 25906,
+      "target_velocity": 0,
+      "position": 5492,
+      "target_position": 0,
+      "tracking": 102176,
+      "requested_torque": 0,
+      "applied_torque": 0
+    }
+  },
+  "checkpoint_evaluations": [
+    {
+      "label": "original_moe1000",
+      "successes": 129,
+      "episodes": 129,
+      "target_mode": "legacy",
+      "statuses": {
+        "success": 129
+      },
+      "joint_and_torque_acceptance_passed": false,
+      "target_excess_count": 14965,
+      "climb_horizontal_speed_m_s": 0.37709805839634253
+    },
+    {
+      "label": "sdk_target500",
+      "successes": 124,
+      "episodes": 129,
+      "target_mode": "bounded",
+      "statuses": {
+        "success": 124,
+        "timeout": 3,
+        "trunk_contact": 2
+      },
+      "joint_and_torque_acceptance_passed": false,
+      "target_excess_count": 0,
+      "climb_horizontal_speed_m_s": 0.20869733240723015
+    },
+    {
+      "label": "sdk_target1000",
+      "successes": 125,
+      "episodes": 129,
+      "target_mode": "bounded",
+      "statuses": {
+        "success": 125,
+        "timeout": 2,
+        "trunk_contact": 2
+      },
+      "joint_and_torque_acceptance_passed": false,
+      "target_excess_count": 0,
+      "climb_horizontal_speed_m_s": 0.2613390878517595
+    }
+  ],
+  "strict_guard_evaluation": "All three checkpoint models stopped in all 129 episodes; no overall protection pass.",
+  "runtime_difference": "Checkpoint evaluation uses PyTorch with environment target projection (125/129 for final checkpoint); delivered ONNX contains inward-rounded action bounds and uses original affine decoder (123/129). Use ONNX results for the delivered policy.",
+  "constraint_scope": "Submitted target angle only. Native physical state dynamics, velocity/torque/tracking protections and reward weights retained.",
+  "unit_tests": {
+    "count": 41,
+    "local_passed": true,
+    "server_passed": true
+  },
+  "real_robot_deployed": false,
+  "remote_run": "/root/gpufree-data/moe1000-sdk-target-20261105/formal_run"
+}

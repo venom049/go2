@@ -1,0 +1,48 @@
+{
+  "date_local": "2026-11-03",
+  "status": "handoff_and_stand_passed_policy_start_precheck_failed",
+  "test_command_m_s": 0.6,
+  "original_control_release_verified": true,
+  "handoff_release_time_local": "15:25:17",
+  "handoff_hold_start_after_release_request_ms": 153,
+  "stand_locked_time_local": "15:25:19.922",
+  "stairs_state_entered": false,
+  "stairs_policy_commands_sent": false,
+  "actual_motor_activity": "Protected handoff, fixed stand hold, and shutdown damping only; proposed stair policy commands were not published.",
+  "startup_check": {
+    "frames": 50,
+    "overlimit_frames": 50,
+    "joint": "FL_thigh",
+    "first_estimated_nm": -33.49773406982422,
+    "peak_abs_estimated_nm": 33.73917770385742,
+    "software_limit_nm": 23.7,
+    "note": "Estimated PD effort from proposed model targets and live held-pose telemetry, not measured output torque.",
+    "evidence_path": "/home/venom/文档/ChatGPT/机器狗/validation/handoff_1100/avoidance_off_recheck/readonly_probe_20261103T072538223143Z.json"
+  },
+  "controller_exit_time_local": "15:26:14",
+  "controller_exit_code": 0,
+  "bridge_interrupted_and_exited": true,
+  "restore": {
+    "select_attempts": 1,
+    "rpc_returncode": 3104,
+    "transient_network_issue": "Wired interface switched away from existing go2-stairs-direct profile and lost IPv4. Restored the same pre-existing profile; did not retry SelectMode.",
+    "later_mode_verified": [
+      0,
+      {
+        "form": "0",
+        "name": "mcf"
+      }
+    ],
+    "lowcmd_samples_after_reconnect": 1205,
+    "final_posture": "near-stationary factory standing pose",
+    "avoidance_final": [
+      0,
+      false
+    ],
+    "evidence_path": "/home/venom/文档/ChatGPT/机器狗/validation/handoff_1100/avoidance_off_recheck/final_state_20261103T072752317015Z.json"
+  },
+  "controller_sha256": "be9f37b7b85a483cc1a31abda9ee602e346f4c0a67eb163c225fea1fa0f20e00",
+  "model_sha256": "ba85d67ef27b32874d4ac180c5439d72ff0c9f13452495a0b5f7881a5a907432",
+  "changed_guard_limits": false,
+  "next_required_work": "Validate a torque-bounded transition from standing to the policy before any further physical locomotion test."
+}

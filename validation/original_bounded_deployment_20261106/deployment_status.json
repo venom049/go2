@@ -1,0 +1,50 @@
+{
+  "checked_at": "2026-11-06T11:10:26.445456+08:00",
+  "state": "installed_and_readonly_verified; no actuation",
+  "robot_host": "192.168.1.180",
+  "remote_root": "/home/unitree/go2-original-bounded-20261106",
+  "model": "original RoboGauge / MoE-CTS + SDK target hard clip",
+  "onnx_sha256": "bc08253fd68f661bf6be5ce5ca70cec555c3fde2c397d23fbe9814a998e056f5",
+  "parity": {
+    "cases": 199,
+    "all_outputs_finite": true,
+    "raw_fixed_absolute_tolerance": 0.0002,
+    "raw_all_cases_absolute_check_passed": false,
+    "raw_max_abs_difference": 0.001953125,
+    "raw_mismatched_elements": 145,
+    "input_abs_max_le_100_cases": 132,
+    "input_abs_max_le_100_raw_max_error": 3.0517578125e-05,
+    "sdk_clipped_target_check_passed": true,
+    "sdk_clipped_target_max_difference_rad": 2.619624137878418e-05,
+    "sdk_clipped_target_tolerance_rad": 0.0002,
+    "interpretation": "Extreme observation fixtures produce very large raw outputs; fixed absolute raw test fails across ARM/x86 runtimes. All 199 projected SDK targets pass the stated angular tolerance; not bit-identical inference."
+  },
+  "readonly_inferences": 200,
+  "readonly_latched_rows": 0,
+  "maximum_inference_ms": 1.52562,
+  "handoff_readonly_probe_passed": true,
+  "mode_before": "mcf",
+  "mode_after": "mcf",
+  "remote_dds_interface": "eth0",
+  "local_wifi_interface": "wlo1",
+  "motor_commands_sent": false,
+  "mode_release_called": false,
+  "closed_loop_test_performed": false,
+  "autostart_installed": false,
+  "old_controller_overwritten": false,
+  "ssh_password_saved": false,
+  "calf_speed_limit_rad_s": 15.7,
+  "known_limitations": [
+    "Protected handoff retains post-release RPC/check interval; uninterrupted holding is not guaranteed.",
+    "Fixed damping is not position holding and may permit settling/collapse.",
+    "Simulation actual joint speed, position and tracking can exceed guards; motor test may latch stop.",
+    "Two-second bounded motor test, not a complete stair run or autonomous wall stop."
+  ],
+  "latest_live_test": {
+    "recorded_at": "2026-11-06T11:35:33.174182+08:00",
+    "result": "locomotion_stopped_by_tracking_guard; controller_exited_after_onsite_support_confirmation",
+    "result_file": "attempt2/result.json",
+    "control_mode_after": "",
+    "controller_running": false
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "updated_utc": "2026-11-03T04:34:58.399722+00:00",
+  "status": "installed_offline_verified_not_activated",
+  "robot": {
+    "ssh_address": "192.168.123.18",
+    "user": "unitree",
+    "board": "NVIDIA Orin Nano Developer Kit",
+    "os": "Ubuntu 20.04.5 LTS",
+    "arch": "aarch64",
+    "python": "3.9.5",
+    "kernel": "5.10.104-tegra"
+  },
+  "installed_directory": "/home/unitree/go2-stairs-addon-1100-20261103",
+  "model": {
+    "cumulative_updates": 1100,
+    "checkpoint_sha256": "877ff67ce7619516fa0e9350eccdd6537e7170640e5ef0a8b095a3624b2c27f5",
+    "torchscript_sha256": "9b512caa8468a656f90428ad285c371e42ce20ff609176710651fe16ef2891c2"
+  },
+  "onboard_runtime": {
+    "torch": "2.7.0+cpu",
+    "numpy": "1.26.4",
+    "onnxruntime": "1.19.2",
+    "environment": "new directory .venv; no system package updates"
+  },
+  "onboard_torchscript_check": {
+    "all_outputs_finite": true,
+    "hash_verified": true,
+    "benchmark": {
+      "scope": "observe plus CPU inference plus proposal construction; no IO or deliberate sleep",
+      "warmup_iterations": 20,
+      "timed_iterations": 100,
+      "warmup_excluded_from_statistics": true,
+      "p50_ms": 3.639579,
+      "p95_ms": 3.75013095,
+      "minimum_ms": 3.566449,
+      "maximum_ms": 5.316811,
+      "mean_ms": 3.663226819999999,
+      "budget_ms": 20.0,
+      "policy_frequency_hz": 50.0,
+      "p95_within_budget": true,
+      "all_samples_within_budget": true,
+      "samples_over_budget": 0
+    }
+  },
+  "existing_files_hashed": 2242,
+  "motor_commands_sent": false,
+  "control_mode_changed": false,
+  "controller_started": false,
+  "original_policy_replaced": false,
+  "system_services_changed": false,
+  "real_robot_motion_validated": false,
+  "pending": [],
+  "activation_limits": [
+    "No automatic real-robot hybrid terrain gate",
+    "Old controller does not enforce mechanical joint hard limits or complete NaN/Inf checks",
+    "Standing/hold/recovery transitions do not reproduce training action history",
+    "No claim of physical stair success from offline numerical validation"
+  ],
+  "legacy_policy_directory": "/home/unitree/go2-stairs-addon-1100-20261103/legacy_candidate/v0",
+  "legacy_onnx_sha256": "ba85d67ef27b32874d4ac180c5439d72ff0c9f13452495a0b5f7881a5a907432",
+  "original_files_preservation": {
+    "files_checked": 2242,
+    "changed": [],
+    "missing": [],
+    "added_in_original_scope": [],
+    "all_existing_hashes_unchanged": true
+  },
+  "onboard_legacy_cpp_check": {
+    "ok": true,
+    "offline_only": true,
+    "runtime_version": "1.22.0",
+    "samples_verified": 160,
+    "input_shape": [
+      1,
+      294
+    ],
+    "output_shape": [
+      1,
+      16
+    ],
+    "output_name": "actions",
+    "validation_passed": true,
+    "mismatched_values": 0,
+    "max_abs_error": 1.90734863281e-06,
+    "max_tolerance_ratio": 0.026375175263,
+    "abs_tolerance": 5e-05,
+    "rel_tolerance": 1e-05,
+    "timing": {
+      "warmup_runs": 20,
+      "measured_runs": 100,
+      "p50_ms": 0.105109,
+      "p95_ms": 0.120148,
+      "max_ms": 0.146865,
+      "budget_ms": 20,
+      "all_runs_within_budget": true,
+      "scope": "tensor_creation+Run+output_validation"
+    },
+    "mechanical_safety_validated": false
+  },
+  "onboard_legacy_python_check": {
+    "timestamp_utc": "2026-11-03T04:32:46.508297+00:00",
+    "status": "passed",
+    "scope": "synthetic reference parity and CPU ONNX timing; no real-robot or controller execution",
+    "platform": "Linux-5.10.104-tegra-aarch64-with-glibc2.31",
+    "machine": "aarch64",
+    "numpy_version": "1.26.4",
+    "onnxruntime_version": "1.19.2",
+    "provider": "CPUExecutionProvider",
+    "checked_files": [
+      "README.md",
+      "exported/policy.onnx",
+      "params/deploy.yaml",
+      "provenance.json",
+      "reference.npz",
+      "verify.py"
+    ],
+    "fixture_samples": 160,
+    "trajectories": 4,
+    "numerical_errors": {
+      "output_legacy_max_abs": 1.9073486328125e-06,
+      "target_sdk_max_abs": 4.76837158203125e-07,
+      "kp_max_abs": 0.0,
+      "kd_max_abs": 0.0
+    },
+    "atol": 5e-06,
+    "rtol": 2e-05,
+    "benchmark": {
+      "warmup_iterations": 20,
+      "timed_iterations": 100,
+      "p50_ms": 0.14523350000000002,
+      "p95_ms": 0.15604479999999998,
+      "maximum_ms": 0.17979,
+      "budget_ms": 20.0,
+      "p95_within_budget": true,
+      "samples_over_budget": 0
+    },
+    "robot_commands_sent": false,
+    "robot_validation": false
+  },
+  "next_stage": "Controlled physical validation and control integration are not performed; no motor ownership acquired."
+}

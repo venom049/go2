@@ -1,0 +1,168 @@
+{
+  "protocol": {
+    "stair_height_m": 0.18,
+    "tread_m": 0.32,
+    "stair_count": 8,
+    "forward_command_m_s": 0.4,
+    "seeds": [
+      42,
+      43
+    ],
+    "first_episodes_per_seed": 64,
+    "time_limit_s": 25,
+    "sensor_contact_history": 4,
+    "observation_corruption": false,
+    "domain_randomization": false,
+    "gait_quality_selection": "successful first episodes",
+    "stairs_phase": "base center local x in [1.2,1.2+num_steps*tread), separate from approach/platform"
+  },
+  "model_selection": "seed42 compared updates100,300,400; chose400 for narrower front stance with retained success. seed43 evaluated after selection.",
+  "models": {
+    "before": {
+      "checkpoint": "/root/go2-himloco/logs/20261102_171629_stairs_natural_refinement/model_400.pt",
+      "input_files": [
+        "before_18cm_seed42_phase.json",
+        "before_18cm_seed43_phase.json"
+      ],
+      "by_seed": [
+        {
+          "seed": 42,
+          "episodes": 64,
+          "successes": 60,
+          "failures": 1,
+          "timeouts": 3
+        },
+        {
+          "seed": 43,
+          "episodes": 64,
+          "successes": 62,
+          "failures": 1,
+          "timeouts": 1
+        }
+      ],
+      "episodes": 128,
+      "successes": 122,
+      "failures": 2,
+      "timeouts": 4,
+      "success_rate": 0.953125,
+      "successful_episode_metrics": {
+        "stairs_hip_abduction_mean_rad": 0.47254332603701993,
+        "stairs_hip_abduction_rms_rad": 0.5359350339373755,
+        "stairs_hip_abduction_over_limit_fraction": 0.7848270504538393,
+        "stairs_feet_lateral_outer_fraction": 0.6159988551803091,
+        "stairs_feet_lateral_inner_fraction": 8.995011857061084e-05,
+        "stairs_front_foot_lateral_width_mean_m": 0.5666313907366878,
+        "stairs_rear_foot_lateral_width_mean_m": 0.39532065306293557,
+        "applied_action_second_delta_rms_rad": 0.07091315434797413,
+        "stance_foot_slip_rms_m_s": 0.15611437785396218,
+        "body_roll_rms_rad": 0.10882159439113201,
+        "mechanical_power_mean_w": 137.2801094434843,
+        "stairs_FL_hip_abduction_mean_rad": 0.5869915989858705,
+        "stairs_FL_hip_abduction_rms_rad": 0.6026186431782016,
+        "stairs_FL_hip_abduction_over_limit_fraction": 0.977332570120206,
+        "stairs_FL_foot_lateral_mean_m": 0.28720049471216275,
+        "stairs_FL_foot_lateral_outer_fraction": 0.9344999591135824,
+        "stairs_FL_foot_lateral_inner_fraction": 0.0,
+        "stairs_FR_hip_abduction_mean_rad": 0.6184849322379556,
+        "stairs_FR_hip_abduction_rms_rad": 0.6355049985837691,
+        "stairs_FR_hip_abduction_over_limit_fraction": 0.9557445416632595,
+        "stairs_FR_foot_lateral_mean_m": 0.27943089602988647,
+        "stairs_FR_foot_lateral_outer_fraction": 0.8124621800637828,
+        "stairs_FR_foot_lateral_inner_fraction": 0.0,
+        "stairs_RL_hip_abduction_mean_rad": 0.436766402580863,
+        "stairs_RL_hip_abduction_rms_rad": 0.5044678512473606,
+        "stairs_RL_hip_abduction_over_limit_fraction": 0.7442472810532341,
+        "stairs_RL_foot_lateral_mean_m": 0.21413961700398726,
+        "stairs_RL_foot_lateral_outer_fraction": 0.5281543871126012,
+        "stairs_RL_foot_lateral_inner_fraction": 0.00035980047428244336,
+        "stairs_RR_hip_abduction_mean_rad": 0.24793037034339052,
+        "stairs_RR_hip_abduction_rms_rad": 0.35693388341932053,
+        "stairs_RR_hip_abduction_over_limit_fraction": 0.4619838089786573,
+        "stairs_RR_foot_lateral_mean_m": 0.18118103600752716,
+        "stairs_RR_foot_lateral_outer_fraction": 0.18887889443126993,
+        "stairs_RR_foot_lateral_inner_fraction": 0.0
+      },
+      "nonfinite_metric_elements": 0
+    },
+    "after400": {
+      "checkpoint": "/root/go2-himloco/logs/20261102_175509_stairs_lateral_refinement/model_400.pt",
+      "input_files": [
+        "after400_18cm_seed42_phase.json",
+        "after400_18cm_seed43_phase.json"
+      ],
+      "by_seed": [
+        {
+          "seed": 42,
+          "episodes": 64,
+          "successes": 59,
+          "failures": 1,
+          "timeouts": 4
+        },
+        {
+          "seed": 43,
+          "episodes": 64,
+          "successes": 63,
+          "failures": 0,
+          "timeouts": 1
+        }
+      ],
+      "episodes": 128,
+      "successes": 122,
+      "failures": 1,
+      "timeouts": 5,
+      "success_rate": 0.953125,
+      "successful_episode_metrics": {
+        "stairs_hip_abduction_mean_rad": 0.20698462334070614,
+        "stairs_hip_abduction_rms_rad": 0.2853760976985732,
+        "stairs_hip_abduction_over_limit_fraction": 0.38676070859499484,
+        "stairs_feet_lateral_outer_fraction": 0.27928578123535475,
+        "stairs_feet_lateral_inner_fraction": 0.034140969162995596,
+        "stairs_front_foot_lateral_width_mean_m": 0.44544410805121637,
+        "stairs_rear_foot_lateral_width_mean_m": 0.31595570056812083,
+        "applied_action_second_delta_rms_rad": 0.06089300737352393,
+        "stance_foot_slip_rms_m_s": 0.16257566970131887,
+        "body_roll_rms_rad": 0.13494703396076846,
+        "mechanical_power_mean_w": 146.82440263131355,
+        "stairs_FL_hip_abduction_mean_rad": 0.3189342004782636,
+        "stairs_FL_hip_abduction_rms_rad": 0.33773807924744825,
+        "stairs_FL_hip_abduction_over_limit_fraction": 0.6365170119036461,
+        "stairs_FL_foot_lateral_mean_m": 0.22063555750220368,
+        "stairs_FL_foot_lateral_outer_fraction": 0.4680288686849752,
+        "stairs_FL_foot_lateral_inner_fraction": 0.00065610647670822,
+        "stairs_FR_hip_abduction_mean_rad": 0.30707750394769656,
+        "stairs_FR_hip_abduction_rms_rad": 0.3293218637311162,
+        "stairs_FR_hip_abduction_over_limit_fraction": 0.5161495922766894,
+        "stairs_FR_foot_lateral_mean_m": 0.22480855062694735,
+        "stairs_FR_foot_lateral_outer_fraction": 0.6082669416065236,
+        "stairs_FR_foot_lateral_inner_fraction": 0.0,
+        "stairs_RL_hip_abduction_mean_rad": 0.016182294023492777,
+        "stairs_RL_hip_abduction_rms_rad": 0.2127861754410039,
+        "stairs_RL_hip_abduction_over_limit_fraction": 0.12642234511200676,
+        "stairs_RL_foot_lateral_mean_m": 0.14332663755822353,
+        "stairs_RL_foot_lateral_outer_fraction": 0.02510075920892305,
+        "stairs_RL_foot_lateral_inner_fraction": 0.1342956228325054,
+        "stairs_RR_hip_abduction_mean_rad": 0.18574449491337158,
+        "stairs_RR_hip_abduction_rms_rad": 0.2407492720378619,
+        "stairs_RR_hip_abduction_over_limit_fraction": 0.26795388508763707,
+        "stairs_RR_foot_lateral_mean_m": 0.1726290630617839,
+        "stairs_RR_foot_lateral_outer_fraction": 0.015746555440997283,
+        "stairs_RR_foot_lateral_inner_fraction": 0.0016121473427687693
+      },
+      "nonfinite_metric_elements": 0
+    }
+  },
+  "limitations": [
+    "Only one fixed staircase geometry and two seeds; no real-hardware or generalized success claim.",
+    "Posture statistics below use successful first episodes; stairs_ denotes base center over stair-flight horizontal projection.",
+    "Soft constraints permit some threshold crossings; inner-bound violations at10cm are not equivalent to crossing the body centerline."
+  ],
+  "selected_model": {
+    "server_checkpoint": "/root/go2-himloco/logs/20261102_175509_stairs_lateral_refinement/model_400.pt",
+    "local_checkpoint": "/home/venom/文档/ChatGPT/机器狗/artifacts/20261102_175509_stairs_lateral_refinement/model_400.pt",
+    "sha256": "8e70bd531078cb6b8ec78304edd6dc7a5654541ecbe0fbf608bfc968f18102b3",
+    "training_completed_updates": 400,
+    "checkpoint_update": 400,
+    "viewer": "http://127.0.0.1:18080/",
+    "view": "front"
+  }
+}

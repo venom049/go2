@@ -1,0 +1,740 @@
+{
+  "schema_version": 1,
+  "source_path": "/home/venom/文档/ChatGPT/机器狗/validation/torque_deployment/comparison.json",
+  "source_sha256": "a0c4d9565ddc806feb66a0e638b9bcc5c44874040d697ff8bdfaa64545796f39",
+  "aggregation": "Two seeds combined by corresponding metric element counts; RMS metrics combine weighted squares before square root. Torque fractions use all active physical joint samples, including failures; ratios use maximum per-joint peak/limit across seeds.",
+  "notes": [
+    "0.6 m/s is commanded speed; reported forward speed is measured horizontal stair ascent velocity.",
+    "Gait metrics cover successful first episodes only; failed first episodes remain included in torque audit.",
+    "No model passed zero requested/applied torque exceedance acceptance."
+  ],
+  "torque_eligible_candidates": [],
+  "rows": [
+    {
+      "height_m": 0.15,
+      "tread_m": 0.3,
+      "controller": "stairs",
+      "label": "reference1100",
+      "seeds": [
+        42,
+        43
+      ],
+      "command_m_s": 0.6,
+      "successes": 29,
+      "episodes": 128,
+      "successful_episode_gait": {
+        "stairs_course_forward_velocity_mean_m_s": 0.14151698561185144,
+        "stairs_body_roll_rms_rad": 0.07182795102802376,
+        "stairs_hip_outward_component_mean_rad": 0.209765397447647,
+        "stairs_stance_foot_slip_rms_m_s": 0.07625766333740405
+      },
+      "aggregation_basis": {
+        "stairs_course_forward_velocity_mean_m_s": {
+          "aggregation": "mean",
+          "total_metric_element_count": 24325,
+          "seeds": [
+            {
+              "seed": 42,
+              "value": 0.1313632376011847,
+              "count": 14463
+            },
+            {
+              "seed": 43,
+              "value": 0.15640784522230297,
+              "count": 9862
+            }
+          ]
+        },
+        "stairs_body_roll_rms_rad": {
+          "aggregation": "rms",
+          "total_metric_element_count": 24325,
+          "seeds": [
+            {
+              "seed": 42,
+              "value": 0.07332581804516225,
+              "count": 14463
+            },
+            {
+              "seed": 43,
+              "value": 0.06957297088449345,
+              "count": 9862
+            }
+          ]
+        },
+        "stairs_hip_outward_component_mean_rad": {
+          "aggregation": "mean",
+          "total_metric_element_count": 97300,
+          "seeds": [
+            {
+              "seed": 42,
+              "value": 0.20866429004966722,
+              "count": 57852
+            },
+            {
+              "seed": 43,
+              "value": 0.21138021353941155,
+              "count": 39448
+            }
+          ]
+        },
+        "stairs_stance_foot_slip_rms_m_s": {
+          "aggregation": "rms",
+          "total_metric_element_count": 72806,
+          "seeds": [
+            {
+              "seed": 42,
+              "value": 0.06797910968128261,
+              "count": 43945
+            },
+            {
+              "seed": 43,
+              "value": 0.08736919594136526,
+              "count": 28861
+            }
+          ]
+        }
+      },
+      "torque_audit": {
+        "physics_joint_samples": 6777552,
+        "requested_excess_joint_samples": 825161,
+        "applied_excess_joint_samples": 0,
+        "requested_excess_fraction": 0.12174912121662806,
+        "requested_peak": {
+          "seed": 43,
+          "joint": "RR_thigh_joint",
+          "peak_nm": 78.06541442871094,
+          "limit_nm": 23.700000762939453,
+          "ratio": 3.293899236947901
+        },
+        "applied_excess_fraction": 0.0,
+        "applied_peak": {
+          "seed": 42,
+          "joint": "FL_hip_joint",
+          "peak_nm": 23.700000762939453,
+          "limit_nm": 23.700000762939453,
+          "ratio": 1.0
+        },
+        "torque_acceptance_passed": false,
+        "seeds": [
+          {
+            "seed": 42,
+            "physics_samples_per_joint": 281160,
+            "requested_excess_joint_samples": 404183,
+            "applied_excess_joint_samples": 0
+          },
+          {
+            "seed": 43,
+            "physics_samples_per_joint": 283636,
+            "requested_excess_joint_samples": 420978,
+            "applied_excess_joint_samples": 0
+          }
+        ]
+      }
+    },
+    {
+      "height_m": 0.15,
+      "tread_m": 0.3,
+      "controller": "stairs",
+      "label": "torque500",
+      "seeds": [
+        42,
+        43
+      ],
+      "command_m_s": 0.6,
+      "successes": 128,
+      "episodes": 128,
+      "successful_episode_gait": {
+        "stairs_course_forward_velocity_mean_m_s": 0.4234753371321929,
+        "stairs_body_roll_rms_rad": 0.11326482607100698,
+        "stairs_hip_outward_component_mean_rad": 0.12970048226959235,
+        "stairs_stance_foot_slip_rms_m_s": 0.15677949583868905
+      },
+      "aggregation_basis": {
+        "stairs_course_forward_velocity_mean_m_s": {
+          "aggregation": "mean",
+          "total_metric_element_count": 35719,
+          "seeds": [
+            {
+              "seed": 42,
+              "value": 0.42296995788882635,
+              "count": 17882
+            },
+            {
+              "seed": 43,
+              "value": 0.4239819913694458,
+              "count": 17837
+            }
+          ]
+        },
+        "stairs_body_roll_rms_rad": {
+          "aggregation": "rms",
+          "total_metric_element_count": 35719,
+          "seeds": [
+            {
+              "seed": 42,
+              "value": 0.11262590605983688,
+              "count": 17882
+            },
+            {
+              "seed": 43,
+              "value": 0.11390176050661184,
+              "count": 17837
+            }
+          ]
+        },
+        "stairs_hip_outward_component_mean_rad": {
+          "aggregation": "mean",
+          "total_metric_element_count": 142876,
+          "seeds": [
+            {
+              "seed": 42,
+              "value": 0.12970440755802498,
+              "count": 71528
+            },
+            {
+              "seed": 43,
+              "value": 0.1296965470782624,
+              "count": 71348
+            }
+          ]
+        },
+        "stairs_stance_foot_slip_rms_m_s": {
+          "aggregation": "rms",
+          "total_metric_element_count": 81972,
+          "seeds": [
+            {
+              "seed": 42,
+              "value": 0.15521514207988008,
+              "count": 41074
+            },
+            {
+              "seed": 43,
+              "value": 0.15833502662062113,
+              "count": 40898
+            }
+          ]
+        }
+      },
+      "torque_audit": {
+        "physics_joint_samples": 2751504,
+        "requested_excess_joint_samples": 59366,
+        "applied_excess_joint_samples": 0,
+        "requested_excess_fraction": 0.02157583634259663,
+        "requested_peak": {
+          "seed": 43,
+          "joint": "RR_thigh_joint",
+          "peak_nm": 37.0916862487793,
+          "limit_nm": 23.700000762939453,
+          "ratio": 1.565050002309743
+        },
+        "applied_excess_fraction": 0.0,
+        "applied_peak": {
+          "seed": 42,
+          "joint": "FR_hip_joint",
+          "peak_nm": 23.700000762939453,
+          "limit_nm": 23.700000762939453,
+          "ratio": 1.0
+        },
+        "torque_acceptance_passed": false,
+        "seeds": [
+          {
+            "seed": 42,
+            "physics_samples_per_joint": 114308,
+            "requested_excess_joint_samples": 29634,
+            "applied_excess_joint_samples": 0
+          },
+          {
+            "seed": 43,
+            "physics_samples_per_joint": 114984,
+            "requested_excess_joint_samples": 29732,
+            "applied_excess_joint_samples": 0
+          }
+        ]
+      }
+    },
+    {
+      "height_m": 0.15,
+      "tread_m": 0.3,
+      "controller": "stairs",
+      "label": "torque1000",
+      "seeds": [
+        42,
+        43
+      ],
+      "command_m_s": 0.6,
+      "successes": 128,
+      "episodes": 128,
+      "successful_episode_gait": {
+        "stairs_course_forward_velocity_mean_m_s": 0.45179039934687987,
+        "stairs_body_roll_rms_rad": 0.05405316070926174,
+        "stairs_hip_outward_component_mean_rad": 0.11792235656922855,
+        "stairs_stance_foot_slip_rms_m_s": 0.1440722056457817
+      },
+      "aggregation_basis": {
+        "stairs_course_forward_velocity_mean_m_s": {
+          "aggregation": "mean",
+          "total_metric_element_count": 33573,
+          "seeds": [
+            {
+              "seed": 42,
+              "value": 0.4522925199608348,
+              "count": 16769
+            },
+            {
+              "seed": 43,
+              "value": 0.4512893245685288,
+              "count": 16804
+            }
+          ]
+        },
+        "stairs_body_roll_rms_rad": {
+          "aggregation": "rms",
+          "total_metric_element_count": 33573,
+          "seeds": [
+            {
+              "seed": 42,
+              "value": 0.05462378054132481,
+              "count": 16769
+            },
+            {
+              "seed": 43,
+              "value": 0.053477660084811425,
+              "count": 16804
+            }
+          ]
+        },
+        "stairs_hip_outward_component_mean_rad": {
+          "aggregation": "mean",
+          "total_metric_element_count": 134292,
+          "seeds": [
+            {
+              "seed": 42,
+              "value": 0.11800935934414114,
+              "count": 67076
+            },
+            {
+              "seed": 43,
+              "value": 0.11783553500695115,
+              "count": 67216
+            }
+          ]
+        },
+        "stairs_stance_foot_slip_rms_m_s": {
+          "aggregation": "rms",
+          "total_metric_element_count": 70747,
+          "seeds": [
+            {
+              "seed": 42,
+              "value": 0.14434758482659418,
+              "count": 35377
+            },
+            {
+              "seed": 43,
+              "value": 0.14379624444059363,
+              "count": 35370
+            }
+          ]
+        }
+      },
+      "torque_audit": {
+        "physics_joint_samples": 2685216,
+        "requested_excess_joint_samples": 8020,
+        "applied_excess_joint_samples": 0,
+        "requested_excess_fraction": 0.0029867243454530287,
+        "requested_peak": {
+          "seed": 43,
+          "joint": "FL_thigh_joint",
+          "peak_nm": 31.957746505737305,
+          "limit_nm": 23.700000762939453,
+          "ratio": 1.3484280791969756
+        },
+        "applied_excess_fraction": 0.0,
+        "applied_peak": {
+          "seed": 42,
+          "joint": "FL_hip_joint",
+          "peak_nm": 23.700000762939453,
+          "limit_nm": 23.700000762939453,
+          "ratio": 1.0
+        },
+        "torque_acceptance_passed": false,
+        "seeds": [
+          {
+            "seed": 42,
+            "physics_samples_per_joint": 111464,
+            "requested_excess_joint_samples": 3800,
+            "applied_excess_joint_samples": 0
+          },
+          {
+            "seed": 43,
+            "physics_samples_per_joint": 112304,
+            "requested_excess_joint_samples": 4220,
+            "applied_excess_joint_samples": 0
+          }
+        ]
+      }
+    },
+    {
+      "height_m": 0.18,
+      "tread_m": 0.32,
+      "controller": "hybrid",
+      "label": "reference1100",
+      "seeds": [
+        42,
+        43
+      ],
+      "command_m_s": 0.6,
+      "successes": 128,
+      "episodes": 128,
+      "successful_episode_gait": {
+        "stairs_course_forward_velocity_mean_m_s": 0.45771097387592674,
+        "stairs_body_roll_rms_rad": 0.03991454539681708,
+        "stairs_hip_outward_component_mean_rad": 0.14991252770825045,
+        "stairs_stance_foot_slip_rms_m_s": 0.12919704483467573
+      },
+      "aggregation_basis": {
+        "stairs_course_forward_velocity_mean_m_s": {
+          "aggregation": "mean",
+          "total_metric_element_count": 35342,
+          "seeds": [
+            {
+              "seed": 42,
+              "value": 0.4556744202973074,
+              "count": 17749
+            },
+            {
+              "seed": 43,
+              "value": 0.4597655859072412,
+              "count": 17593
+            }
+          ]
+        },
+        "stairs_body_roll_rms_rad": {
+          "aggregation": "rms",
+          "total_metric_element_count": 35342,
+          "seeds": [
+            {
+              "seed": 42,
+              "value": 0.0408225892639341,
+              "count": 17749
+            },
+            {
+              "seed": 43,
+              "value": 0.03897701883382402,
+              "count": 17593
+            }
+          ]
+        },
+        "stairs_hip_outward_component_mean_rad": {
+          "aggregation": "mean",
+          "total_metric_element_count": 141368,
+          "seeds": [
+            {
+              "seed": 42,
+              "value": 0.14996721852813952,
+              "count": 70996
+            },
+            {
+              "seed": 43,
+              "value": 0.14985735193594263,
+              "count": 70372
+            }
+          ]
+        },
+        "stairs_stance_foot_slip_rms_m_s": {
+          "aggregation": "rms",
+          "total_metric_element_count": 73168,
+          "seeds": [
+            {
+              "seed": 42,
+              "value": 0.12734932490265896,
+              "count": 36773
+            },
+            {
+              "seed": 43,
+              "value": 0.13103749649307994,
+              "count": 36395
+            }
+          ]
+        }
+      },
+      "torque_audit": {
+        "physics_joint_samples": 3083520,
+        "requested_excess_joint_samples": 359032,
+        "applied_excess_joint_samples": 0,
+        "requested_excess_fraction": 0.11643576172685761,
+        "requested_peak": {
+          "seed": 42,
+          "joint": "FL_thigh_joint",
+          "peak_nm": 72.16932678222656,
+          "limit_nm": 23.700000762939453,
+          "ratio": 3.0451191754845994
+        },
+        "applied_excess_fraction": 0.0,
+        "applied_peak": {
+          "seed": 42,
+          "joint": "FL_hip_joint",
+          "peak_nm": 23.700000762939453,
+          "limit_nm": 23.700000762939453,
+          "ratio": 1.0
+        },
+        "torque_acceptance_passed": false,
+        "seeds": [
+          {
+            "seed": 42,
+            "physics_samples_per_joint": 128948,
+            "requested_excess_joint_samples": 179631,
+            "applied_excess_joint_samples": 0
+          },
+          {
+            "seed": 43,
+            "physics_samples_per_joint": 128012,
+            "requested_excess_joint_samples": 179401,
+            "applied_excess_joint_samples": 0
+          }
+        ]
+      }
+    },
+    {
+      "height_m": 0.18,
+      "tread_m": 0.32,
+      "controller": "hybrid",
+      "label": "torque500",
+      "seeds": [
+        42,
+        43
+      ],
+      "command_m_s": 0.6,
+      "successes": 104,
+      "episodes": 128,
+      "successful_episode_gait": {
+        "stairs_course_forward_velocity_mean_m_s": 0.4488402675938983,
+        "stairs_body_roll_rms_rad": 0.13358117196338737,
+        "stairs_hip_outward_component_mean_rad": 0.13207551323470546,
+        "stairs_stance_foot_slip_rms_m_s": 0.1320487890212353
+      },
+      "aggregation_basis": {
+        "stairs_course_forward_velocity_mean_m_s": {
+          "aggregation": "mean",
+          "total_metric_element_count": 29482,
+          "seeds": [
+            {
+              "seed": 42,
+              "value": 0.4457560334267073,
+              "count": 14275
+            },
+            {
+              "seed": 43,
+              "value": 0.45173547655928603,
+              "count": 15207
+            }
+          ]
+        },
+        "stairs_body_roll_rms_rad": {
+          "aggregation": "rms",
+          "total_metric_element_count": 29482,
+          "seeds": [
+            {
+              "seed": 42,
+              "value": 0.13253047505651847,
+              "count": 14275
+            },
+            {
+              "seed": 43,
+              "value": 0.1345600089916783,
+              "count": 15207
+            }
+          ]
+        },
+        "stairs_hip_outward_component_mean_rad": {
+          "aggregation": "mean",
+          "total_metric_element_count": 117928,
+          "seeds": [
+            {
+              "seed": 42,
+              "value": 0.13244065005677153,
+              "count": 57100
+            },
+            {
+              "seed": 43,
+              "value": 0.13173275475933272,
+              "count": 60828
+            }
+          ]
+        },
+        "stairs_stance_foot_slip_rms_m_s": {
+          "aggregation": "rms",
+          "total_metric_element_count": 63225,
+          "seeds": [
+            {
+              "seed": 42,
+              "value": 0.1307472565379728,
+              "count": 30616
+            },
+            {
+              "seed": 43,
+              "value": 0.13325920450541806,
+              "count": 32609
+            }
+          ]
+        }
+      },
+      "torque_audit": {
+        "physics_joint_samples": 4127664,
+        "requested_excess_joint_samples": 58339,
+        "applied_excess_joint_samples": 0,
+        "requested_excess_fraction": 0.014133660104117002,
+        "requested_peak": {
+          "seed": 42,
+          "joint": "FR_thigh_joint",
+          "peak_nm": 65.0319595336914,
+          "limit_nm": 23.700000762939453,
+          "ratio": 2.743964448954121
+        },
+        "applied_excess_fraction": 0.0,
+        "applied_peak": {
+          "seed": 42,
+          "joint": "FL_hip_joint",
+          "peak_nm": 23.700000762939453,
+          "limit_nm": 23.700000762939453,
+          "ratio": 1.0
+        },
+        "torque_acceptance_passed": false,
+        "seeds": [
+          {
+            "seed": 42,
+            "physics_samples_per_joint": 178612,
+            "requested_excess_joint_samples": 28743,
+            "applied_excess_joint_samples": 0
+          },
+          {
+            "seed": 43,
+            "physics_samples_per_joint": 165360,
+            "requested_excess_joint_samples": 29596,
+            "applied_excess_joint_samples": 0
+          }
+        ]
+      }
+    },
+    {
+      "height_m": 0.18,
+      "tread_m": 0.32,
+      "controller": "hybrid",
+      "label": "torque1000",
+      "seeds": [
+        42,
+        43
+      ],
+      "command_m_s": 0.6,
+      "successes": 128,
+      "episodes": 128,
+      "successful_episode_gait": {
+        "stairs_course_forward_velocity_mean_m_s": 0.46715157224715376,
+        "stairs_body_roll_rms_rad": 0.12599086828558528,
+        "stairs_hip_outward_component_mean_rad": 0.1283170417572949,
+        "stairs_stance_foot_slip_rms_m_s": 0.1458001781084781
+      },
+      "aggregation_basis": {
+        "stairs_course_forward_velocity_mean_m_s": {
+          "aggregation": "mean",
+          "total_metric_element_count": 34765,
+          "seeds": [
+            {
+              "seed": 42,
+              "value": 0.4655947402914425,
+              "count": 17446
+            },
+            {
+              "seed": 43,
+              "value": 0.4687198204311908,
+              "count": 17319
+            }
+          ]
+        },
+        "stairs_body_roll_rms_rad": {
+          "aggregation": "rms",
+          "total_metric_element_count": 34765,
+          "seeds": [
+            {
+              "seed": 42,
+              "value": 0.12694722862530963,
+              "count": 17446
+            },
+            {
+              "seed": 43,
+              "value": 0.1250200986953586,
+              "count": 17319
+            }
+          ]
+        },
+        "stairs_hip_outward_component_mean_rad": {
+          "aggregation": "mean",
+          "total_metric_element_count": 139060,
+          "seeds": [
+            {
+              "seed": 42,
+              "value": 0.1285719711687504,
+              "count": 69784
+            },
+            {
+              "seed": 43,
+              "value": 0.12806024295180654,
+              "count": 69276
+            }
+          ]
+        },
+        "stairs_stance_foot_slip_rms_m_s": {
+          "aggregation": "rms",
+          "total_metric_element_count": 72977,
+          "seeds": [
+            {
+              "seed": 42,
+              "value": 0.15060862518930637,
+              "count": 36654
+            },
+            {
+              "seed": 43,
+              "value": 0.14078152539752045,
+              "count": 36323
+            }
+          ]
+        }
+      },
+      "torque_audit": {
+        "physics_joint_samples": 3181536,
+        "requested_excess_joint_samples": 21165,
+        "applied_excess_joint_samples": 0,
+        "requested_excess_fraction": 0.006652447119881717,
+        "requested_peak": {
+          "seed": 42,
+          "joint": "RR_thigh_joint",
+          "peak_nm": 41.226226806640625,
+          "limit_nm": 23.700000762939453,
+          "ratio": 1.7395031847892413
+        },
+        "applied_excess_fraction": 0.0,
+        "applied_peak": {
+          "seed": 42,
+          "joint": "FL_hip_joint",
+          "peak_nm": 23.700000762939453,
+          "limit_nm": 23.700000762939453,
+          "ratio": 1.0
+        },
+        "torque_acceptance_passed": false,
+        "seeds": [
+          {
+            "seed": 42,
+            "physics_samples_per_joint": 133352,
+            "requested_excess_joint_samples": 10426,
+            "applied_excess_joint_samples": 0
+          },
+          {
+            "seed": 43,
+            "physics_samples_per_joint": 131776,
+            "requested_excess_joint_samples": 10739,
+            "applied_excess_joint_samples": 0
+          }
+        ]
+      }
+    }
+  ]
+}

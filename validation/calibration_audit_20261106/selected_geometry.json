@@ -1,0 +1,114 @@
+{
+  "read_only": true,
+  "files": [
+    {
+      "source": "/home/unitree/go2_foxy/go2/src/go2_description/urdf/go2_description.urdf",
+      "sha256": "0ba25b92b9d6da5b4fcfb45d51c41cd34454138f5d5cf4b66eede38af229867d",
+      "joint": "utlidar_lidar_joint",
+      "parent": "base_link",
+      "child": "utlidar_lidar",
+      "origin": {
+        "xyz": "0.28945 0 -0.046825",
+        "rpy": "0 2.8782 0"
+      },
+      "classification": "Nominal robot-description mounting transform; per-unit measurement provenance not found"
+    },
+    {
+      "source": "/home/unitree/go2_foxy/go2/src/go2_description/urdf/go2_description.urdf",
+      "sha256": "0ba25b92b9d6da5b4fcfb45d51c41cd34454138f5d5cf4b66eede38af229867d",
+      "joint": "imu_joint",
+      "parent": "base_link",
+      "child": "imu",
+      "origin": {
+        "xyz": "-0.02557 0 0.04232",
+        "rpy": "0 0 0"
+      },
+      "classification": "Nominal robot-description mounting transform; per-unit measurement provenance not found"
+    },
+    {
+      "source": "/unitree/module/graph_pid_ws/src/lio_sam_ros2/config/params.yaml",
+      "sha256": "fab19806d458ab31a36957c0909420381be324287cfdea794125bd2af3059171",
+      "geometry_excerpt": [
+        {
+          "line": 4,
+          "text": "      pointCloudTopic: \"rslidar_points\"               # Point cloud data"
+        },
+        {
+          "line": 5,
+          "text": "      imuTopic: \"dog_imu_raw\"                         # IMU data"
+        },
+        {
+          "line": 28,
+          "text": "      sensor: xt16                                # lidar sensor type,  livox/xt16"
+        },
+        {
+          "line": 49,
+          "text": "      imuTimeDelay: 0.0"
+        },
+        {
+          "line": 53,
+          "text": "      extrinsicTrans: [-0.16, 0.0, -0.13] #5515\u96f7\u8fbe"
+        },
+        {
+          "line": 64,
+          "text": "      extrinsicRot: [1.0, 0.0, 0.0,\n                     0.0, 1.0, 0.0,\n                     0.0, 0.0, 1.0]                    "
+        },
+        {
+          "line": 67,
+          "text": "      extrinsicRPY: [1.0, 0.0, 0.0,\n                     0.0, 1.0, 0.0,\n                     0.0, 0.0, 1.0]"
+        }
+      ],
+      "classification": "Preinstalled LIO-SAM configuration for alternate lidar; current native utlidar use not established"
+    },
+    {
+      "source": "/unitree/module/graph_pid_ws/src/lio_sam_ros2/config/params_mid360.yaml",
+      "sha256": "4111a01aec3c87e1f1d44b2b9ec2714b529ba7e21e55045a383ab45be8fe753c",
+      "geometry_excerpt": [
+        {
+          "line": 4,
+          "text": "      pointCloudTopic: \"livox/lidar\"               # Point cloud data"
+        },
+        {
+          "line": 5,
+          "text": "      imuTopic: \"dog_imu_raw\"                         # IMU data"
+        },
+        {
+          "line": 28,
+          "text": "      sensor: livox                            # lidar sensor type, either 'velodyne' or 'ouster'   \u6dfb\u52a0livox \u2018robosense"
+        },
+        {
+          "line": 49,
+          "text": "      imuTimeDelay: 0.0"
+        },
+        {
+          "line": 53,
+          "text": "      extrinsicTrans: [-0.16, 0.0, -0.13] #5515\u96f7\u8fbe"
+        },
+        {
+          "line": 64,
+          "text": "      extrinsicRot: [1.0, 0.0, 0.0,\n                     0.0, 1.0, 0.0,\n                     0.0, 0.0, 1.0]                    "
+        },
+        {
+          "line": 67,
+          "text": "      extrinsicRPY: [1.0, 0.0, 0.0,\n                     0.0, 1.0, 0.0,\n                     0.0, 0.0, 1.0]"
+        }
+      ],
+      "classification": "Preinstalled LIO-SAM configuration for alternate lidar; current native utlidar use not established"
+    },
+    {
+      "source": "/unitree/module/graph_pid_ws/src/livox_ros_driver2/config/MID360_config.json",
+      "sha256": "1aa670b22a89bcc867f6e8acdaf32f672f2e68ce59a753776e617eba6cd248f6",
+      "extrinsic_parameters": [
+        {
+          "roll": 0.0,
+          "pitch": 1.57079632,
+          "yaw": 3.14159265,
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      ],
+      "classification": "Livox MID360 driver configuration; not proof of current front lidar calibration"
+    }
+  ]
+}

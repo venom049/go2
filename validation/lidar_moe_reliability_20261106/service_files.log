@@ -1,0 +1,210 @@
+/unitree/module/Odometer_service/src/minkindr/minkindr/package.xml
+/unitree/module/Odometer_service/src/minkindr/README.md
+/unitree/module/Odometer_service/src/minkindr/LICENSE
+/unitree/module/Odometer_service/src/minkindr/minkindr_python/setup.py
+/unitree/module/Odometer_service/src/minkindr/minkindr_python/dependencies.rosinstall
+/unitree/module/Odometer_service/src/minkindr/minkindr_python/package.xml
+/unitree/module/Odometer_service/src/minkindr/minkindr_python/CATKIN_IGNORE
+/unitree/module/Odometer_service/src/minkindr/dependencies.rosinstall
+/unitree/module/Odometer_service/src/ceres_catkin/README.md
+/unitree/module/Odometer_service/src/ceres_catkin/package.xml
+/unitree/module/Odometer_service/src/glog_catkin/README.md
+/unitree/module/Odometer_service/src/glog_catkin/fix-unused-typedef-warning.patch
+/unitree/module/Odometer_service/src/glog_catkin/package.xml
+/unitree/module/Odometer_service/src/fast_neon/src/faster_corner_9_neon.cpp
+/unitree/module/Odometer_service/src/fast_neon/src/fast_9.cpp
+/unitree/module/Odometer_service/src/fast_neon/src/nonmax_3x3.cpp
+/unitree/module/Odometer_service/src/fast_neon/src/faster_corner_10_sse.cpp
+/unitree/module/Odometer_service/src/fast_neon/src/nonmax_5x5.cpp
+/unitree/module/Odometer_service/src/fast_neon/src/fast_10_score.cpp
+/unitree/module/Odometer_service/src/fast_neon/src/fast_10.cpp
+/unitree/module/Odometer_service/src/fast_neon/package.xml
+/unitree/module/Odometer_service/src/fast_neon/test/test.cpp
+/unitree/module/Odometer_service/src/dbow2_catkin/README.md
+/unitree/module/Odometer_service/src/dbow2_catkin/src/dependency_tracker.cc
+/unitree/module/Odometer_service/src/dbow2_catkin/package.xml
+/unitree/module/Odometer_service/src/minkindr_ros/README.md
+/unitree/module/Odometer_service/src/minkindr_ros/LICENSE
+/unitree/module/Odometer_service/src/minkindr_ros/minkindr_conversions/package.xml
+/unitree/module/Odometer_service/src/gflags_catkin/README.md
+/unitree/module/Odometer_service/src/gflags_catkin/package.xml
+/unitree/module/Odometer_service/src/opengv/License.txt
+/unitree/module/Odometer_service/src/opengv/README.txt
+/unitree/module/Odometer_service/src/opengv/python/types.hpp
+/unitree/module/Odometer_service/src/opengv/python/tests.py
+/unitree/module/Odometer_service/src/opengv/python/pyopengv.cpp
+/unitree/module/Odometer_service/src/opengv/matlab/opengv_donotuse.cpp
+/unitree/module/Odometer_service/src/opengv/matlab/opengv.cpp
+/unitree/module/Odometer_service/src/opengv/matlab/ransac_test.m
+/unitree/module/Odometer_service/src/opengv/matlab/benchmark_relative_pose_noncentral_execution_times2.m
+/unitree/module/Odometer_service/src/opengv/matlab/ransac_experiment2.m
+/unitree/module/Odometer_service/src/opengv/matlab/opengv_experimental1.cpp
+/unitree/module/Odometer_service/src/opengv/matlab/benchmark_absolute_pose_noncentral_execution_timing.m
+/unitree/module/Odometer_service/src/opengv/matlab/benchmark_relative_pose.m
+/unitree/module/Odometer_service/src/opengv/matlab/benchmark_relative_pose_noncentral2.m
+/unitree/module/Odometer_service/src/opengv/matlab/ransac_experiment3.m
+/unitree/module/Odometer_service/src/opengv/matlab/benchmark_relative_pose_execution_times.m
+/unitree/module/Odometer_service/src/opengv/matlab/plot_arun_error.m
+/unitree/module/Odometer_service/src/opengv/matlab/benchmark_relative_pose_noncentral_execution_times.m
+/unitree/module/Odometer_service/src/opengv/matlab/benchmark_absolute_pose_noncentral.m
+/unitree/module/Odometer_service/src/opengv/matlab/ransac_experiment.m
+/unitree/module/Odometer_service/build/.built_by
+/unitree/module/Odometer_service/build/.catkin_tools.yaml
+/unitree/module/Odometer_service/build/.DS_Store
+/unitree/module/Odometer_service/devel/local_setup.zsh
+/unitree/module/Odometer_service/devel/.built_by
+/unitree/module/Odometer_service/devel/.catkin
+/unitree/module/Odometer_service/devel/setup.sh
+/unitree/module/Odometer_service/devel/cmake.lock
+/unitree/module/Odometer_service/devel/local_setup.sh
+/unitree/module/Odometer_service/devel/setup.bash
+/unitree/module/Odometer_service/devel/_setup_util.py
+/unitree/module/Odometer_service/devel/env.sh
+/unitree/module/Odometer_service/devel/local_setup.bash
+/unitree/module/Odometer_service/devel/setup.zsh
+/unitree/module/Odometer_service/.catkin_tools/VERSION
+/unitree/module/Odometer_service/.catkin_tools/README
+/unitree/module/Odometer_service/.catkin_tools/CATKIN_IGNORE
+/unitree/module/Odometer_service/.DS_Store
+#include "rclcpp/rclcpp.hpp"
+// 发布里程计消息的头文件
+#include "nav_msgs/msg/odometry.hpp"
+// 发布坐标变换的头文件
+#include "geometry_msgs/msg/transform_stamped.hpp"
+#include "tf2_ros/transform_broadcaster.h"
+#include "tf2_ros/static_transform_broadcaster.h"
+#include "tf2/LinearMath/Quaternion.h"
+#include "tf2/utils.h"
+// 发布关节状态信息的头文件
+#include "sensor_msgs/msg/joint_state.hpp"
+#include "unitree_go/msg/low_state.hpp"
+#include <cmath>
+#include <optional>
+
+#include "go2_driver/session_frame.hpp"
+
+using namespace std::placeholders;
+
+// 自定义节点类
+class Driver : public rclcpp::Node
+{
+public:
+  Driver()
+  : Node("driver")
+  {
+    RCLCPP_INFO(this->get_logger(), "Driver节点创建, 用于发布里程计消息，坐标变换和关节状态信息");
+
+    // 声明参数
+    // this->declare_parameter("publish_tf", true);
+
+    // 获取参数
+    // publish_tf = this->get_parameter("publish_tf").as_bool();
+
+    //坐标变换广播器
+    tf_bro_ = std::make_unique<tf2_ros::TransformBroadcaster>(*this);
+    static_tf_bro_ = std::make_unique<tf2_ros::StaticTransformBroadcaster>(*this);
+
+    odom_frame_ = this->declare_parameter<std::string>("odom_frame", "odom");
+    native_odom_frame_ =
+      this->declare_parameter<std::string>("native_odom_frame", "utlidar_odom");
+    base_frame_ = this->declare_parameter<std::string>("base_frame", "base_footprint");
+
+    odom_pub_ = this->create_publisher<nav_msgs::msg::Odometry>("odom", 10);
+    // The onboard Unitree lidar publishes the persistent robot pose as
+    // nav_msgs/Odometry on /utlidar/robot_odom.  The old subscription to
+    // geometry_msgs/PoseStamped /utlidar/robot_pose has no publisher on the
+    // real robot, so it only produced one stale TF at startup.
+    robot_pose_sub_ = this->create_subscription<nav_msgs::msg::Odometry>(
+      "/utlidar/robot_odom", 10,
+      std::bind(&Driver::pose_callback, this, std::placeholders::_1));
+
+
+    //关节状态发布
+    joint_state_pub_ = this->create_publisher<sensor_msgs::msg::JointState>("joint_states", 10);
+    low_state_sub_ = this->create_subscription<unitree_go::msg::LowState>(
+      "/lf/lowstate", 10, std::bind(
+        &Driver::low_state_cb, this,
+        std::placeholders::_1));
+  }
+
+private:
+  // 发布关节状态信息
+  rclcpp::Publisher<sensor_msgs::msg::JointState>::SharedPtr joint_state_pub_;
+  // 订阅低层状态
+  rclcpp::Subscription<unitree_go::msg::LowState>::SharedPtr low_state_sub_;
+  // 广播坐标变换
+  std::unique_ptr<tf2_ros::TransformBroadcaster> tf_bro_;
+  std::unique_ptr<tf2_ros::StaticTransformBroadcaster> static_tf_bro_;
+  // 订阅go2的状态
+  rclcpp::Subscription<nav_msgs::msg::Odometry>::SharedPtr robot_pose_sub_;
+  //发布里程计
+  rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr odom_pub_;
+  std::optional<rclcpp::Time> previous_stamp_;
+  std::optional<double> initial_base_x_;
+  double initial_base_y_{0.0};
+  double initial_yaw_{0.0};
+  double previous_x_{0.0};
+  double previous_y_{0.0};
+  double previous_yaw_{0.0};
+  std::string odom_frame_;
+  std::string native_odom_frame_;
+  std::string base_frame_;
+
+  //订阅低层信息获取关节状态， 组织消息并发布
+  void low_state_cb(const unitree_go::msg::LowState::SharedPtr low_state)
+  {
+    sensor_msgs::msg::JointState joint_state;
+
+    // Unitree's motor order is FR, FL, RR, RL. Keep the joint names in the
+    // same order as motor_state instead of assigning one leg's data to another.
+    joint_state.header.stamp = this->now();
+    joint_state.name = {
+      "FR_hip_joint", "FR_thigh_joint", "FR_calf_joint",
+      "FL_hip_joint", "FL_thigh_joint", "FL_calf_joint",
+      "RR_hip_joint", "RR_thigh_joint", "RR_calf_joint",
+      "RL_hip_joint", "RL_thigh_joint", "RL_calf_joint"
+    };
+
+    constexpr size_t kLegJointCount = 12;
+    constexpr double kMaxSaneJointPosition = 10.0;
+    joint_state.position.reserve(kLegJointCount);
+
+    for (size_t i = 0; i < kLegJointCount; ++i) {
+      const double position = low_state->motor_state[i].q;
+      if (!std::isfinite(position) || std::abs(position) > kMaxSaneJointPosition) {
+        RCLCPP_WARN_THROTTLE(
+          this->get_logger(), *this->get_clock(), 2000,
+          "Ignoring invalid LowState joint frame: motor_state[%zu].q=%f", i, position);
+        return;
+total 16
+drwx------  2 unitree unitree 4096 Jul 22 16:21 .
+drwxr-xr-x 75 unitree unitree 4096 Nov  6 14:14 ..
+-rw-------  1 unitree unitree  283 Jul 21 17:59 authorized_keys
+-rw-r--r--  1 unitree unitree  666 Jul 22 18:32 known_hosts
+#!/usr/bin/env bash
+set -eo pipefail
+ROOT=/home/unitree/go2-lidar-audit-20261106
+export PYTHONNOUSERSITE=1 PYTHONDONTWRITEBYTECODE=1
+source /opt/ros/foxy/setup.bash
+source /home/unitree/unitree_ros2/cyclonedds_ws/install/setup.bash
+export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+export CYCLONEDDS_URI='<CycloneDDS><Domain><General><Interfaces><NetworkInterface name="eth1"/></Interfaces></General></Domain></CycloneDDS>'
+timeout 20 /usr/bin/python3 "$ROOT/ros_inventory.py" >"$ROOT/ros_inventory.json" 2>"$ROOT/ros_inventory_stderr.log"
+cd /home/unitree/go2-stairs-perception-20261103
+timeout 25 /usr/bin/python3 -m go2_stairs.lidar_watch --duration 12 --allow-unsynced-preview \
+  --output "$ROOT/live_cloud_report.json" --capture "$ROOT/live_cloud.npz" \
+  >"$ROOT/live_cloud_stdout.log" 2>"$ROOT/live_cloud_stderr.log"
+default via 192.168.1.1 dev wlan0 proto dhcp metric 600 
+169.254.0.0/16 dev docker0 scope link metric 1000 linkdown 
+172.17.0.0/16 dev docker0 proto kernel scope link src 172.17.0.1 linkdown 
+192.168.1.0/24 dev wlan0 proto kernel scope link src 192.168.1.180 metric 600 
+192.168.123.0/24 dev eth1 proto kernel scope link src 192.168.123.10 metric 100 
+127.0.0.1	localhost
+127.0.1.1	ubuntu
+
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters

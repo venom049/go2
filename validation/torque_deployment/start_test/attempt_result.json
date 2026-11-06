@@ -1,0 +1,43 @@
+{
+  "updated_utc": "2026-11-03T09:00:12.867665+00:00",
+  "status": "protected_test_aborted_joint_speed_factory_restored",
+  "model": "torque1000",
+  "model_sha256": "8b2d94f26894229ac40feecdd0fb127063bb42fdf0d88a0f383d7513dbed7fe6",
+  "controller_sha256": "770ad446e7ef45f51f4ee8e8baf68c15c5a72cb064cad01d94341be1799645de",
+  "test_directory": "/home/unitree/go2-stairs-torque1000-test-20261103",
+  "before_handoff_50_frames_passed": true,
+  "before_handoff_peak_requested_ratio": 0.8285505175590515,
+  "stand_locked_50_frames_passed": true,
+  "stand_locked_peak_requested_ratio": 0.8679397106170654,
+  "handoff_hold_start_ms_after_release_request": 153.0,
+  "command_m_s": 0.6,
+  "maximum_permitted_policy_seconds": 2.0,
+  "observed_policy_state_seconds_approximately": 0.06,
+  "accepted_policy_publication_requests": 49,
+  "delivery_or_execution_acknowledged": false,
+  "stop": {
+    "reason": "max_abs_dq",
+    "joint": "RL_calf",
+    "observed_speed_rad_s": 13.312929153442383,
+    "threshold_rad_s": 13.0,
+    "reaction": "latched fixed damping; controller then exited normally",
+    "guard_limits_changed": false
+  },
+  "control_mode_final": "mcf",
+  "factory_restoration_attempts": 1,
+  "factory_mode_verified": true,
+  "restore_rpc_code": 3104,
+  "restore_note": "RPC initially returned3104; subsequent read-only CheckMode confirmedmcf. No SelectMode retry. Wired SSH stalled; same host key verified on Wi-Fi192.168.1.180 to read evidence.",
+  "standup_or_locomotion_api_called_during_restore": false,
+  "custom_controller_still_running": false,
+  "real_stair_ascent_validated": false,
+  "csv_trace_rows": 0,
+  "evidence_limitation": "CSV has no data rows; diagnosis relies on terminal safety log and state/probe JSON, not a full command trajectory. Logged GUARD_JOINT estimated_nm values at stop describe the rejected transition proposal, not measured motor torque or a sent policy command.",
+  "original_files_preservation": {
+    "files_checked": 2871,
+    "changed": [],
+    "missing": [],
+    "all_existing_hashes_unchanged": true
+  },
+  "terminal_log_sha256": "163630d3b50b65d42d1806f7755f4a25c5d5cd2c832a30822c457e82a2122150"
+}

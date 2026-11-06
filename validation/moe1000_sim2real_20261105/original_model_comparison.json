@@ -1,0 +1,58 @@
+{
+  "scene": "same official Go2 MJCF, 2x15cm stairs, external platform stop, control command .6m/s, nominal dynamics, seeds442/443",
+  "velocity_note": "climb velocity on successful episodes only",
+  "models": [
+    {
+      "label": "original_raw_nominal",
+      "successes": 116,
+      "episodes": 129,
+      "success_rate": 0.8992248062015504,
+      "statuses": {
+        "timeout": 13,
+        "success": 116
+      },
+      "climb_speed_m_s": 0.4018994363172997,
+      "target_excess_count": 18205,
+      "target_samples": 526116,
+      "target_max_excess_rad": 1.0903711318969727,
+      "guard_passed": false,
+      "model_sha256": "bc08253fd68f661bf6be5ce5ca70cec555c3fde2c397d23fbe9814a998e056f5"
+    },
+    {
+      "label": "original_bounded_nominal",
+      "successes": 124,
+      "episodes": 129,
+      "success_rate": 0.9612403100775194,
+      "statuses": {
+        "success": 124,
+        "timeout": 5
+      },
+      "climb_speed_m_s": 0.25494206107031936,
+      "target_excess_count": 0,
+      "target_samples": 530076,
+      "target_max_excess_rad": 0.0,
+      "guard_passed": false,
+      "model_sha256": "bc08253fd68f661bf6be5ce5ca70cec555c3fde2c397d23fbe9814a998e056f5"
+    },
+    {
+      "label": "previous_nominal",
+      "successes": 129,
+      "episodes": 129,
+      "climb_speed_m_s": 0.3032157597816559,
+      "target_excess_count": 0,
+      "model_sha256": "87870578a3143e34ee637306823d5d6305d5d9d684d09e20fc3317c59775dca1"
+    },
+    {
+      "label": "new_nominal",
+      "successes": 129,
+      "episodes": 129,
+      "climb_speed_m_s": 0.25038320077543197,
+      "target_excess_count": 0,
+      "model_sha256": "76ea8645ee77a7acbe80ad31c406193ea62169b6f105433fd41e24cb4b5c2dbb"
+    }
+  ],
+  "real_robot_driven": false,
+  "original_onnx_weights_unchanged": true,
+  "bounded_variant": "SDK target projection in environment with executed-action history; no fine-tuning",
+  "runtime_note": "Original diagnostics use local ORT1.19.2; earlier fine-tuned results use server ORT1.23.2, so not bit-identical runtime comparisons"
+}

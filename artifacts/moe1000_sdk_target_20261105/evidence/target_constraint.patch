@@ -1,0 +1,132 @@
+--- original/go2_him/moe_stair_env.py
++++ sdk_target/go2_him/moe_stair_env.py
+@@ -81,7 +81,10 @@
+     def platform_end(self):
+         return self.platform_start + self.platform
+ 
+-    def __init__(self, seed=0, evaluation=False, guard_objective='balanced', guard_mode='audit', stair_steps=2, position_constraint='hard'):
++    def __init__(self, seed=0, evaluation=False, guard_objective='balanced', guard_mode='audit', stair_steps=2, position_constraint='hard', target_mode='auto'):
++        if target_mode not in ('auto', 'legacy', 'bounded'):
++            raise ValueError('Unknown target mode')
++        self.target_mode = target_mode
+         if guard_objective not in ('balanced', 'calf_velocity', 'joint_recovery', 'target_clipped'):
+             raise ValueError('Unknown guard objective')
+         if guard_mode not in ('audit', 'strict') or (guard_mode == 'strict' and not evaluation):
+@@ -212,14 +215,16 @@
+         raw_excess=np.maximum(np.maximum(self.profile.lower-raw_target,
+                                          raw_target-self.profile.upper),0.)
+         raw_target_cost=0.
+-        if self.guard_objective == 'target_clipped':
++        bounded = (getattr(self, 'target_mode', 'auto') == 'bounded' or
++                   (getattr(self, 'target_mode', 'auto') == 'auto' and self.guard_objective == 'target_clipped'))
++        if bounded:
+             transformed=transform_target_action(action,e.policy.scale,e.policy.offset,
+                                                 self.profile.lower,self.profile.upper)
+             raw_target=transformed.raw_target
+             raw_excess=transformed.raw_excess
+             target=transformed.sent_target
+             self.last_action=transformed.sent_action.copy()
+-            raw_target_cost=float(transformed.cost_rate)
++            raw_target_cost=float(transformed.cost_rate) if self.guard_objective == 'target_clipped' else 0.
+             reward_action=self.last_action
+         else:
+             self.last_action=action.copy()
+@@ -405,6 +410,7 @@
+                 if objective not in ('balanced','calf_velocity','joint_recovery','target_clipped'):raise ValueError('Unknown guard objective')
+                 for e in envs:
+                     e.frontier=payload['frontier'];e.ramp=payload['ramp'];e.guard_objective=objective
++                    e.target_mode=payload.get('target_mode','auto')
+                 conn.send(True)
+             elif operation=='step':
+                 results=[e.step(a) for e,a in zip(envs,payload)]
+--- original/scripts/train_moe_stairs.py
++++ sdk_target/scripts/train_moe_stairs.py
+@@ -90,7 +90,8 @@
+         return p.recv()
+     def settings(self,frontier,ramp):
+         for p in self.pipes:p.send(('settings',{'frontier':frontier,'ramp':ramp,
+-                                              'guard_objective':getattr(self,'guard_objective','balanced')}))
++                                              'guard_objective':getattr(self,'guard_objective','balanced'),
++                                              'target_mode':getattr(self,'target_mode','auto')}))
+         for p in self.pipes:self.recv(p)
+     def step(self,actions):
+         for i,p in enumerate(self.pipes):p.send(('step',actions[i*self.count:(i+1)*self.count]))
+@@ -155,6 +156,8 @@
+ 
+ def train(args):
+     objective=getattr(args,'guard_objective','balanced')
++    target_mode=getattr(args,'target_mode','auto')
++    bounded=target_mode=='bounded' or (target_mode=='auto' and objective=='target_clipped')
+     stair_steps=getattr(args,'stair_steps',2)
+     position_constraint=getattr(args,'position_constraint','hard')
+     environment_contract=stair_environment_contract(stair_steps,position_constraint)
+@@ -179,6 +182,7 @@
+                             if getattr(args,'resume_training',False) else
+                             'PPO actor-head fine-tuning; frozen pretrained MoE; new critic and optimizer'),
+          'guard_objective':objective,
++         'target_mode':'bounded' if bounded else 'legacy',
+          'stair_steps':stair_steps,'environment_contract':environment_contract,
+          'guard_cost_config':({'kind':'calf_velocity','joint_selector':'four named *_calf joints',
+                               'soft_ratio':.90,'budget_reward_units_per_second':4.,
+@@ -194,13 +198,17 @@
+     sources=['scripts/train_moe_stairs.py','go2_him/moe_stair_env.py','go2_him/moe_stair_rewards.py','go2_him/official_guard.py','go2_him/calf_speed.py','go2_him/moe_cts_actor.py','scripts/test_robogauge_stairs.py','scripts/test_robogauge_two_steps_wall.py']
+     sources.extend(['go2_him/joint_recovery.py','go2_him/target_clip.py'])
+     sources.append('go2_him/hard_joint_limits.py')
+-    job['action_contract']=target_action_contract() if objective=='target_clipped' else {'kind':'legacy_raw_action_history'}
++    job['action_contract']=target_action_contract() if bounded else {'kind':'legacy_raw_action_history'}
++    if bounded and objective!='target_clipped':
++        job['action_contract']['reference_anchor']='unchanged source raw mean; no projection'
++        job['action_contract']['raw_target_penalty_added']=False
+     job['source_hashes']={p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in sources}
+     atomic_json(args.out/'job.json',job)
+     vec=None
+     try:
+         vec=Vec(args.num_envs,args.workers,args.seed,stair_steps=stair_steps,position_constraint=position_constraint)
+         vec.guard_objective=objective
++        vec.target_mode=target_mode
+         device=torch.device(args.device)
+         actor,critic,optimizer,reference,resume_metadata=initialize_training_state(args,device)
+         if objective=='target_clipped':
+@@ -316,6 +324,8 @@
+                                     np.stack([s['sent_target_rad'] for s in target_samples]),
+                                     profile.lower,profile.upper)
+                 record['target_commands_update']=target_audit.summary()
++                if bounded and record['target_commands_update']['sent']['excess_count']:
++                    raise FloatingPointError('Submitted joint target outside SDK bounds')
+             if raw_target_costs:
+                 record['mean_raw_target_cost_per_second']=float(np.mean(raw_target_costs))
+             if calf_samples:
+@@ -352,6 +362,7 @@
+                             'optimizer_state_dict':optimizer.state_dict(),'update':update,'frozen_moe_encoder':True,
+                             'cumulative_update':source_update+update,'initialization':resume_metadata,
+                             'guard_objective':objective,'guard_cost_config':job['guard_cost_config'],
++                            'target_mode':job['target_mode'],
+                             'action_contract':job['action_contract'],
+                             'stair_steps':stair_steps,'environment_contract':environment_contract,
+                             'std':args.std,'source_conversion_sha256':job['source_sha256'],'profile':job['profile'],
+@@ -379,6 +390,7 @@
+     p.add_argument('--workers',type=int,default=32);p.add_argument('--steps',type=int,default=24)
+     p.add_argument('--stair-steps',type=int,default=2,help='Number of stair risers; other environment parameters are unchanged')
+     p.add_argument('--position-constraint',choices=['hard','native'],default='hard')
++    p.add_argument('--target-mode',choices=['auto','legacy','bounded'],default='auto')
+     p.add_argument('--epochs',type=int,default=3);p.add_argument('--minibatches',type=int,default=4)
+     p.add_argument('--critic-warmup',type=int,default=30);p.add_argument('--actor-lr',type=float,default=3e-6)
+     p.add_argument('--std',type=float,default=.03);p.add_argument('--target-kl',type=float,default=.005)
+--- original/scripts/evaluate_moe_finetune.py
++++ sdk_target/scripts/evaluate_moe_finetune.py
+@@ -322,12 +322,13 @@
+         checkpoint=torch.load(path,map_location='cpu',weights_only=True)
+         target_mode=getattr(args,'target_mode','auto')
+         if target_mode=='auto':
+-            target_mode='bounded' if checkpoint.get('guard_objective')=='target_clipped' else 'legacy'
++            target_mode=checkpoint.get('target_mode', 'bounded' if checkpoint.get('guard_objective')=='target_clipped' else 'legacy')
+         if checkpoint.get('guard_objective')=='target_clipped' and checkpoint.get('action_contract')!=target_action_contract():
+             raise ValueError('Checkpoint action contract differs from the current decoder/limits/history')
+         if 'environment_contract' in checkpoint and checkpoint['environment_contract'] != environment_contract:
+             raise ValueError('Checkpoint training environment differs from the requested stair geometry')
+-        env.guard_objective='target_clipped' if target_mode=='bounded' else 'balanced'
++        env.guard_objective=checkpoint.get('guard_objective','balanced')
++        env.target_mode=target_mode
+         actor = load_policy(path, device=device).float().eval()
+         directory = args.out / label
+         directory.mkdir()

@@ -1,0 +1,689 @@
+{
+  "status": "passed",
+  "scope": "Isaac Lab reward wiring and audit validation only; no climbing quality assessment",
+  "config": "configs/stairs_guard_balanced.yaml",
+  "config_sha256": "f1f6d1dc9b6e8dd246b5359b0ce77a997ab3dab006ba3cbd594fec1fceb41cdd",
+  "num_envs": 4,
+  "control_steps": 9,
+  "physics_substeps_per_control": 4,
+  "guard_reward_weight": -1.0,
+  "guard_budget_per_second": 3.0,
+  "measured_speed_acceptance_rad_s": 13.0,
+  "tracking_error_acceptance_rad": 0.9,
+  "simulation_velocity_limit_rad_s": 30.0,
+  "guard_ramp": {
+    "initial_scale": 0.2,
+    "midpoint_scale": 0.6000000000000001,
+    "final_scale": 1.0,
+    "evaluation_scale": 1.0,
+    "ramp_updates": 300,
+    "control_steps": 7200
+  },
+  "effective_disabled_constraint_weights": {
+    "hip_abduction": 0.0,
+    "hip_deviation": 0.0,
+    "joint_deviation": 0.0,
+    "joint_limits": 0.0,
+    "joint_vel": 0.0,
+    "position_excess": 0.0,
+    "position_margin": 0.0,
+    "target_position_excess": 0.0,
+    "torque_excess": 0.0,
+    "torque_margin": 0.0,
+    "tracking_error": 0.0,
+    "velocity_excess": 0.0,
+    "velocity_margin": 0.0
+  },
+  "retained_task_reward_weights": {
+    "failure": -2.0,
+    "feet_air_time": 0.2,
+    "feet_lateral": -40.0,
+    "feet_stumble": -0.5,
+    "foot_clearance": -0.5,
+    "foot_slip": -0.6,
+    "forward_progress": 0.8,
+    "lateral_velocity": -0.4,
+    "roll_orientation": -3.0,
+    "roll_rate": -0.25,
+    "success": 5.0,
+    "tracking_ang_vel": 0.5,
+    "tracking_lin_vel": 2.0
+  },
+  "guard_cost_observations": [
+    {
+      "control_step": 1,
+      "scale": 0.20011111111111113,
+      "mean_cost": 0.0,
+      "max_cost": 0.0
+    },
+    {
+      "control_step": 2,
+      "scale": 0.20022222222222225,
+      "mean_cost": 0.0,
+      "max_cost": 0.0
+    },
+    {
+      "control_step": 3,
+      "scale": 0.20033333333333334,
+      "mean_cost": 0.0,
+      "max_cost": 0.0
+    },
+    {
+      "control_step": 4,
+      "scale": 0.20044444444444445,
+      "mean_cost": 0.0,
+      "max_cost": 0.0
+    },
+    {
+      "control_step": 5,
+      "scale": 0.20055555555555557,
+      "mean_cost": 0.0,
+      "max_cost": 0.0
+    },
+    {
+      "control_step": 6,
+      "scale": 0.2006666666666667,
+      "mean_cost": 0.0,
+      "max_cost": 0.0
+    },
+    {
+      "control_step": 7,
+      "scale": 0.20077777777777778,
+      "mean_cost": 0.0,
+      "max_cost": 0.0
+    },
+    {
+      "control_step": 8,
+      "scale": 0.2008888888888889,
+      "mean_cost": 0.0,
+      "max_cost": 0.0
+    },
+    {
+      "control_step": 9,
+      "scale": 0.201,
+      "mean_cost": 0.1947108954191208,
+      "max_cost": 0.19891445338726044
+    }
+  ],
+  "active_termination_terms": [
+    "time_out",
+    "base_contact",
+    "fall",
+    "out_of_bounds",
+    "success"
+  ],
+  "joint_constraint_termination_enabled": false,
+  "zero_action_startup": {
+    "joint_audit": {
+      "scope": "Every physics substep in active episodes, including failures and terminal steps; commands before integration and measured state after integration",
+      "physics_samples_per_joint": 128,
+      "startup_physics_samples_per_joint": 128,
+      "joint_limits_passed": true,
+      "audit_invalid": false,
+      "velocity_limit_rad_s": 13.0,
+      "tracking_error_limit_rad": 0.9,
+      "tracking_sampling": "maximum pre/post-integration target error per physical substep, counted once",
+      "note": "Zero sampled violations is an evaluation result, not a guarantee for unseen real-world states; no clipping is performed by this audit.",
+      "velocity_excess_joint_samples": 0,
+      "velocity_excess_fraction": 0.0,
+      "startup_velocity_excess_joint_samples": 0,
+      "startup_velocity_excess_fraction": 0.0,
+      "velocity_peak_ratio": 0.6584076881408691,
+      "position_excess_joint_samples": 0,
+      "position_excess_fraction": 0.0,
+      "startup_position_excess_joint_samples": 0,
+      "startup_position_excess_fraction": 0.0,
+      "position_peak_ratio": 0.4338439404964447,
+      "target_position_excess_joint_samples": 0,
+      "target_position_excess_fraction": 0.0,
+      "startup_target_position_excess_joint_samples": 0,
+      "startup_target_position_excess_fraction": 0.0,
+      "target_position_peak_ratio": 0.3979649841785431,
+      "tracking_error_excess_joint_samples": 0,
+      "tracking_error_excess_fraction": 0.0,
+      "startup_tracking_error_excess_joint_samples": 0,
+      "startup_tracking_error_excess_fraction": 0.0,
+      "tracking_error_peak_ratio": 0.25031304359436035,
+      "joints": {
+        "FL_hip_joint": {
+          "position_lower_rad": -1.0471999645233154,
+          "position_upper_rad": 1.0471999645233154,
+          "velocity_peak_rad_s": 0.8113439083099365,
+          "position_peak_overshoot_rad": 0.0,
+          "target_position_peak_overshoot_rad": 0.0,
+          "tracking_error_peak_rad": 0.011508561670780182,
+          "velocity_excess_samples": 0,
+          "position_excess_samples": 0,
+          "target_position_excess_samples": 0,
+          "tracking_error_excess_samples": 0
+        },
+        "FR_hip_joint": {
+          "position_lower_rad": -1.0471999645233154,
+          "position_upper_rad": 1.0471999645233154,
+          "velocity_peak_rad_s": 0.6405539512634277,
+          "position_peak_overshoot_rad": 0.0,
+          "target_position_peak_overshoot_rad": 0.0,
+          "tracking_error_peak_rad": 0.01201675832271576,
+          "velocity_excess_samples": 0,
+          "position_excess_samples": 0,
+          "target_position_excess_samples": 0,
+          "tracking_error_excess_samples": 0
+        },
+        "RL_hip_joint": {
+          "position_lower_rad": -1.0471999645233154,
+          "position_upper_rad": 1.0471999645233154,
+          "velocity_peak_rad_s": 0.39384686946868896,
+          "position_peak_overshoot_rad": 0.0,
+          "target_position_peak_overshoot_rad": 0.0,
+          "tracking_error_peak_rad": 0.008518204092979431,
+          "velocity_excess_samples": 0,
+          "position_excess_samples": 0,
+          "target_position_excess_samples": 0,
+          "tracking_error_excess_samples": 0
+        },
+        "RR_hip_joint": {
+          "position_lower_rad": -1.0471999645233154,
+          "position_upper_rad": 1.0471999645233154,
+          "velocity_peak_rad_s": 0.47967690229415894,
+          "position_peak_overshoot_rad": 0.0,
+          "target_position_peak_overshoot_rad": 0.0,
+          "tracking_error_peak_rad": 0.011480465531349182,
+          "velocity_excess_samples": 0,
+          "position_excess_samples": 0,
+          "target_position_excess_samples": 0,
+          "tracking_error_excess_samples": 0
+        },
+        "FL_thigh_joint": {
+          "position_lower_rad": -1.5707999467849731,
+          "position_upper_rad": 3.4907000064849854,
+          "velocity_peak_rad_s": 4.700122833251953,
+          "position_peak_overshoot_rad": 0.0,
+          "target_position_peak_overshoot_rad": 0.0,
+          "tracking_error_peak_rad": 0.10181337594985962,
+          "velocity_excess_samples": 0,
+          "position_excess_samples": 0,
+          "target_position_excess_samples": 0,
+          "tracking_error_excess_samples": 0
+        },
+        "FR_thigh_joint": {
+          "position_lower_rad": -1.5707999467849731,
+          "position_upper_rad": 3.4907000064849854,
+          "velocity_peak_rad_s": 5.371606349945068,
+          "position_peak_overshoot_rad": 0.0,
+          "target_position_peak_overshoot_rad": 0.0,
+          "tracking_error_peak_rad": 0.11628592014312744,
+          "velocity_excess_samples": 0,
+          "position_excess_samples": 0,
+          "target_position_excess_samples": 0,
+          "tracking_error_excess_samples": 0
+        },
+        "RL_thigh_joint": {
+          "position_lower_rad": -0.5235999822616577,
+          "position_upper_rad": 4.537899971008301,
+          "velocity_peak_rad_s": 4.964933395385742,
+          "position_peak_overshoot_rad": 0.0,
+          "target_position_peak_overshoot_rad": 0.0,
+          "tracking_error_peak_rad": 0.0849616527557373,
+          "velocity_excess_samples": 0,
+          "position_excess_samples": 0,
+          "target_position_excess_samples": 0,
+          "tracking_error_excess_samples": 0
+        },
+        "RR_thigh_joint": {
+          "position_lower_rad": -0.5235999822616577,
+          "position_upper_rad": 4.537899971008301,
+          "velocity_peak_rad_s": 4.606858253479004,
+          "position_peak_overshoot_rad": 0.0,
+          "target_position_peak_overshoot_rad": 0.0,
+          "tracking_error_peak_rad": 0.0932084321975708,
+          "velocity_excess_samples": 0,
+          "position_excess_samples": 0,
+          "target_position_excess_samples": 0,
+          "tracking_error_excess_samples": 0
+        },
+        "FL_calf_joint": {
+          "position_lower_rad": -2.7227001190185547,
+          "position_upper_rad": -0.8377599716186523,
+          "velocity_peak_rad_s": 8.225109100341797,
+          "position_peak_overshoot_rad": 0.0,
+          "target_position_peak_overshoot_rad": 0.0,
+          "tracking_error_peak_rad": 0.2236471176147461,
+          "velocity_excess_samples": 0,
+          "position_excess_samples": 0,
+          "target_position_excess_samples": 0,
+          "tracking_error_excess_samples": 0
+        },
+        "FR_calf_joint": {
+          "position_lower_rad": -2.7227001190185547,
+          "position_upper_rad": -0.8377599716186523,
+          "velocity_peak_rad_s": 8.55929946899414,
+          "position_peak_overshoot_rad": 0.0,
+          "target_position_peak_overshoot_rad": 0.0,
+          "tracking_error_peak_rad": 0.2252817153930664,
+          "velocity_excess_samples": 0,
+          "position_excess_samples": 0,
+          "target_position_excess_samples": 0,
+          "tracking_error_excess_samples": 0
+        },
+        "RL_calf_joint": {
+          "position_lower_rad": -2.7227001190185547,
+          "position_upper_rad": -0.8377599716186523,
+          "velocity_peak_rad_s": 7.293450355529785,
+          "position_peak_overshoot_rad": 0.0,
+          "target_position_peak_overshoot_rad": 0.0,
+          "tracking_error_peak_rad": 0.13979065418243408,
+          "velocity_excess_samples": 0,
+          "position_excess_samples": 0,
+          "target_position_excess_samples": 0,
+          "tracking_error_excess_samples": 0
+        },
+        "RR_calf_joint": {
+          "position_lower_rad": -2.7227001190185547,
+          "position_upper_rad": -0.8377599716186523,
+          "velocity_peak_rad_s": 7.270114898681641,
+          "position_peak_overshoot_rad": 0.0,
+          "target_position_peak_overshoot_rad": 0.0,
+          "tracking_error_peak_rad": 0.13705110549926758,
+          "velocity_excess_samples": 0,
+          "position_excess_samples": 0,
+          "target_position_excess_samples": 0,
+          "tracking_error_excess_samples": 0
+        }
+      }
+    },
+    "torque_audit": {
+      "scope": "Every physics substep in active episodes, including failures and terminal steps; not successful episodes only",
+      "physics_samples_per_joint": 128,
+      "startup_physics_samples_per_joint": 128,
+      "requested_excess_joint_samples": 0,
+      "applied_excess_joint_samples": 0,
+      "startup_excess_joint_samples": 0,
+      "requested_excess_fraction": 0.0,
+      "torque_limits_passed": true,
+      "note": "Zero sampled violations is an evaluation result, not a guarantee for unseen real-world states.",
+      "joints": {
+        "FL_hip_joint": {
+          "limit_nm": 23.700000762939453,
+          "requested_peak_nm": 0.8487601280212402,
+          "applied_peak_nm": 0.8487601280212402,
+          "requested_excess_samples": 0,
+          "saturation_samples": 0
+        },
+        "FR_hip_joint": {
+          "limit_nm": 23.700000762939453,
+          "requested_peak_nm": 0.6644041538238525,
+          "applied_peak_nm": 0.6644041538238525,
+          "requested_excess_samples": 0,
+          "saturation_samples": 0
+        },
+        "RL_hip_joint": {
+          "limit_nm": 23.700000762939453,
+          "requested_peak_nm": 0.4863974452018738,
+          "applied_peak_nm": 0.4863974452018738,
+          "requested_excess_samples": 0,
+          "saturation_samples": 0
+        },
+        "RR_hip_joint": {
+          "limit_nm": 23.700000762939453,
+          "requested_peak_nm": 0.7388149499893188,
+          "applied_peak_nm": 0.7388149499893188,
+          "requested_excess_samples": 0,
+          "saturation_samples": 0
+        },
+        "FL_thigh_joint": {
+          "limit_nm": 23.700000762939453,
+          "requested_peak_nm": 5.6156463623046875,
+          "applied_peak_nm": 5.6156463623046875,
+          "requested_excess_samples": 0,
+          "saturation_samples": 0
+        },
+        "FR_thigh_joint": {
+          "limit_nm": 23.700000762939453,
+          "requested_peak_nm": 6.814706325531006,
+          "applied_peak_nm": 6.814706325531006,
+          "requested_excess_samples": 0,
+          "saturation_samples": 0
+        },
+        "RL_thigh_joint": {
+          "limit_nm": 23.700000762939453,
+          "requested_peak_nm": 5.459961891174316,
+          "applied_peak_nm": 5.459961891174316,
+          "requested_excess_samples": 0,
+          "saturation_samples": 0
+        },
+        "RR_thigh_joint": {
+          "limit_nm": 23.700000762939453,
+          "requested_peak_nm": 5.439549446105957,
+          "applied_peak_nm": 5.439549446105957,
+          "requested_excess_samples": 0,
+          "saturation_samples": 0
+        },
+        "FL_calf_joint": {
+          "limit_nm": 45.43000030517578,
+          "requested_peak_nm": 12.837093353271484,
+          "applied_peak_nm": 12.837093353271484,
+          "requested_excess_samples": 0,
+          "saturation_samples": 0
+        },
+        "FR_calf_joint": {
+          "limit_nm": 45.43000030517578,
+          "requested_peak_nm": 12.813343048095703,
+          "applied_peak_nm": 12.813343048095703,
+          "requested_excess_samples": 0,
+          "saturation_samples": 0
+        },
+        "RL_calf_joint": {
+          "limit_nm": 45.43000030517578,
+          "requested_peak_nm": 8.486361503601074,
+          "applied_peak_nm": 8.486361503601074,
+          "requested_excess_samples": 0,
+          "saturation_samples": 0
+        },
+        "RR_calf_joint": {
+          "limit_nm": 45.43000030517578,
+          "requested_peak_nm": 8.255436897277832,
+          "applied_peak_nm": 8.255436897277832,
+          "requested_excess_samples": 0,
+          "saturation_samples": 0
+        }
+      }
+    }
+  },
+  "deliberate_target_violation": {
+    "joint_audit": {
+      "scope": "Every physics substep in active episodes, including failures and terminal steps; commands before integration and measured state after integration",
+      "physics_samples_per_joint": 16,
+      "startup_physics_samples_per_joint": 16,
+      "joint_limits_passed": false,
+      "audit_invalid": false,
+      "velocity_limit_rad_s": 13.0,
+      "tracking_error_limit_rad": 0.9,
+      "tracking_sampling": "maximum pre/post-integration target error per physical substep, counted once",
+      "note": "Zero sampled violations is an evaluation result, not a guarantee for unseen real-world states; no clipping is performed by this audit.",
+      "velocity_excess_joint_samples": 0,
+      "velocity_excess_fraction": 0.0,
+      "startup_velocity_excess_joint_samples": 0,
+      "startup_velocity_excess_fraction": 0.0,
+      "velocity_peak_ratio": 0.20557422935962677,
+      "position_excess_joint_samples": 0,
+      "position_excess_fraction": 0.0,
+      "startup_position_excess_joint_samples": 0,
+      "startup_position_excess_fraction": 0.0,
+      "position_peak_ratio": 0.37320804595947266,
+      "target_position_excess_joint_samples": 16,
+      "target_position_excess_fraction": 0.08333333333333333,
+      "startup_target_position_excess_joint_samples": 16,
+      "startup_target_position_excess_fraction": 0.08333333333333333,
+      "target_position_peak_ratio": 1.3583773374557495,
+      "tracking_error_excess_joint_samples": 16,
+      "tracking_error_excess_fraction": 0.08333333333333333,
+      "startup_tracking_error_excess_joint_samples": 16,
+      "startup_tracking_error_excess_fraction": 0.08333333333333333,
+      "tracking_error_peak_ratio": 1.3787128925323486,
+      "joints": {
+        "FL_hip_joint": {
+          "position_lower_rad": -1.0471999645233154,
+          "position_upper_rad": 1.0471999645233154,
+          "velocity_peak_rad_s": 0.25533270835876465,
+          "position_peak_overshoot_rad": 0.0,
+          "target_position_peak_overshoot_rad": 0.0,
+          "tracking_error_peak_rad": 0.011508561670780182,
+          "velocity_excess_samples": 0,
+          "position_excess_samples": 0,
+          "target_position_excess_samples": 0,
+          "tracking_error_excess_samples": 0
+        },
+        "FR_hip_joint": {
+          "position_lower_rad": -1.0471999645233154,
+          "position_upper_rad": 1.0471999645233154,
+          "velocity_peak_rad_s": 0.4205491542816162,
+          "position_peak_overshoot_rad": 0.0,
+          "target_position_peak_overshoot_rad": 0.0,
+          "tracking_error_peak_rad": 0.015342079102993011,
+          "velocity_excess_samples": 0,
+          "position_excess_samples": 0,
+          "target_position_excess_samples": 0,
+          "tracking_error_excess_samples": 0
+        },
+        "RL_hip_joint": {
+          "position_lower_rad": -1.0471999645233154,
+          "position_upper_rad": 1.0471999645233154,
+          "velocity_peak_rad_s": 0.3991297781467438,
+          "position_peak_overshoot_rad": 0.0,
+          "target_position_peak_overshoot_rad": 0.0,
+          "tracking_error_peak_rad": 0.007635340094566345,
+          "velocity_excess_samples": 0,
+          "position_excess_samples": 0,
+          "target_position_excess_samples": 0,
+          "tracking_error_excess_samples": 0
+        },
+        "RR_hip_joint": {
+          "position_lower_rad": -1.0471999645233154,
+          "position_upper_rad": 1.0471999645233154,
+          "velocity_peak_rad_s": 0.496168851852417,
+          "position_peak_overshoot_rad": 0.0,
+          "target_position_peak_overshoot_rad": 0.0,
+          "tracking_error_peak_rad": 0.024269260466098785,
+          "velocity_excess_samples": 0,
+          "position_excess_samples": 0,
+          "target_position_excess_samples": 0,
+          "tracking_error_excess_samples": 0
+        },
+        "FL_thigh_joint": {
+          "position_lower_rad": -1.5707999467849731,
+          "position_upper_rad": 3.4907000064849854,
+          "velocity_peak_rad_s": 0.4691687524318695,
+          "position_peak_overshoot_rad": 0.0,
+          "target_position_peak_overshoot_rad": 0.0,
+          "tracking_error_peak_rad": 0.10414808988571167,
+          "velocity_excess_samples": 0,
+          "position_excess_samples": 0,
+          "target_position_excess_samples": 0,
+          "tracking_error_excess_samples": 0
+        },
+        "FR_thigh_joint": {
+          "position_lower_rad": -1.5707999467849731,
+          "position_upper_rad": 3.4907000064849854,
+          "velocity_peak_rad_s": 0.49045443534851074,
+          "position_peak_overshoot_rad": 0.0,
+          "target_position_peak_overshoot_rad": 0.0,
+          "tracking_error_peak_rad": 0.12147682905197144,
+          "velocity_excess_samples": 0,
+          "position_excess_samples": 0,
+          "target_position_excess_samples": 0,
+          "tracking_error_excess_samples": 0
+        },
+        "RL_thigh_joint": {
+          "position_lower_rad": -0.5235999822616577,
+          "position_upper_rad": 4.537899971008301,
+          "velocity_peak_rad_s": 0.39488399028778076,
+          "position_peak_overshoot_rad": 0.0,
+          "target_position_peak_overshoot_rad": 0.0,
+          "tracking_error_peak_rad": 0.07447445392608643,
+          "velocity_excess_samples": 0,
+          "position_excess_samples": 0,
+          "target_position_excess_samples": 0,
+          "tracking_error_excess_samples": 0
+        },
+        "RR_thigh_joint": {
+          "position_lower_rad": -0.5235999822616577,
+          "position_upper_rad": 4.537899971008301,
+          "velocity_peak_rad_s": 0.3774356544017792,
+          "position_peak_overshoot_rad": 0.0,
+          "target_position_peak_overshoot_rad": 0.0,
+          "tracking_error_peak_rad": 0.07685565948486328,
+          "velocity_excess_samples": 0,
+          "position_excess_samples": 0,
+          "target_position_excess_samples": 0,
+          "tracking_error_excess_samples": 0
+        },
+        "FL_calf_joint": {
+          "position_lower_rad": -2.7227001190185547,
+          "position_upper_rad": -0.8377599716186523,
+          "velocity_peak_rad_s": 1.866591453552246,
+          "position_peak_overshoot_rad": 0.0,
+          "target_position_peak_overshoot_rad": 0.33775997161865234,
+          "tracking_error_peak_rad": 1.2408415079116821,
+          "velocity_excess_samples": 0,
+          "position_excess_samples": 0,
+          "target_position_excess_samples": 16,
+          "tracking_error_excess_samples": 16
+        },
+        "FR_calf_joint": {
+          "position_lower_rad": -2.7227001190185547,
+          "position_upper_rad": -0.8377599716186523,
+          "velocity_peak_rad_s": 2.6724648475646973,
+          "position_peak_overshoot_rad": 0.0,
+          "target_position_peak_overshoot_rad": 0.0,
+          "tracking_error_peak_rad": 0.2555716037750244,
+          "velocity_excess_samples": 0,
+          "position_excess_samples": 0,
+          "target_position_excess_samples": 0,
+          "tracking_error_excess_samples": 0
+        },
+        "RL_calf_joint": {
+          "position_lower_rad": -2.7227001190185547,
+          "position_upper_rad": -0.8377599716186523,
+          "velocity_peak_rad_s": 1.6173145771026611,
+          "position_peak_overshoot_rad": 0.0,
+          "target_position_peak_overshoot_rad": 0.0,
+          "tracking_error_peak_rad": 0.15476202964782715,
+          "velocity_excess_samples": 0,
+          "position_excess_samples": 0,
+          "target_position_excess_samples": 0,
+          "tracking_error_excess_samples": 0
+        },
+        "RR_calf_joint": {
+          "position_lower_rad": -2.7227001190185547,
+          "position_upper_rad": -0.8377599716186523,
+          "velocity_peak_rad_s": 1.8374652862548828,
+          "position_peak_overshoot_rad": 0.0,
+          "target_position_peak_overshoot_rad": 0.0,
+          "tracking_error_peak_rad": 0.1638932228088379,
+          "velocity_excess_samples": 0,
+          "position_excess_samples": 0,
+          "target_position_excess_samples": 0,
+          "tracking_error_excess_samples": 0
+        }
+      }
+    },
+    "torque_audit": {
+      "scope": "Every physics substep in active episodes, including failures and terminal steps; not successful episodes only",
+      "physics_samples_per_joint": 16,
+      "startup_physics_samples_per_joint": 16,
+      "requested_excess_joint_samples": 16,
+      "applied_excess_joint_samples": 0,
+      "startup_excess_joint_samples": 16,
+      "requested_excess_fraction": 0.08333333333333333,
+      "torque_limits_passed": false,
+      "note": "Zero sampled violations is an evaluation result, not a guarantee for unseen real-world states.",
+      "joints": {
+        "FL_hip_joint": {
+          "limit_nm": 23.700000762939453,
+          "requested_peak_nm": 0.6779618859291077,
+          "applied_peak_nm": 0.6779618859291077,
+          "requested_excess_samples": 0,
+          "saturation_samples": 0
+        },
+        "FR_hip_joint": {
+          "limit_nm": 23.700000762939453,
+          "requested_peak_nm": 0.6940720677375793,
+          "applied_peak_nm": 0.6940720677375793,
+          "requested_excess_samples": 0,
+          "saturation_samples": 0
+        },
+        "RL_hip_joint": {
+          "limit_nm": 23.700000762939453,
+          "requested_peak_nm": 0.4068340063095093,
+          "applied_peak_nm": 0.4068340063095093,
+          "requested_excess_samples": 0,
+          "saturation_samples": 0
+        },
+        "RR_hip_joint": {
+          "limit_nm": 23.700000762939453,
+          "requested_peak_nm": 1.2147775888442993,
+          "applied_peak_nm": 1.2147775888442993,
+          "requested_excess_samples": 0,
+          "saturation_samples": 0
+        },
+        "FL_thigh_joint": {
+          "limit_nm": 23.700000762939453,
+          "requested_peak_nm": 4.92094612121582,
+          "applied_peak_nm": 4.92094612121582,
+          "requested_excess_samples": 0,
+          "saturation_samples": 0
+        },
+        "FR_thigh_joint": {
+          "limit_nm": 23.700000762939453,
+          "requested_peak_nm": 5.590599536895752,
+          "applied_peak_nm": 5.590599536895752,
+          "requested_excess_samples": 0,
+          "saturation_samples": 0
+        },
+        "RL_thigh_joint": {
+          "limit_nm": 23.700000762939453,
+          "requested_peak_nm": 3.1826601028442383,
+          "applied_peak_nm": 3.1826601028442383,
+          "requested_excess_samples": 0,
+          "saturation_samples": 0
+        },
+        "RR_thigh_joint": {
+          "limit_nm": 23.700000762939453,
+          "requested_peak_nm": 3.2274324893951416,
+          "applied_peak_nm": 3.2274324893951416,
+          "requested_excess_samples": 0,
+          "saturation_samples": 0
+        },
+        "FL_calf_joint": {
+          "limit_nm": 45.43000030517578,
+          "requested_peak_nm": 53.015472412109375,
+          "applied_peak_nm": 45.43000030517578,
+          "requested_excess_samples": 16,
+          "saturation_samples": 16
+        },
+        "FR_calf_joint": {
+          "limit_nm": 45.43000030517578,
+          "requested_peak_nm": 13.012094497680664,
+          "applied_peak_nm": 13.012094497680664,
+          "requested_excess_samples": 0,
+          "saturation_samples": 0
+        },
+        "RL_calf_joint": {
+          "limit_nm": 45.43000030517578,
+          "requested_peak_nm": 7.415093421936035,
+          "applied_peak_nm": 7.415093421936035,
+          "requested_excess_samples": 0,
+          "saturation_samples": 0
+        },
+        "RR_calf_joint": {
+          "limit_nm": 45.43000030517578,
+          "requested_peak_nm": 7.403162002563477,
+          "applied_peak_nm": 7.403162002563477,
+          "requested_excess_samples": 0,
+          "saturation_samples": 0
+        }
+      }
+    },
+    "bounded_cost_mean": {
+      "velocity": 0.0,
+      "torque": 0.42753106355667114,
+      "tracking": 0.29943394660949707,
+      "target_position": 0.2417459487915039,
+      "position": 0.0
+    },
+    "raw_cost_mean": {
+      "velocity": 0.0,
+      "torque": 0.7477635145187378,
+      "tracking": 2.073465347290039,
+      "position": 0.0,
+      "target_position": 7.32203483581543
+    },
+    "terminated_env_count": 0,
+    "timeout_env_count": 0
+  },
+  "zero_weight_contributions_zero_all_test_steps": true,
+  "finite_target_violation_penalized_without_joint_termination": true,
+  "precise_audit_retained": true,
+  "real_robot_driven": false,
+  "training_launched": false
+}

@@ -1,0 +1,99 @@
+{
+  "backend": "raw_lidar_body_imu",
+  "motion_validated": false,
+  "raw_cloud_topic": "/utlidar/cloud",
+  "body_lowstate_topic": "/lowstate",
+  "body_imu_topic": "/moe_lio/body_imu",
+  "world_frame": "moe_odom",
+  "body_frame": "base_link",
+  "body_imu_frame": "imu",
+  "R_base_raw": [
+    [
+      0.5261139789481135,
+      -0.8101357650256523,
+      0.2586196500300898
+    ],
+    [
+      -0.8386681207258552,
+      -0.5446428033818826,
+      1.5769432774419279e-06
+    ],
+    [
+      0.14085405366388132,
+      -0.2168968855254159,
+      -0.9659792319795638
+    ]
+  ],
+  "t_base_raw_m": [
+    0.2821599612633387,
+    3.269330287973086e-08,
+    -1.5894571940104166e-08
+  ],
+  "R_base_imu": [
+    [
+      1.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "t_base_imu_m": [
+    -0.02557,
+    0.0,
+    0.04232
+  ],
+  "R_imu_raw": [
+    [
+      0.5261139789481135,
+      -0.8101357650256523,
+      0.2586196500300898
+    ],
+    [
+      -0.8386681207258552,
+      -0.5446428033818826,
+      1.5769432774419279e-06
+    ],
+    [
+      0.14085405366388132,
+      -0.2168968855254159,
+      -0.9659792319795638
+    ]
+  ],
+  "t_imu_raw_m": [
+    0.3077299612633387,
+    3.269330287973086e-08,
+    -0.04232001589457195
+  ],
+  "raw_point_time_unit": "seconds_from_scan_header",
+  "transform_basis": {
+    "factory_point_identity_pairs": 30,
+    "max_dynamic_fit_p95_m": 2.1432270500554296e-06,
+    "accepted_urdf_sha256": "0ba25b92b9d6da5b4fcfb45d51c41cd34454138f5d5cf4b66eede38af229867d"
+  },
+  "source_age_limit_s": 0.25,
+  "max_future_s": 0.03,
+  "max_position_covariance_m2": 0.04,
+  "max_orientation_covariance_rad2": 0.04,
+  "validation_status": "independent attitude-constrained static probe passed; motion unvalidated",
+  "raw_input_quality": {
+    "minimum_environment_points": 500,
+    "environment_range_m": [
+      0.3,
+      12.0
+    ],
+    "minimum_environment_fraction": 0.2,
+    "fault_requires_sensor_restart": true
+  },
+  "odometry_algorithm": "body_attitude_translation_registration",
+  "fastlio_candidate_status": "not selected: static yaw and translation drift detected by IMU/native cross-check",
+  "absolute_extrinsic_status": "NOT VALIDATED: fresh user-confirmed grounded capture shows URDF sole-to-lidar-floor residual 0.027..0.048 m; no corrective offset applied"
+}

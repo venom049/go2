@@ -1,0 +1,162 @@
+{
+  "model_source": {
+    "source": "Unitree official MJCF",
+    "variant": "Go2 EDU, no extra payload",
+    "path": "/root/gpufree-data/moe1000-sim2real-20261105/source/assets/unitree_go2/go2.xml",
+    "sha256": "2014a3d76e30f17ab9447d8a67bd015291f74fa4d71ae30d005f1a32bd693d4b",
+    "calibrated_edu_specific_model": false
+  },
+  "domain_randomization": {
+    "reference": "https://github.com/saifahmadgit/go2-sim2real-locomotion-rl/tree/0830f3e3582acd5c9b3a5c09186d4f028f54d9dd",
+    "robot_variant": "Go2 EDU, no extra payload (user confirmed)",
+    "official_model_commit": "ae6a8403e272733e9996ef59990880330496177f",
+    "friction": [
+      [
+        0.6,
+        0.8
+      ],
+      [
+        0.3,
+        1.25
+      ]
+    ],
+    "kp_factor": [
+      [
+        0.95,
+        1.05
+      ],
+      [
+        0.8,
+        1.2
+      ]
+    ],
+    "kd_factor": [
+      [
+        0.95,
+        1.05
+      ],
+      [
+        0.8,
+        1.2
+      ]
+    ],
+    "motor_strength": [
+      [
+        0.97,
+        1.03
+      ],
+      [
+        0.9,
+        1.1
+      ]
+    ],
+    "base_mass_shift_kg": [
+      [
+        -0.2,
+        0.5
+      ],
+      [
+        -1.0,
+        3.0
+      ]
+    ],
+    "base_com_shift_m": [
+      [
+        -0.005,
+        0.005
+      ],
+      [
+        -0.03,
+        0.03
+      ]
+    ],
+    "hip_mass_shift_kg": [
+      [
+        -0.1,
+        0.1
+      ],
+      [
+        -0.5,
+        0.5
+      ]
+    ],
+    "gravity_offset_m_s2": [
+      [
+        -0.2,
+        0.2
+      ],
+      [
+        -1.0,
+        1.0
+      ]
+    ],
+    "observation_gaussian_std": {
+      "base_ang_vel": 0.2,
+      "projected_gravity": 0.05,
+      "joint_pos_rel": 0.01,
+      "joint_vel_rel": 1.5
+    },
+    "actuator_target_noise_std_rad": 0.1,
+    "actuator_delay_steps": [
+      0,
+      1
+    ],
+    "delay_one_step_probability": ".5 * episode_level",
+    "push_xy_max_N": 150.0,
+    "push_duration_s": [
+      0.05,
+      0.2
+    ],
+    "push_start_level": 0.3,
+    "nominal_episode_probability": 0.1,
+    "current_level_probability_among_randomized": 0.8,
+    "easy_level_upper": 0.5,
+    "history": "bounded current policy command, before unobservable actuator lag/noise",
+    "target_bounds": "clip command; delay and target noise; re-clip applied target",
+    "inertia": "scale principal inertia with mass at fixed shape; shift COM in body inertial frame",
+    "curriculum": {
+      "initial_level": 0.15,
+      "step_up": 0.01,
+      "step_down": 0.03,
+      "ema_alpha": 0.03,
+      "ready_success": 0.6,
+      "ready_tracking": 0.45,
+      "ready_fall": 0.35,
+      "hard_fall": 0.4,
+      "ready_streak": 5,
+      "hard_streak": 2,
+      "cooldown_checks": 5,
+      "minimum_new_episodes": 32,
+      "phase1_frontier_below_m": 0.125,
+      "phase1_level_cap": 0.15
+    },
+    "differences_from_reference": [
+      "MuJoCo independent models and named joints",
+      "fixed nominal PD 20/.5 with multiplicative uncertainty; no new stiffness action head",
+      "success replaces survival timeout in curriculum because timeout is failure here",
+      "delay probability ramps continuously rather than rounding maximum delay",
+      "push phase sampled per episode so short stair episodes experience pushes",
+      "10 percent nominal episodes; calibrated hardware parameters unavailable",
+      "new asymmetric critic; original actor input/output and frozen encoder retained"
+    ]
+  },
+  "warm_start": "/root/gpufree-data/moe1000-sim2real-20261105/source/validation/moe_cts_actor_conversion_20261104/actor.pt",
+  "warm_start_sha256": "4b7c51ee0771a375001b1176f9e7e78cc3ad4c1603253ce1e65aeedd2af103a3",
+  "checkpoint_sha256": "45005997579efb01fcd402fe393a838d8d05ac3b7066d3a70dc7bb5584dec604",
+  "onnx_sha256": "76ea8645ee77a7acbe80ad31c406193ea62169b6f105433fd41e24cb4b5c2dbb",
+  "source_hashes": {
+    "scripts/train_moe_stairs.py": "23490df3e3626c2db70a3e5983560f122ef697a4228d6fb5c7ed07a9a871d866",
+    "go2_him/moe_stair_env.py": "66db8602d28f5b0f8860d368483f7529e1fca7ac78e537901ee9485171f7d9e7",
+    "go2_him/moe_stair_rewards.py": "389ee0100bfa8bfba2bb0eb6c93033344dfbb73bcca2ec6d9207c91981978003",
+    "go2_him/official_guard.py": "8c0befbfce5bfb18182f9109a806aaa5e3bf2f22fc6e4d3429658604893583a9",
+    "go2_him/calf_speed.py": "fe91d20997304aef487833680acf85dd0f106e3c27000dd188fbe33a75ca6a83",
+    "go2_him/moe_cts_actor.py": "5e80517a3e0d6a97d604d142c280e23f22df7e05a5608599bb6b92c6a03535ad",
+    "scripts/test_robogauge_stairs.py": "5de98d503ccdcc70129414a91e16e684fe7c374ef1c3958e4f27cdd87c915b5e",
+    "scripts/test_robogauge_two_steps_wall.py": "6058c424c960f89025d01b1cbced182ce89668c5ff69c1f26fa9679220950385",
+    "go2_him/joint_recovery.py": "2fe8df092968b45db020b0a2fab58c139badc39aed41956f7dbbd160027997b0",
+    "go2_him/target_clip.py": "3ffb902a8303aac93a74b8cfe8c7221d660effd3780c992c89cc62aa04b46ae7",
+    "go2_him/hard_joint_limits.py": "d9dc780b067d4cd19c602cbf6a249260dcf3efacc25139a26cab88e3084b1836",
+    "go2_him/sim2real_dr.py": "aed0ac0f3ca86f2ba05b8a8e9ae672a4582e1b022ae4ea3329c6136d0f1d361a"
+  },
+  "runtime_contract": "exported/contract.json"
+}

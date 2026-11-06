@@ -1,0 +1,32 @@
+{
+  "host": "192.168.123.161",
+  "process": "unitree_lidar_server",
+  "pid_at_capture": 1728,
+  "dds_prefix": "11031e5:77fa93a4:2fd8baf2",
+  "inputs": [
+    "rt/sportmodestate",
+    "rt/utlidar/client_command",
+    "rt/utlidar/cloud",
+    "rt/utlidar/switch"
+  ],
+  "outputs": [
+    "rt/utlidar/cloud",
+    "rt/utlidar/cloud_base",
+    "rt/utlidar/cloud_deskewed",
+    "rt/utlidar/imu",
+    "rt/utlidar/lidar_state",
+    "rt/utlidar/mapping_cmd",
+    "rt/utlidar/robot_odom",
+    "rt/utlidar/robot_pose",
+    "rt/utlidar/server_log"
+  ],
+  "motion_state_source": {
+    "process": "mcf_main",
+    "pid_at_capture": 2084,
+    "topic": "rt/sportmodestate"
+  },
+  "internal_board_ssh": "Connection refused",
+  "factory_files_modified": false,
+  "factory_service_switch_calls": 0,
+  "verified_boundary": "same DDS participant consumes sportmodestate and produces raw and derived lidar; derived stream loss after release measured in prior run; internal branch not readable"
+}

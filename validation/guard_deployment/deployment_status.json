@@ -1,0 +1,174 @@
+{
+  "status": "installed_inactive_standing_checks_passed_motion_test_blocked_by_evaluation",
+  "model": "guard1000",
+  "source_checkpoint_sha256": "b8e2e3c12474e3166c5ebd84187ea7364d3a3ba28ccba0131854f8de8964c31f",
+  "installed_directory": "/home/unitree/go2-stairs-guard1000-20261104",
+  "checkpoint_iteration": 1000,
+  "native_python_onnx_checks_passed": true,
+  "cpp_onnx_checks_passed": true,
+  "candidate_result": {
+    "joint_and_torque_acceptance_passed": false,
+    "task_nonregression_passed": false,
+    "simulation_eligible": false
+  },
+  "candidate_scene_results": [
+    {
+      "successes": 108,
+      "episodes": 128,
+      "success_rate": 0.84375,
+      "joint_acceptance_passed": false,
+      "torque_acceptance_passed": false,
+      "joint_audit": {
+        "physics_samples_per_joint": 313840,
+        "velocity_excess_joint_samples": 8252,
+        "velocity_excess_fraction": 0.0021911377347268246,
+        "position_excess_joint_samples": 16623,
+        "position_excess_fraction": 0.004413873311241397,
+        "target_position_excess_joint_samples": 445588,
+        "target_position_excess_fraction": 0.11831612711360354,
+        "tracking_error_excess_joint_samples": 75052,
+        "tracking_error_excess_fraction": 0.019928413629025407,
+        "velocity_peak_rad_s": 25.21385383605957,
+        "position_peak_overshoot_rad": 0.003919720649719238,
+        "target_position_peak_overshoot_rad": 0.33775997161865234,
+        "tracking_error_peak_rad": 1.7451083660125732
+      },
+      "torque_audit": {
+        "physics_samples_per_joint": 313840,
+        "requested_excess_joint_samples": 53620,
+        "requested_excess_fraction": 0.01423761577024386,
+        "applied_excess_joint_samples": 0,
+        "applied_excess_fraction": 0.0,
+        "requested_peak_nm": 68.91736602783203,
+        "applied_peak_nm": 45.43000030517578,
+        "requested_peak_ratio": 2.5387892730716346,
+        "applied_peak_ratio": 1.0
+      },
+      "successful_episode_gait": {
+        "stairs_traversal_speed_mean_m_s": 0.36714226311339665,
+        "stairs_body_roll_rms_rad": 0.08491674923501838,
+        "stairs_hip_outward_component_mean_rad": 0.11869836858040797,
+        "stairs_stance_foot_slip_rms_m_s": 0.13096244262386803
+      },
+      "label": "guard1000",
+      "height_m": 0.15,
+      "tread_m": 0.3,
+      "controller": "stairs",
+      "seeds": [
+        42,
+        43
+      ],
+      "reference_success_rate": 1.0,
+      "success_rate_delta_from_reference": -0.15625,
+      "task_nonregression_passed": false
+    },
+    {
+      "successes": 127,
+      "episodes": 128,
+      "success_rate": 0.9921875,
+      "joint_acceptance_passed": false,
+      "torque_acceptance_passed": false,
+      "joint_audit": {
+        "physics_samples_per_joint": 283704,
+        "velocity_excess_joint_samples": 6008,
+        "velocity_excess_fraction": 0.001764750115143483,
+        "position_excess_joint_samples": 11895,
+        "position_excess_fraction": 0.0034939584919493555,
+        "target_position_excess_joint_samples": 348756,
+        "target_position_excess_fraction": 0.10244127682373178,
+        "tracking_error_excess_joint_samples": 79941,
+        "tracking_error_excess_fraction": 0.02348133970617263,
+        "velocity_peak_rad_s": 25.867084503173828,
+        "position_peak_overshoot_rad": 0.00379866361618042,
+        "target_position_peak_overshoot_rad": 0.5010628700256348,
+        "tracking_error_peak_rad": 1.499529480934143
+      },
+      "torque_audit": {
+        "physics_samples_per_joint": 283704,
+        "requested_excess_joint_samples": 27070,
+        "requested_excess_fraction": 0.007951362452885167,
+        "applied_excess_joint_samples": 0,
+        "applied_excess_fraction": 0.0,
+        "requested_peak_nm": 59.419708251953125,
+        "applied_peak_nm": 45.43000030517578,
+        "requested_peak_ratio": 2.1257518937074074,
+        "applied_peak_ratio": 1.0
+      },
+      "successful_episode_gait": {
+        "stairs_traversal_speed_mean_m_s": 0.4318059840777574,
+        "stairs_body_roll_rms_rad": 0.07826753017679688,
+        "stairs_hip_outward_component_mean_rad": 0.11840790914290106,
+        "stairs_stance_foot_slip_rms_m_s": 0.11802163703166914
+      },
+      "label": "guard1000",
+      "height_m": 0.18,
+      "tread_m": 0.32,
+      "controller": "hybrid",
+      "seeds": [
+        42,
+        43
+      ],
+      "reference_success_rate": 1.0,
+      "success_rate_delta_from_reference": -0.0078125,
+      "task_nonregression_passed": false
+    }
+  ],
+  "controller_started": false,
+  "control_mode_changed": false,
+  "motor_commands_sent": false,
+  "real_robot_motion_test_performed": false,
+  "existing_runtime_protection_changed": false,
+  "telemetry_probe_status": "Received 1500 LowState samples with fresh local arrivals and advancing tick using existing SDK source/runtime paths; see requested_test/lowstate.json.",
+  "inference_checks_scope": "Synthetic inputs only; no actuator commands or closed-loop motion validation",
+  "active_model_replaced": false,
+  "preservation": {
+    "files_checked": 7,
+    "all_unchanged": true,
+    "hashes": {
+      "/home/unitree/go2-stairs-torque1000-test-20261103/controller/robots/go2/build/go2_ctrl": "770ad446e7ef45f51f4ee8e8baf68c15c5a72cb064cad01d94341be1799645de",
+      "/home/unitree/go2-stairs-torque1000-test-20261103/controller/robots/go2/config/config.yaml": "51e2680810d0deddb2062520722da954ca963fc87da2a9718e8d392d8bce236a",
+      "/home/unitree/go2-stairs-torque1000-test-20261103/controller/robots/go2/main.cpp": "f2f6783a6225885287c8bbbaa7de5ef7987df501cb76d817e784634b60ab8d89",
+      "/home/unitree/go2-stairs-torque1000-test-20261103/controller/robots/go2/src/State_RLBase.cpp": "6d4615787e95035a33f0841730cac75b10782cfbed24ebb66c465855c093106d",
+      "/home/unitree/go2-stairs-torque1000-test-20261103/controller/include/FirstTestGuard.h": "58cb92522675ad8d345302a40ca84d3d9f4983c2fe13269107db469aeb55c1e6",
+      "/home/unitree/go2-stairs-torque1000-20261103/legacy_candidate/v0/exported/policy.onnx": "8b2d94f26894229ac40feecdd0fb127063bb42fdf0d88a0f383d7513dbed7fe6",
+      "/home/unitree/go2-stairs-torque1000-20261103/legacy_candidate/v0/params/deploy.yaml": "c3817799231b7a0b9e0148e4a72a943ce111c248ecd9c31388fbdc89e44a73bf"
+    }
+  },
+  "latest_read_only_preflight": {
+    "model": "guard1000",
+    "telemetry_finished_utc": "2026-11-04T04:09:07.985909+00:00",
+    "position_control_pose_probe_passed": true,
+    "existing_lowcmd_status": "ACTIVE",
+    "factory_mode_before": [
+      0,
+      {
+        "form": "0",
+        "name": "mcf"
+      }
+    ],
+    "factory_mode_after": [
+      0,
+      {
+        "form": "0",
+        "name": "mcf"
+      }
+    ],
+    "held_pose_counterfactual_passed": true,
+    "frames": 50,
+    "maximum_proposed_torque_ratio": 0.8410637974739075,
+    "proposed_tracking_error_peak_rad": 0.49740278720855713,
+    "simulation_eligible": false,
+    "motion_blocker": "Existing dynamic simulation acceptance failed; standing preflight does not override it.",
+    "publisher_created": false,
+    "release_mode_called": false,
+    "control_mode_changed": false,
+    "motor_commands_sent": false,
+    "real_robot_motion_test_performed": false,
+    "protection_thresholds_changed": false,
+    "evidence_files": [
+      "lowstate.json",
+      "position_control_preflight.log",
+      "counterfactual.json"
+    ]
+  }
+}

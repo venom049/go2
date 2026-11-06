@@ -1,0 +1,168 @@
+{
+  "checked_at": "2026-11-06T12:01:14.703773+08:00",
+  "robot_host": "192.168.1.180",
+  "read_only": true,
+  "original_files_modified": false,
+  "motor_commands_sent": false,
+  "conclusion": "Calibration-related files and nominal mounting transforms exist. No independently verified per-unit calibration for the currently publishing native utlidar chain was established.",
+  "native_lidar_mount": {
+    "source": "/home/unitree/go2_foxy/go2/src/go2_description/urdf/go2_description.urdf",
+    "sha256": "0ba25b92b9d6da5b4fcfb45d51c41cd34454138f5d5cf4b66eede38af229867d",
+    "joint": "utlidar_lidar_joint",
+    "parent": "base_link",
+    "child": "utlidar_lidar",
+    "origin": {
+      "xyz": "0.28945 0 -0.046825",
+      "rpy": "0 2.8782 0"
+    },
+    "classification": "Nominal robot-description mounting transform; per-unit measurement provenance not found"
+  },
+  "body_imu_mount": {
+    "source": "/home/unitree/go2_foxy/go2/src/go2_description/urdf/go2_description.urdf",
+    "sha256": "0ba25b92b9d6da5b4fcfb45d51c41cd34454138f5d5cf4b66eede38af229867d",
+    "joint": "imu_joint",
+    "parent": "base_link",
+    "child": "imu",
+    "origin": {
+      "xyz": "-0.02557 0 0.04232",
+      "rpy": "0 0 0"
+    },
+    "classification": "Nominal robot-description mounting transform; per-unit measurement provenance not found"
+  },
+  "lidar_pitch_degrees": 164.90871259455355,
+  "alternate_lidar_configs": [
+    {
+      "source": "/unitree/module/graph_pid_ws/src/lio_sam_ros2/config/params.yaml",
+      "sha256": "fab19806d458ab31a36957c0909420381be324287cfdea794125bd2af3059171",
+      "geometry_excerpt": [
+        {
+          "line": 4,
+          "text": "      pointCloudTopic: \"rslidar_points\"               # Point cloud data"
+        },
+        {
+          "line": 5,
+          "text": "      imuTopic: \"dog_imu_raw\"                         # IMU data"
+        },
+        {
+          "line": 28,
+          "text": "      sensor: xt16                                # lidar sensor type,  livox/xt16"
+        },
+        {
+          "line": 49,
+          "text": "      imuTimeDelay: 0.0"
+        },
+        {
+          "line": 53,
+          "text": "      extrinsicTrans: [-0.16, 0.0, -0.13] #5515雷达"
+        },
+        {
+          "line": 64,
+          "text": "      extrinsicRot: [1.0, 0.0, 0.0,\n                     0.0, 1.0, 0.0,\n                     0.0, 0.0, 1.0]                    "
+        },
+        {
+          "line": 67,
+          "text": "      extrinsicRPY: [1.0, 0.0, 0.0,\n                     0.0, 1.0, 0.0,\n                     0.0, 0.0, 1.0]"
+        }
+      ],
+      "classification": "Preinstalled LIO-SAM configuration for alternate lidar; current native utlidar use not established"
+    },
+    {
+      "source": "/unitree/module/graph_pid_ws/src/lio_sam_ros2/config/params_mid360.yaml",
+      "sha256": "4111a01aec3c87e1f1d44b2b9ec2714b529ba7e21e55045a383ab45be8fe753c",
+      "geometry_excerpt": [
+        {
+          "line": 4,
+          "text": "      pointCloudTopic: \"livox/lidar\"               # Point cloud data"
+        },
+        {
+          "line": 5,
+          "text": "      imuTopic: \"dog_imu_raw\"                         # IMU data"
+        },
+        {
+          "line": 28,
+          "text": "      sensor: livox                            # lidar sensor type, either 'velodyne' or 'ouster'   添加livox ‘robosense"
+        },
+        {
+          "line": 49,
+          "text": "      imuTimeDelay: 0.0"
+        },
+        {
+          "line": 53,
+          "text": "      extrinsicTrans: [-0.16, 0.0, -0.13] #5515雷达"
+        },
+        {
+          "line": 64,
+          "text": "      extrinsicRot: [1.0, 0.0, 0.0,\n                     0.0, 1.0, 0.0,\n                     0.0, 0.0, 1.0]                    "
+        },
+        {
+          "line": 67,
+          "text": "      extrinsicRPY: [1.0, 0.0, 0.0,\n                     0.0, 1.0, 0.0,\n                     0.0, 0.0, 1.0]"
+        }
+      ],
+      "classification": "Preinstalled LIO-SAM configuration for alternate lidar; current native utlidar use not established"
+    },
+    {
+      "source": "/unitree/module/graph_pid_ws/src/livox_ros_driver2/config/MID360_config.json",
+      "sha256": "1aa670b22a89bcc867f6e8acdaf32f672f2e68ce59a753776e617eba6cd248f6",
+      "extrinsic_parameters": [
+        {
+          "roll": 0.0,
+          "pitch": 1.57079632,
+          "yaw": 3.14159265,
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      ],
+      "classification": "Livox MID360 driver configuration; not proof of current front lidar calibration"
+    }
+  ],
+  "camera_files": [
+    {
+      "remote_path": "/home/unitree/go2_foxy/go2/reference_sdk/go2_ros2_sdk-reference/go2_robot_sdk/calibration/front_camera_720.yaml",
+      "snapshot": "source_snapshot/front_camera_720.yaml",
+      "type": "camera intrinsics/distortion, 1280x720",
+      "provenance": "Reference SDK calibration; applicability to this individual camera not verified"
+    },
+    {
+      "remote_path": "/home/unitree/go2_foxy/go2/reference_sdk/go2_ros2_sdk-reference/go2_robot_sdk/calibration/front_camera_1080.yaml",
+      "snapshot": "source_snapshot/front_camera_1080.yaml",
+      "type": "camera intrinsics/distortion, 1920x1080",
+      "provenance": "Reference SDK calibration; applicability to this individual camera not verified"
+    },
+    {
+      "remote_path": "/unitree/module/Odometer_service/src/rpg_svo_pro_open/svo_ros/param/calib/rs_camera_calib.yaml",
+      "snapshot": "source_snapshot/rs_camera_calib.yaml",
+      "type": "640x480 pinhole intrinsics; T_B_C identity",
+      "provenance": "Preinstalled SVO configuration; not established as current per-unit calibration"
+    },
+    {
+      "remote_path": "/home/unitree/go2_camera_ws/src/go2_camera_mount/urdf/go2_with_camera.urdf",
+      "snapshot": "source_snapshot/go2_with_camera.urdf",
+      "type": "base_link -> camera_link nominal translation [0.33,0,0.04] m, zero RPY",
+      "provenance": "Same values appear in /home/unitree/start_camera_tf.sh; no measurement report found"
+    }
+  ],
+  "runtime_check": {
+    "read_only": true,
+    "duration_s": 7.016464455999994,
+    "static_transforms_received": {},
+    "camera_info_received": {},
+    "graph": [
+      {
+        "topic": "/tf_static",
+        "types": [
+          "tf2_msgs/msg/TFMessage"
+        ],
+        "publishers": []
+      }
+    ],
+    "note": "No transform received is not proof that sensor firmware has no calibration."
+  },
+  "reference_point_issue": "Navigation adapter subtracts a 0.28945 m lidar x-offset from native robot_odom; lidar_watch interprets robot_odom as base pose. These assumptions require verification before converting distances to front-foot clearance.",
+  "scope": [
+    "Checked accessible files on Wi-Fi host 192.168.1.180 in /unitree, sensor/navigation workspaces, /etc, /opt, /usr/local/share and /usr/local/etc.",
+    "No firmware calibration dump, sensor EEPROM read, or search on another internal controller was performed.",
+    "Absence of an accessible per-unit file or active /tf_static does not prove that sensor firmware has no factory calibration."
+  ]
+}

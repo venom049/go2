@@ -29,7 +29,45 @@ randomization:
   friction_max: 1.2
   payload_min: -0.5
   payload_max: 1.0
+torque:
+  enabled: false
+  soft_ratio: 0.8
+  startup_seconds: 2.0
+  startup_multiplier: 2.0
+joint_constraints:
+  enabled: false  # old checkpoints retain their original dynamics and rewards
+  velocity_limit: 13.0  # real controller's measured dq stop threshold, rad/s
+  velocity_soft_ratio: 0.8
+  position_soft_ratio: 0.9  # central 90% of each asymmetric URDF interval
+  tracking_error_limit: 0.9  # abs(q_target - q), rad; not default-pose deviation
+  tracking_soft_ratio: 0.8
+  startup_seconds: 2.0
+  startup_multiplier: 2.0
+  terminate_on_violation: true
+guard_balance:
+  enabled: false  # opt-in reward only; unchanged audits and physical limits
+  initial_scale: 0.2
+  ramp_updates: 300
+  velocity_soft_ratio: 0.9
+  torque_soft_ratio: 0.85
+  tracking_soft_ratio: 0.85
+  position_overshoot_scale_rad: 0.10
+  target_position_overshoot_scale_rad: 0.15
+  budget_velocity: 1.25
+  budget_torque: 1.0
+  budget_tracking: 0.35
+  budget_target_position: 0.25
+  budget_position: 0.15
 rewards:
+  guard_balance: 0.0
+  torque_margin: 0.0
+  torque_excess: 0.0
+  velocity_margin: 0.0
+  velocity_excess: 0.0
+  position_margin: 0.0
+  position_excess: 0.0
+  target_position_excess: 0.0
+  tracking_error: 0.0
   tracking_lin_vel: 1.5
   tracking_ang_vel: 0.5
   forward_progress: 0.3

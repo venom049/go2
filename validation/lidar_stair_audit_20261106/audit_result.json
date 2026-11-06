@@ -1,0 +1,234 @@
+{
+  "recorded_at": "2026-11-06T11:52:10.928648+08:00",
+  "conclusion": "Native 3D lidar data is available and suitable for developing an external stair-entry localization layer; current code is not a validated two-step stair detector or motor-control gate.",
+  "scene_user_report": {
+    "facing": "two stairs",
+    "distance_reference": "front feet to bottom riser base",
+    "distance_m": "slightly less than 0.5, not measured"
+  },
+  "motor_commands_sent": false,
+  "control_mode_changed": false,
+  "policy_weights_changed": false,
+  "services_modified": false,
+  "current_robot_internal_interface": "eth1",
+  "hardware_model": "Unitree native utlidar; exact L1/L2 product not independently identified from read-only metadata",
+  "interfaces": {
+    "/utlidar/cloud": {
+      "frame_id": "utlidar_lidar",
+      "stamp_s": 1793936825.5615125,
+      "points": 4137,
+      "fields": [
+        {
+          "name": "x",
+          "datatype": 7,
+          "offset": 0,
+          "count": 1
+        },
+        {
+          "name": "y",
+          "datatype": 7,
+          "offset": 4,
+          "count": 1
+        },
+        {
+          "name": "z",
+          "datatype": 7,
+          "offset": 8,
+          "count": 1
+        },
+        {
+          "name": "intensity",
+          "datatype": 7,
+          "offset": 16,
+          "count": 1
+        },
+        {
+          "name": "ring",
+          "datatype": 4,
+          "offset": 20,
+          "count": 1
+        },
+        {
+          "name": "time",
+          "datatype": 7,
+          "offset": 24,
+          "count": 1
+        }
+      ]
+    },
+    "/utlidar/cloud_base": {
+      "frame_id": "base_link",
+      "stamp_s": 1793936825.5615125,
+      "points": 1523,
+      "fields": [
+        {
+          "name": "x",
+          "datatype": 7,
+          "offset": 0,
+          "count": 1
+        },
+        {
+          "name": "y",
+          "datatype": 7,
+          "offset": 4,
+          "count": 1
+        },
+        {
+          "name": "z",
+          "datatype": 7,
+          "offset": 8,
+          "count": 1
+        },
+        {
+          "name": "intensity",
+          "datatype": 7,
+          "offset": 16,
+          "count": 1
+        },
+        {
+          "name": "ring",
+          "datatype": 4,
+          "offset": 20,
+          "count": 1
+        },
+        {
+          "name": "time",
+          "datatype": 7,
+          "offset": 24,
+          "count": 1
+        }
+      ]
+    },
+    "/utlidar/cloud_deskewed": {
+      "frame_id": "odom",
+      "stamp_s": 1793936825.624314,
+      "points": 11523,
+      "fields": [
+        {
+          "name": "x",
+          "datatype": 7,
+          "offset": 0,
+          "count": 1
+        },
+        {
+          "name": "y",
+          "datatype": 7,
+          "offset": 4,
+          "count": 1
+        },
+        {
+          "name": "z",
+          "datatype": 7,
+          "offset": 8,
+          "count": 1
+        },
+        {
+          "name": "intensity",
+          "datatype": 7,
+          "offset": 16,
+          "count": 1
+        }
+      ]
+    }
+  },
+  "height_map": {
+    "stamp": 1793936825.6397896,
+    "frame_id": "odom",
+    "resolution": 0.05999999865889549,
+    "width": 128,
+    "height": 128,
+    "origin": {
+      "shape": [
+        2
+      ],
+      "dtype": "float32",
+      "finite_count": 2,
+      "min": -3.8399999141693115,
+      "max": -3.8399999141693115
+    },
+    "data": {
+      "shape": [
+        16384
+      ],
+      "dtype": "float32",
+      "finite_count": 16326,
+      "min": -0.11022613942623138,
+      "max": 1000000000.0
+    }
+  },
+  "lidar_state": {
+    "stamp": 1793936825.5871472,
+    "firmware_version": "",
+    "software_version": "1.0.0.38",
+    "sdk_version": "",
+    "sys_rotation_speed": 12911.5556640625,
+    "com_rotation_speed": 261.5723876953125,
+    "error_state": 0,
+    "cloud_frequency": 15.359676361083984,
+    "cloud_packet_loss_rate": 0.0,
+    "cloud_size": 61988,
+    "cloud_scan_num": 210,
+    "imu_frequency": 249.91806030273438,
+    "imu_packet_loss_rate": 0.0
+  },
+  "live_sample": {
+    "duration_s": 12.006907447999993,
+    "cloud_messages": 179,
+    "deskewed_points_last_frame": 10904,
+    "last_cloud_odom_match_difference_s": 0.002051830291748047,
+    "last_source_host_timestamp_difference_s": 0.08505392074584961,
+    "clock_note": "Timestamp compatibility observed; independent clock calibration not established",
+    "current_geometry_outputs": {
+      "obstacle": 58
+    },
+    "old_detector_stair_detections": 0,
+    "single_view_scope": true,
+    "processing_ms_p95": 18.223474750078594
+  },
+  "additional_capture": {
+    "frames": 12,
+    "pose_span_m": [
+      0.00034174975007772446,
+      0.000215873122215271,
+      0.0005574524402618408
+    ],
+    "visual_observation": "Two riser-like vertical transitions visible in forward x-z profile; upper tread sparse, not a validated detector result.",
+    "distance_reference": "body origin, not front feet",
+    "calibrated_stair_geometry_proven": false
+  },
+  "code_findings": [
+    {
+      "file": "deploy/go2_stairs/perception.py",
+      "finding": "min_steps=3 and explicit rejection of configurations below 3; incompatible with recognizing exactly two risers by design."
+    },
+    {
+      "file": "deploy/go2_stairs/perception.py",
+      "finding": "Requires broad three-lane coverage over forward ROI and rejects mixed vertical bins; this scan is sparse/occluded and includes a rear wall."
+    },
+    {
+      "file": "source_snapshot/elevation_obstacles.yaml",
+      "finding": "step_candidates_enabled=false; 2.5D infrastructure exists, full stair geometry not enabled or validated."
+    },
+    {
+      "file": "source_snapshot/cloud_accumulation.cpp",
+      "finding": "Navigation accumulator clips native-world z to [0.2,0.8] metres; use deskewed/native full clouds instead of this height-cropped navigation product."
+    },
+    {
+      "file": "source_snapshot/height_map_bridge.cpp",
+      "finding": "Existing code rejects out-of-range elevations; current HeightMap includes NaN and 1e9 values, which cannot be treated as real surfaces."
+    }
+  ],
+  "integration": {
+    "preserve_model_possible": "External perception -> command supervisor -> existing MoE action decoder and guards",
+    "required_controller_work": "Current MoE adapter permits vx only 0 or 0.6 and hardcodes lateral/yaw commands to zero; variable approach speed and heading require interface changes.",
+    "direct_point_cloud_to_existing_onnx": false,
+    "anticipatory_foot_placement": "Needs a terrain-conditioned policy and training, or another compatible control method; an outer speed layer alone does not add terrain observations to MoE."
+  },
+  "remaining": [
+    "Two-riser specific geometry and multi-frame confirmation",
+    "Gravity/extrinsic and body-to-front-foot distance calibration",
+    "Independent distance/height/heading ground truth, negative scenes and dynamic latency validation",
+    "Explicit wall/platform separation and visible-footprint/occlusion handling",
+    "The previous 0.9 rad tracking guard failures are not resolved by adding lidar"
+  ]
+}

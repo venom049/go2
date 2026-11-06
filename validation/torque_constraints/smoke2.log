@@ -1,0 +1,364 @@
+[INFO][AppLauncher]: Using device: cuda:0
+[INFO][AppLauncher]: Loading experience file: /opt/conda/envs/isaaclab/lib/python3.11/site-packages/isaaclab/apps/isaaclab.python.headless.kit
+Loading user config located at: '/opt/conda/envs/isaaclab/lib/python3.11/site-packages/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /opt/conda/envs/isaaclab/lib/python3.11/site-packages/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20261103_154742.log
+2026-11-03T07:47:43Z [121ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-11-03T07:47:43Z [741ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-11-03T07:47:43Z [753ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-11-03T07:47:47Z [4,314ms] [Warning] [carb.graphics-vulkan.plugin] Could not initialize nvperf_grfx_host library. PerfSDK disabled
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 580.126.09    | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA GeForce RTX 4090          | Yes: 0 |     | 24564   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2684      | 995aad5d.. |
+|     |                                  |        |     |            | 38        |            |
+|=============================================================================================|
+| OS: 24.04.5 LTS (Noble Numbat) ubuntu, Version: 24.04.5, Kernel: 5.15.0-176-generic
+| XServer Vendor: The X.Org Foundation, XServer Version: 12101011 (1.21.1.11)
+| Processor: Intel(R) Xeon(R) Gold 6430
+| Bare Metal Cores: 64 | Bare Metal Logical Cores: 128
+| Core Usage Quota: 14
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 51200 | Free Memory: 49703
+| Total Page/Swap (MB): 0 | Free Page/Swap: 0
+|---------------------------------------------------------------------------------------------|
+
+[36m======================================================================================[0m
+[36m[1m[INFO][IsaacLab]: Logging to file: /tmp/isaaclab/logs/isaaclab_2026-11-03_15-47-48.log[0m
+[36m======================================================================================[0m
+
+[33m15:47:48 [simulation_context.py] WARNING: The `enable_external_forces_every_iteration` parameter in the PhysxCfg is set to False. If you are experiencing noisy velocities, consider enabling this flag. You may need to slightly increase the number of velocity iterations (setting it to 1 or 2 rather than 0), together with this flag, to improve the accuracy of velocity updates.[0m
+[INFO]: Base environment:
+	Environment device    : cuda:0
+	Environment seed      : 42
+	Physics step-size     : 0.005
+	Rendering step-size   : 0.02
+	Environment step-size : 0.02
+[INFO] Generating terrains based on curriculum took : 0.141022 seconds
+2026-11-03T07:47:48Z [5,614ms] [Warning] [carb.graphics-vulkan.plugin] Could not initialize nvperf_grfx_host library. PerfSDK disabled
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 580.126.09    | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA GeForce RTX 4090          | Yes: 0 |     | 24564   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2684      | 995aad5d.. |
+|     |                                  |        |     |            | 38        |            |
+|=============================================================================================|
+| OS: 24.04.5 LTS (Noble Numbat) ubuntu, Version: 24.04.5, Kernel: 5.15.0-176-generic
+| XServer Vendor: The X.Org Foundation, XServer Version: 12101011 (1.21.1.11)
+| Processor: Intel(R) Xeon(R) Gold 6430
+| Bare Metal Cores: 64 | Bare Metal Logical Cores: 128
+| Core Usage Quota: 14
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 51200 | Free Memory: 49453
+| Total Page/Swap (MB): 0 | Free Page/Swap: 0
+|---------------------------------------------------------------------------------------------|
+2026-11-03T07:47:50Z [7,094ms] [Warning] [omni.graph.visualization.nodes._impl.extension] No Viewport Window to add omni.graph.visualization.nodes-2.1.3 scene to
+[INFO]: Time taken for scene creation : 2.317034 seconds
+[INFO]: Scene manager:  <class InteractiveScene>
+	Number of environments: 32
+	Environment spacing   : 3.0
+	Source prim name      : /World/envs/env_0
+	Global prim paths     : ['/World/ground']
+	Replicate physics     : True
+[INFO]: Starting the simulation. This may take a few seconds. Please wait...
+[INFO]: Time taken for simulation start : 0.823692 seconds
+[INFO] Command Manager:  <CommandManager> contains 1 active terms.
++------------------------------------------------+
+|              Active Command Terms              |
++-------+---------------+------------------------+
+| Index | Name          |          Type          |
++-------+---------------+------------------------+
+|   0   | base_velocity | UniformVelocityCommand |
++-------+---------------+------------------------+
+
+[INFO] Event Manager:  <EventManager> contains 2 active terms.
++----------------------------------+
+| Active Event Terms in Mode: 'startup' |
++-------------+--------------------+
+|    Index    | Name               |
++-------------+--------------------+
+|      0      | material           |
+|      1      | payload            |
++-------------+--------------------+
++-----------------------------------+
+| Active Event Terms in Mode: 'reset' |
++-----------+-----------------------+
+|   Index   | Name                  |
++-----------+-----------------------+
+|     0     | reset_base            |
+|     1     | reset_joints          |
++-----------+-----------------------+
+
+[INFO] Recorder Manager:  <RecorderManager> contains 0 active terms.
++---------------------+
+| Active Recorder Terms |
++-----------+---------+
+|   Index   | Name    |
++-----------+---------+
++-----------+---------+
+
+[INFO] Action Manager:  <ActionManager> contains 1 active terms.
++-----------------------------------+
+|  Active Action Terms (shape: 12)  |
++---------+----------+--------------+
+|  Index  | Name     |    Dimension |
++---------+----------+--------------+
+|    0    | joints   |           12 |
++---------+----------+--------------+
+
+[INFO] Observation Manager: <ObservationManager> contains 2 groups.
++----------------------------------------------------------+
+| Active Observation Terms in Group: 'policy' (shape: (45,)) |
++------------+--------------------------------+------------+
+|   Index    | Name                           |   Shape    |
++------------+--------------------------------+------------+
+|     0      | commands                       |    (3,)    |
+|     1      | angular_velocity               |    (3,)    |
+|     2      | gravity                        |    (3,)    |
+|     3      | joint_pos                      |   (12,)    |
+|     4      | joint_vel                      |   (12,)    |
+|     5      | previous_action                |   (12,)    |
++------------+--------------------------------+------------+
++---------------------------------------------------------+
+| Active Observation Terms in Group: 'critic' (shape: (235,)) |
++-----------+-------------------------------+-------------+
+|   Index   | Name                          |    Shape    |
++-----------+-------------------------------+-------------+
+|     0     | commands                      |     (3,)    |
+|     1     | angular_velocity              |     (3,)    |
+|     2     | gravity                       |     (3,)    |
+|     3     | joint_pos                     |    (12,)    |
+|     4     | joint_vel                     |    (12,)    |
+|     5     | previous_action               |    (12,)    |
+|     6     | linear_velocity               |     (3,)    |
+|     7     | terrain_heights               |    (187,)   |
++-----------+-------------------------------+-------------+
+
+[INFO] Termination Manager:  <TerminationManager> contains 5 active terms.
++----------------------------------+
+|     Active Termination Terms     |
++-------+---------------+----------+
+| Index | Name          | Time Out |
++-------+---------------+----------+
+|   0   | time_out      |   True   |
+|   1   | base_contact  |  False   |
+|   2   | fall          |  False   |
+|   3   | out_of_bounds |  False   |
+|   4   | success       |  False   |
++-------+---------------+----------+
+
+[INFO] Reward Manager:  <RewardManager> contains 30 active terms.
++---------------------------------------+
+|          Active Reward Terms          |
++-------+--------------------+----------+
+| Index | Name               |   Weight |
++-------+--------------------+----------+
+|   0   | tracking_lin_vel   |      2.0 |
+|   1   | tracking_ang_vel   |      0.5 |
+|   2   | forward_progress   |      0.8 |
+|   3   | success            |      5.0 |
+|   4   | failure            |     -2.0 |
+|   5   | lin_vel_z          |     -0.2 |
+|   6   | ang_vel_xy         |     -0.1 |
+|   7   | orientation        |    -0.05 |
+|   8   | base_height        |     -1.0 |
+|   9   | joint_acc          | -2.5e-07 |
+|   10  | torque_margin      |     -2.0 |
+|   11  | torque_excess      |    -20.0 |
+|   12  | joint_power        |   -3e-05 |
+|   13  | action_rate        |    -0.02 |
+|   14  | action_smoothness  |    -0.01 |
+|   15  | roll_orientation   |     -3.0 |
+|   16  | roll_rate          |    -0.25 |
+|   17  | lateral_velocity   |     -0.4 |
+|   18  | joint_deviation    |    -0.03 |
+|   19  | hip_deviation      |     -0.1 |
+|   20  | hip_abduction      |     -3.0 |
+|   21  | feet_lateral       |    -40.0 |
+|   22  | joint_vel          |  -0.0005 |
+|   23  | joint_limits       |     -2.0 |
+|   24  | undesired_contacts |     -1.0 |
+|   25  | foot_slip          |     -0.6 |
+|   26  | lateral_drift      |     -0.3 |
+|   27  | foot_clearance     |     -0.5 |
+|   28  | feet_air_time      |      0.2 |
+|   29  | feet_stumble       |     -0.5 |
++-------+--------------------+----------+
+
+[INFO] Curriculum Manager:  <CurriculumManager> contains 2 active terms.
++--------------------------+
+| Active Curriculum Terms  |
++--------+-----------------+
+| Index  | Name            |
++--------+-----------------+
+|   0    | stairs          |
+|   1    | command_speed   |
++--------+-----------------+
+
+[INFO]: Completed setting up the environment...
+Actor MLP: Sequential(
+  (0): Linear(in_features=64, out_features=512, bias=True)
+  (1): ELU(alpha=1.0)
+  (2): Linear(in_features=512, out_features=256, bias=True)
+  (3): ELU(alpha=1.0)
+  (4): Linear(in_features=256, out_features=128, bias=True)
+  (5): ELU(alpha=1.0)
+  (6): Linear(in_features=128, out_features=12, bias=True)
+)
+Critic MLP: Sequential(
+  (0): Linear(in_features=235, out_features=512, bias=True)
+  (1): ELU(alpha=1.0)
+  (2): Linear(in_features=512, out_features=256, bias=True)
+  (3): ELU(alpha=1.0)
+  (4): Linear(in_features=256, out_features=128, bias=True)
+  (5): ELU(alpha=1.0)
+  (6): Linear(in_features=128, out_features=1, bias=True)
+)
+Estimator: Sequential(
+  (0): Linear(in_features=270, out_features=128, bias=True)
+  (1): ELU(alpha=1.0)
+  (2): Linear(in_features=128, out_features=64, bias=True)
+  (3): ELU(alpha=1.0)
+  (4): Linear(in_features=64, out_features=19, bias=True)
+)
+GO2_RUN_DIR=/root/go2-himloco/logs/20261103_154747_torque_smoke
+INITIALIZATION=warm_start
+################################################################################
+                        [1m Learning iteration 0/2 [0m                        
+
+                       Computation: 725 steps/s (collection: 0.752s, learning 0.306s)
+             Mean action noise std: 0.20
+                    value_function: 14.4257
+                         surrogate: 0.1057
+                        estimation: 0.0041
+                              swap: 0.1092
+   Episode_Reward/tracking_lin_vel: 0.0107
+   Episode_Reward/tracking_ang_vel: 0.0063
+   Episode_Reward/forward_progress: 0.0000
+            Episode_Reward/success: 0.0000
+            Episode_Reward/failure: 0.0000
+          Episode_Reward/lin_vel_z: -0.0007
+         Episode_Reward/ang_vel_xy: -0.0001
+        Episode_Reward/orientation: -0.0000
+        Episode_Reward/base_height: -0.0000
+          Episode_Reward/joint_acc: -0.0001
+      Episode_Reward/torque_margin: 0.0000
+      Episode_Reward/torque_excess: 0.0000
+        Episode_Reward/joint_power: -0.0000
+        Episode_Reward/action_rate: 0.0000
+  Episode_Reward/action_smoothness: 0.0000
+   Episode_Reward/roll_orientation: -0.0000
+          Episode_Reward/roll_rate: -0.0000
+   Episode_Reward/lateral_velocity: -0.0000
+    Episode_Reward/joint_deviation: -0.0003
+      Episode_Reward/hip_deviation: -0.0000
+      Episode_Reward/hip_abduction: 0.0000
+       Episode_Reward/feet_lateral: 0.0000
+          Episode_Reward/joint_vel: -0.0001
+       Episode_Reward/joint_limits: 0.0000
+ Episode_Reward/undesired_contacts: 0.0000
+          Episode_Reward/foot_slip: -0.0000
+      Episode_Reward/lateral_drift: -0.0000
+     Episode_Reward/foot_clearance: -0.0000
+      Episode_Reward/feet_air_time: 0.0000
+       Episode_Reward/feet_stumble: 0.0000
+    Curriculum/stairs/success_rate: 0.0000
+Curriculum/stairs/forward_distance: -0.0290
+   Curriculum/stairs/terrain_level: 0.5938
+ Curriculum/command_speed/fraction: 0.0022
+Curriculum/command_speed/forward_min: 0.3502
+Curriculum/command_speed/forward_max: 0.5003
+Metrics/base_velocity/error_vel_xy: 0.0150
+Metrics/base_velocity/error_vel_yaw: 0.0012
+      Episode_Termination/time_out: 0.0000
+  Episode_Termination/base_contact: 0.0000
+          Episode_Termination/fall: 0.0000
+ Episode_Termination/out_of_bounds: 0.0000
+       Episode_Termination/success: 0.0000
+  Torque/requested_excess_fraction: 0.1329
+    Torque/applied_excess_fraction: 0.0000
+        Torque/saturation_fraction: 0.1329
+          Raw action clip fraction: 0.0618
+      Mean action overflow penalty: 0.1163
+--------------------------------------------------------------------------------
+                   Total timesteps: 768
+                    Iteration time: 1.06s
+                      Time elapsed: 00:00:01
+                               ETA: 00:00:02
+
+Maximum requested torque / limit this update: 2.6161
+################################################################################
+                        [1m Learning iteration 1/2 [0m                        
+
+                       Computation: 933 steps/s (collection: 0.659s, learning 0.164s)
+             Mean action noise std: 0.20
+                    value_function: 154.8921
+                         surrogate: 0.0112
+                        estimation: 0.0045
+                              swap: 0.1092
+   Episode_Reward/tracking_lin_vel: 0.0107
+   Episode_Reward/tracking_ang_vel: 0.0063
+   Episode_Reward/forward_progress: 0.0000
+            Episode_Reward/success: 0.0000
+            Episode_Reward/failure: 0.0000
+          Episode_Reward/lin_vel_z: -0.0007
+         Episode_Reward/ang_vel_xy: -0.0001
+        Episode_Reward/orientation: -0.0000
+        Episode_Reward/base_height: -0.0000
+          Episode_Reward/joint_acc: -0.0001
+      Episode_Reward/torque_margin: 0.0000
+      Episode_Reward/torque_excess: 0.0000
+        Episode_Reward/joint_power: -0.0000
+        Episode_Reward/action_rate: 0.0000
+  Episode_Reward/action_smoothness: 0.0000
+   Episode_Reward/roll_orientation: -0.0000
+          Episode_Reward/roll_rate: -0.0000
+   Episode_Reward/lateral_velocity: -0.0000
+    Episode_Reward/joint_deviation: -0.0003
+      Episode_Reward/hip_deviation: -0.0000
+      Episode_Reward/hip_abduction: 0.0000
+       Episode_Reward/feet_lateral: 0.0000
+          Episode_Reward/joint_vel: -0.0001
+       Episode_Reward/joint_limits: 0.0000
+ Episode_Reward/undesired_contacts: 0.0000
+          Episode_Reward/foot_slip: -0.0000
+      Episode_Reward/lateral_drift: -0.0000
+     Episode_Reward/foot_clearance: -0.0000
+      Episode_Reward/feet_air_time: 0.0000
+       Episode_Reward/feet_stumble: 0.0000
+    Curriculum/stairs/success_rate: 0.0000
+Curriculum/stairs/forward_distance: -0.0290
+   Curriculum/stairs/terrain_level: 0.5938
+ Curriculum/command_speed/fraction: 0.0022
+Curriculum/command_speed/forward_min: 0.3502
+Curriculum/command_speed/forward_max: 0.5003
+Metrics/base_velocity/error_vel_xy: 0.0150
+Metrics/base_velocity/error_vel_yaw: 0.0012
+      Episode_Termination/time_out: 0.0000
+  Episode_Termination/base_contact: 0.0000
+          Episode_Termination/fall: 0.0000
+ Episode_Termination/out_of_bounds: 0.0000
+       Episode_Termination/success: 0.0000
+  Torque/requested_excess_fraction: 0.1595
+    Torque/applied_excess_fraction: 0.0000
+        Torque/saturation_fraction: 0.1595
+          Raw action clip fraction: 0.0921
+      Mean action overflow penalty: 0.1383
+--------------------------------------------------------------------------------
+                   Total timesteps: 1536
+                    Iteration time: 0.82s
+                      Time elapsed: 00:00:01
+                               ETA: 00:00:00
+
+Maximum requested torque / limit this update: 3.1287
+GO2_TRAINING_COMPLETE

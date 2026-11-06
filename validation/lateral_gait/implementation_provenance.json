@@ -1,0 +1,81 @@
+{
+  "source_sha256": {
+    "configs/stairs.yaml": "f9f40688d1d16f8efed01de26437bb6af3d33daa7f6e93e8a4f83bc26222f681",
+    "configs/stairs_lateral.yaml": "814d2a692598bd0572be09aa1c3dd7de4c1e7a441cd50831f76916c6596d20ea",
+    "go2_him/mdp.py": "7c6e56c7d632296c1b72e9619769df33a507784781982357974fe68c7ee830f2",
+    "go2_him/lateral_geometry.py": "1e9cce4c416e4fa488f4f1cdb73a7f11112fea2aae956b021de9894d956f90b0",
+    "go2_him/lab_config.py": "d621da08e14b486a51b0e7ba786c93f6400f102fb883fd14e926feca1d657d48",
+    "go2_him/settings.py": "c82b12630ea2e26b49805af88d9003b69d2fdcc102f9feca5f47de3c5bd7e655",
+    "go2_him/gait_metrics.py": "12025e0355d885b86a1d60cc792271ea38206865ac1d4b67edbf549776cb7103",
+    "tests/test_mdp.py": "b88fab22fa903d15e3ce03790986913fd2f9194f3edb6bba82a658987501de5c",
+    "tests/test_lateral_geometry.py": "fc0c810f9be2f8faca51993eedf7af5436d4c2fc68990667bc702552acd062d5",
+    "tests/test_gait_metrics.py": "fc400c5449608cd2cebf9d84b535ebd261e8d7fafd74fe550fd80a0ea5b2f61d",
+    "tests/test_settings.py": "f2624f396db924700462d9c5d7d026e2c4ba4bae0eeb10c1cc6da59c90195807"
+  },
+  "references": {
+    "repository": "https://github.com/wxz-521/go2-stairs-sim2real",
+    "commit": "530a10fee4232317aef4343f2b85b6bad9cf7905",
+    "policy_interface": "49 observations, 12 joint targets plus 4 stiffness actions, default hip angles0; no third-party policy loaded",
+    "new_penalties": "New project-specific terms; upstream MuJoCo fine-tuning does not contain dedicated hip-abduction or foot-width penalties",
+    "video": "https://www.youtube.com/watch?v=nrwN8KrsD2c&t=46s",
+    "video_observation": "Watched stair segment 0:46/0:51/0:56; qualitative posture/contact only, no measured joint angles or foot width"
+  },
+  "thresholds": {
+    "hip_abduction_max_rad": 0.3,
+    "feet_lateral_min_m": 0.1,
+    "feet_lateral_max_m": 0.22,
+    "source": "engineering starting values, not extracted from video"
+  },
+  "nominal_fk_foot_y_m": {
+    "front": 0.17260203023279228,
+    "rear": 0.17167353571596736
+  },
+  "tests": "73 full suite tests passed in 2.595s after staircase-only phase metrics were added",
+  "warm_start_checkpoint": "/root/go2-himloco/logs/20261102_171629_stairs_natural_refinement/model_400.pt",
+  "training_run": {
+    "directory": "/root/go2-himloco/logs/20261102_175509_stairs_lateral_refinement",
+    "pid": 14859,
+    "planned_updates": 400,
+    "num_envs": 1024,
+    "configuration": "configs/stairs_lateral.yaml",
+    "weights": {
+      "hip_abduction": -2.0,
+      "feet_lateral": -30.0
+    },
+    "completed_updates": 400,
+    "all_model_tensors_finite": true
+  },
+  "evaluation_protocol": {
+    "stair_height_m": 0.18,
+    "tread_m": 0.32,
+    "stair_count": 8,
+    "forward_command_m_s": 0.4,
+    "seeds": [
+      42,
+      43
+    ],
+    "first_episodes_per_seed": 64,
+    "time_limit_s": 25,
+    "sensor_contact_history": 4,
+    "observation_corruption": false,
+    "domain_randomization": false,
+    "gait_quality_selection": "successful first episodes",
+    "stairs_phase": "base center local x in [1.2,1.2+num_steps*tread), separate from approach/platform"
+  },
+  "evaluation_source_sha256": {
+    "go2_him/gait_metrics.py": "ab2817f1821221f81d5d3094986148db9030ee74ed79605c693a3d967543b7fe",
+    "tests/test_gait_metrics.py": "f6610c0f4bb3a820baa8686efd0d0948ff486dfe0f06486123fca152203be91c",
+    "scripts/play_lab.py": "755f695b85da667bc3cdd35a444c44e8484c3a8a32294797495097d928910ee5"
+  },
+  "selected_checkpoint": "model_400.pt",
+  "viewer": {
+    "pid": 19455,
+    "camera": "front",
+    "eye": [
+      2.2,
+      0.6,
+      2.2
+    ],
+    "url": "http://127.0.0.1:18080/"
+  }
+}

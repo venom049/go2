@@ -37,3 +37,12 @@ Isaac Sim、Isaac Lab、PyTorch、CUDA相关运行库和其他Python依赖由运
 ## RoboGauge / MoE-CTS moe1000
 
 新增材料、固定上游提交、微调来源及原许可证见 [moe1000 说明](artifacts/moe1000/README.md) 和 [上游许可证](artifacts/moe1000/UPSTREAM_LICENSE)。该模型与历史 HIMLoco 训练链相互独立。
+
+
+## 2026-11-06 新增的原始 MoE、SDK 与独立感知
+
+- `upstream/robogauge/`、原始部署 ONNX 及 MoE 适配来自 [robogauge/code](https://github.com/robogauge/code)，固定来源提交 `f116b00a934262348f41cbfd0d07cc4cb6fbf8d8`；保留 [RoboGauge MIT](upstream/robogauge/RoboGauge/LICENSE) 和 [C++ 部署 MIT](upstream/robogauge/unitree_cpp_deploy/LICENSE) 原文。新增训练检查点与原始作者权重分别保存，不混用模型身份。
+- `upstream/unitree_sdk2_python/` 保留其 [Unitree BSD-3-Clause](upstream/unitree_sdk2_python/LICENSE)。机载 SDK/ROS 运行时没有从机器狗系统目录打包进来，构建脚本记录既有外部依赖路径。
+- 官方 Go2 MJCF 的固定来源与许可证同上。新训练使用的原字节副本位于 `validation/moe1000_sim2real_20261105/source/assets/unitree_go2/`；机载 URDF 单独记录来源与哈希，不代表已完成该机个体物理标定。
+- `deploy/lidar_moe_20261106/independent_lio/src/moe_fast_lio/` 是已适配但未选为默认估计的 FAST-LIO ROS 2 候选，保留 [GPL-2.0 许可证](deploy/lidar_moe_20261106/independent_lio/src/moe_fast_lio/LICENSE)。来源为 [Ericsii/FAST_LIO_ROS2](https://github.com/Ericsii/FAST_LIO_ROS2) 提交 `2fffc570a25d0df172720bac034fbdb6a13d2162`，算法来自 [hku-mars/FAST_LIO](https://github.com/hku-mars/FAST_LIO)，ikd-Tree 提交及适配记录见 [SOURCE.json](deploy/lidar_moe_20261106/independent_lio/SOURCE.json)。当前默认独立估计实现和算法选择见部署 README；没有把此 GPL 候选源码统一改为其他许可。
+- 参考的适应性训练仓库、RealSense 排查文章和 NVIDIA 原始资料在本次结果总览及对应报告中链接；未打包外部文章、论文或报告图片。

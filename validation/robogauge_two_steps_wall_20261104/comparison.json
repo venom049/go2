@@ -1,0 +1,1713 @@
+{
+  "task": "RoboGauge MoE-CTS two-step ascent and stop before wall",
+  "conditions": {
+    "author_constant": {
+      "episodes": 17,
+      "successes": 0,
+      "physics_samples_per_joint": 31616,
+      "weighted_guard_metrics": {
+        "velocity": {
+          "excess_samples": 5440,
+          "excess_fraction": 0.014338731443994602,
+          "peak": 31.1094690200745
+        },
+        "nominal_velocity": {
+          "excess_samples": 2182,
+          "excess_fraction": 0.005751307354925776,
+          "peak": 31.1094690200745
+        },
+        "actual_position": {
+          "excess_samples": 691,
+          "excess_fraction": 0.0018213351889338732,
+          "peak": 0.17981159389917722
+        },
+        "target_position": {
+          "excess_samples": 23987,
+          "excess_fraction": 0.0632248439608637,
+          "peak": 0.9060975597000122
+        },
+        "tracking_error": {
+          "excess_samples": 5533,
+          "excess_fraction": 0.014583860492577597,
+          "peak": 1.5895431368888606
+        },
+        "requested_torque": {
+          "excess_samples": 0,
+          "excess_fraction": 0.0,
+          "peak": 31.67326536486182
+        },
+        "applied_torque": {
+          "excess_samples": 0,
+          "excess_fraction": 0.0,
+          "peak": 31.67326536486182
+        },
+        "model_actual_position": {
+          "excess_samples": 1751,
+          "excess_fraction": 0.004615279183535763,
+          "peak": 0.17981159389917722
+        },
+        "model_target_position": {
+          "excess_samples": 26457,
+          "excess_fraction": 0.06973526062753037,
+          "peak": 0.9060975597000122
+        }
+      },
+      "aggregation": "Excess counts divided by pooled physics-joint samples; peaks are maxima, never averaged",
+      "status_counts": {
+        "wall_contact": 17
+      },
+      "reached_upper_platform": 17,
+      "stop_commands_triggered": 0,
+      "wall_contacts": 17,
+      "wall_min_clearance_m": 9.33121679669302e-05,
+      "max_wall_contact_force_n": 729.5992039377104,
+      "episodes_passing_local_guard_audit": 0,
+      "requested_torque_peak_ratio": 0.8064088370302765,
+      "applied_torque_peak_ratio": 0.8064088370302765,
+      "episode_files": [
+        "episode_000.json",
+        "episode_001.json",
+        "episode_002.json",
+        "episode_003.json",
+        "episode_004.json",
+        "episode_005.json",
+        "episode_006.json",
+        "episode_007.json",
+        "episode_008.json",
+        "episode_009.json",
+        "episode_010.json",
+        "episode_011.json",
+        "episode_012.json",
+        "episode_013.json",
+        "episode_014.json",
+        "episode_015.json",
+        "episode_016.json"
+      ],
+      "command_mode": "constant",
+      "torque_limit_mode": "author",
+      "limitations": "This finite MuJoCo test is not real-world validation or permission to actuate the robot; stop_on_platform depends on external ground truth.",
+      "per_joint": {
+        "FL_hip_joint": {
+          "velocity": {
+            "peak": 7.549418827415772,
+            "excess_fraction": 0.0
+          },
+          "actual_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "target_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "tracking_error": {
+            "peak": 0.47290414748762166,
+            "excess_fraction": 0.0
+          },
+          "requested_torque": {
+            "peak": 9.593406550036406,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 9.593406550036406,
+            "excess_fraction": 0.0
+          }
+        },
+        "FL_thigh_joint": {
+          "velocity": {
+            "peak": 16.183681833342867,
+            "excess_fraction": 0.009204200404858299
+          },
+          "actual_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "target_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "tracking_error": {
+            "peak": 1.021619510117994,
+            "excess_fraction": 0.00031629554655870446
+          },
+          "requested_torque": {
+            "peak": 19.111889437617553,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 19.111889437617553,
+            "excess_fraction": 0.0
+          }
+        },
+        "FL_calf_joint": {
+          "velocity": {
+            "peak": 26.15396837802165,
+            "excess_fraction": 0.03827176113360324
+          },
+          "actual_position": {
+            "peak": 0.1375151604607664,
+            "excess_fraction": 0.01280996963562753
+          },
+          "target_position": {
+            "peak": 0.7174190566635131,
+            "excess_fraction": 0.1489752024291498
+          },
+          "tracking_error": {
+            "peak": 1.0874809058646986,
+            "excess_fraction": 0.010342864372469635
+          },
+          "requested_torque": {
+            "peak": 20.986397738720136,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 20.986397738720136,
+            "excess_fraction": 0.0
+          }
+        },
+        "FR_hip_joint": {
+          "velocity": {
+            "peak": 7.243613591509704,
+            "excess_fraction": 0.0
+          },
+          "actual_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "target_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "tracking_error": {
+            "peak": 0.4569181612215763,
+            "excess_fraction": 0.0
+          },
+          "requested_torque": {
+            "peak": 9.069946212930345,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 9.069946212930345,
+            "excess_fraction": 0.0
+          }
+        },
+        "FR_thigh_joint": {
+          "velocity": {
+            "peak": 14.95167382734372,
+            "excess_fraction": 0.007685981781376518
+          },
+          "actual_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "target_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "tracking_error": {
+            "peak": 0.7632650061145272,
+            "excess_fraction": 0.0
+          },
+          "requested_torque": {
+            "peak": 15.907242820906273,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 15.907242820906273,
+            "excess_fraction": 0.0
+          }
+        },
+        "FR_calf_joint": {
+          "velocity": {
+            "peak": 22.554987566998022,
+            "excess_fraction": 0.025556680161943318
+          },
+          "actual_position": {
+            "peak": 0.020603253579364544,
+            "excess_fraction": 0.004934210526315789
+          },
+          "target_position": {
+            "peak": 0.2021622941589355,
+            "excess_fraction": 0.0357413967611336
+          },
+          "tracking_error": {
+            "peak": 1.2464104368976667,
+            "excess_fraction": 0.010880566801619434
+          },
+          "requested_torque": {
+            "peak": 25.956514642509173,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 25.956514642509173,
+            "excess_fraction": 0.0
+          }
+        },
+        "RL_hip_joint": {
+          "velocity": {
+            "peak": 5.2377965427825695,
+            "excess_fraction": 0.0
+          },
+          "actual_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "target_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "tracking_error": {
+            "peak": 0.4467043159991966,
+            "excess_fraction": 0.0
+          },
+          "requested_torque": {
+            "peak": 9.254862268751442,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 9.254862268751442,
+            "excess_fraction": 0.0
+          }
+        },
+        "RL_thigh_joint": {
+          "velocity": {
+            "peak": 13.01024751436245,
+            "excess_fraction": 3.1629554655870446e-05
+          },
+          "actual_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "target_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "tracking_error": {
+            "peak": 0.7490624797703062,
+            "excess_fraction": 0.0
+          },
+          "requested_torque": {
+            "peak": 13.364617612550967,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 13.364617612550967,
+            "excess_fraction": 0.0
+          }
+        },
+        "RL_calf_joint": {
+          "velocity": {
+            "peak": 24.136730809482774,
+            "excess_fraction": 0.03248355263157895
+          },
+          "actual_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "target_position": {
+            "peak": 0.7177707240676879,
+            "excess_fraction": 0.28283147773279355
+          },
+          "tracking_error": {
+            "peak": 1.5895431368888606,
+            "excess_fraction": 0.06999620445344129
+          },
+          "requested_torque": {
+            "peak": 31.67326536486182,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 31.67326536486182,
+            "excess_fraction": 0.0
+          }
+        },
+        "RR_hip_joint": {
+          "velocity": {
+            "peak": 9.174197051648486,
+            "excess_fraction": 0.0
+          },
+          "actual_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "target_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "tracking_error": {
+            "peak": 0.5756638398018783,
+            "excess_fraction": 0.0
+          },
+          "requested_torque": {
+            "peak": 9.98552774507045,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 9.98552774507045,
+            "excess_fraction": 0.0
+          }
+        },
+        "RR_thigh_joint": {
+          "velocity": {
+            "peak": 8.870949393994414,
+            "excess_fraction": 0.0
+          },
+          "actual_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "target_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "tracking_error": {
+            "peak": 0.877856049294759,
+            "excess_fraction": 0.0
+          },
+          "requested_torque": {
+            "peak": 17.364123707564996,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 17.364123707564996,
+            "excess_fraction": 0.0
+          }
+        },
+        "RR_calf_joint": {
+          "velocity": {
+            "peak": 31.1094690200745,
+            "excess_fraction": 0.058830971659919025
+          },
+          "actual_position": {
+            "peak": 0.17981159389917722,
+            "excess_fraction": 0.004111842105263158
+          },
+          "target_position": {
+            "peak": 0.9060975597000122,
+            "excess_fraction": 0.29115005060728744
+          },
+          "tracking_error": {
+            "peak": 1.4832703366611235,
+            "excess_fraction": 0.0834703947368421
+          },
+          "requested_torque": {
+            "peak": 28.174524601221027,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 28.174524601221027,
+            "excess_fraction": 0.0
+          }
+        }
+      },
+      "source_manifest": "cohort_author_constant/manifest.json",
+      "final_clearance_range_m": [
+        9.33121679669302e-05,
+        0.000957254984666589
+      ],
+      "episode_elapsed_range_s": [
+        3.655999999999819,
+        3.8119999999998018
+      ],
+      "platform_entry_time_range_s": [
+        2.88,
+        3.086
+      ],
+      "smallest_episode_wall_clearance_range_m": [
+        9.33121679669302e-05,
+        0.000957254984666589
+      ]
+    },
+    "author_stop_on_platform": {
+      "episodes": 17,
+      "successes": 17,
+      "physics_samples_per_joint": 48235,
+      "weighted_guard_metrics": {
+        "velocity": {
+          "excess_samples": 5534,
+          "excess_fraction": 0.009560830655471477,
+          "peak": 31.1094690200745
+        },
+        "nominal_velocity": {
+          "excess_samples": 2222,
+          "excess_fraction": 0.003838844545800076,
+          "peak": 31.1094690200745
+        },
+        "actual_position": {
+          "excess_samples": 691,
+          "excess_fraction": 0.0011938080923257662,
+          "peak": 0.17981159389917722
+        },
+        "target_position": {
+          "excess_samples": 24062,
+          "excess_fraction": 0.04157078193566221,
+          "peak": 0.9060975597000122
+        },
+        "tracking_error": {
+          "excess_samples": 5537,
+          "excess_fraction": 0.00956601361390415,
+          "peak": 1.5895431368888606
+        },
+        "requested_torque": {
+          "excess_samples": 0,
+          "excess_fraction": 0.0,
+          "peak": 31.67326536486182
+        },
+        "applied_torque": {
+          "excess_samples": 0,
+          "excess_fraction": 0.0,
+          "peak": 31.67326536486182
+        },
+        "model_actual_position": {
+          "excess_samples": 1751,
+          "excess_fraction": 0.003025120071870357,
+          "peak": 0.17981159389917722
+        },
+        "model_target_position": {
+          "excess_samples": 26532,
+          "excess_fraction": 0.045838084378563286,
+          "peak": 0.9060975597000122
+        }
+      },
+      "aggregation": "Excess counts divided by pooled physics-joint samples; peaks are maxima, never averaged",
+      "status_counts": {
+        "success": 17
+      },
+      "reached_upper_platform": 17,
+      "stop_commands_triggered": 17,
+      "wall_contacts": 0,
+      "wall_min_clearance_m": 0.24729579179216676,
+      "max_wall_contact_force_n": 0.0,
+      "episodes_passing_local_guard_audit": 0,
+      "requested_torque_peak_ratio": 0.8463790165799321,
+      "applied_torque_peak_ratio": 0.8463790165799321,
+      "episode_files": [
+        "episode_000.json",
+        "episode_001.json",
+        "episode_002.json",
+        "episode_003.json",
+        "episode_004.json",
+        "episode_005.json",
+        "episode_006.json",
+        "episode_007.json",
+        "episode_008.json",
+        "episode_009.json",
+        "episode_010.json",
+        "episode_011.json",
+        "episode_012.json",
+        "episode_013.json",
+        "episode_014.json",
+        "episode_015.json",
+        "episode_016.json"
+      ],
+      "command_mode": "stop_on_platform",
+      "torque_limit_mode": "author",
+      "limitations": "This finite MuJoCo test is not real-world validation or permission to actuate the robot; stop_on_platform depends on external ground truth.",
+      "per_joint": {
+        "FL_hip_joint": {
+          "velocity": {
+            "peak": 7.549418827415772,
+            "excess_fraction": 0.0
+          },
+          "actual_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "target_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "tracking_error": {
+            "peak": 0.47290414748762166,
+            "excess_fraction": 0.0
+          },
+          "requested_torque": {
+            "peak": 9.593406550036406,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 9.593406550036406,
+            "excess_fraction": 0.0
+          }
+        },
+        "FL_thigh_joint": {
+          "velocity": {
+            "peak": 16.183681833342867,
+            "excess_fraction": 0.006032963615631803
+          },
+          "actual_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "target_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "tracking_error": {
+            "peak": 1.021619510117994,
+            "excess_fraction": 0.0002073183373069348
+          },
+          "requested_torque": {
+            "peak": 19.111889437617553,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 19.111889437617553,
+            "excess_fraction": 0.0
+          }
+        },
+        "FL_calf_joint": {
+          "velocity": {
+            "peak": 26.15396837802165,
+            "excess_fraction": 0.027158702187208457
+          },
+          "actual_position": {
+            "peak": 0.1375151604607664,
+            "excess_fraction": 0.00839639266093086
+          },
+          "target_position": {
+            "peak": 0.7174190566635131,
+            "excess_fraction": 0.0804395148750907
+          },
+          "tracking_error": {
+            "peak": 1.0874809058646986,
+            "excess_fraction": 0.0067793096299367675
+          },
+          "requested_torque": {
+            "peak": 20.986397738720136,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 20.986397738720136,
+            "excess_fraction": 0.0
+          }
+        },
+        "FR_hip_joint": {
+          "velocity": {
+            "peak": 7.243613591509704,
+            "excess_fraction": 0.0
+          },
+          "actual_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "target_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "tracking_error": {
+            "peak": 0.4569181612215763,
+            "excess_fraction": 0.0
+          },
+          "requested_torque": {
+            "peak": 9.069946212930345,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 9.069946212930345,
+            "excess_fraction": 0.0
+          }
+        },
+        "FR_thigh_joint": {
+          "velocity": {
+            "peak": 14.95167382734372,
+            "excess_fraction": 0.005037835596558515
+          },
+          "actual_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "target_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "tracking_error": {
+            "peak": 0.9756959918219615,
+            "excess_fraction": 0.0005597595107287239
+          },
+          "requested_torque": {
+            "peak": 20.05918269294439,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 20.05918269294439,
+            "excess_fraction": 0.0
+          }
+        },
+        "FR_calf_joint": {
+          "velocity": {
+            "peak": 22.554987566998022,
+            "excess_fraction": 0.016751321654400332
+          },
+          "actual_position": {
+            "peak": 0.020603253579364544,
+            "excess_fraction": 0.003234166061988183
+          },
+          "target_position": {
+            "peak": 0.10651597238540644,
+            "excess_fraction": 0.014097646936871567
+          },
+          "tracking_error": {
+            "peak": 1.2464104368976667,
+            "excess_fraction": 0.007131750803358557
+          },
+          "requested_torque": {
+            "peak": 25.956514642509173,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 25.956514642509173,
+            "excess_fraction": 0.0
+          }
+        },
+        "RL_hip_joint": {
+          "velocity": {
+            "peak": 5.2377965427825695,
+            "excess_fraction": 0.0
+          },
+          "actual_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "target_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "tracking_error": {
+            "peak": 0.4467043159991966,
+            "excess_fraction": 0.0
+          },
+          "requested_torque": {
+            "peak": 9.254862268751442,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 9.254862268751442,
+            "excess_fraction": 0.0
+          }
+        },
+        "RL_thigh_joint": {
+          "velocity": {
+            "peak": 13.01024751436245,
+            "excess_fraction": 2.073183373069348e-05
+          },
+          "actual_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "target_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "tracking_error": {
+            "peak": 0.7490624797703062,
+            "excess_fraction": 0.0
+          },
+          "requested_torque": {
+            "peak": 13.364617612550967,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 13.364617612550967,
+            "excess_fraction": 0.0
+          }
+        },
+        "RL_calf_joint": {
+          "velocity": {
+            "peak": 24.136730809482774,
+            "excess_fraction": 0.021291593241422203
+          },
+          "actual_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "target_position": {
+            "peak": 0.7177707240676879,
+            "excess_fraction": 0.16046439307556754
+          },
+          "tracking_error": {
+            "peak": 1.5895431368888606,
+            "excess_fraction": 0.04540271587021872
+          },
+          "requested_torque": {
+            "peak": 31.67326536486182,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 31.67326536486182,
+            "excess_fraction": 0.0
+          }
+        },
+        "RR_hip_joint": {
+          "velocity": {
+            "peak": 9.174197051648486,
+            "excess_fraction": 0.0
+          },
+          "actual_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "target_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "tracking_error": {
+            "peak": 0.5756638398018783,
+            "excess_fraction": 0.0
+          },
+          "requested_torque": {
+            "peak": 9.98552774507045,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 9.98552774507045,
+            "excess_fraction": 0.0
+          }
+        },
+        "RR_thigh_joint": {
+          "velocity": {
+            "peak": 8.870949393994414,
+            "excess_fraction": 0.0
+          },
+          "actual_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "target_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "tracking_error": {
+            "peak": 0.877856049294759,
+            "excess_fraction": 0.0
+          },
+          "requested_torque": {
+            "peak": 17.364123707564996,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 17.364123707564996,
+            "excess_fraction": 0.0
+          }
+        },
+        "RR_calf_joint": {
+          "velocity": {
+            "peak": 31.1094690200745,
+            "excess_fraction": 0.038436819736705714
+          },
+          "actual_position": {
+            "peak": 0.17981159389917722,
+            "excess_fraction": 0.0026951383849901523
+          },
+          "target_position": {
+            "peak": 0.9060975597000122,
+            "excess_fraction": 0.2438478283404167
+          },
+          "tracking_error": {
+            "peak": 1.4832703366611235,
+            "excess_fraction": 0.05471130921530009
+          },
+          "requested_torque": {
+            "peak": 28.174524601221027,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 28.174524601221027,
+            "excess_fraction": 0.0
+          }
+        }
+      },
+      "source_manifest": "cohort_author_stop_on_platform/manifest.json",
+      "final_clearance_range_m": [
+        0.24756556174325295,
+        0.3555145289518321
+      ],
+      "episode_elapsed_range_s": [
+        5.131999999999657,
+        6.9959999999994515
+      ],
+      "platform_entry_time_range_s": [
+        2.88,
+        3.086
+      ],
+      "smallest_episode_wall_clearance_range_m": [
+        0.24729579179216676,
+        0.3441668599925617
+      ]
+    },
+    "physical_constant": {
+      "episodes": 17,
+      "successes": 0,
+      "physics_samples_per_joint": 31616,
+      "weighted_guard_metrics": {
+        "velocity": {
+          "excess_samples": 5440,
+          "excess_fraction": 0.014338731443994602,
+          "peak": 31.1094690200745
+        },
+        "nominal_velocity": {
+          "excess_samples": 2182,
+          "excess_fraction": 0.005751307354925776,
+          "peak": 31.1094690200745
+        },
+        "actual_position": {
+          "excess_samples": 691,
+          "excess_fraction": 0.0018213351889338732,
+          "peak": 0.17981159389917722
+        },
+        "target_position": {
+          "excess_samples": 23987,
+          "excess_fraction": 0.0632248439608637,
+          "peak": 0.9060975597000122
+        },
+        "tracking_error": {
+          "excess_samples": 5533,
+          "excess_fraction": 0.014583860492577597,
+          "peak": 1.5895431368888606
+        },
+        "requested_torque": {
+          "excess_samples": 0,
+          "excess_fraction": 0.0,
+          "peak": 31.67326536486182
+        },
+        "applied_torque": {
+          "excess_samples": 0,
+          "excess_fraction": 0.0,
+          "peak": 31.67326536486182
+        },
+        "model_actual_position": {
+          "excess_samples": 1751,
+          "excess_fraction": 0.004615279183535763,
+          "peak": 0.17981159389917722
+        },
+        "model_target_position": {
+          "excess_samples": 26457,
+          "excess_fraction": 0.06973526062753037,
+          "peak": 0.9060975597000122
+        }
+      },
+      "aggregation": "Excess counts divided by pooled physics-joint samples; peaks are maxima, never averaged",
+      "status_counts": {
+        "wall_contact": 17
+      },
+      "reached_upper_platform": 17,
+      "stop_commands_triggered": 0,
+      "wall_contacts": 17,
+      "wall_min_clearance_m": 9.33121679669302e-05,
+      "max_wall_contact_force_n": 729.5992039377104,
+      "episodes_passing_local_guard_audit": 0,
+      "requested_torque_peak_ratio": 0.8064088370302765,
+      "applied_torque_peak_ratio": 0.8064088370302765,
+      "episode_files": [
+        "episode_000.json",
+        "episode_001.json",
+        "episode_002.json",
+        "episode_003.json",
+        "episode_004.json",
+        "episode_005.json",
+        "episode_006.json",
+        "episode_007.json",
+        "episode_008.json",
+        "episode_009.json",
+        "episode_010.json",
+        "episode_011.json",
+        "episode_012.json",
+        "episode_013.json",
+        "episode_014.json",
+        "episode_015.json",
+        "episode_016.json"
+      ],
+      "command_mode": "constant",
+      "torque_limit_mode": "physical",
+      "limitations": "This finite MuJoCo test is not real-world validation or permission to actuate the robot; stop_on_platform depends on external ground truth.",
+      "per_joint": {
+        "FL_hip_joint": {
+          "velocity": {
+            "peak": 7.549418827415772,
+            "excess_fraction": 0.0
+          },
+          "actual_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "target_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "tracking_error": {
+            "peak": 0.47290414748762166,
+            "excess_fraction": 0.0
+          },
+          "requested_torque": {
+            "peak": 9.593406550036406,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 9.593406550036406,
+            "excess_fraction": 0.0
+          }
+        },
+        "FL_thigh_joint": {
+          "velocity": {
+            "peak": 16.183681833342867,
+            "excess_fraction": 0.009204200404858299
+          },
+          "actual_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "target_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "tracking_error": {
+            "peak": 1.021619510117994,
+            "excess_fraction": 0.00031629554655870446
+          },
+          "requested_torque": {
+            "peak": 19.111889437617553,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 19.111889437617553,
+            "excess_fraction": 0.0
+          }
+        },
+        "FL_calf_joint": {
+          "velocity": {
+            "peak": 26.15396837802165,
+            "excess_fraction": 0.03827176113360324
+          },
+          "actual_position": {
+            "peak": 0.1375151604607664,
+            "excess_fraction": 0.01280996963562753
+          },
+          "target_position": {
+            "peak": 0.7174190566635131,
+            "excess_fraction": 0.1489752024291498
+          },
+          "tracking_error": {
+            "peak": 1.0874809058646986,
+            "excess_fraction": 0.010342864372469635
+          },
+          "requested_torque": {
+            "peak": 20.986397738720136,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 20.986397738720136,
+            "excess_fraction": 0.0
+          }
+        },
+        "FR_hip_joint": {
+          "velocity": {
+            "peak": 7.243613591509704,
+            "excess_fraction": 0.0
+          },
+          "actual_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "target_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "tracking_error": {
+            "peak": 0.4569181612215763,
+            "excess_fraction": 0.0
+          },
+          "requested_torque": {
+            "peak": 9.069946212930345,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 9.069946212930345,
+            "excess_fraction": 0.0
+          }
+        },
+        "FR_thigh_joint": {
+          "velocity": {
+            "peak": 14.95167382734372,
+            "excess_fraction": 0.007685981781376518
+          },
+          "actual_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "target_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "tracking_error": {
+            "peak": 0.7632650061145272,
+            "excess_fraction": 0.0
+          },
+          "requested_torque": {
+            "peak": 15.907242820906273,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 15.907242820906273,
+            "excess_fraction": 0.0
+          }
+        },
+        "FR_calf_joint": {
+          "velocity": {
+            "peak": 22.554987566998022,
+            "excess_fraction": 0.025556680161943318
+          },
+          "actual_position": {
+            "peak": 0.020603253579364544,
+            "excess_fraction": 0.004934210526315789
+          },
+          "target_position": {
+            "peak": 0.2021622941589355,
+            "excess_fraction": 0.0357413967611336
+          },
+          "tracking_error": {
+            "peak": 1.2464104368976667,
+            "excess_fraction": 0.010880566801619434
+          },
+          "requested_torque": {
+            "peak": 25.956514642509173,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 25.956514642509173,
+            "excess_fraction": 0.0
+          }
+        },
+        "RL_hip_joint": {
+          "velocity": {
+            "peak": 5.2377965427825695,
+            "excess_fraction": 0.0
+          },
+          "actual_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "target_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "tracking_error": {
+            "peak": 0.4467043159991966,
+            "excess_fraction": 0.0
+          },
+          "requested_torque": {
+            "peak": 9.254862268751442,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 9.254862268751442,
+            "excess_fraction": 0.0
+          }
+        },
+        "RL_thigh_joint": {
+          "velocity": {
+            "peak": 13.01024751436245,
+            "excess_fraction": 3.1629554655870446e-05
+          },
+          "actual_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "target_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "tracking_error": {
+            "peak": 0.7490624797703062,
+            "excess_fraction": 0.0
+          },
+          "requested_torque": {
+            "peak": 13.364617612550967,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 13.364617612550967,
+            "excess_fraction": 0.0
+          }
+        },
+        "RL_calf_joint": {
+          "velocity": {
+            "peak": 24.136730809482774,
+            "excess_fraction": 0.03248355263157895
+          },
+          "actual_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "target_position": {
+            "peak": 0.7177707240676879,
+            "excess_fraction": 0.28283147773279355
+          },
+          "tracking_error": {
+            "peak": 1.5895431368888606,
+            "excess_fraction": 0.06999620445344129
+          },
+          "requested_torque": {
+            "peak": 31.67326536486182,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 31.67326536486182,
+            "excess_fraction": 0.0
+          }
+        },
+        "RR_hip_joint": {
+          "velocity": {
+            "peak": 9.174197051648486,
+            "excess_fraction": 0.0
+          },
+          "actual_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "target_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "tracking_error": {
+            "peak": 0.5756638398018783,
+            "excess_fraction": 0.0
+          },
+          "requested_torque": {
+            "peak": 9.98552774507045,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 9.98552774507045,
+            "excess_fraction": 0.0
+          }
+        },
+        "RR_thigh_joint": {
+          "velocity": {
+            "peak": 8.870949393994414,
+            "excess_fraction": 0.0
+          },
+          "actual_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "target_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "tracking_error": {
+            "peak": 0.877856049294759,
+            "excess_fraction": 0.0
+          },
+          "requested_torque": {
+            "peak": 17.364123707564996,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 17.364123707564996,
+            "excess_fraction": 0.0
+          }
+        },
+        "RR_calf_joint": {
+          "velocity": {
+            "peak": 31.1094690200745,
+            "excess_fraction": 0.058830971659919025
+          },
+          "actual_position": {
+            "peak": 0.17981159389917722,
+            "excess_fraction": 0.004111842105263158
+          },
+          "target_position": {
+            "peak": 0.9060975597000122,
+            "excess_fraction": 0.29115005060728744
+          },
+          "tracking_error": {
+            "peak": 1.4832703366611235,
+            "excess_fraction": 0.0834703947368421
+          },
+          "requested_torque": {
+            "peak": 28.174524601221027,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 28.174524601221027,
+            "excess_fraction": 0.0
+          }
+        }
+      },
+      "source_manifest": "cohort_physical_constant/manifest.json",
+      "final_clearance_range_m": [
+        9.33121679669302e-05,
+        0.000957254984666589
+      ],
+      "episode_elapsed_range_s": [
+        3.655999999999819,
+        3.8119999999998018
+      ],
+      "platform_entry_time_range_s": [
+        2.88,
+        3.086
+      ],
+      "smallest_episode_wall_clearance_range_m": [
+        9.33121679669302e-05,
+        0.000957254984666589
+      ]
+    },
+    "physical_stop_on_platform": {
+      "episodes": 17,
+      "successes": 17,
+      "physics_samples_per_joint": 48235,
+      "weighted_guard_metrics": {
+        "velocity": {
+          "excess_samples": 5534,
+          "excess_fraction": 0.009560830655471477,
+          "peak": 31.1094690200745
+        },
+        "nominal_velocity": {
+          "excess_samples": 2222,
+          "excess_fraction": 0.003838844545800076,
+          "peak": 31.1094690200745
+        },
+        "actual_position": {
+          "excess_samples": 691,
+          "excess_fraction": 0.0011938080923257662,
+          "peak": 0.17981159389917722
+        },
+        "target_position": {
+          "excess_samples": 24062,
+          "excess_fraction": 0.04157078193566221,
+          "peak": 0.9060975597000122
+        },
+        "tracking_error": {
+          "excess_samples": 5537,
+          "excess_fraction": 0.00956601361390415,
+          "peak": 1.5895431368888606
+        },
+        "requested_torque": {
+          "excess_samples": 0,
+          "excess_fraction": 0.0,
+          "peak": 31.67326536486182
+        },
+        "applied_torque": {
+          "excess_samples": 0,
+          "excess_fraction": 0.0,
+          "peak": 31.67326536486182
+        },
+        "model_actual_position": {
+          "excess_samples": 1751,
+          "excess_fraction": 0.003025120071870357,
+          "peak": 0.17981159389917722
+        },
+        "model_target_position": {
+          "excess_samples": 26532,
+          "excess_fraction": 0.045838084378563286,
+          "peak": 0.9060975597000122
+        }
+      },
+      "aggregation": "Excess counts divided by pooled physics-joint samples; peaks are maxima, never averaged",
+      "status_counts": {
+        "success": 17
+      },
+      "reached_upper_platform": 17,
+      "stop_commands_triggered": 17,
+      "wall_contacts": 0,
+      "wall_min_clearance_m": 0.24729579179216676,
+      "max_wall_contact_force_n": 0.0,
+      "episodes_passing_local_guard_audit": 0,
+      "requested_torque_peak_ratio": 0.8463790165799321,
+      "applied_torque_peak_ratio": 0.8463790165799321,
+      "episode_files": [
+        "episode_000.json",
+        "episode_001.json",
+        "episode_002.json",
+        "episode_003.json",
+        "episode_004.json",
+        "episode_005.json",
+        "episode_006.json",
+        "episode_007.json",
+        "episode_008.json",
+        "episode_009.json",
+        "episode_010.json",
+        "episode_011.json",
+        "episode_012.json",
+        "episode_013.json",
+        "episode_014.json",
+        "episode_015.json",
+        "episode_016.json"
+      ],
+      "command_mode": "stop_on_platform",
+      "torque_limit_mode": "physical",
+      "limitations": "This finite MuJoCo test is not real-world validation or permission to actuate the robot; stop_on_platform depends on external ground truth.",
+      "per_joint": {
+        "FL_hip_joint": {
+          "velocity": {
+            "peak": 7.549418827415772,
+            "excess_fraction": 0.0
+          },
+          "actual_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "target_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "tracking_error": {
+            "peak": 0.47290414748762166,
+            "excess_fraction": 0.0
+          },
+          "requested_torque": {
+            "peak": 9.593406550036406,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 9.593406550036406,
+            "excess_fraction": 0.0
+          }
+        },
+        "FL_thigh_joint": {
+          "velocity": {
+            "peak": 16.183681833342867,
+            "excess_fraction": 0.006032963615631803
+          },
+          "actual_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "target_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "tracking_error": {
+            "peak": 1.021619510117994,
+            "excess_fraction": 0.0002073183373069348
+          },
+          "requested_torque": {
+            "peak": 19.111889437617553,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 19.111889437617553,
+            "excess_fraction": 0.0
+          }
+        },
+        "FL_calf_joint": {
+          "velocity": {
+            "peak": 26.15396837802165,
+            "excess_fraction": 0.027158702187208457
+          },
+          "actual_position": {
+            "peak": 0.1375151604607664,
+            "excess_fraction": 0.00839639266093086
+          },
+          "target_position": {
+            "peak": 0.7174190566635131,
+            "excess_fraction": 0.0804395148750907
+          },
+          "tracking_error": {
+            "peak": 1.0874809058646986,
+            "excess_fraction": 0.0067793096299367675
+          },
+          "requested_torque": {
+            "peak": 20.986397738720136,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 20.986397738720136,
+            "excess_fraction": 0.0
+          }
+        },
+        "FR_hip_joint": {
+          "velocity": {
+            "peak": 7.243613591509704,
+            "excess_fraction": 0.0
+          },
+          "actual_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "target_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "tracking_error": {
+            "peak": 0.4569181612215763,
+            "excess_fraction": 0.0
+          },
+          "requested_torque": {
+            "peak": 9.069946212930345,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 9.069946212930345,
+            "excess_fraction": 0.0
+          }
+        },
+        "FR_thigh_joint": {
+          "velocity": {
+            "peak": 14.95167382734372,
+            "excess_fraction": 0.005037835596558515
+          },
+          "actual_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "target_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "tracking_error": {
+            "peak": 0.9756959918219615,
+            "excess_fraction": 0.0005597595107287239
+          },
+          "requested_torque": {
+            "peak": 20.05918269294439,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 20.05918269294439,
+            "excess_fraction": 0.0
+          }
+        },
+        "FR_calf_joint": {
+          "velocity": {
+            "peak": 22.554987566998022,
+            "excess_fraction": 0.016751321654400332
+          },
+          "actual_position": {
+            "peak": 0.020603253579364544,
+            "excess_fraction": 0.003234166061988183
+          },
+          "target_position": {
+            "peak": 0.10651597238540644,
+            "excess_fraction": 0.014097646936871567
+          },
+          "tracking_error": {
+            "peak": 1.2464104368976667,
+            "excess_fraction": 0.007131750803358557
+          },
+          "requested_torque": {
+            "peak": 25.956514642509173,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 25.956514642509173,
+            "excess_fraction": 0.0
+          }
+        },
+        "RL_hip_joint": {
+          "velocity": {
+            "peak": 5.2377965427825695,
+            "excess_fraction": 0.0
+          },
+          "actual_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "target_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "tracking_error": {
+            "peak": 0.4467043159991966,
+            "excess_fraction": 0.0
+          },
+          "requested_torque": {
+            "peak": 9.254862268751442,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 9.254862268751442,
+            "excess_fraction": 0.0
+          }
+        },
+        "RL_thigh_joint": {
+          "velocity": {
+            "peak": 13.01024751436245,
+            "excess_fraction": 2.073183373069348e-05
+          },
+          "actual_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "target_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "tracking_error": {
+            "peak": 0.7490624797703062,
+            "excess_fraction": 0.0
+          },
+          "requested_torque": {
+            "peak": 13.364617612550967,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 13.364617612550967,
+            "excess_fraction": 0.0
+          }
+        },
+        "RL_calf_joint": {
+          "velocity": {
+            "peak": 24.136730809482774,
+            "excess_fraction": 0.021291593241422203
+          },
+          "actual_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "target_position": {
+            "peak": 0.7177707240676879,
+            "excess_fraction": 0.16046439307556754
+          },
+          "tracking_error": {
+            "peak": 1.5895431368888606,
+            "excess_fraction": 0.04540271587021872
+          },
+          "requested_torque": {
+            "peak": 31.67326536486182,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 31.67326536486182,
+            "excess_fraction": 0.0
+          }
+        },
+        "RR_hip_joint": {
+          "velocity": {
+            "peak": 9.174197051648486,
+            "excess_fraction": 0.0
+          },
+          "actual_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "target_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "tracking_error": {
+            "peak": 0.5756638398018783,
+            "excess_fraction": 0.0
+          },
+          "requested_torque": {
+            "peak": 9.98552774507045,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 9.98552774507045,
+            "excess_fraction": 0.0
+          }
+        },
+        "RR_thigh_joint": {
+          "velocity": {
+            "peak": 8.870949393994414,
+            "excess_fraction": 0.0
+          },
+          "actual_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "target_position": {
+            "peak": 0.0,
+            "excess_fraction": 0.0
+          },
+          "tracking_error": {
+            "peak": 0.877856049294759,
+            "excess_fraction": 0.0
+          },
+          "requested_torque": {
+            "peak": 17.364123707564996,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 17.364123707564996,
+            "excess_fraction": 0.0
+          }
+        },
+        "RR_calf_joint": {
+          "velocity": {
+            "peak": 31.1094690200745,
+            "excess_fraction": 0.038436819736705714
+          },
+          "actual_position": {
+            "peak": 0.17981159389917722,
+            "excess_fraction": 0.0026951383849901523
+          },
+          "target_position": {
+            "peak": 0.9060975597000122,
+            "excess_fraction": 0.2438478283404167
+          },
+          "tracking_error": {
+            "peak": 1.4832703366611235,
+            "excess_fraction": 0.05471130921530009
+          },
+          "requested_torque": {
+            "peak": 28.174524601221027,
+            "excess_fraction": 0.0
+          },
+          "applied_torque": {
+            "peak": 28.174524601221027,
+            "excess_fraction": 0.0
+          }
+        }
+      },
+      "source_manifest": "cohort_physical_stop_on_platform/manifest.json",
+      "final_clearance_range_m": [
+        0.24756556174325295,
+        0.3555145289518321
+      ],
+      "episode_elapsed_range_s": [
+        5.131999999999657,
+        6.9959999999994515
+      ],
+      "platform_entry_time_range_s": [
+        2.88,
+        3.086
+      ],
+      "smallest_episode_wall_clearance_range_m": [
+        0.24729579179216676,
+        0.3441668599925617
+      ]
+    }
+  },
+  "total_evaluated_episodes": 68,
+  "real_robot_driven": false,
+  "geometry": {
+    "width_m": 0.9,
+    "risers": 2,
+    "rise_m": 0.15,
+    "first_tread": {
+      "x_min_m": 0.0,
+      "x_max_m": 0.3,
+      "top_z_m": 0.15
+    },
+    "second_tread_and_upper_platform": {
+      "x_min_m": 0.3,
+      "x_max_m": 1.2,
+      "depth_m": 0.9,
+      "top_z_m": 0.3
+    },
+    "wall": {
+      "inner_face_x_m": 1.2,
+      "thickness_m": 0.1,
+      "width_m": 3.0,
+      "height_m": 2.0
+    },
+    "start_front_foot_sphere_leading_edge_distance_m": 0.5
+  },
+  "stop_success_thresholds": {
+    "horizontal_speed_m_s": 0.05,
+    "absolute_vertical_speed_m_s": 0.05,
+    "absolute_each_world_angular_velocity_rad_s": 0.1,
+    "tilt_rad": 0.2617993877991494,
+    "continuous_duration_s": 2.0
+  },
+  "model_sha256": "bc08253fd68f661bf6be5ce5ca70cec555c3fde2c397d23fbe9814a998e056f5",
+  "runner_sha256": "6110ee032979d046e019839986520b6ecec2e4b206c8a04b0438f3f0208663e0",
+  "shared_runner_sha256": "d93c378307c946a7f0d2f5f9b86606d03b11aab43b342ac51dabbf58e5528893",
+  "model_source": "https://github.com/robogauge/code/tree/f116b00a934262348f41cbfd0d07cc4cb6fbf8d8",
+  "command_forward_m_s": 0.6,
+  "command_note": "0.6 m/s is a command. stop_on_platform is an external simulation-ground-truth trigger latching command vx=0 with history retained, not automatic wall recognition by the policy.",
+  "sampling_note": "Each condition: centered nominal plus seed42 and seed43 each8, y +/-2cm yaw +/-2deg. Guard fractions pooled by physics-joint samples and include terminal failures. No sensor noise/dynamics randomization.",
+  "acceptance_note": "Task completion and local joint-protection acceptance are separate. All stop trials complete the simulated task but none passes the local joint guard audit; not a real-robot approval."
+}

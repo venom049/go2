@@ -1,0 +1,133 @@
+{
+  "date_local": "2026-11-06",
+  "run": "20261106T135735-3987",
+  "result": "handoff_and_stand_passed_climb_not_started",
+  "onsite_support_confirmed_before_handoff": true,
+  "release_rpc": {
+    "code": 0,
+    "after_mode_name": "",
+    "elapsed_ms": 156.2
+  },
+  "stand_locked_local_time": "2026-11-06 13:57:51.806",
+  "G_sent": false,
+  "policy_trace_rows": 0,
+  "original_onnx_sha256": "bc08253fd68f661bf6be5ce5ca70cec555c3fde2c397d23fbe9814a998e056f5",
+  "pre_handoff_source_clock": {
+    "cloud_deskewed": {
+      "count": 78,
+      "age_quantiles_s": [
+        0.047499895095825195,
+        0.0489964485168457,
+        0.057103228569030766,
+        0.06780290603637695
+      ],
+      "source_span_s": 5.011022567749023,
+      "receipt_span_s": 5.000792447000094,
+      "stamps_strictly_increasing": true
+    },
+    "robot_odom": {
+      "count": 746,
+      "age_quantiles_s": [
+        0.03947043418884277,
+        0.04001450538635254,
+        0.040511369705200195,
+        0.04214763641357422
+      ],
+      "source_span_s": 4.992957830429077,
+      "receipt_span_s": 4.993479363999995,
+      "stamps_strictly_increasing": true
+    }
+  },
+  "logs": {
+    "supervisor.jsonl": {
+      "commands": 781,
+      "geometry_frames": 58,
+      "fresh_commands": 215,
+      "controller_active_counts": {
+        "None": 3,
+        "0": 778
+      },
+      "nonzero_commands": 0,
+      "last_command": {
+        "event": "command",
+        "mono_s": 2256.69787799,
+        "sequence": 781,
+        "source_age_s": 0.0,
+        "controller_active": 0,
+        "sensor_error": "",
+        "fresh": false,
+        "mode": "WAIT",
+        "phase": "WAIT",
+        "reason": "sensor_stale",
+        "command": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "confirmed_frames": 1,
+        "ready": false,
+        "local_delivery": true
+      }
+    },
+    "supervisor-recovered.jsonl": {
+      "commands": 4257,
+      "geometry_frames": 0,
+      "fresh_commands": 0,
+      "controller_active_counts": {
+        "None": 1,
+        "0": 4256
+      },
+      "nonzero_commands": 0,
+      "last_command": {
+        "event": "command",
+        "mono_s": 2675.329794251,
+        "sequence": 2457499428954,
+        "source_age_s": 0.0,
+        "controller_active": 0,
+        "sensor_error": "",
+        "fresh": false,
+        "mode": "WAIT",
+        "phase": "WAIT",
+        "reason": "sensor_stale",
+        "command": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "confirmed_frames": 0,
+        "ready": false,
+        "local_delivery": false
+      }
+    }
+  },
+  "sensor_feedback_fix": {
+    "receive_time_sampling": true,
+    "reject_invalid_without_refresh": true,
+    "monotonic_restart_sequence": true,
+    "synced_onboard": true
+  },
+  "post_handoff_diagnostic_6_seconds": {
+    "counts": {
+      "raw_cloud": 94,
+      "imu": 1497,
+      "lidar_state": 30,
+      "cloud_base": 0,
+      "cloud_deskewed": 0,
+      "robot_odom": 0
+    },
+    "lidar_error_state": 0,
+    "reported_cloud_frequency_hz": 15.359756469726562,
+    "lidar_on_published_once": true,
+    "causal_reason_in_factory_code": "not_confirmed"
+  },
+  "exit": {
+    "onsite_actual_load_bearing_support_confirmed": true,
+    "control_process_exit_code": 139,
+    "native_shutdown_segfault": true,
+    "normal_damping_exit_marker_seen": false,
+    "controller_sensor_bridge_absent_verified_at_local": "2026-11-06T14:05:39+08:00",
+    "control_sockets_absent": true,
+    "factory_restore_requested": false,
+    "subsequent_ssh": "No route to host; post-exit mode query not completed"
+  }
+}

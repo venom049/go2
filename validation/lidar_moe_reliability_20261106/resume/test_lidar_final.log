@@ -1,0 +1,76 @@
+test_atomic_pair_does_not_fail_on_new_half_or_retime_old_pair (test_lidar_independent_clearance.Frames) ... ok
+test_bad_covariance_rejected (test_lidar_independent_clearance.Frames) ... ok
+test_base_origin_and_gravity_alignment (test_lidar_independent_clearance.Frames) ... ok
+test_named_leg_motion_matches_foot_derivative (test_lidar_independent_clearance.Frames) ... ok
+test_quaternion_roundtrip (test_lidar_independent_clearance.Frames) ... ok
+test_world_cloud_and_base_pose_are_same_transform (test_lidar_independent_clearance.Frames) ... ok
+test_far_riser_clear (test_lidar_independent_clearance.Riser) ... ok
+test_ground_alignment_rejects_offset_and_accepts_rotated_plane (test_lidar_independent_clearance.Riser) ... ok
+test_initial_floor_offset_blocks_ready_without_recalibrating (test_lidar_independent_clearance.Riser) ... ok
+test_low_toe_approach_detected (test_lidar_independent_clearance.Riser) ... ok
+test_malformed_snapshot_rejected (test_lidar_independent_clearance.Riser) ... ok
+test_missing_leg_state_faults_in_motion (test_lidar_independent_clearance.Riser) ... ok
+test_recorded_grounded_capture_is_not_approved (test_lidar_independent_clearance.Riser) ... ok
+test_risk_decelerates_holds_and_cannot_auto_resume (test_lidar_independent_clearance.Riser) ... ok
+test_second_riser_not_ignored (test_lidar_independent_clearance.Riser) ... ok
+test_sufficient_lift_and_retreat (test_lidar_independent_clearance.Riser) ... ok
+test_calibration (test_lidar_moe_integration.Tests) ... ok
+test_confirmation_and_stale (test_lidar_moe_integration.Tests) ... ok
+test_feedback_receive_time_and_rejection (test_lidar_moe_integration.Tests) ... ok
+test_full_collision_envelope (test_lidar_moe_integration.Tests) ... ok
+test_geometry_and_rotation (test_lidar_moe_integration.Tests) ... ok
+test_negative_geometries (test_lidar_moe_integration.Tests) ... ok
+test_park_and_no_reentry (test_lidar_moe_integration.Tests) ... ok
+test_recorded_window (test_lidar_moe_integration.Tests) ... ok
+test_repeated_source_not_confirmation (test_lidar_moe_integration.Tests) ... ok
+test_wall_blocks_before_all_feet (test_lidar_moe_integration.Tests) ... ok
+test_wire (test_lidar_moe_integration.Tests) ... ok
+test_active_motion_no_restart (test_lidar_moe_recovery.Recovery) ... ok
+test_controller_unavailable_no_restart (test_lidar_moe_recovery.Recovery) ... ok
+test_hold_restart (test_lidar_moe_recovery.Recovery) ... ok
+test_independent_group_hold_restart (test_lidar_moe_recovery.Recovery) ... ok
+test_independent_group_motion_no_restart (test_lidar_moe_recovery.Recovery) ... ok
+test_pre_handoff_restart (test_lidar_moe_recovery.Recovery) ... ok
+test_restart_decision_is_closed_by_default (test_lidar_moe_recovery.Recovery) ... ok
+test_stopped_no_restart (test_lidar_moe_recovery.Recovery) ... ok
+test_antipodal_quaternions_and_rotation (test_lidar_translation_registration.Registration) ... ok
+test_missing_imu_bracket_or_gap_rejected (test_lidar_translation_registration.Registration) ... ok
+test_missing_translation_direction_rejected (test_lidar_translation_registration.Registration) ... ok
+test_translation_with_outliers (test_lidar_translation_registration.Registration) ... ok
+test_both_endiannesses_with_row_padding (test_lidar_watch.BinaryCloudTests) ... ok
+test_field_offsets_not_assumed (test_lidar_watch.BinaryCloudTests) ... ok
+test_malformed_layouts_rejected (test_lidar_watch.BinaryCloudTests) ... ok
+test_nonfinite_points_preserved_for_counting (test_lidar_watch.BinaryCloudTests) ... ok
+test_small_quaternion_error_normalized_large_or_invalid_rejected (test_lidar_watch.TransformTests) ... ok
+test_stamp_validation (test_lidar_watch.TransformTests) ... ok
+test_yaw_only_preserves_world_vertical_difference (test_lidar_watch.TransformTests) ... ok
+test_cli_refuses_overwrite_before_ros_import_or_collection (test_lidar_watch.WatcherTests) ... usage: python3 -m unittest [-h] [--duration DURATION] [--output OUTPUT]
+                           [--capture CAPTURE] [--allow-unsynced-preview]
+python3 -m unittest: error: output paths must be new files in existing directories
+ok
+test_cli_writes_bounded_npz_and_no_nan_json (test_lidar_watch.WatcherTests) ... ok
+test_collection_only_creates_two_best_effort_depth_one_subscriptions_and_tears_down (test_lidar_watch.WatcherTests) ... ok
+test_invalid_odometry_revokes_preview_and_cache (test_lidar_watch.WatcherTests) ... ok
+test_nearest_odom_and_nonfinite_filter (test_lidar_watch.WatcherTests) ... ok
+test_rate_limit_latest_frame_and_expiration (test_lidar_watch.WatcherTests) ... ok
+test_repeated_stamp_does_not_refresh_data_or_reanalyze (test_lidar_watch.WatcherTests) ... ok
+test_stale_receipts_and_mismatched_odometry_do_not_reach_geometry (test_lidar_watch.WatcherTests) ... ok
+test_unsynchronized_clock_default_rejects_but_explicit_preview_does_not_authorize (test_lidar_watch.WatcherTests) ... ok
+
+----------------------------------------------------------------------
+Ran 55 tests in 3.797s
+
+OK
+{
+  "state": "unknown",
+  "control_authorized": false,
+  "capture": {
+    "written": true,
+    "path": "/tmp/tmp349xs6_e/capture.npz",
+    "point_count": 2,
+    "metadata": {
+      "preview_only": true
+    },
+    "note": "Last analyzed finite frame; may be older than final report. No control readiness implied."
+  }
+}
